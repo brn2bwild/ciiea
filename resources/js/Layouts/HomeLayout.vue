@@ -55,7 +55,7 @@ defineProps({
 							</div>
 
 							<div v-if=" canLogin " class="sm:absolute sm:top-0 sm:right-0 p-6 text-right">
-								<div v-if=" $page.props.auth.user.name != false ">
+								<div v-if=" $page.props.auth.user.name ">
 									<Link v-if=" $page.props.auth.user.role == 'admin' " :href=" route( 'admin.dashboard' ) "
 										class=" text-gray-950 hover:text-gray-800 focus:no-underline">
 									Dashboard</Link>

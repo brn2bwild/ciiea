@@ -9,7 +9,6 @@ use Inertia\Inertia;
 Route::get('/', function () {
 	return Inertia::render('Home', [
 		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
 		'laravelVersion' => Application::VERSION,
 		'phpVersion' => PHP_VERSION,
 	]);
@@ -25,28 +24,24 @@ Route::get('/reime', function () {
 Route::get('/divulgation', function () {
 	return Inertia::render('Divulgation', [
 		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
 	]);
 })->name('divulgation');
 
 Route::get('/convocations', function () {
 	return Inertia::render('Convocations', [
 		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
 	]);
 })->name('convocations');
 
 Route::get('/gallery', function () {
 	return Inertia::render('Gallery', [
 		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
 	]);
 })->name('gallery');
 
 Route::get('/contact', function () {
 	return Inertia::render('Contact', [
 		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
 	]);
 })->name('contact');
 
