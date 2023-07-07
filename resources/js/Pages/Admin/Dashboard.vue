@@ -1,0 +1,67 @@
+<script setup>
+import { Head, Link } from "@inertiajs/vue3";
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+
+defineOptions({
+	layout: AdminLayout,
+})
+
+</script>
+<template>
+	<Head title="Dashboard" />
+	<!-- <AdminLayout> -->
+	<div class="w-full p-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+		<div
+			class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-rose-900">
+			<a href="#!">
+				<img class="rounded-t-lg" src="https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg" alt="" />
+			</a>
+			<div class="p-6">
+				<h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-white">
+					Divulgación
+				</h5>
+				<p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+					Descripción de las divulgaciones
+				</p>
+				<Link :href=" route( 'admin.divulgation' ) "
+					class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-md font-medium uppercase leading-normal text-white">
+				Ver más</Link>
+			</div>
+		</div>
+		<div
+			class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-rose-900">
+			<a href="#!">
+				<img class="rounded-t-lg" src="https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg" alt="" />
+			</a>
+			<div class="p-6">
+				<h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-white">
+					Galería
+				</h5>
+				<p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+					Descripción de las investigaciones realizadas.
+				</p>
+				<Link :href=" route( 'admin.gallery' ) "
+					class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-md font-medium uppercase leading-normal text-white">
+				Ver más</Link>
+			</div>
+		</div>
+		<div
+			class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-rose-900">
+			<a href="#!">
+				<img class="rounded-t-lg" src="https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg" alt="" />
+			</a>
+			<div class="p-6">
+				<h5 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-white">
+					Contacto
+				</h5>
+				<p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+					Descripción de los contactos registrados de la plataforma.
+				</p>
+				<Link :href=" route( 'admin.contact' ) "
+					class="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-md font-medium uppercase leading-normal text-white">
+				Ver más</Link>
+			</div>
+		</div>
+	</div>
+	<!-- </AdminLayout> -->
+</template>
