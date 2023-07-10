@@ -2,16 +2,31 @@ import "./bootstrap";
 import "../css/app.css";
 
 import { createApp, h } from "vue";
-import { createInertiaApp } from "@inertiajs/vue3";
+import { Link, createInertiaApp } from "@inertiajs/vue3";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPhone, faEnvelope, faMagnifyingGlass, faEllipsis } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faTwitter} from "@fortawesome/free-brands-svg-icons";
+import {
+    faPhone,
+    faEnvelope,
+    faMagnifyingGlass,
+    faEllipsis,
+    faHouse,
+} from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faPhone, faFacebook, faTwitter, faEnvelope, faTwitter, faMagnifyingGlass, faEllipsis);
+library.add(
+    faPhone,
+    faFacebook,
+    faTwitter,
+    faEnvelope,
+    faTwitter,
+    faMagnifyingGlass,
+    faEllipsis,
+    faHouse
+);
 
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
@@ -28,6 +43,7 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy)
             .component("font-awesome-icon", FontAwesomeIcon)
+						.component("Link", Link)
             .mount(el);
     },
     progress: {
