@@ -26,7 +26,7 @@ defineProps({
 				<!-- Logo -->
 				<div class="shrink-0 flex items-center">
 					<Link :href=" route( 'home' ) ">
-					<ApplicationLogo/>
+					<ApplicationLogo />
 					</Link>
 				</div>
 
@@ -54,7 +54,7 @@ defineProps({
 							class="w-4 h-4 text-neutral-500" />
 					</div>
 					<input type="search" id="default-search"
-						class="block w-full p-3 pl-10 text-sm text-neutral-900 rounded-full bg-neutral-200 border-0 focus:ring-2 focus:ring-neutral-400"
+						class="block w-full p-2 pl-10 text-sm text-neutral-900 rounded-full bg-neutral-200 border-0 focus:ring-2 focus:ring-neutral-400"
 						placeholder="Buscar información" required>
 					<!-- <button type="submit"
 						class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
@@ -74,7 +74,7 @@ defineProps({
 
 						<template v-else>
 							<Link :href=" route( 'login' ) "
-								class="font-medium text-neutral-50 bg-rose-900 px-4 py-2 rounded-full hover:bg-rose-700 focus:no-underline">
+								class="font-bold text-neutral-50 bg-rose-900 px-5 py-2 rounded-full hover:bg-rose-700 focus:no-underline">
 							Iniciar sesión</Link>
 							<!-- <Link v-if=" canRegister " :href=" route( 'register' ) "
 								class="ml-6 font-medium text-neutral-50 bg-rose-900 px-4 py-2 rounded-full hover:bg-rose-700 focus:no-underline">

@@ -11,10 +11,9 @@ defineProps({
 <template>
 	<div class="fixed top-0 left-0 z-40 w-64 h-screen hidden sm:block bg-white border-0 pt-20 min-h-screen">
 		<!-- Primary Sidebar Menu -->
-		<div class="w-full mx-auto">
-
+		<div class="w-full h-full mx-auto flex flex-col justify-between">
 			<!-- Navigation Links -->
-			<div class="sm:flex sm:flex-col">
+			<div class="flex flex-col">
 				<SidebarLink :href=" route( 'home' ) " :active=" $page.url=== '/' ">
 					Inicio
 				</SidebarLink>
@@ -35,6 +34,10 @@ defineProps({
 				</SidebarLink>
 			</div>
 
+			<!-- Register button-->
+			<div class="flex justify-center items-center pb-8">
+				<Link :href="route('register')" class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold">Únete a la REIME</Link>
+			</div>
 		</div>
 	</div>
 </template>
