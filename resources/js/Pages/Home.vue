@@ -27,7 +27,6 @@ defineProps({
 
 <template>
 	<Head title="Inicio" />
-	<!-- <HomeLayout :canLogin=" canLogin "> -->
 	<section class="w-full pt-16 pb-12 m-auto">
 		<img class="w-full object-cover" src="/storage/images/CIIEA.jpg" alt="ciiea">
 	</section>
@@ -115,5 +114,4 @@ defineProps({
 			</div>
 		</div>
 	</section>
-	<!-- </HomeLayout> -->
 </template>

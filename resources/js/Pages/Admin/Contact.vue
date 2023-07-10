@@ -9,7 +9,6 @@ defineOptions({
 </script>
 <template>
 	<Head title="Contacto" />
-	<!-- <AdminLayout> -->
 	<div class="w-full py-8 px-10 grid grid-cols-1 md:grid-cols-3 gap-4">
 		<div class="bg-rose-900 w-full rounded-sm flex p-2 gap-4">
 			<img class="h-32 w-32" src="/storage/images/default-contact.png" alt="default-contact">
@@ -58,5 +57,4 @@ defineOptions({
 			</div>
 		</div>
 	</div>
-	<!-- </AdminLayout> -->
 </template>

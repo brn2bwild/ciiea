@@ -9,7 +9,6 @@ defineOptions({
 </script>
 <template>
 	<Head title="Gallery" />
-	<!-- <AdminLayout> -->
 	<div class="w-full p-8 flex justify-end items-center gap-4">
 		<input class="focus:border-rose-900 focus:ring-rose-900 rounded-sm border-gray-300 shadow-sm w-1/2" type="text"
 			placeholder="Buscar imágen por nombre">
@@ -38,5 +37,4 @@ defineOptions({
 		</div>
 
 	</div>
-	<!-- </AdminLayout> -->
 </template>

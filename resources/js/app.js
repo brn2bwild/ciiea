@@ -7,11 +7,11 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faPhone, faEnvelope, faMagnifyingGlass, faEllipsis } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faPhone, faFacebook, faTwitter, faEnvelope, faTwitter);
+library.add(faPhone, faFacebook, faTwitter, faEnvelope, faTwitter, faMagnifyingGlass, faEllipsis);
 
 const appName =
     window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";

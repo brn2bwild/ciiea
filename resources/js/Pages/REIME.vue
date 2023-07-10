@@ -17,7 +17,6 @@ defineProps({
 </script>
 <template>
 	<Head title="REIME" />
-	<!-- <HomeLayout :canLogin=" canLogin " :canRegister=" canRegister "> -->
 	<section class="w-full h-[480px] bg-rose-900 flex justify-start items-center">
 		<img class="w-[65%]" src="/storage/images/reime-logo-blanco.png" alt="reime-logo">
 		<div class="w-[35%] text-right px-8 py-8 h-full flex justify-end items-end">
@@ -62,5 +61,4 @@ defineProps({
 			</p>
 		</div>
 	</section>
-	<!-- </HomeLayout> -->
 </template>
