@@ -27,7 +27,7 @@ defineProps({
 
 <template>
 	<Head title="Inicio" />
-	<section class="w-full pt-16 pb-12 m-auto">
+	<section class="w-full pb-12 m-auto">
 		<img class="w-full object-cover" src="/storage/images/CIIEA.jpg" alt="ciiea">
 	</section>
 	<section class="min-h-1/2 w-full pb-8 px-20 grid grid-cols-1 md:grid-cols-4 gap-8">

@@ -18,17 +18,17 @@ defineProps({
 </script>
 <template>
 	<Head title="Contacto" />
-	<div class="w-full py-16 px-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+	<div class="w-full pb-16 pt-12 px-10 grid grid-cols-1 md:grid-cols-3 gap-4">
 		<div class="bg-transparent w-full rounded-sm flex gap-4 relative">
 			<img class="h-64 w-64" src="/storage/images/default-contact.png" alt="default-contact">
 			<div class="bg-rose-900 w-3/4 p-4 rounded-md absolute top-52 left-14 z-10">
-				<h1 class="text-white text-lg mb-4 font-bold">
+				<h1 class="text-white text-lg font-bold">
 					Miguel Ordoñez Ordoñez
 				</h1>
-				<span class="text-white">
+				<h2 class="text-white mb-4">
 					Director general
-				</span>
-				<p class="flex justify-start text-white my-2">
+				</h2>
+				<p class="flex justify-start text-white mb-2">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'phone' } " size="lg" style="color: white;" />
 					<a href="https://whatsapp.com" class="ml-2">9234164</a>
 				</p>
@@ -45,13 +45,13 @@ defineProps({
 		<div class="bg-transparent w-full rounded-sm flex gap-4 relative">
 			<img class="h-64 w-64" src="/storage/images/default-contact.png" alt="default-contact">
 			<div class="bg-rose-900 w-3/4 p-4 rounded-md absolute top-52 left-14 z-10">
-				<h1 class="text-white text-lg mb-4 font-bold">
+				<h1 class="text-white text-lg font-bold">
 					Selene CIIEA
 				</h1>
-				<span class="text-white">
+				<h2 class="text-white mb-4">
 					Director de sistemas
-				</span>
-				<p class="flex justify-start text-white my-2">
+				</h2>
+				<p class="flex justify-start text-white mb-2">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'phone' } " size="lg" style="color: white;" />
 					<a href="https://whatsapp.com" class="ml-2">9223164</a>
 				</p>

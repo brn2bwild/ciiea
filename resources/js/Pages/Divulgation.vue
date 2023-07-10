@@ -17,7 +17,7 @@ defineProps({
 </script>
 <template>
 	<Head title="Divulgación" />
-	<section class="w-full h-[560px] pt-12 mb-32">
+	<section class="w-full h-[560px] mb-32">
 		<div class="w-full flex justify-between relative">
 			<img class="object-cover w-2/3 h-[560px]" src="/storage/images/bookshelve.jpg" alt="books">
 			<div

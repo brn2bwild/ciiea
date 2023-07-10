@@ -3,10 +3,8 @@ import { ref } from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
-import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import TextInput from "@/Components/TextInput.vue";
-import { Link } from '@inertiajs/vue3';
+// import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
 
@@ -28,7 +26,7 @@ defineProps({
 				<!-- Logo -->
 				<div class="shrink-0 flex items-center">
 					<Link :href=" route( 'home' ) ">
-					<ApplicationLogo class="block fill-current text-neutral-900" />
+					<ApplicationLogo/>
 					</Link>
 				</div>
 
@@ -56,7 +54,7 @@ defineProps({
 							class="w-4 h-4 text-neutral-500" />
 					</div>
 					<input type="search" id="default-search"
-						class="block w-full p-3 pl-10 text-sm text-neutral-900 rounded-full bg-neutral-200 border-0 focus:border-2 focus:border-neutral-400 focus:ring-0"
+						class="block w-full p-3 pl-10 text-sm text-neutral-900 rounded-full bg-neutral-200 border-0 focus:ring-2 focus:ring-neutral-400"
 						placeholder="Buscar información" required>
 					<!-- <button type="submit"
 						class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
@@ -138,7 +136,7 @@ defineProps({
 				<ResponsiveNavLink :href=" route( 'divulgation' ) " :active=" route().current( 'divulgation' ) ">
 					Divulgación
 				</ResponsiveNavLink>
-				<ResponsiveNavLink :href=" route( 'convocations' ) " :active=" route().current( 'convocations' ) ">
+				<ResponsiveNavLink :href=" route( 'convocations.index' ) " :active=" route().current( 'convocations.index' ) ">
 					Convocatorias
 				</ResponsiveNavLink>
 				<ResponsiveNavLink :href=" route( 'gallery' ) " :active=" route().current( 'gallery' ) ">

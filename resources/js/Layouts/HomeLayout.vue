@@ -1,6 +1,6 @@
 <script setup>
 import HomeNavbar from "@/Partials/HomeNavbar.vue";
-import HomeFooter from "@/Partials/HomeFooter.vue";
+import HomeSidebar from "@/Partials/HomeSidebar.vue";
 
 defineProps({
 	canLogin: {
@@ -15,14 +15,14 @@ defineProps({
 <template>
 	<div class="min-h-screen bg-gray-100">
 		<!-- Navbar -->
-		<HomeNavbar :canLogin="canLogin" :canRegister="canRegister" />
+		<HomeNavbar :canLogin=" canLogin " :canRegister=" canRegister " />
+
+		<!-- Sidebar -->
+		<HomeSidebar :canRegister=" canRegister " />
 
 		<!-- Page Content -->
-		<main class="min-h-screen">
+		<main class="min-h-screen sm:ml-64 sm:pt-14">
 			<slot />
 		</main>
-
-		<!-- Footer-->
-		<HomeFooter />
 	</div>
 </template>

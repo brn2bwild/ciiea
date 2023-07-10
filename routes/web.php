@@ -15,6 +15,27 @@ Route::get('/', function () {
 	]);
 })->name('home');
 
+Route::get('/divulgation', function () {
+	return Inertia::render('Divulgation', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+	]);
+})->name('divulgation');
+
+Route::get('/convocations', function () {
+	return Inertia::render('Convocations', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+	]);
+})->name('convocations.index');
+
+Route::get('/gallery', function () {
+	return Inertia::render('Gallery', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+	]);
+})->name('gallery');
+
 Route::get('/reime', function () {
 	return Inertia::render('REIME', [
 		'canLogin' => Route::has('login'),
@@ -22,27 +43,10 @@ Route::get('/reime', function () {
 	]);
 })->name('reime');
 
-Route::get('/divulgation', function () {
-	return Inertia::render('Divulgation', [
-		'canLogin' => Route::has('login'),
-	]);
-})->name('divulgation');
-
-Route::get('/convocations', function () {
-	return Inertia::render('Convocations', [
-		'canLogin' => Route::has('login'),
-	]);
-})->name('convocations');
-
-Route::get('/gallery', function () {
-	return Inertia::render('Gallery', [
-		'canLogin' => Route::has('login'),
-	]);
-})->name('gallery');
-
 Route::get('/contact', function () {
 	return Inertia::render('Contact', [
 		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
 	]);
 })->name('contact');
 

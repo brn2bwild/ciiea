@@ -17,11 +17,11 @@ defineProps({
 </script>
 <template>
 	<Head title="Convocatorias" />
-	<div class="w-full p-8 flex justify-end items-center gap-4">
-		<input class="focus:border-rose-900 focus:ring-rose-900 rounded-sm border-gray-300 shadow-sm w-1/2" type="text"
+	<!-- <div class="w-full p-8 flex justify-end items-center">
+		<input class="text-neutral-900 rounded-full bg-neutral-200 focus:ring-neutral-400 focus:ring-2 ring-0 border-0 w-1/2" type="text"
 			placeholder="Buscar convocatoria por nombre">
-	</div>
-	<div class="w-full px-12 pb-16 grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-12">
+	</div> -->
+	<div class="w-full px-12 py-16 grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-12">
 		<div class="block rounded-lg bg-white dark:bg-rose-900">
 			<a href="#!">
 				<img class="rounded-t-lg" src="/storage/convocations/conv1.jpg" alt="conv1" />
