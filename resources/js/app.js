@@ -13,6 +13,9 @@ import {
     faMagnifyingGlass,
     faEllipsis,
     faHouse,
+		faComment,
+		faHeart,
+		faH
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -25,7 +28,9 @@ library.add(
     faTwitter,
     faMagnifyingGlass,
     faEllipsis,
-    faHouse
+    faHouse,
+		faComment,
+		faHeart,
 );
 
 const appName =
