@@ -65,16 +65,16 @@ defineProps({
 					<div v-if=" canLogin " class="hidden sm:flex sm:items-center">
 						<div v-if=" $page.props.auth.user.name ">
 							<Link v-if=" $page.props.auth.user.role == 'admin' " :href=" route( 'admin.dashboard' ) "
-								class=" text-neutral-950 hover:text-neutral-800 focus:no-underline">
+								class=" text-neutral-950 hover:text-neutral-600 focus:no-underline">
 							Dashboard</Link>
 							<Link v-else=" $page.props.auth.user.role == 'editor' " :href=" route( 'profile.edit' ) "
-								class=" text-neutral-950 hover:text-neutral-800 focus:no-underline">
+								class=" text-neutral-950 hover:text-neutral-600 focus:no-underline">
 							{{ $page.props.auth.user.name }}</Link>
 						</div>
 
 						<template v-else>
 							<Link :href=" route( 'login' ) "
-								class="font-bold text-neutral-50 bg-rose-900 px-5 py-2 rounded-full hover:bg-rose-700 focus:no-underline">
+								class="font-bold text-neutral-50 bg-rose-900 px-5 py-2 rounded-full hover:bg-rose-700 focus:no-underline transition-all duration-200">
 							Iniciar sesión</Link>
 							<!-- <Link v-if=" canRegister " :href=" route( 'register' ) "
 								class="ml-6 font-medium text-neutral-50 bg-rose-900 px-4 py-2 rounded-full hover:bg-rose-700 focus:no-underline">

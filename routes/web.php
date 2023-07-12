@@ -37,7 +37,7 @@ Route::get('/gallery', function () {
 })->name('gallery');
 
 Route::get('/reime', function () {
-	return Inertia::render('REIME', [
+	return Inertia::render('Reime', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 	]);

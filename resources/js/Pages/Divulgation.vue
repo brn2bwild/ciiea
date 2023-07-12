@@ -19,7 +19,7 @@ defineProps({
 	<Head title="Divulgación" />
 	<section class="w-full h-[560px] mb-32">
 		<div class="w-full flex justify-between relative">
-			<img class="object-cover w-2/3 h-[560px]" src="/storage/images/bookshelve.jpg" alt="books">
+			<img class="object-cover w-2/3 h-[560px]" src="/storage/images/bookshelve-optimized.jpg" alt="historical" loading="lazy">
 			<div
 				class="absolute top-2/3 left-2/4 w-[480px] flex items-center justify-between bg-rose-900 h-32 rounded-sm text-white px-8">
 				<h1 class="text-2xl font-medium">Publicaciones históricas</h1>
@@ -55,11 +55,11 @@ defineProps({
 			Ver todos
 			</Link>
 		</div>
-		<img class="w-1/2 h-full object-cover" src="/storage/images/books.jpg" alt="books">
+		<img class="w-1/2 h-full object-cover" src="/storage/images/books-optimized.jpg" alt="books" loading="lazy">
 	</section>
 	<section class="w-full h-[440px] relative">
 		<div class="absolute bg-black h-full w-full"></div>
-		<img class="object-cover h-full w-full opacity-30 z-10" src="/storage/images/magazines.jpg" alt="magazines">
+		<img class="object-cover h-full w-full opacity-30 z-10" src="/storage/images/magazines-optimized.jpg" alt="magazines" loading="lazy">
 		<div class="absolute right-0 bottom-0 text-white w-1/2 pb-16">
 			<h1 class="text-4xl mb-8">Revistas</h1>
 			<p class="leading-9 mb-6">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione dolor maxime perferendis

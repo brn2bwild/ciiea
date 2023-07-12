@@ -19,6 +19,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import VueLazyload from "vue-lazyload";
 
 library.add(
     faPhone,
@@ -46,7 +47,8 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(ZiggyVue, Ziggy)
+						.use(VueLazyload)
+						.use(ZiggyVue, Ziggy)
             .component("font-awesome-icon", FontAwesomeIcon)
 						.component("Link", Link)
             .mount(el);
