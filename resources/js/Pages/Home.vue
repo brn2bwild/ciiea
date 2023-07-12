@@ -68,8 +68,8 @@ defineProps({
 		</div>
 		<div class="w-full h-[560px] flex justify-center items-center gap-1">
 			<div
-				class="bg-black w-80 h-[93%] hover:w-[90%] hover:h-[100%] m-0 ease-in-out transition-all delay-150 group rounded-sm relative cursor-pointer object-cover">
-				<img class="w-full h-full object-cover opacity-95 group-hover:opacity-40 ease-in-out transition-all delay-150"
+				class="bg-black w-80 h-[93%] hover:w-[90%] hover:h-[100%] m-0 ease-in-out transition-all duration-150 group rounded-sm relative cursor-pointer object-cover">
+				<img class="w-full h-full object-cover opacity-95 group-hover:opacity-40 ease-in-out transition-all duration-150"
 					src="/storage/convocations/conv1.jpg" alt="conv1">
 				<div
 					class="absolute top-20 left-12 flex-col items-center justify-center hidden group-hover:block transition-all ease-in-out">
@@ -79,8 +79,8 @@ defineProps({
 				</div>
 			</div>
 			<div
-				class="bg-black w-80 h-[93%] hover:w-[90%] hover:h-[100%] m-0 ease-in-out transition-all delay-150 group rounded-sm relative cursor-pointer object-cover">
-				<img class="w-full h-full object-cover opacity-95 group-hover:opacity-40 ease-in-out transition-all delay-150"
+				class="bg-black w-80 h-[93%] hover:w-[90%] hover:h-[100%] m-0 ease-in-out transition-all duration-150 group rounded-sm relative cursor-pointer object-cover">
+				<img class="w-full h-full object-cover opacity-95 group-hover:opacity-40 ease-in-out transition-all duration-150"
 					src="/storage/convocations/conv2.jpg" alt="conv2">
 				<div
 					class="absolute top-20 left-12 flex-col items-center justify-center hidden group-hover:block transition-all ease-in-out">
@@ -90,8 +90,8 @@ defineProps({
 				</div>
 			</div>
 			<div
-				class="bg-black w-80 h-[93%] hover:w-[90%] hover:h-[100%] m-0 ease-in-out transition-all delay-150 group rounded-sm relative cursor-pointer object-cover">
-				<img class="w-full h-full object-cover opacity-95 group-hover:opacity-40 ease-in-out transition-all delay-150"
+				class="bg-black w-80 h-[93%] hover:w-[90%] hover:h-[100%] m-0 ease-in-out transition-all duration-150 group rounded-sm relative cursor-pointer object-cover">
+				<img class="w-full h-full object-cover opacity-95 group-hover:opacity-40 ease-in-out transition-all duration-150"
 					src="/storage/convocations/conv3.jpg" alt="conv3">
 				<div
 					class="absolute top-20 left-12 flex-col items-center justify-center hidden group-hover:block transition-all ease-in-out">
@@ -101,8 +101,8 @@ defineProps({
 				</div>
 			</div>
 			<div
-				class="bg-black w-80 h-[93%] hover:w-[90%] hover:h-[100%] m-0 ease-in-out transition-all delay-150 group rounded-sm relative cursor-pointer object-cover">
-				<img class="w-full h-full object-cover opacity-95 group-hover:opacity-40 ease-in-out transition-all delay-150"
+				class="bg-black w-80 h-[93%] hover:w-[90%] hover:h-[100%] m-0 ease-in-out transition-all duration-150 group rounded-sm relative cursor-pointer object-cover">
+				<img class="w-full h-full object-cover opacity-95 group-hover:opacity-40 ease-in-out transition-all duration-150"
 					src="/storage/convocations/conv4.jpg" alt="conv4">
 				<div
 					class="absolute top-20 left-12 flex-col items-center justify-center hidden group-hover:block transition-all ease-in-out">

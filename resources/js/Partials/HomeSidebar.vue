@@ -14,7 +14,7 @@ defineProps({
 		<div class="w-full h-full mx-auto flex flex-col justify-between">
 			<!-- Navigation Links -->
 			<div class="flex flex-col">
-				<SidebarLink :href=" route( 'home' ) " :active=" $page.url=== '/' ">
+				<SidebarLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
 					Inicio
 				</SidebarLink>
 				<SidebarLink :href=" route( 'divulgation' ) " :active=" route().current( 'divulgation' ) ">
@@ -36,8 +36,11 @@ defineProps({
 
 			<!-- Register button-->
 			<div class="flex justify-center items-center pb-8">
-				<Link :href="route('register')" class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold">Únete a la REIME</Link>
+				<Link v-if=" $page.props.auth.user.name " :href=" route( 'reime' ) "
+					class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold">Página principal REIME
+				</Link>
+				<Link v-else :href=" route( 'register' ) "
+					class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold">Únete a la REIME</Link>
 			</div>
 		</div>
-	</div>
-</template>
+</div></template>

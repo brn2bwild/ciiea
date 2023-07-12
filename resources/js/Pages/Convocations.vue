@@ -25,7 +25,7 @@ function saludar() {
 		<input class="text-neutral-900 rounded-full bg-neutral-200 focus:ring-neutral-400 focus:ring-2 ring-0 border-0 w-1/2" type="text"
 			placeholder="Buscar convocatoria por nombre">
 	</div> -->
-	<div class="w-full px-24 py-16 grid grid-cols-1 md:grid-cols-3">
+	<div class="w-full px-16 py-16 grid grid-cols-1 md:grid-cols-3">
 		<div class="col-span-2 flex flex-col gap-y-6">
 			<a href="#" class="group">
 				<div class="block rounded-lg bg-neutral-50 group-hover:ring-1 group-hover:ring-rose-900">
