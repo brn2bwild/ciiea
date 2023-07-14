@@ -91,8 +91,8 @@ defineProps({
 									<div class="flex items-center p-1">
 										<img class="h-8 w-8 cursor-pointer" v-if=" $page.props.auth.user.name "
 											src="/storage/images/default-contact.png" alt="perfil">
-										<font-awesome-icon v-else :icon=" { prefix: 'fa', iconName: 'ellipsis' } "
-											class=" h-7 w-7 text-neutral-900 cursor-pointer" />
+										<font-awesome-icon v-else :icon=" { prefix: 'fa', iconName: 'bars' } "
+											class=" h-7 w-7 text-neutral-900 cursor-pointer hover:ring-1 hover:ring-neutral-300 focus:ring-1 focus:ring-neutral-300 p-1 rounded-lg" />
 									</div>
 								</template>
 

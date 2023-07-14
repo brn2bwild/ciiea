@@ -15,7 +15,9 @@ import {
     faHouse,
 		faComment,
 		faHeart,
-		faH
+		faH,
+		faBars,
+		faXmark
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -32,6 +34,8 @@ library.add(
     faHouse,
 		faComment,
 		faHeart,
+		faBars,
+		faXmark
 );
 
 const appName =

@@ -28,7 +28,7 @@ defineProps({
 <template>
 	<Head title="Inicio" />
 	<section
-		class="w-full pt-20 px-4 sm:p-12 pb-8 m-auto">
+		class="w-full pt-20 px-4 sm:p-12 sm:pb-8 pb-8 m-auto">
 		<div class="overflow-hidden flex flex-wrap justify-between rounded-lg sm:h-[40rem]">
 			<img v-lazy=" '/storage/images/CIIEA.jpg' "
 				class="w-full sm:w-1/2 h-96 sm:h-full object-cover object-left" />
