@@ -30,6 +30,19 @@ defineProps({
 					</Link>
 				</div>
 
+				<!-- Search input-->
+				<div class="relative shrink-0 hidden sm:flex items-center w-1/2">
+					<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+						<font-awesome-icon :icon=" { prefix: 'fas', iconName: 'magnifying-glass' } "
+							class="w-4 h-4 text-neutral-500" />
+					</div>
+					<input type="search" id="default-search"
+						class="block w-full p-2 pl-10 text-sm text-neutral-900 rounded-full bg-neutral-200 border-0 focus:ring-2 focus:ring-neutral-400"
+						placeholder="Buscar información" required>
+					<!-- <button type="submit"
+						class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
+				</div>
+
 				<!-- 	Main dropdown menu-->
 				<div class="-mr-2 flex items-center sm:hidden">
 					<button @click="showingNavigationDropdown = !showingNavigationDropdown"
@@ -47,21 +60,8 @@ defineProps({
 					</button>
 				</div>
 
-				<!-- Search input-->
-				<div class="relative shrink-0 flex items-center w-1/2">
-					<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-						<font-awesome-icon :icon=" { prefix: 'fas', iconName: 'magnifying-glass' } "
-							class="w-4 h-4 text-neutral-500" />
-					</div>
-					<input type="search" id="default-search"
-						class="block w-full p-2 pl-10 text-sm text-neutral-900 rounded-full bg-neutral-200 border-0 focus:ring-2 focus:ring-neutral-400"
-						placeholder="Buscar información" required>
-					<!-- <button type="submit"
-						class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
-				</div>
-
 				<!--Login, Register and more options dropdown menu-->
-				<div class="flex items-center justify-between gap-6">
+				<div class="hidden sm:flex items-center justify-between gap-6">
 					<div v-if=" canLogin " class="hidden sm:flex sm:items-center">
 						<div v-if=" $page.props.auth.user.name ">
 							<Link v-if=" $page.props.auth.user.role == 'admin' " :href=" route( 'admin.dashboard' ) "
@@ -122,30 +122,48 @@ defineProps({
 		</div>
 
 		<!-- Responsive Navigation Menu -->
-		<div :class=" { block: showingNavigationDropdown, hidden: !showingNavigationDropdown } " class="sm:hidden">
-			<div class="pt-2 pb-3 space-y-1">
-				<ResponsiveNavLink v-if=" $page.props.auth.user " :href=" route( 'dashboard' ) "
+		<div :class=" { block: showingNavigationDropdown, hidden: !showingNavigationDropdown } "
+			class="sm:hidden transition duration-300">
+			<!-- <div class="pt-2 pb-3 space-y-1">
+				<ResponsiveNavLink v-if=" $page.props.auth.user.name " :href=" route( 'dashboard' ) "
 					:active=" route().current( 'admin.dashboard' ) ">
 					Dashboard
 				</ResponsiveNavLink>
-			</div>
-			<div class="pt-2 pb-3 space-y-1">
-				<ResponsiveNavLink :href=" route( 'home' ) " :active=" route().current( 'home' ) ">
+			</div> -->
+			<div class="pt-2 pb-3">
+				<div class="w-full relative shrink-0 flex items-center p-2">
+					<div class="absolute inset-y-0 left-0 flex items-center pl-5 pointer-events-none">
+						<font-awesome-icon :icon=" { prefix: 'fas', iconName: 'magnifying-glass' } "
+							class="w-4 h-4 text-neutral-500" />
+					</div>
+					<input type="search" id="default-search"
+						class="block w-full p-2 pl-10 text-sm text-neutral-900 rounded-full bg-neutral-200 border-0 focus:ring-2 focus:ring-neutral-400"
+						placeholder="Buscar información" required>
+					<!-- <button type="submit"
+						class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
+				</div>
+				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'home' ) "
+					:active=" route().current( 'home' ) ">
 					Inicio
 				</ResponsiveNavLink>
-				<ResponsiveNavLink :href=" route( 'divulgation' ) " :active=" route().current( 'divulgation' ) ">
+				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'divulgation' ) "
+					:active=" route().current( 'divulgation' ) ">
 					Divulgación
 				</ResponsiveNavLink>
-				<ResponsiveNavLink :href=" route( 'convocations.index' ) " :active=" route().current( 'convocations.index' ) ">
+				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'convocations.index' ) "
+					:active=" route().current( 'convocations.index' ) ">
 					Convocatorias
 				</ResponsiveNavLink>
-				<ResponsiveNavLink :href=" route( 'gallery' ) " :active=" route().current( 'gallery' ) ">
+				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'gallery' ) "
+					:active=" route().current( 'gallery' ) ">
 					Galería
 				</ResponsiveNavLink>
-				<ResponsiveNavLink :href=" route( 'reime' ) " :active=" route().current( 'reime' ) ">
+				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'reime' ) "
+					:active=" route().current( 'reime' ) ">
 					REIME
 				</ResponsiveNavLink>
-				<ResponsiveNavLink :href=" route( 'contact' ) " :active=" route().current( 'contact' ) ">
+				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'contact' ) "
+					:active=" route().current( 'contact' ) ">
 					Contacto
 				</ResponsiveNavLink>
 			</div>

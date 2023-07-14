@@ -27,18 +27,24 @@ defineProps({
 
 <template>
 	<Head title="Inicio" />
-	<section class="w-full p-12 pb-8 m-auto h-[40rem] overflow-hidden flex justify-between">
-		<img v-lazy=" '/storage/images/CIIEA.jpg' " class="w-1/2 h-full object-cover object-left rounded-l-lg" />
-		<div
-			class="min-h-full px-8 py-6 bg-rose-900 text-white text-center rounded-r-lg flex flex-col items-center justify-center">
-			<h1 class="w-full text-3xl font-medium">¿Qué es el CIIEA?</h1>
-			<p class="w-full mt-4 text-md font-extralight leading-7 px-20">
-				El CIIEA es un órgano descentralizado de la Secretaria de Educacion, que desarrolla funciones de investigación,
-				innovación, servicios académicos, vinculación y difusión.
-			</p>
+	<section
+		class="w-full pt-20 px-4 sm:p-12 pb-8 m-auto">
+		<div class="overflow-hidden flex flex-wrap justify-between rounded-lg sm:h-[40rem]">
+			<img v-lazy=" '/storage/images/CIIEA.jpg' "
+				class="w-full sm:w-1/2 h-96 sm:h-full object-cover object-left" />
+			<div
+				class="w-full sm:w-1/2 min-h-full sm:px-8 sm:py-6 p-4 bg-rose-900 text-white text-center flex flex-col items-center justify-center">
+				<h1 class="w-full text-3xl font-medium">
+					¿Qué es el CIIEA?
+				</h1>
+				<p class="w-full mt-4 text-md font-extralight leading-7 px-4 sm:px-20">
+					El CIIEA es un órgano descentralizado de la Secretaria de Educacion, que desarrolla funciones de investigación,
+					innovación, servicios académicos, vinculación y difusión.
+				</p>
+			</div>
 		</div>
 	</section>
-	<section class="min-h-1/2 w-full px-12 pb-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+	<section class="min-h-1/2 w-full px-4 sm:px-12 pb-16 grid grid-cols-1 md:grid-cols-3 gap-8">
 		<div
 			class="min-h-full px-10 py-6 bg-white rounded-md text-neutral-900 text-center flex flex-col items-center justify-center leading-7">
 			<span class="text-3xl font-bold">Objetivo</span>
