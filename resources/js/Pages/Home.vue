@@ -1,7 +1,6 @@
 <script setup>
 import HomeLayout from '@/Layouts/HomeLayout.vue';
 import { Head } from '@inertiajs/vue3';
-// import HomeLayout from "../Layouts/HomeLayout.vue";
 
 defineOptions({
 	layout: HomeLayout
@@ -23,6 +22,8 @@ defineProps({
 		required: true,
 	},
 });
+
+
 </script>
 
 <template>

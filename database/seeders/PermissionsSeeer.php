@@ -16,11 +16,15 @@ class PermissionsSeeer extends Seeder
 		app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
 		// create permissions
+		Permission::create(['name' => 'ver publicaciones']);
 		Permission::create(['name' => 'editar publicaciones']);
 		Permission::create(['name' => 'eliminar publicaciones']);
 		Permission::create(['name' => 'crear publicaciones']);
 
 		// create roles and assign existing permissions
+		$userRole = Role::create(['name' => 'user']);
+		$userRole->givePermissionTo('ver publicaciones');
+
 		$editorRole = Role::create(['name' => 'editor']);
 		$editorRole->givePermissionTo('editar publicaciones');
 
@@ -34,20 +38,26 @@ class PermissionsSeeer extends Seeder
 
 		// create demo users
 		$user = \App\Models\User::factory()->create([
-				'name' => 'Example User',
-				'email' => 'test@example.com',
+			'name' => 'Example User',
+			'email' => 'user@example.com',
+		]);
+		$user->assignRole($userRole);
+
+		$user = \App\Models\User::factory()->create([
+			'name' => 'Example Editor',
+			'email' => 'editor@example.com',
 		]);
 		$user->assignRole($editorRole);
 
 		$user = \App\Models\User::factory()->create([
-				'name' => 'Example Admin User',
-				'email' => 'admin@example.com',
+			'name' => 'Example Admin User',
+			'email' => 'admin@example.com',
 		]);
 		$user->assignRole($adminRole);
 
 		$user = \App\Models\User::factory()->create([
-				'name' => 'Example Super-Admin User',
-				'email' => 'superadmin@example.com',
+			'name' => 'Example Super-Admin User',
+			'email' => 'superadmin@example.com',
 		]);
 		$user->assignRole($superAdminRole);
 	}

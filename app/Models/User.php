@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -27,9 +29,17 @@ class User extends Authenticatable
 	protected $casts = [
 		'email_verified_at' => 'datetime',
 		'password' => 'hashed',
+		'social_media' => 'array',
 	];
 
 	public function role() {
 		return $this->getRoleNames()[0];
 	}
+
+	// protected function contact_info(): Attribute {
+	// 	return Attribute::make(
+	// 		get: fn ($value) => json_decode($value, true),
+	// 		set: fn ($value) => json_encode($value),
+	// 	);
+	// }
 }

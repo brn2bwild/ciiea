@@ -4,7 +4,6 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-// import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
 
@@ -15,7 +14,9 @@ defineProps({
 	canRegister: {
 		type: Boolean,
 	},
-})
+});
+
+const emit = defineEmits(['openModal', 'closeModal']);
 </script>
 
 <template>
@@ -73,9 +74,13 @@ defineProps({
 						</div>
 
 						<template v-else>
-							<Link :href=" route( 'login' ) "
+							<!-- <Link :href=" route( 'login' ) "
 								class="font-bold text-neutral-50 bg-rose-900 px-5 py-2 rounded-full hover:bg-rose-700 focus:no-underline transition-all duration-200">
-							Iniciar sesión</Link>
+							Iniciar sesión</Link> -->
+							<button @click="emit( 'openModal', 'login' )"
+								class="font-bold text-neutral-50 bg-rose-900 px-5 py-2 rounded-full hover:bg-rose-700 focus:no-underline transition-all duration-200">
+								Iniciar sesión
+							</button>
 							<!-- <Link v-if=" canRegister " :href=" route( 'register' ) "
 								class="ml-6 font-medium text-neutral-50 bg-rose-900 px-4 py-2 rounded-full hover:bg-rose-700 focus:no-underline">
 							Registrarse</Link> -->
@@ -86,7 +91,7 @@ defineProps({
 					<div class="hidden sm:flex sm:items-center sm:justify-center">
 						<!-- Settings Dropdown -->
 						<div class="relative">
-							<Dropdown align="right" width="48">
+							<Dropdown align="right" width="56">
 								<template #trigger>
 									<div class="flex items-center p-1">
 										<img class="h-8 w-8 cursor-pointer" v-if=" $page.props.auth.user.name "
@@ -106,12 +111,16 @@ defineProps({
 										</DropdownLink>
 									</div>
 									<div v-else>
-										<DropdownLink :href=" route( 'login' ) ">
+										<span
+											class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
+											@click="emit( 'openModal', 'login' )">
 											Iniciar sesión
-										</DropdownLink>
-										<DropdownLink :href=" route( 'register' ) ">
+										</span>
+										<span
+											class="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
+											@click="emit( 'openModal', 'register' )">
 											Registrarse
-										</DropdownLink>
+										</span>
 									</div>
 								</template>
 							</Dropdown>

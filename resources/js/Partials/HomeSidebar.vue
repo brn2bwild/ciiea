@@ -5,7 +5,9 @@ defineProps({
 	canRegister: {
 		type: Boolean,
 	},
-})
+});
+
+const emit = defineEmits(['openModal']);
 </script>
 
 <template>
@@ -37,10 +39,18 @@ defineProps({
 			<!-- Register button-->
 			<div class="flex justify-center items-center pb-8">
 				<Link v-if=" $page.props.auth.user.name " :href=" route( 'reime' ) "
-					class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold transition-all duration-200">Página principal REIME
+					class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold transition-all duration-200">
+				Página principal REIME
 				</Link>
-				<Link v-else :href=" route( 'register' ) "
-					class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold transition-all duration-200">Únete a la REIME</Link>
+				
+				<!-- <Link v-else :href=" route( 'register' ) "
+					class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold transition-all duration-200">
+				Únete a la REIME
+				</Link> -->
+
+				<span @click="emit('openModal', 'register')" class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold transition-all duration-200">
+					Únete a la REIME
+				</span>
 			</div>
 		</div>
 	</div>

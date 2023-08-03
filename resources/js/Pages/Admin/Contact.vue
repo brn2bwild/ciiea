@@ -41,7 +41,7 @@ function editContactUser(user) {
 }
 
 const submit = () => {
-	form.post(route('admin.update.contact', {
+	form.post(route('admin.contact.update', {
 		onFinish: () => form.reset(),
 	}))
 }
@@ -99,11 +99,11 @@ const submit = () => {
 		</div> -->
 	</div>
 
-	<Modal @close="showModal = false" :show=" showModal " :maxWidth=" 'xl' ">
+	<Modal @close="showModal = false" :show=" showModal " :max-width=" 'xl' ">
 		<div class="bg-white w-full p-4">
 			<div class="flex justify-between items-center mb-4">
 				<h1>{{ modalTitle }}</h1>
-				<font-awesome-icon @click="showModal = false" :icon=" { prefix: 'fa', iconName: 'xmark' } " />
+				<font-awesome-icon @click="showModal = false" :icon=" { prefix: 'fa', iconName: 'xmark' } " class="cursor-pointer"/>
 			</div>
 			<form @submit.prevent=" submit ">
 				<div>

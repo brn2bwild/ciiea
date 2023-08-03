@@ -4,29 +4,38 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
+import SidebarLink from '@/Components/SidebarLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
+
+defineProps({
+	title: {
+		type: String,
+		require: true,
+		default: 'Dashboard'
+	}
+})
 </script>
 
 <template>
 	<div>
 		<div class="min-h-screen bg-gray-100">
-			<nav class="bg-white border-b border-gray-100">
+			<nav class="bg-white border-b-2 fixed w-full border-neutral-300 z-50">
 				<!-- Primary Navigation Menu -->
-				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div class="w-full mx-auto px-4">
 					<div class="flex justify-between h-16">
 						<div class="flex">
 							<!-- Logo -->
 							<div class="shrink-0 flex items-center">
 								<Link :href=" route( 'admin.dashboard' ) ">
-								<ApplicationLogo class="block h-9 w-auto fill-current text-gray-800" />
+								<ApplicationLogo class="block w-auto fill-current text-gray-800" />
 								</Link>
 							</div>
 
 							<!-- Navigation Links -->
-							<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+							<!-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 								<NavLink :href=" route( 'home' ) " :active=" route().current( 'home' ) ">
 									Inicio
 								</NavLink>
@@ -42,7 +51,7 @@ const showingNavigationDropdown = ref(false);
 								<NavLink :href=" route( 'admin.contact' ) " :active=" route().current( 'admin.contact' ) ">
 									Contacto
 								</NavLink>
-							</div>
+							</div> -->
 						</div>
 
 						<div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -121,8 +130,15 @@ const showingNavigationDropdown = ref(false);
 				</div>
 			</nav>
 
+			<aside class="fixed top-0 left-0 z-30 w-64 h-screen hidden sm:block bg-white border-0 pt-20 min-h-screen">
+				<SidebarLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
+					Inicio
+				</SidebarLink>
+			</aside>
+
 			<!-- Page Content -->
-			<main>
+			<main class="pt-24 pl-72">
+				<h1 class="text-3xl font-bold">{{ title }}</h1>
 				<slot />
 			</main>
 		</div>

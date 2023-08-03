@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,14 @@ Route::get('/contact', function () {
 	return Inertia::render('Contact', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
+		'users' => [
+			[
+				'name' => 'daniel'
+			],
+			[
+				'name' => 'Carlos'
+			]
+		]
 	]);
 })->name('contact');
 
@@ -68,17 +77,41 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 			return Inertia::render('Admin/Dashboard');
 		})->name('admin.dashboard');
 
-		Route::get('/divulgation', function() {
+		Route::get('/divulgation', function () {
 			return Inertia::render('Admin/Divulgation');
 		})->name('admin.divulgation');
 
-		Route::get('/gallery', function() {
+		Route::get('/gallery', function () {
 			return Inertia::render('Admin/Gallery');
 		})->name('admin.gallery');
 
-		Route::get('/contact', function() {
-			return Inertia::render('Admin/Contact');
+		Route::get('/contact', function () {
+			return Inertia::render('Admin/Contact', [
+				'users' => [
+					[
+						'name' => 'danie',
+						'position' => 'director general',
+						'celular_number' => '9321123242',
+						'email' => 'admin@example.com',
+						'twitter' => '@dir_ciiea',
+					],
+					[
+						'name' => 'carlos',
+						'position' => 'sistemas',
+						'celular_number' => '9321132242',
+						'email' => 'sistemas@example.com',
+						'twitter' => '@sistemas_ciiea',
+					]
+				]
+			]);
 		})->name('admin.contact');
+	});
+
+Route::middleware(['auth', 'verified', 'role:admin'])
+	->prefix('admin')
+	->group(function () {
+		Route::post('/contact', [ContactController::class, 'update'])
+			->name('admin.contact.update');
 	});
 
 require __DIR__ . '/auth.php';
