@@ -22,10 +22,11 @@ defineProps({
 <template>
 	<div>
 		<div class="min-h-screen bg-gray-100">
+			<!-- Navbar -->
 			<nav class="bg-white border-b-2 fixed w-full border-neutral-300 z-50">
 				<!-- Primary Navigation Menu -->
 				<div class="w-full mx-auto px-4">
-					<div class="flex justify-between h-16">
+					<div class="flex justify-between h-14">
 						<div class="flex">
 							<!-- Logo -->
 							<div class="shrink-0 flex items-center">
@@ -130,6 +131,7 @@ defineProps({
 				</div>
 			</nav>
 
+			<!-- Sidebar -->
 			<aside class="fixed top-0 left-0 z-30 w-64 h-screen hidden sm:block bg-white border-0 pt-20 min-h-screen">
 				<SidebarLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
 					Inicio
@@ -137,7 +139,7 @@ defineProps({
 			</aside>
 
 			<!-- Page Content -->
-			<main class="pt-24 pl-72">
+			<main class="pt-20 pl-72">
 				<h1 class="text-3xl font-bold">{{ title }}</h1>
 				<slot />
 			</main>

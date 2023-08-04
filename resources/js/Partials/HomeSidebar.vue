@@ -48,7 +48,7 @@ const emit = defineEmits(['openModal']);
 				Únete a la REIME
 				</Link> -->
 
-				<span @click="emit('openModal', 'register')" class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold transition-all duration-200">
+				<span v-else @click="emit('openModal', 'register')" class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold transition-all duration-200">
 					Únete a la REIME
 				</span>
 			</div>
