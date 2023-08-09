@@ -1,4 +1,4 @@
-import "./bootstrap";
+// import "./bootstrap";
 import "../css/app.css";
 
 import { createApp, h } from "vue";
@@ -17,7 +17,12 @@ import {
 		faHeart,
 		faH,
 		faBars,
-		faXmark
+		faXmark,
+		faBook,
+		faBookOpen,
+		faFile,
+		faUserLock,
+		faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -35,7 +40,13 @@ library.add(
 		faComment,
 		faHeart,
 		faBars,
-		faXmark
+		faXmark,
+		faBook,
+		faBookOpen,
+		faFile,
+		faMagnifyingGlass,
+		faUserLock,
+		faUsers
 );
 
 const appName =

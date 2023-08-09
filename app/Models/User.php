@@ -32,7 +32,7 @@ class User extends Authenticatable
 		'social_media' => 'array',
 	];
 
-	public function role() {
+	public function getMainRole() {
 		return $this->getRoleNames()[0];
 	}
 

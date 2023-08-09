@@ -37,7 +37,7 @@ class HandleInertiaRequests extends Middleware
 				'user' => [
 					'name' => fn () => $request->user() ? $request->user()->name : null,
 					'email' => fn () => $request->user() ? $request->user()->email : null,
-					'role' => fn () => $request->user() ? $request->user()->role() : null,
+					'role' => fn () => $request->user() ? $request->user()->getMainRole() : null,
 				]
 			],
 			'ziggy' => function () use ($request) {

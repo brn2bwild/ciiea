@@ -10,13 +10,6 @@ import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
 
-defineProps({
-	title: {
-		type: String,
-		require: true,
-		default: 'Dashboard'
-	}
-})
 </script>
 
 <template>
@@ -136,11 +129,13 @@ defineProps({
 				<SidebarLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
 					Inicio
 				</SidebarLink>
+				<SidebarLink :href=" route( 'admin.dashboard' ) " :active=" $page.url === '/admin/dashboard' ">
+					Dashboard
+				</SidebarLink>
 			</aside>
 
 			<!-- Page Content -->
-			<main class="pt-20 pl-72">
-				<h1 class="text-3xl font-bold">{{ title }}</h1>
+			<main class="pt-20 sm:pl-64">
 				<slot />
 			</main>
 		</div>

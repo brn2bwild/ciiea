@@ -1,7 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Book;
+use App\Models\Investigation;
+use App\Models\Magazine;
+use App\Models\Publication;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -74,12 +80,42 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 	->prefix('admin')
 	->group(function () {
 		Route::get('/dashboard', function () {
-			return Inertia::render('Admin/Dashboard');
+			$admin_users = User::with('roles')->get()->filter(
+				fn ($user) => $user->roles->where('name', 'admin')->toArray()
+			)->count();
+
+			$users = User::with('roles')->get()->filter(
+				fn ($user) => $user->roles->whereNotIn('name', 'admin')->toArray()
+			)->count();
+
+			return Inertia::render('Admin/Dashboard', [
+				'books' => Book::get()->count(),
+				'magazines' => Magazine::get()->count(),
+				'publications' => Publication::get()->count(),
+				'investigations' => Investigation::get()->count(),
+				'admin_users' => $admin_users,
+				'users' => $users
+			]);
 		})->name('admin.dashboard');
 
-		Route::get('/divulgation', function () {
+		Route::get('/books', [BookController::class, 'index'])->name('admin.books.index');
+		Route::get('/books/{uuid}/edit', [BookController::class, 'edit'])->name('admin.books.edit');
+		Route::patch('/books', [BookController::class, 'update'])->name('admin.books.update');
+		Route::delete('/books', [BookController::class, 'destroy'])->name('admin.books.destroy');
+
+
+
+		Route::get('/magazines', function () {
 			return Inertia::render('Admin/Divulgation');
-		})->name('admin.divulgation');
+		})->name('admin.magazines');
+
+		Route::get('/publications', function () {
+			return Inertia::render('Admin/Divulgation');
+		})->name('admin.publications');
+
+		Route::get('/investigations', function () {
+			return Inertia::render('Admin/Divulgation');
+		})->name('admin.investigations');
 
 		Route::get('/gallery', function () {
 			return Inertia::render('Admin/Gallery');

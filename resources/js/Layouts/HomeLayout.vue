@@ -10,7 +10,7 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Checkbox from "@/Components/Checkbox.vue";
 import { defineAsyncComponent } from "vue";
 
-defineProps({
+const props = defineProps({
 	canLogin: {
 		type: Boolean,
 	},
