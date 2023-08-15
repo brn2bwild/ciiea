@@ -4,6 +4,8 @@ import { Head, useForm, usePage } from "@inertiajs/vue3";
 import TextInput from '@/Components/TextInput.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import FileInput from '@/Components/FileInput.vue';
+import InputError from '@/Components/InputError.vue';
 
 defineOptions({
 	layout: AdminLayout
@@ -17,12 +19,16 @@ const props = defineProps({
 });
 
 const bookForm = useForm({
-	uuid: props.book.uuid,
+	id: props.book.id,
 	title: props.book.title,
 	authors: props.book.authors,
 	isbn: props.book.isbn,
 	publication_date: props.book.publication_date,
 });
+
+const updateBook = () => {
+	bookForm.patch(route('admin.books.update'));
+};
 
 </script>
 
@@ -30,8 +36,8 @@ const bookForm = useForm({
 	<Head title="Libros" />
 	<h1 class="text-3xl font-bold pl-8">Editar libro</h1>
 	<div class="w-full p-8">
-		<section class="w-full bg-white rounded p-8">
-			<form @submit.prevent="bookForm.patch( route( 'admin.books.update' ) )">
+		<section class="w-full bg-white rounded p-8 flex justify-between">
+			<form @submit.prevent=" updateBook " class="w-3/4">
 				<div>
 					<InputLabel for="title" value="Título del libro" />
 					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" bookForm.title " required autofocus
@@ -65,6 +71,7 @@ const bookForm = useForm({
 					</Transition>
 				</div>
 			</form>
+			<FileInput :file=" book.file " :resource-id=" book.id " class="w-1/4" />
 		</section>
 	</div>
 </template>

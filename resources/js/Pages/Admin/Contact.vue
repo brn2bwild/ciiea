@@ -29,15 +29,15 @@ const form = useForm({
 	twitter: '',
 });
 
-function editContactUser(user) {
+const editContactUser = (user) => {
 	form.name = user.name
 	form.position = user.position
 	form.celular_number = user.celular_number
 	form.email = user.email
 	form.twitter = user.twitter
 
-	this.modalTitle = 'Editar contacto';
-	this.showModal = true;
+	modalTitle.value = 'Editar contacto';
+	showModal.value = true;
 }
 
 const submit = () => {

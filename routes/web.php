@@ -99,11 +99,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		})->name('admin.dashboard');
 
 		Route::get('/books', [BookController::class, 'index'])->name('admin.books.index');
-		Route::get('/books/{uuid}/edit', [BookController::class, 'edit'])->name('admin.books.edit');
+		Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('admin.books.edit');
 		Route::patch('/books', [BookController::class, 'update'])->name('admin.books.update');
 		Route::delete('/books', [BookController::class, 'destroy'])->name('admin.books.destroy');
-
-
+		Route::post('/books/file', [BookController::class, 'uploadFile'])->name('admin.books.upload-file');
+		Route::delete('/book/file', [BookController::class, 'deleteFile'])->name('admin.books.delete-file');
 
 		Route::get('/magazines', function () {
 			return Inertia::render('Admin/Divulgation');
@@ -141,11 +141,6 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 				]
 			]);
 		})->name('admin.contact');
-	});
-
-Route::middleware(['auth', 'verified', 'role:admin'])
-	->prefix('admin')
-	->group(function () {
 		Route::post('/contact', [ContactController::class, 'update'])
 			->name('admin.contact.update');
 	});
