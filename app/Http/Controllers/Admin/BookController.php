@@ -29,11 +29,11 @@ class BookController extends Controller
 			)
 				->get()
 				->transform(fn($book) => [
-					"id"=>$book->id,
-					"title"=> $book->title,
-					"authors"=> $book->authors,
-					"isbn"=> $book->isbn ?? "",
-					"publicated_at" => date("d M Y", strtotime($book->publicated_at))
+					'id'=>$book->id,
+					'title'=> $book->title,
+					'authors'=> $book->authors,
+					'isbn'=> $book->isbn ?? '',
+					'publicated_at' => date('d M Y', strtotime($book->publicated_at))
 				]),
 		]);
 	}
