@@ -55,7 +55,11 @@ class MagazineController extends Controller
 
 	public function destroy(Request $request): RedirectResponse
 	{
-		Magazine::findOrFail($request->input('id'))->delete();
+		$magazine = Magazine::findOrFail($request->input('id'));
+
+		$magazine->detachFile();
+
+		$magazine->delete();
 
 		return Redirect::back();
 	}

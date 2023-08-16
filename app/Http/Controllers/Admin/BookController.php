@@ -66,8 +66,11 @@ class BookController extends Controller
 	{
 		//Hace falta manejar la autorización para eliminar registros
 
-		Book::where('uuid', $request->uuid)
-			->delete();
+		$book = Book::findOrFail($request->input('id'));
+
+		$book->detachFile();
+
+		$book->delete();
 
 		return Redirect::route('admin.books.index');
 	}
