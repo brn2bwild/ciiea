@@ -62,7 +62,7 @@ const handleDeleteBook = () => {
 					</th>
 				</thead>
 				<tbody>
-					<tr v-for="    book     in     books     " :key=" book.index ">
+					<tr v-for=" book in books " :key=" book.index ">
 						<td>
 							{{ book.title.substr( 1, 30 ) }}...
 						</td>

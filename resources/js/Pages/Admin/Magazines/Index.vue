@@ -62,7 +62,7 @@ const handleDeletemagazine = () => {
 					</th>
 				</thead>
 				<tbody>
-					<tr v-for="       magazine        in        magazines        " :key=" magazine.index ">
+					<tr v-for=" magazine  in magazines " :key=" magazine.index ">
 						<td>
 							{{ magazine.name.substr( 1, 30 ) }}...
 						</td>

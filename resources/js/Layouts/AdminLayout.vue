@@ -24,7 +24,7 @@ const showingNavigationDropdown = ref(false);
 							<!-- Logo -->
 							<div class="shrink-0 flex items-center">
 								<Link :href=" route( 'admin.dashboard' ) ">
-								<ApplicationLogo class="block w-auto fill-current text-gray-800" />
+								<ApplicationLogo />
 								</Link>
 							</div>
 
@@ -129,14 +129,22 @@ const showingNavigationDropdown = ref(false);
 				<SidebarLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
 					Inicio
 				</SidebarLink>
-				<SidebarLink :href=" route( 'admin.dashboard' ) " :active=" $page.url === '/admin/dashboard' ">
+				<SidebarLink :href=" route( 'admin.dashboard' ) " :active=" $page.url.includes( '/admin/dashboard' ) ">
 					Dashboard
 				</SidebarLink>
-				<SidebarLink :href=" route( 'admin.books.index' ) " :active=" $page.url === '/admin/books' ">
+				<SidebarLink :href=" route( 'admin.books.index' ) " :active=" $page.url.includes( '/admin/books' ) ">
 					Libros
 				</SidebarLink>
-				<SidebarLink :href=" route( 'admin.magazines.index' ) " :active=" $page.url === '/admin/magazines' ">
+				<SidebarLink :href=" route( 'admin.magazines.index' ) " :active=" $page.url.includes( '/admin/magazines' ) ">
 					Revistas
+				</SidebarLink>
+				<SidebarLink :href=" route( 'admin.historical-publications.index' ) "
+					:active=" $page.url.includes( '/admin/historical-publications' ) ">
+					Publicaciones
+				</SidebarLink>
+				<SidebarLink :href=" route( 'admin.investigations.index' ) "
+					:active=" $page.url.includes( '/admin/investigations' ) ">
+					Investigaciones
 				</SidebarLink>
 			</aside>
 
