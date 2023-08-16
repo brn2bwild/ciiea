@@ -13,7 +13,7 @@ class Publication extends Model
 
 	protected $fillable = [
 		'title',
-		'publication_date',
+		'publicated_at',
 	];
 
 	public function file(): MorphOne

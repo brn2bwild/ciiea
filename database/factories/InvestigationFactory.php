@@ -20,7 +20,7 @@ class InvestigationFactory extends Factory
 			'title' => fake()->sentence(7, true),
 			'authors' => fake()->name(),
 			'short_description' => fake()->text(100),
-			'publication_date' => fake()->date(),
+			'publicated_at' => fake()->date(),
 		];
 	}
 }

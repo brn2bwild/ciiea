@@ -14,7 +14,7 @@ return new class extends Migration
 		Schema::create('publications', function (Blueprint $table) {
 			$table->id();
 			$table->string('title');
-			$table->date('publication_date');
+			$table->date('publicated_at');
 			$table->timestamps();
 		});
 	}

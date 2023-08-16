@@ -18,7 +18,7 @@ class PublicationFactory extends Factory
     {
         return [
           'title' => fake()->sentence(8, true),
-					'publication_date' => fake()->date(),
+					'publicated_at' => fake()->date(),
         ];
     }
 }

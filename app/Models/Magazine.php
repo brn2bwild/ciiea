@@ -12,8 +12,7 @@ class Magazine extends Model
 
 	protected $fillable = [
 		'name',
-		'publication_date',
-		'tags',
+		'publicated_at',
 	];
 
 	public function file(): MorphOne

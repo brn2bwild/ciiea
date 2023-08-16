@@ -5,16 +5,8 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
- */
 class BookFactory extends Factory
 {
-	/**
-	 * Define the model's default state.
-	 *
-	 * @return array<string, mixed>
-	 */
 	public function definition(): array
 	{
 		return [
@@ -22,7 +14,7 @@ class BookFactory extends Factory
 			'title' => fake()->sentence($nbWords = 6, $variableNbWords = true),
 			'authors' => fake()->name(),
 			'isbn' => fake()->word(),
-			'publication_date' => fake()->date(),
+			'publicated_at' => fake()->date(),
 		];
 	}
 }

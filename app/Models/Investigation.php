@@ -14,7 +14,7 @@ class Investigation extends Model
 		'title',
 		'authors',
 		'short_description',
-		'publication_date',
+		'publicated_at',
 	];
 
 	public function file(): MorphOne

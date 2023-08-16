@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\MagazineController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Book;
 use App\Models\Investigation;
@@ -105,9 +106,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::post('/books/file', [BookController::class, 'uploadFile'])->name('admin.books.upload-file');
 		Route::delete('/book/file', [BookController::class, 'deleteFile'])->name('admin.books.delete-file');
 
-		Route::get('/magazines', function () {
-			return Inertia::render('Admin/Divulgation');
-		})->name('admin.magazines');
+		Route::get('/magazines', [MagazineController::class, 'index'])->name('admin.magazines.index');
+		Route::get('/magazines/{id}/edit', [MagazineController::class, 'edit'])->name('admin.magazines.edit');
 
 		Route::get('/publications', function () {
 			return Inertia::render('Admin/Divulgation');

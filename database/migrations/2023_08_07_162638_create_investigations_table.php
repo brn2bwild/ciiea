@@ -16,7 +16,7 @@ return new class extends Migration
 						$table->string('title');
 						$table->string('authors');
 						$table->string('short_description')->max(200);
-						$table->date('publication_date');
+						$table->date('publicated_at');
             $table->timestamps();
         });
     }
