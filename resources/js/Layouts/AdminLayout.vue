@@ -132,6 +132,12 @@ const showingNavigationDropdown = ref(false);
 				<SidebarLink :href=" route( 'admin.dashboard' ) " :active=" $page.url === '/admin/dashboard' ">
 					Dashboard
 				</SidebarLink>
+				<SidebarLink :href=" route( 'admin.books.index' ) " :active=" $page.url === '/admin/books' ">
+					Libros
+				</SidebarLink>
+				<SidebarLink :href=" route( 'admin.magazines.index' ) " :active=" $page.url === '/admin/magazines' ">
+					Revistas
+				</SidebarLink>
 			</aside>
 
 			<!-- Page Content -->

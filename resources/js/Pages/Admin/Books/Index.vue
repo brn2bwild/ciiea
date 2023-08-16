@@ -8,14 +8,14 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 
 defineOptions({
 	layout: AdminLayout
-})
+});
 
 defineProps({
 	books: {
 		type: Object,
 		required: true,
 	}
-})
+});
 
 const bookForm = useForm({
 	id: '',
@@ -70,7 +70,7 @@ const handleDeleteBook = () => {
 							{{ book.authors }}
 						</td>
 						<td>
-							{{ book.publication_date }}
+							{{ book.publicated_at }}
 						</td>
 						<td class="flex justify-between gap-4">
 							<Link :href=" route( 'admin.books.edit', book.id ) ">Editar</Link>
