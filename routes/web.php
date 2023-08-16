@@ -108,6 +108,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 
 		Route::get('/magazines', [MagazineController::class, 'index'])->name('admin.magazines.index');
 		Route::get('/magazines/{id}/edit', [MagazineController::class, 'edit'])->name('admin.magazines.edit');
+		Route::patch('/magazines', [MagazineController::class, 'update'])->name('admin.magazines.update');
+		Route::delete('/magazines', [MagazineController::class, 'destroy'])->name('admin.magazines.destroy');
+		Route::post('/magazines/file', [MagazineController::class, 'uploadFile'])->name('admin.magazines.upload-file');
+		Route::delete('/magazines/file', [MagazineController::class, 'deleteFile'])->name('admin.magazines.delete-file');
+
 
 		Route::get('/publications', function () {
 			return Inertia::render('Admin/Divulgation');

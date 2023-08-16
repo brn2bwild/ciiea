@@ -8,36 +8,36 @@ import SecondaryButton from '@/Components/SecondaryButton.vue';
 
 defineOptions({
 	layout: AdminLayout
-});
+})
 
 defineProps({
 	books: {
 		type: Object,
 		required: true,
 	}
-});
+})
 
 const bookForm = useForm({
-	id: '',
-});
+	id: null
+})
 
-const showModal = ref(false);
+const showModal = ref(false)
 
 const handleOpenModal = (id) => {
-	bookForm.id = id;
-	showModal.value = true;
-};
+	bookForm.id = id
+	showModal.value = true
+}
 
 const handleCloseModal = () => {
-	showModal.value = false;
-};
+	showModal.value = false
+}
 
 const handleDeleteBook = () => {
 	bookForm.delete(route('admin.books.destroy'), {
 		onSuccess: () => handleCloseModal(),
 		onFinish: () => bookForm.reset('id')
 	})
-};
+}
 
 </script>
 

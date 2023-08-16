@@ -7,12 +7,20 @@ import Modal from './Modal.vue';
 import SecondaryButton from './SecondaryButton.vue';
 
 const props = defineProps({
+	uploadFileRoute: {
+		type: String,
+		required: true,
+	},
+	deleteFileRoute: {
+		type: String,
+		required: true,
+	},
 	resourceId: {
 		type: Number,
 		required: true,
 	},
 	file: {
-		type: Object,
+		type: Object
 	}
 })
 
@@ -21,13 +29,13 @@ const resourceFileForm = useForm({
 	'file': null
 })
 
-const fileName = ref(null);
-const fileSize = ref(null);
-const showModal = ref(false);
+const fileName = ref(null)
+const fileSize = ref(null)
+const showModal = ref(false)
 
 onMounted(() => {
 	if (props.file) {
-		fileName.value = props.file.name;
+		fileName.value = props.file.name
 		fileSize.value = (props.file.size_bytes / 1048576).toFixed(2) + " MB"
 
 		resourceFileForm.file = props.file
@@ -44,42 +52,44 @@ onUpdated(() => {
 });
 
 const handleFileChange = (event) => {
-	const file = event.target.files[0];
+	const file = event.target.files[0]
+	// console.log(file)
 
-	submitFile(file);
+	handleSubmitFile(file)
 };
 
-const submitFile = (file) => {
+const handleSubmitFile = (file) => {
 	if (file) {
-		resourceFileForm.file = file;
-		resourceFileForm.post(route('admin.books.upload-file'), {
+		resourceFileForm.file = file
+
+		resourceFileForm.post(props.uploadFileRoute, {
 			onSuccess: () => {
-				fileName.value = file.name;
-				fileSize.value = (file.size / 1048576).toFixed(2) + " MB";
+				fileName.value = file.name
+				fileSize.value = (file.size / 1048576).toFixed(2) + " MB"
 			}
 		});
 	}
 };
 
 const handleDeleteFile = () => {
-	resourceFileForm.delete(route('admin.books.delete-file'), {
+	resourceFileForm.delete(props.deleteFileRoute, {
 		onSuccess: () => handleCloseModal(),
 		onFinish: () => {
 			resourceFileForm.reset('file');
-			fileName.value = null;
-			fileSize.value = null;
+			fileName.value = null
+			fileSize.value = null
 		}
 	});
 	handleCloseModal();
 };
 
 const handleCloseModal = () => {
-	showModal.value = false;
-};
+	showModal.value = false
+}
 
 const handleOpenModal = () => {
-	showModal.value = true;
-};
+	showModal.value = true
+}
 
 </script>
 
@@ -105,9 +115,8 @@ const handleOpenModal = () => {
 					</p>
 					<p class="text-xs text-gray-500 dark:text-gray-400">PDF (MAX. 2MB)</p>
 				</div>
-				<form @submit.prevent=" submitFile ">
-					<input @change=" handleFileChange " id="dropzone-file" type="file" class="hidden"
-						@input="resourceFileForm.file" />
+				<form @submit.prevent=" handleSubmitFile ">
+					<input @change=" handleFileChange " id="dropzone-file" type="file" class="hidden" ref="resourceFileForm.file" />
 				</form>
 			</label>
 			<Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">

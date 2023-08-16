@@ -23,7 +23,7 @@ const bookForm = useForm({
 	title: props.book.title,
 	authors: props.book.authors,
 	isbn: props.book.isbn,
-	publication_date: props.book.publication_date,
+	publicated_at: props.book.publicated_at,
 });
 
 const updateBook = () => {
@@ -33,7 +33,7 @@ const updateBook = () => {
 </script>
 
 <template>
-	<Head title="Libros" />
+	<Head title="Libro" />
 	<h1 class="text-3xl font-bold pl-8">Editar libro</h1>
 	<div class="w-full p-8">
 		<section class="w-full bg-white rounded p-8 flex justify-between">
@@ -58,10 +58,10 @@ const updateBook = () => {
 						<InputError class="mt-2" :message=" bookForm.errors.isbn " />
 					</div>
 					<div class="w-1/2">
-						<InputLabel for="publication_date" value="Fecha de publicación" />
-						<TextInput id="publication_date" type="date" class="mt-1 block w-full" v-model=" bookForm.publication_date "
+						<InputLabel for="publicated_at" value="Fecha de publicación" />
+						<TextInput id="publicated_at" type="date" class="mt-1 block w-full" v-model=" bookForm.publicated_at "
 							required autofocus autocomplete="title" />
-						<InputError class="mt-2" :message=" bookForm.errors.publication_date " />
+						<InputError class="mt-2" :message=" bookForm.errors.publicated_at " />
 					</div>
 				</div>
 				<div class="flex items-center gap-4 mt-4">
@@ -71,7 +71,8 @@ const updateBook = () => {
 					</Transition>
 				</div>
 			</form>
-			<FileInput :file=" book.file " :resource-id=" book.id " class="w-1/4" />
+			<FileInput :resource-id=" book.id " :file="book.file" :upload-file-route=" route( 'admin.books.upload-file' ) "
+				:delete-file-route=" route( 'admin.books.delete-file' ) " class="w-1/4" />
 		</section>
 	</div>
 </template>

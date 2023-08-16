@@ -56,7 +56,7 @@ class BookController extends Controller
 
 	public function update(BookUpdateRequest $request): RedirectResponse
 	{
-		Book::findOrFail($request->input('id'))
+		Book::findOrFail($request->id)
 			->update($request->validated());
 
 		return Redirect::back();
@@ -74,8 +74,6 @@ class BookController extends Controller
 
 	public function uploadFile(UpdateFileRequest $request): RedirectResponse
 	{
-		$request->validated();
-
 		$book = Book::findOrFail($request->input('id'));
 
 		$book->attachFile($request);

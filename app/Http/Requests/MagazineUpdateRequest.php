@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateFileRequest extends FormRequest
+class MagazineUpdateRequest extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,8 +22,9 @@ class UpdateFileRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'id' => ['required', 'numeric'],
-			'file' => ['required', 'file', 'mimes:pdf', 'max:2048']
+			'id' => ['required', 'exists:magazines,id'],
+			'name' => ['required', 'string', 'max:255'],
+			'publicated_at' => ['required', 'date']
 		];
 	}
 }

@@ -1,16 +1,44 @@
 <script setup>
 import AdminLayout from '@/Layouts/AdminLayout.vue';
+import { Head, useForm } from "@inertiajs/vue3";
+import { ref } from 'vue';
+import Modal from '@/Components/Modal.vue';
+import DangerButton from '@/Components/DangerButton.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
 
 defineOptions({
 	layout: AdminLayout
-});
+})
 
 defineProps({
 	magazines: {
 		type: Array,
 		required: true,
 	}
-});
+})
+
+const magazineForm = useForm({
+	id: null
+})
+
+const showModal = ref(false)
+
+const handleOpenModal = (id) => {
+	magazineForm.id = id
+	showModal.value = true
+}
+
+const handleCloseModal = () => {
+	showModal.value = false;
+}
+
+const handleDeletemagazine = () => {
+	magazineForm.delete(route('admin.magazines.destroy'), {
+		onSuccess: () => handleCloseModal(),
+		onFinish: () => magazineForm.reset('id')
+	})
+}
+
 </script>
 
 <template>
@@ -57,7 +85,7 @@ defineProps({
 		</section>
 	</div>
 
-	<!-- <Modal @close=" handleCloseModal " :show=" showModal " :max-width=" 'lg' ">
+	<Modal @close=" handleCloseModal " :show=" showModal " :max-width=" 'lg' ">
 		<div class="p-8">
 			<div class="w-full flex flex-col justify-center items-center">
 				<h2 class="text-xl">¿Deseas eliminar el libro?</h2>
@@ -67,5 +95,5 @@ defineProps({
 				</div>
 			</div>
 		</div>
-	</Modal> -->
+	</Modal>
 </template>
