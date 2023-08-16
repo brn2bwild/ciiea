@@ -7,14 +7,12 @@ use App\Http\Requests\BookUpdateRequest;
 use App\Http\Requests\UpdateFileRequest;
 use App\Models\Book;
 use App\Models\File;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
-use Illuminate\Support\Str;
 
 
 class BookController extends Controller
@@ -27,10 +25,16 @@ class BookController extends Controller
 				'title',
 				'authors',
 				'isbn',
-				'publication_date',
+				'publicated_at',
 			)
 				->get()
-				->toArray(),
+				->transform(fn($book) => [
+					"id"=>$book->id,
+					"title"=> $book->title,
+					"authors"=> $book->authors,
+					"isbn"=> $book->isbn ?? "",
+					"publicated_at" => date("d M Y", strtotime($book->publicated_at))
+				]),
 		]);
 	}
 
@@ -43,7 +47,7 @@ class BookController extends Controller
 					'title',
 					'authors',
 					'isbn',
-					'publication_date',
+					'publicated_at',
 				)
 				->with('file')
 				->first()
@@ -73,38 +77,18 @@ class BookController extends Controller
 		$request->validated();
 
 		$book = Book::findOrFail($request->input('id'));
+
+		$book->attachFile($request);
 		
-		if ($book->file != null) {
-			$file = $book->file()->first();
-
-			Storage::delete($file->path);
-
-			$file->delete();
-		}
-
-		$path = $request->file('file')->store('public/files');
-		$size = $request->file('file')->getSize();
-		$name = $request->file('file')->getClientOriginalName();
-
-		$file = new File([
-			'path' => $path,
-			'size_bytes' => $size,
-			'name' => $name,
-		]);
-
-		$book->file()->save($file);
-
-
 		return Redirect::route('admin.books.edit', $request->input('id'));
 	}
 
 	public function deleteFile(Request $request): RedirectResponse
 	{
-		if (Storage::exists($request->input('file.path'))) {
-			Storage::disk("local")->delete($request->input('file.path'));
-			File::where('id', $request->input('file.id'))->delete();
+		$book = Book::findOrFail($request->input('id'));
 
-			return Redirect::back();
-		}
+		$book->detachFile();
+		
+		return Redirect::back();
 	}
 }
