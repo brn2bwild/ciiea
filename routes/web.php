@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\InvestigationController;
 use App\Http\Controllers\Admin\MagazineController;
+use App\Http\Controllers\Admin\PublicationController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Book;
 use App\Models\Investigation;
@@ -113,14 +115,19 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::post('/magazines/file', [MagazineController::class, 'uploadFile'])->name('admin.magazines.upload-file');
 		Route::delete('/magazines/file', [MagazineController::class, 'deleteFile'])->name('admin.magazines.delete-file');
 
+		Route::get('/historical-publications', [PublicationController::class, 'index'])->name('admin.historical-publications.index');
+		Route::get('/historical-publications/{id}/edit', [PublicationController::class, 'edit'])->name('admin.historical-publications.edit');
+		Route::patch('/historical-publications', [PublicationController::class, 'update'])->name('admin.historical-publications.update');
+		Route::delete('/historical-publications', [PublicationController::class, 'destroy'])->name('admin.historical-publications.destroy');
+		Route::post('/historical-publications/file', [PublicationController::class, 'uploadFile'])->name('admin.historical-publications.upload-file');
+		Route::delete('/historical-publications/file', [PublicationController::class, 'deleteFile'])->name('admin.historical-publications.delete-file');
 
-		Route::get('/publications', function () {
-			return Inertia::render('Admin/Divulgation');
-		})->name('admin.publications');
-
-		Route::get('/investigations', function () {
-			return Inertia::render('Admin/Divulgation');
-		})->name('admin.investigations');
+		Route::get('/investigations', [InvestigationController::class, 'index'])->name('admin.investigations.index');
+		Route::get('/investigations/{id}/edit', [InvestigationController::class, 'edit'])->name('admin.investigations.edit');
+		Route::patch('/investigations', [InvestigationController::class, 'update'])->name('admin.investigations.update');
+		Route::delete('/investigations', [InvestigationController::class, 'destroy'])->name('admin.investigations.destroy');
+		Route::post('/investigations/file', [InvestigationController::class, 'uploadFile'])->name('admin.investigations.upload-file');
+		Route::delete('/investigations/file', [InvestigationController::class, 'deleteFile'])->name('admin.investigations.delete-file');
 
 		Route::get('/gallery', function () {
 			return Inertia::render('Admin/Gallery');

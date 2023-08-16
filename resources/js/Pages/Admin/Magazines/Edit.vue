@@ -24,7 +24,7 @@ const magazineForm = useForm({
 	publicated_at: props.magazine.publicated_at,
 })
 
-const updateMagazine = () => {
+const handleUpdateMagazine = () => {
 	magazineForm.patch(route('admin.magazines.update'))
 }
 </script>
@@ -33,7 +33,7 @@ const updateMagazine = () => {
 	<h1 class="text-3xl font-bold pl-8">Editar revista</h1>
 	<div class="w-full p-8">
 		<section class="w-full bg-white rounded p-8 flex justify-between">
-			<form @submit.prevent=" updateMagazine " class="w-3/4">
+			<form @submit.prevent=" handleUpdateMagazine " class="w-3/4">
 				<div>
 					<InputLabel for="name" value="Nombre de la revista" />
 					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" magazineForm.name " required autofocus
@@ -43,7 +43,7 @@ const updateMagazine = () => {
 				<div class="mt-4">
 					<InputLabel for="publicated_at" value="Fecha de publicación" />
 					<TextInput id="publicated_at" type="date" class="mt-1 block w-full" v-model=" magazineForm.publicated_at "
-						required autofocus autocomplete="title" />
+						required />
 					<InputError class="mt-2" :message=" magazineForm.errors.publicated_at " />
 				</div>
 				<div class="flex items-center gap-4 mt-4">
