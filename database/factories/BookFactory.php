@@ -11,7 +11,7 @@ class BookFactory extends Factory
 	{
 		return [
 			'uuid' => Str::uuid(),
-			'title' => fake()->sentence($nbWords = 6, $variableNbWords = true),
+			'title' => fake()->sentence(6, true),
 			'authors' => fake()->name(),
 			'isbn' => fake()->word(),
 			'publicated_at' => fake()->date(),

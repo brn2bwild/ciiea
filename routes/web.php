@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ConvocationController;
 use App\Http\Controllers\Admin\InvestigationController;
 use App\Http\Controllers\Admin\MagazineController;
 use App\Http\Controllers\Admin\PublicationController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Book;
+use App\Models\Convocation;
 use App\Models\Investigation;
 use App\Models\Magazine;
 use App\Models\Publication;
@@ -96,6 +98,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 				'magazines' => Magazine::get()->count(),
 				'publications' => Publication::get()->count(),
 				'investigations' => Investigation::get()->count(),
+				'convocations' => Convocation::get()->count(),
 				'admin_users' => $admin_users,
 				'users' => $users
 			]);
@@ -128,6 +131,15 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::delete('/investigations', [InvestigationController::class, 'destroy'])->name('admin.investigations.destroy');
 		Route::post('/investigations/file', [InvestigationController::class, 'uploadFile'])->name('admin.investigations.upload-file');
 		Route::delete('/investigations/file', [InvestigationController::class, 'deleteFile'])->name('admin.investigations.delete-file');
+
+		Route::get('/convocations', [ConvocationController::class, 'index'])->name('admin.convocations.index');
+		Route::get('/convocations/{id}/edit', [ConvocationController::class, 'edit'])->name('admin.convocations.edit');
+		Route::patch('/convocations', [ConvocationController::class, 'update'])->name('admin.convocations.update');
+		Route::delete('/convocations', [ConvocationController::class, 'destroy'])->name('admin.convocations.destroy');
+		Route::post('/convocations/file', [ConvocationController::class, 'uploadFile'])->name('admin.convocations.upload-file');
+		Route::delete('/convocations/file', [ConvocationController::class, 'deleteFile'])->name('admin.convocations.delete-file');
+
+
 
 		Route::get('/gallery', function () {
 			return Inertia::render('Admin/Gallery');
