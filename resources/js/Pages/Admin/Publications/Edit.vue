@@ -37,7 +37,7 @@ const handleUpdatePublication = () => {
 				<div>
 					<InputLabel for="title" value="Título de la publicación" />
 					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" publicationForm.title " required autofocus
-						autocomplete="publicationTitle" />
+						autocomplete="publication_title" />
 					<InputError class="mt-2" :message=" publicationForm.errors.title " />
 				</div>
 				<div class="mt-4">

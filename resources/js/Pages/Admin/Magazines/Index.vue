@@ -32,7 +32,7 @@ const handleCloseModal = () => {
 	showModal.value = false;
 }
 
-const handleDeletemagazine = () => {
+const handleDeleteMagazine = () => {
 	magazineForm.delete(route('admin.magazines.destroy'), {
 		onSuccess: () => handleCloseModal(),
 		onFinish: () => magazineForm.reset('id')
@@ -90,7 +90,7 @@ const handleDeletemagazine = () => {
 			<div class="w-full flex flex-col justify-center items-center">
 				<h2 class="text-xl">¿Deseas eliminar el libro?</h2>
 				<div class="w-full flex justify-end mt-8 gap-4">
-					<DangerButton @click="handleDeletemagazine()">Eliminar</DangerButton>
+					<DangerButton @click="handleDeleteMagazine()">Eliminar</DangerButton>
 					<SecondaryButton @click="handleCloseModal()">Cancelar</SecondaryButton>
 				</div>
 			</div>

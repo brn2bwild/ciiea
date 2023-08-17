@@ -37,12 +37,12 @@ const handleUpdateMagazine = () => {
 				<div>
 					<InputLabel for="name" value="Nombre de la revista" />
 					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" magazineForm.name " required autofocus
-						autocomplete="magazineName" />
+						autocomplete="magazine_name" />
 					<InputError class="mt-2" :message=" magazineForm.errors.name " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="publicated_at" value="Fecha de publicación" />
-					<TextInput id="publicated_at" type="date" class="mt-1 block w-full" v-model=" magazineForm.publicated_at "
+					<TextInput id="magazine_publicated_at" type="date" class="mt-1 block w-full" v-model=" magazineForm.publicated_at "
 						required />
 					<InputError class="mt-2" :message=" magazineForm.errors.publicated_at " />
 				</div>
