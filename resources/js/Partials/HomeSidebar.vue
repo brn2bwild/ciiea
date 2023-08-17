@@ -11,11 +11,11 @@ const emit = defineEmits(['openModal']);
 </script>
 
 <template>
-	<div class="fixed top-0 left-0 z-40 w-64 h-screen hidden sm:block bg-white border-0 pt-20 min-h-screen">
+	<div class="fixed top-0 left-0 z-40 w-64 h-screen hidden sm:block bg-white border-0 pt-20 min-h-screen px-2">
 		<!-- Primary Sidebar Menu -->
 		<div class="w-full h-full mx-auto flex flex-col justify-between">
 			<!-- Navigation Links -->
-			<div class="flex flex-col">
+			<div class="flex flex-col gap-y-2">
 				<SidebarLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
 					Inicio
 				</SidebarLink>

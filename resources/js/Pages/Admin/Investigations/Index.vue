@@ -29,7 +29,7 @@ const handleOpenModal = (id) => {
 }
 
 const handleCloseModal = () => {
-	showModal = false
+	showModal.value = false
 }
 
 const handleDeleteInvestigation = () => {
@@ -61,7 +61,7 @@ const handleDeleteInvestigation = () => {
 					</th>
 				</thead>
 				<tbody>
-					<tr v-for="   investigation   in   investigations   " :key=" investigation.index ">
+					<tr v-for="    investigation    in    investigations    " :key=" investigation.index ">
 						<td>
 							{{ investigation.title.substr( 1, 30 ) }}...
 						</td>
@@ -86,8 +86,8 @@ const handleDeleteInvestigation = () => {
 			<div class="w-full flex flex-col justify-center items-center">
 				<h2 class="text-xl">¿Deseas eliminar el libro?</h2>
 				<div class="w-full flex justify-end mt-8 gap-4">
-					<DangerButton @click="handleDeleteInvestigation()">Eliminar</DangerButton>
-					<SecondaryButton @click="handleCloseModal()">Cancelar</SecondaryButton>
+					<DangerButton @click=" handleDeleteInvestigation ">Eliminar</DangerButton>
+					<SecondaryButton @click=" handleCloseModal ">Cancelar</SecondaryButton>
 				</div>
 			</div>
 		</div>
