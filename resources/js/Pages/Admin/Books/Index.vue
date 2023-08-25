@@ -44,38 +44,41 @@ const handleDeleteBook = () => {
 <template>
 	<Head title="Libros" />
 	<h1 class="text-3xl font-bold pl-8">Libros</h1>
+
 	<div class="w-full p-8">
 		<section class="w-full bg-white rounded p-8">
-			<table class="w-full table-auto">
-				<thead>
-					<th>
+			<table class="w-full text-sm text-left text-gray-500">
+				<thead class="text-xs text-gray-700 uppercase bg-gray-200">
+					<th class="px-4 py-2">
 						Título
 					</th>
-					<th>
+					<th class="px-4 py-2">
 						Autores
 					</th>
-					<th>
+					<th class="px-4 py-2">
 						Fecha de publicación
 					</th>
-					<th>
+					<th class="px-4 py-2">
 						Acciones
 					</th>
 				</thead>
 				<tbody>
-					<tr v-for=" book in books " :key=" book.index ">
-						<td>
+					<tr class="bg-white border-b hover:bg-gray-200" v-for=" book in books " :key=" book.index ">
+						<th scope="row" class="px-6 py-4 font-medium text-neutral-900 whitespace-nowrap">
 							{{ book.title.substr( 1, 30 ) }}...
-						</td>
-						<td>
+						</th>
+						<td class="px-6 py-4">
 							{{ book.authors }}
 						</td>
-						<td>
+						<td class="px-6 py-4">
 							{{ book.publicated_at }}
 						</td>
-						<td class="flex justify-between gap-4">
-							<Link :href=" route( 'admin.books.edit', book.id ) ">Editar</Link>
+						<td class="flex justify-between px-6 py-4">
+							<Link :href=" route( 'admin.books.edit', book.id ) " class="font-semibold cursor-pointer text-sky-800">
+							Editar</Link>
 							<!-- <Link @click="handleOpenModal" method="post" as="button" :href=" route( 'admin.books.destroy', book.id ) ">Eliminar</Link> -->
-							<button @click="handleOpenModal( book.id )">Eliminar</button>
+							<button @click="handleOpenModal( book.id )"
+								class="font-semibold cursor-pointer text-red-800">Eliminar</button>
 						</td>
 					</tr>
 				</tbody>

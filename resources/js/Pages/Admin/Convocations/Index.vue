@@ -37,35 +37,37 @@ const handleCloseModal = () => {
 
 	<div class="w-full p-8">
 		<section class="w-full bg-white rounded p-8">
-			<table class="w-full table-auto">
-				<thead>
-					<th>
+			<table class="w-full text-sm text-left text-gray-500">
+				<thead class="text-xs text-gray-700 uppercase bg-gray-200">
+					<th class="px-4 py-2">
 						Nombre
 					</th>
-					<th>
+					<th class="px-4 py-2">
 						Fecha
 					</th>
-					<th>
+					<th class="px-4 py-2">
 						Locación
 					</th>
-					<th>
+					<th class="px-4 py-2">
 						Acciones
 					</th>
 				</thead>
 				<tbody>
-					<tr v-for="   convocation   in   convocations   " :key=" convocation.index ">
-						<td>
+					<tr v-for="  convocation  in  convocations  " :key=" convocation.index "
+						class="bg-white border-b hover:bg-gray-200">
+						<th scope="row" class="px-6 py-4 font-medium text-neutral-900 whitespace-nowrap">
 							{{ convocation.name.substr( 1, 30 ) }}
-						</td>
-						<td>
+						</th>
+						<td class="px-6 py-4">
 							{{ convocation.date }}
 						</td>
-						<td>
+						<td class="px-6 py-4">
 							{{ convocation.location.substr( 1, 30 ) }}
 						</td>
-						<td class="flex justify-between gap-4">
-							<Link :href=" route( 'admin.convocations.edit', convocation.id ) ">Editar</Link>
-							<button @click="handleOpenModal( convocation.id )">Eliminar</button>
+						<td class="flex justify-between gap-4 px-6 py-4">
+							<Link :href=" route( 'admin.convocations.edit', convocation.id ) " class="font-semibold text-sky-800">Editar
+							</Link>
+							<button @click="handleOpenModal( convocation.id )" class="font-semibold text-red-800">Eliminar</button>
 						</td>
 					</tr>
 				</tbody>

@@ -44,40 +44,41 @@ const handleDeleteMagazine = () => {
 <template>
 	<Head title="Revistas" />
 	<h1 class="text-3xl font-bold pl-8">Revistas</h1>
+
 	<div class="w-full p-8">
 		<section class="w-full bg-white rounded p-8">
-			<table class="w-full table-auto">
-				<thead>
-					<th>
+			<table class="w-full text-sm text-left text-gray-500">
+				<thead class="text-xs text-gray-700 uppercase bg-gray-200">
+					<th class="px-4 py-2">
 						Nombre
 					</th>
-					<th>
+					<th class="px-4 py-2">
 						Fecha de publicación
 					</th>
-					<th>
+					<th class="px-4 py-2">
 						Etiquetas
 					</th>
-					<th>
+					<th class="px-4 py-2">
 						Acciones
 					</th>
 				</thead>
 				<tbody>
-					<tr v-for=" magazine  in magazines " :key=" magazine.index ">
-						<td>
+					<tr v-for=" magazine in magazines " :key=" magazine.index " class="bg-white border-b hover:bg-gray-200">
+						<th scope="row" class="px-6 py-4 font-medium text-neutral-900 whitespace-nowrap">
 							{{ magazine.name.substr( 1, 30 ) }}...
-						</td>
-						<td>
+						</th>
+						<td class="px-6 py-4">
 							{{ magazine.publicated_at }}
 						</td>
-						<td>
-							<span v-for=" tag  in  magazine.tags " :key=" tag.index ">
+						<td class="px-6 py-4">
+							<span v-for="   tag    in    magazine.tags   " :key=" tag.index ">
 								{{ tag }}
 							</span>
 						</td>
-						<td class="flex justify-between gap-4">
-							<Link :href=" route( 'admin.magazines.edit', magazine.id ) ">Editar</Link>
+						<td class="flex justify-between gap-4 px-6 py-4">
+							<Link :href=" route( 'admin.magazines.edit', magazine.id ) " class="font-semibold text-sky-800">Editar</Link>
 							<!-- <Link @click="handleOpenModal" method="post" as="button" :href=" route( 'admin.magazines.destroy', magazine.id ) ">Eliminar</Link> -->
-							<button @click="handleOpenModal( magazine.id )">Eliminar</button>
+							<button @click="handleOpenModal( magazine.id )" class="font-semibold text-red-800">Eliminar</button>
 						</td>
 					</tr>
 				</tbody>
