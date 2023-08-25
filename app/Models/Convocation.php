@@ -20,9 +20,9 @@ class Convocation extends Model
 		'description',
 	];
 
-	protected $casts = [
-		'date' => 'date:Y-m-d',
-	];
+	// protected $casts = [
+	// 	'date' => 'date:Y-m-d',
+	// ];
 
 	// Se castea la hora proporcionada al atributo 'time' para que no guarde segundos
 	protected function time(): Attribute
@@ -30,6 +30,14 @@ class Convocation extends Model
 		return Attribute::make(
 			// set: fn (string $value) => Carbon::createFromFormat('H:i:s', $value)->format('H:i'),
 			get: fn (string $value) => Carbon::createFromFormat('H:i:s', $value)->format('H:i'),
+		);
+	}
+
+	// Se castea la fecha para que tenga el formato adecuado
+	protected function date(): Attribute
+	{
+		return Attribute::make(
+			get: fn(string $value) => Carbon::createFromDate($value)->toDateString(),
 		);
 	}
 }

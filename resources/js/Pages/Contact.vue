@@ -43,18 +43,19 @@ defineProps({
 				</p>
 			</div>
 		</div>
-		<div class="bg-transparent w-full rounded-sm flex relative group">
+		<div class="bg-transparent w-full rounded-sm flex relative group mb-32">
 			<img class="h-64 w-64" src="/storage/images/default-contact.png" alt="default-contact">
-			<div class="bg-rose-900 w-3/4 p-4 rounded-md absolute top-52 left-14 z-10">
+			<div
+				class="bg-rose-900 w-3/4 p-4 rounded-md absolute top-48 left-20 z-10 group-hover:ring-1 group-hover:ring-neutral-50 transition-all ease-in-out duration-150">
 				<h1 class="text-white text-lg font-bold">
-					Selene CIIEA
+					Ing. Selene
 				</h1>
 				<h2 class="text-white mb-4">
-					Director de sistemas
+					Encargada de sistemas
 				</h2>
 				<p class="flex justify-start text-white mb-2">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'phone' } " size="lg" style="color: white;" />
-					<a href="https://whatsapp.com" class="ml-2">9223164</a>
+					<a href="https://whatsapp.com" class="ml-2">9321234352</a>
 				</p>
 				<p class="flex justify-start text-white mb-2">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'envelope' } " size="lg" style="color: white;" />
@@ -66,6 +67,30 @@ defineProps({
 				</p>
 			</div>
 		</div>
+		<div class="bg-transparent w-full rounded-sm flex relative group mb-32">
+			<img class="h-64 w-64" src="/storage/images/default-contact.png" alt="default-contact">
+			<div
+				class="bg-rose-900 w-3/4 p-4 rounded-md absolute top-48 left-20 z-10 group-hover:ring-1 group-hover:ring-neutral-50 transition-all ease-in-out duration-150">
+				<h1 class="text-white text-lg font-bold">
+					Juan Carlos Rodríguez Méndez
+				</h1>
+				<h2 class="text-white mb-4">
+					Planeación
+				</h2>
+				<p class="flex justify-start text-white mb-2">
+					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'phone' } " size="lg" style="color: white;" />
+					<a href="https://whatsapp.com" class="ml-2">932122164</a>
+				</p>
+				<p class="flex justify-start text-white mb-2">
+					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'envelope' } " size="lg" style="color: white;" />
+					<a href="https://outlook.com" class="ml-2">planeacion@example.com</a>
+				</p>
+				<p class="flex justify-start text-white">
+					<font-awesome-icon :icon=" { prefix: 'fab', iconName: 'twitter' } " size="lg" style="color: white;" />
+					<a href="https://outlook.com" class="ml-2">@planeacion_ciiea</a>
+				</p>
+			</div>
+		</div>
 	</section>
 	<section class="px-4 sm:px-12 pb-16">
 		<div class="w-full sm:h-96 mt-44 sm:mt-12 flex flex-wrap justify-stretch rounded-lg overflow-hidden">
@@ -74,7 +99,7 @@ defineProps({
 					Centro de Investigación e Innovación para la Enseñanza y el Aprendizaje
 				</h1>
 				<p class="sm:text-lg mb-2">
-					Carretera a Las Grutas S/N, Urequa y Belem, 86800 Teapa, Tab.
+					Carretera a Las Grutas S/N, Eureka y Belem, 86800 Teapa, Tab.
 				</p>
 				<p class="sm:text-lg mb-2">
 					Horarios de atencion: 8:00 a.m. - 3:00 p.m. lunes a viernes.
