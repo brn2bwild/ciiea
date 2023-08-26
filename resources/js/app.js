@@ -25,6 +25,10 @@ import {
 		faUsers,
 		faFileArrowUp,
 		faCalendar,
+		faAngleLeft,
+		faAngleRight,
+		faImages,
+		faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -51,7 +55,11 @@ library.add(
 		faUsers,
 		faFileArrowUp,
 		faFile,
-		faCalendar
+		faCalendar,
+		faAngleLeft,
+		faAngleRight,
+		faImages,
+		faCircleXmark
 );
 
 const appName =

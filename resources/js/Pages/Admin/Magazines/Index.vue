@@ -49,33 +49,38 @@ const handleDeleteMagazine = () => {
 		<section class="w-full bg-white rounded p-8">
 			<table class="w-full text-sm text-left text-gray-500">
 				<thead class="text-xs text-gray-700 uppercase bg-gray-200">
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Nombre
 					</th>
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Fecha de publicación
 					</th>
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Etiquetas
 					</th>
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Acciones
 					</th>
 				</thead>
 				<tbody>
 					<tr v-for=" magazine in magazines " :key=" magazine.index " class="bg-white border-b hover:bg-gray-200">
-						<th scope="row" class="px-6 py-4 font-medium text-neutral-900 whitespace-nowrap">
+						<th scope="row" class="px-6 py-4 font-medium text-neutral-900 whitespace-nowrap text-center">
 							{{ magazine.name.substr( 1, 30 ) }}...
 						</th>
-						<td class="px-6 py-4">
+						<td class="px-6 py-4 text-center">
 							{{ magazine.publicated_at }}
 						</td>
-						<td class="px-6 py-4">
-							<span v-for="   tag    in    magazine.tags   " :key=" tag.index ">
+						<td class="px-6 py-4 text-center">
+							<!-- <span v-for=" tag in magazine.tags " :key=" tag.index ">
 								{{ tag }}
-							</span>
+							</span> -->
+							<div class="flex justify-center gap-2">
+								<span class="px-1 bg-sky-200 rounded-full">Ciencia</span>
+								<span class="px-1 bg-sky-200 rounded-full">Educación</span>
+
+							</div>
 						</td>
-						<td class="flex justify-between gap-4 px-6 py-4">
+						<td class="flex justify-around gap-4 px-6 py-4">
 							<Link :href=" route( 'admin.magazines.edit', magazine.id ) " class="font-semibold text-sky-800">Editar</Link>
 							<!-- <Link @click="handleOpenModal" method="post" as="button" :href=" route( 'admin.magazines.destroy', magazine.id ) ">Eliminar</Link> -->
 							<button @click="handleOpenModal( magazine.id )" class="font-semibold text-red-800">Eliminar</button>

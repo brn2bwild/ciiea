@@ -6,6 +6,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import FileInput from '@/Components/FileInput.vue';
 import InputError from '@/Components/InputError.vue';
+import PdfViewer from '@/Components/PdfViewer.vue';
 
 defineOptions({
 	layout: AdminLayout
@@ -73,6 +74,7 @@ const handleUpdateBook = () => {
 			</form>
 			<FileInput :resource-id=" book.id " :file=" book.file " :upload-file-route=" route( 'admin.books.upload-file' ) "
 				:delete-file-route=" route( 'admin.books.delete-file' ) " class="w-1/4" />
+			<!-- <PdfViewer :url="book.file.path" /> -->
 		</section>
 	</div>
 </template>

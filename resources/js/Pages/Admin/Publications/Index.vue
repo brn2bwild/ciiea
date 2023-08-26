@@ -47,34 +47,40 @@ const handleDeletePublication = () => {
 		<section class="w-full bg-white rounded p-8">
 			<table class="w-full text-sm text-left text-gray-500">
 				<thead class="text-xs text-gray-700 uppercase bg-gray-200">
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Nombre
 					</th>
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Fecha de publicación
 					</th>
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Etiquetas
 					</th>
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Acciones
 					</th>
 				</thead>
 				<tbody>
 					<tr v-for=" publication in publications " :key=" publication.index " class="bg-white border-b hover:bg-gray-200">
-						<th scope="row" class="px-6 py-4 font-medium text-neutral-900 whitespace-nowrap">
+						<th scope="row" class="px-6 py-4 font-medium text-neutral-900 whitespace-nowrap text-center">
 							{{ publication.title.substr( 1, 30 ) }}...
 						</th>
-						<td class="px-6 py-4">
+						<td class="px-6 py-4 text-center">
 							{{ publication.publicated_at }}
 						</td>
-						<td></td>
+						<td>
+							<div class="flex justify-center gap-2">
+								<span class="px-1 bg-sky-200 rounded-full">Ciencia</span>
+								<span class="px-1 bg-sky-200 rounded-full">Educación</span>
+
+							</div>
+						</td>
 						<!-- <td>
 							<span v-for=" tag in publication.tags " :key=" tag.index ">
 								{{ tag }}
 							</span>
 						</td> -->
-						<td class="flex justify-between gap-4 px-6 py-4">
+						<td class="flex justify-around gap-4 px-6 py-4">
 							<Link :href=" route( 'admin.historical-publications.edit', publication.id ) " class="font-semibold text-sky-800">Editar</Link>
 							<button @click="handleOpenModal( publication.id )" class="font-semibold text-red-800">Eliminar</button>
 						</td>

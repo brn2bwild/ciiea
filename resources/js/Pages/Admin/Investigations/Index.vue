@@ -47,31 +47,31 @@ const handleDeleteInvestigation = () => {
 		<section class="w-full bg-white rounded p-8">
 			<table class="w-full text-sm text-left text-gray-500">
 				<thead class="text-xs text-gray-700 uppercase bg-gray-200">
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Título
 					</th>
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Autores
 					</th>
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Fecha de publicación
 					</th>
-					<th class="px-4 py-2">
+					<th class="px-4 py-2 text-center">
 						Acciones
 					</th>
 				</thead>
 				<tbody>
 					<tr v-for=" investigation in investigations " :key=" investigation.index " class="bg-white border-b hover:bg-gray-200">
-						<th scope="row" class="px-6 py-4 font-medium text-neutral-900 whitespace-nowrap">
+						<th scope="row" class="px-6 py-4 font-medium text-neutral-900 whitespace-nowrap text-center">
 							{{ investigation.title.substr( 1, 30 ) }}...
 						</th>
-						<td class="px-6 py-4">
+						<td class="px-6 py-4 text-center">
 							{{ investigation.authors }}
 						</td>
-						<td class="px-6 py-4">
+						<td class="px-6 py-4 text-center">
 							{{ investigation.publicated_at }}
 						</td>
-						<td class="flex justify-between gap-4 px-6 py-4">
+						<td class="flex justify-around gap-4 px-6 py-4">
 							<Link :href=" route( 'admin.investigations.edit', investigation.id ) " class="font-semibold text-sky-800">Editar</Link>
 							<button @click="handleOpenModal( investigation.id )" class="font-semibold text-red-800">Eliminar</button>
 						</td>
