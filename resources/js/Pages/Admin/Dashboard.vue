@@ -58,6 +58,7 @@ defineProps({
 		<CountCard :route=" route( 'admin.investigations.index' ) " :count=" investigations " :text=" 'Investigaciones' "
 			:icon=" 'magnifying-glass' " />
 		<CountCard :route="route('admin.convocations.index')" :count="convocations" :text="'Convocatorias'" :icon="'calendar'"/>
+		<CountCard :route="route('admin.convocations.index')" :count="convocations" :text="'Galería eventos'" :icon="'images'"/>
 	</section>
 	<section class="w-full p-8 grid grid-cols-1 md:grid-cols-4 gap-4">
 		<CountCard :route=" route( 'admin.books.index' ) " :count=" admin_users " :text=" 'Administradores' "

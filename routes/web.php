@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ConvocationController;
 use App\Http\Controllers\Admin\InvestigationController;
 use App\Http\Controllers\Admin\MagazineController;
 use App\Http\Controllers\Admin\PublicationController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Book;
 use App\Models\Convocation;
@@ -69,6 +70,8 @@ Route::get('/contact', function () {
 		]
 	]);
 })->name('contact');
+
+Route::get('/files/{file}', [FileController::class, 'show'])->name('file.show');
 
 Route::get('/dashboard', function () {
 	return Inertia::render('Dashboard');

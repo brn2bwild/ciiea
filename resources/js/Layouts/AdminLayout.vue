@@ -125,13 +125,15 @@ const showingNavigationDropdown = ref(false);
 			</nav>
 
 			<!-- Sidebar -->
-			<aside class="fixed top-0 left-0 z-30 w-64 h-screen hidden sm:flex sm:flex-col bg-white border-0 pt-20 min-h-screen px-2 gap-y-2">
+			<aside
+				class="fixed top-0 left-0 z-30 w-64 h-screen hidden sm:flex sm:flex-col bg-white border-0 pt-20 min-h-screen px-2 gap-y-1">
 				<SidebarLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
 					Inicio
 				</SidebarLink>
 				<SidebarLink :href=" route( 'admin.dashboard' ) " :active=" $page.url.includes( '/admin/dashboard' ) ">
 					Dashboard
 				</SidebarLink>
+				<h2 class="px-4">Recursos</h2>
 				<SidebarLink :href=" route( 'admin.books.index' ) " :active=" $page.url.includes( '/admin/books' ) ">
 					Libros
 				</SidebarLink>
@@ -149,6 +151,19 @@ const showingNavigationDropdown = ref(false);
 				<SidebarLink :href=" route( 'admin.convocations.index' ) "
 					:active=" $page.url.includes( '/admin/convocations' ) ">
 					Convocatorias
+				</SidebarLink>
+				<SidebarLink :href=" route( 'admin.convocations.index' ) "
+					:active=" $page.url.includes( '/admin/convocations' ) ">
+					Galería
+				</SidebarLink>
+				<h2 class="px-4">Administración</h2>
+				<SidebarLink :href=" route( 'admin.convocations.index' ) "
+					:active=" $page.url.includes( '/admin/convocations' ) ">
+					Administradores
+				</SidebarLink>
+				<SidebarLink :href=" route( 'admin.convocations.index' ) "
+					:active=" $page.url.includes( '/admin/convocations' ) ">
+					Usuarios
 				</SidebarLink>
 			</aside>
 
