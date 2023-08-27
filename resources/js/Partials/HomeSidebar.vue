@@ -15,7 +15,7 @@ const emit = defineEmits(['openModal']);
 		<!-- Primary Sidebar Menu -->
 		<div class="w-full h-full mx-auto flex flex-col justify-between">
 			<!-- Navigation Links -->
-			<div class="flex flex-col gap-y-2">
+			<div class="flex flex-col gap-y-1">
 				<SidebarLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
 					Inicio
 				</SidebarLink>
@@ -39,16 +39,16 @@ const emit = defineEmits(['openModal']);
 			<!-- Register button-->
 			<div class="flex justify-center items-center pb-8">
 				<Link v-if=" $page.props.auth.user.name " :href=" route( 'reime' ) "
-					class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold transition-all duration-200">
+					class="px-8 py-2 rounded-full bg-neutral-200 text-sky-500 hover:bg-sky-500 hover:text-white font-bold transition-all duration-200">
 				Página principal REIME
 				</Link>
 				
 				<!-- <Link v-else :href=" route( 'register' ) "
-					class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold transition-all duration-200">
+					class="px-8 py-2 rounded-full bg-neutral-200 text-sky-500 hover:bg-sky-500 hover:text-white font-bold transition-all duration-200">
 				Únete a la REIME
 				</Link> -->
 
-				<span v-else @click="emit('openModal', 'register')" class="px-8 py-2 rounded-full bg-rose-900 text-neutral-50 hover:bg-rose-700 font-bold transition-all duration-200">
+				<span v-else @click="emit('openModal', 'register')" class="px-8 py-2 rounded-full bg-neutral-200 text-sky-500 hover:bg-sky-500 hover:text-white font-bold transition-all duration-200">
 					Únete a la REIME
 				</span>
 			</div>

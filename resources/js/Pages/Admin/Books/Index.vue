@@ -49,14 +49,14 @@ const handleDeleteBook = () => {
 		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
 			<div v-for=" book in books " :key=" book.index " class="relative group">
 				<Link :href=" route( 'admin.books.edit', book.id ) ">
-				<div class="h-40 bg-neutral-50 group-hover:bg-neutral-400 transition-all duration-200 rounded-xl p-6">
+				<div class="h-40 bg-white group-hover:bg-neutral-200 transition-all duration-200 rounded-xl p-6">
 					<h1 class="text-xl">{{ book.title.substring(1, 20) }}...</h1>
 					<h2 class="text-neutral-600 mt-4">{{ book.authors }}</h2>
 					<h2 class="text-neutral-900 mt-4">{{ book.publicated_at }}</h2>
 				</div>
 				</Link>
 				<button @click="handleOpenModal( book.id )"
-					class="block sm:hidden group-hover:block transition-all duration-200 text-5xl text-red-300 sm:text-neutral-50 hover:text-red-300 rounded-full absolute bottom-4 right-4">
+					class="block sm:hidden group-hover:block transition-all duration-200 text-5xl text-red-300 sm:text-white hover:text-red-300 rounded-full absolute top-4 right-4">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'circle-xmark' } " />
 				</button>
 			</div>
