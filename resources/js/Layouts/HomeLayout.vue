@@ -58,14 +58,20 @@ function openModalFn(modalType) {
 const submitLogin = () => {
 	loginForm.post(route('login'), {
 		preserveScroll: true,
-		onSuccess: () => loginForm.reset('email', 'password', 'remember'),
+		onSuccess: () => {
+			loginForm.reset('email', 'password', 'remember');
+			closeModalFn();
+		},
 	});
 };
 
 const submitRegister = () => {
 	registerForm.post(route('register'), {
 		preserveScroll: true,
-		onSuccess: () => registerForm.reset('email', 'name', 'password', 'password_confirmation'),
+		onSuccess: () => {
+			registerForm.reset('email', 'name', 'password', 'password_confirmation');
+			closeModalFn();
+		},
 	});
 };
 
@@ -101,7 +107,7 @@ const Modal = defineAsyncComponent(() =>
 						enter-to-class="opacity-100 translate-y-0 sm:scale-100" leave-active-class="ease-in duration-200"
 						leave-from-class="opacity-100 translate-y-0 sm:scale-100"
 						leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-						<form @submit.prevent=" submitLogin(); closeModalFn()">
+						<form @submit.prevent=" submitLogin()">
 							<div>
 								<InputLabel for="email" value="Correo electrónico" />
 
@@ -135,9 +141,8 @@ const Modal = defineAsyncComponent(() =>
 
 							<div class="flex items-center justify-end mt-4">
 								<span @click="userIsLogin = false; modalTitle = 'Registrarse'"
-									class="cursor-pointer text-sm hover:underline text-neutral-600">¿No tienes cuenta?</span>
-								<PrimaryButton class="ml-4" :class=" { 'opacity-25': loginForm.processing } "
-									:disabled=" loginForm.processing ">
+									class="cursor-pointer text-sm hover:underline text-neutral-600 mr-4">¿No tienes cuenta?</span>
+								<PrimaryButton :class=" { 'opacity-25': loginForm.processing } " :disabled=" loginForm.processing ">
 									Iniciar sesión
 								</PrimaryButton>
 							</div>
@@ -148,7 +153,7 @@ const Modal = defineAsyncComponent(() =>
 						enter-to-class="opacity-100 translate-y-0 sm:scale-100" leave-active-class="ease-in duration-200"
 						leave-from-class="opacity-100 translate-y-0 sm:scale-100"
 						leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-						<form @submit.prevent=" submitRegister(); closeModalFn()">
+						<form @submit.prevent=" submitRegister()">
 							<div>
 								<InputLabel for="name" value="Nombre" />
 
@@ -193,9 +198,8 @@ const Modal = defineAsyncComponent(() =>
 											¿Ya tienes una cuenta?
 									</Link> -->
 								<span @click="userIsLogin = true; modalTitle = 'Iniciar sesión'"
-									class="cursor-pointer text-sm hover:underline text-neutral-600">¿Ya tienes una cuenta?</span>
-								<PrimaryButton class="ml-4" :class=" { 'opacity-25': registerForm.processing } "
-									:disabled=" registerForm.processing ">
+									class="cursor-pointer text-sm hover:underline text-neutral-600 mr-4">¿Ya tienes una cuenta?</span>
+								<PrimaryButton :class=" { 'opacity-25': registerForm.processing } " :disabled=" registerForm.processing ">
 									Registrarse
 								</PrimaryButton>
 							</div>
