@@ -75,14 +75,14 @@ const emit = defineEmits(['openModal', 'closeModal']);
 
 						<template v-else>
 							<!-- <Link :href=" route( 'login' ) "
-								class="font-bold text-neutral-50 bg-rose-900 px-5 py-2 rounded-full hover:bg-rose-700 focus:no-underline transition-all duration-200">
+								class="font-bold text-neutral-50 bg-neutral-900 px-5 py-2 rounded-full hover:bg-neutral-700 focus:no-underline transition-all duration-200">
 							Iniciar sesión</Link> -->
 							<button @click="emit( 'openModal', 'login' )"
-								class="font-bold text-neutral-50 bg-rose-900 px-5 py-2 rounded-full hover:bg-rose-700 focus:no-underline transition-all duration-200">
+								class="font-bold text-sky-500 bg-neutral-200 px-5 py-2 rounded-full hover:bg-sky-500 hover:text-neutral-50 focus:no-underline transition-all duration-200">
 								Iniciar sesión
 							</button>
 							<!-- <Link v-if=" canRegister " :href=" route( 'register' ) "
-								class="ml-6 font-medium text-neutral-50 bg-rose-900 px-4 py-2 rounded-full hover:bg-rose-700 focus:no-underline">
+								class="ml-6 font-medium text-neutral-50 bg-neutral-900 px-4 py-2 rounded-full hover:bg-neutral-700 focus:no-underline">
 							Registrarse</Link> -->
 						</template>
 					</div>

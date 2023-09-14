@@ -5,6 +5,7 @@ import AdminLayout from '@/Layouts/AdminLayout.vue';
 import Modal from '@/Components/Modal.vue';
 import DangerButton from '@/Components/DangerButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
+import ResourceCard from '@/Components/ResourceCard.vue';
 
 defineOptions({
 	layout: AdminLayout
@@ -23,7 +24,7 @@ const bookForm = useForm({
 
 const showModal = ref(false)
 
-const handleOpenModal = (id) => {
+const handleOpenDeleteModal = (id) => {
 	bookForm.id = id
 	showModal.value = true
 }
@@ -47,7 +48,7 @@ const handleDeleteBook = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<div v-for=" book in books " :key=" book.index " class="relative group">
+			<!-- <div v-for=" book in books " :key=" book.index " class="relative group">
 				<Link :href=" route( 'admin.books.edit', book.id ) ">
 				<div class="h-40 bg-white group-hover:bg-neutral-200 transition-all duration-200 rounded-xl p-6">
 					<h1 class="text-xl">{{ book.title.substring(1, 20) }}...</h1>
@@ -55,49 +56,18 @@ const handleDeleteBook = () => {
 					<h2 class="text-neutral-900 mt-4">{{ book.publicated_at }}</h2>
 				</div>
 				</Link>
-				<button @click="handleOpenModal( book.id )"
+				<button @click="handleOpenDeleteModal( book.id )"
 					class="block sm:hidden group-hover:block transition-all duration-200 text-5xl text-red-300 sm:text-white hover:text-red-300 rounded-full absolute top-4 right-4">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'circle-xmark' } " />
 				</button>
-			</div>
+			</div> -->
+			<ResourceCard v-for=" book in books " :key=" book.index " @open-delete-modal="handleOpenDeleteModal( book.id )"
+				:edit-route=" route( 'admin.books.edit', book.id ) ">
+				<template v-slot:title>{{ book.title.substr( 0, 20 ) }}...</template>
+				<template v-slot:subtitle>{{ book.authors }}</template>
+				<template v-slot:content>{{ book.publicated_at }}</template>
+			</ResourceCard>
 		</section>
-		<!-- <section class="w-full bg-white rounded p-8">
-			<table class="w-full text-sm text-left text-gray-500">
-				<thead class="text-xs text-gray-700 uppercase bg-gray-200">
-					<th class="px-4 py-2 text-center">
-						Título
-					</th>
-					<th class="px-4 py-2 text-center">
-						Autores
-					</th>
-					<th class="px-4 py-2 text-center">
-						Fecha de publicación
-					</th>
-					<th class="px-4 py-2 text-center">
-						Acciones
-					</th>
-				</thead>
-				<tbody>
-					<tr class="bg-white border-b hover:bg-gray-200" v-for=" book in books " :key=" book.index ">
-						<th scope="row" class="px-6 py-4 font-medium text-neutral-900 whitespace-nowrap text-center">
-							{{ book.title.substr( 1, 20 ) }}...
-						</th>
-						<td class="px-6 py-4 text-center">
-							{{ book.authors }}
-						</td>
-						<td class="px-6 py-4 text-center">
-							{{ book.publicated_at }}
-						</td>
-						<td class="flex justify-around px-6 py-4">
-							<Link :href=" route( 'admin.books.edit', book.id ) " class="font-semibold cursor-pointer text-sky-800">
-							Editar</Link>
-							<button @click="handleOpenModal( book.id )"
-								class="font-semibold cursor-pointer text-red-800">Eliminar</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</section> -->
 	</div>
 
 	<Modal @close=" handleCloseModal " :show=" showModal " :max-width=" 'lg' ">
