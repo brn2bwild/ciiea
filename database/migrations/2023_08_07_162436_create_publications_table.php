@@ -15,6 +15,7 @@ return new class extends Migration
 			$table->id();
 			$table->string('title');
 			$table->date('publicated_at');
+			$table->string('slug')->unique();
 			$table->timestamps();
 		});
 	}

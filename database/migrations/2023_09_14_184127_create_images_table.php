@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 return new class extends Migration
 {
@@ -11,13 +12,14 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('investigations', function (Blueprint $table) {
+		Schema::create('images', function (Blueprint $table) {
 			$table->id();
+			$table->uuid('identifier')
+				->default(Str::uuid());
+			$table->morphs('imageable');
 			$table->string('title');
-			$table->string('authors');
-			$table->string('short_description')->max(200);
-			$table->date('publicated_at');
-			$table->string('slug')->unique();
+			$table->string('path');
+			$table->string('size_bytes');
 			$table->timestamps();
 		});
 	}
@@ -27,6 +29,6 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('investigations');
+		Schema::dropIfExists('images');
 	}
 };
