@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Publication>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
  */
-class PublicationFactory extends Factory
+class EventFactory extends Factory
 {
 	/**
 	 * Define the model's default state.
@@ -17,11 +17,11 @@ class PublicationFactory extends Factory
 	 */
 	public function definition(): array
 	{
-		$title = fake()->sentence(8, true);
+		$name = fake()->sentence(5, true);
 		return [
-			'title' => $title,
-			'publicated_at' => fake()->date(),
-			'slug' => Str::slug($title),
+			'name' => $name,
+			'date' => fake()->date(),
+			'slug' => Str::slug($name),
 		];
 	}
 }

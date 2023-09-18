@@ -9,12 +9,13 @@ class BookFactory extends Factory
 {
 	public function definition(): array
 	{
+		$title = fake()->sentence(6, true);
 		return [
-			'uuid' => Str::uuid(),
-			'title' => fake()->sentence(6, true),
+			'title' => $title,
 			'authors' => fake()->name(),
 			'isbn' => fake()->word(),
 			'publicated_at' => fake()->date(),
+			'slug' => Str::slug($title),
 		];
 	}
 }
