@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ConvocationController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\InvestigationController;
 use App\Http\Controllers\Admin\MagazineController;
 use App\Http\Controllers\Admin\PublicationController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Book;
 use App\Models\Convocation;
+use App\Models\Event;
 use App\Models\Investigation;
 use App\Models\Magazine;
 use App\Models\Publication;
@@ -102,6 +104,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 				'publications' => Publication::get()->count(),
 				'investigations' => Investigation::get()->count(),
 				'convocations' => Convocation::get()->count(),
+				'gallery' => Event::get()->count(),
 				'admin_users' => $admin_users,
 				'users' => $users
 			]);
@@ -142,11 +145,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::post('/convocations/file', [ConvocationController::class, 'uploadFile'])->name('admin.convocations.upload-file');
 		Route::delete('/convocations/file', [ConvocationController::class, 'deleteFile'])->name('admin.convocations.delete-file');
 
-
-
-		Route::get('/gallery', function () {
-			return Inertia::render('Admin/Gallery');
-		})->name('admin.gallery');
+		Route::get('/gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
+		Route::get('/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
+		Route::delete('/gallery', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
+		Route::post('/gallery/images', [GalleryController::class, 'uploadImages'])->name('admin.gallery.upload-images');
+		Route::delete('/gallery/images', [GalleryController::class, 'deleteImages'])->name('admin.gallery.delete-images');
 
 		Route::get('/contact', function () {
 			return Inertia::render('Admin/Contact', [

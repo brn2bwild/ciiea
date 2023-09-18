@@ -29,6 +29,7 @@ import {
 		faAngleRight,
 		faImages,
 		faCircleXmark,
+		faPlusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -59,7 +60,8 @@ library.add(
 		faAngleLeft,
 		faAngleRight,
 		faImages,
-		faCircleXmark
+		faCircleXmark,
+		faPlusCircle
 );
 
 const appName =

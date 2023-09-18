@@ -97,6 +97,6 @@ const modalImageUrl = ref('');
 	</div>
 
 	<Modal @close="showModal = false" :show=" showModal " :maxWidth=" '7xl' ">
-		<img loading="lazy" :src=" modalImageUrl " alt="foro-1">
+		<img class="object-cover" loading="lazy" :src=" modalImageUrl " alt="image">
 	</Modal>
 </template>

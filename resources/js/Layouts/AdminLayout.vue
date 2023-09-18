@@ -151,8 +151,8 @@ const showingNavigationDropdown = ref(false);
 					:active=" $page.url.includes( '/admin/convocations' ) ">
 					Convocatorias
 				</SidebarLink>
-				<SidebarLink :href=" route( 'admin.convocations.index' ) "
-					:active=" $page.url.includes( '/admin/convocations' ) ">
+				<SidebarLink :href=" route( 'admin.gallery.index' ) "
+					:active=" $page.url.includes( '/admin/gallery' ) ">
 					Galería
 				</SidebarLink>
 				<h2 class="px-4 text-neutral-500">Administración</h2>

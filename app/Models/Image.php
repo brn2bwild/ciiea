@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class File extends Model
+class Image extends Model
 {
 	use HasFactory;
 
 	protected $fillable = [
-		'name',
+		'title',
 		'path',
 		'size_bytes',
 	];
 
-	public function fileable(): MorphTo
+	public function imageable(): MorphTo
 	{
 		return $this->select('id')->morphTo();
 	}
