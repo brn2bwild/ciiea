@@ -96,7 +96,7 @@ const handleOpenModal = () => {
 <template>
 	<div class="flex justify-center items-center p-4">
 		<div class="flex flex-col items-center justify-center w-full gap-y-2">
-			<label for="dropzone-file"
+			<label for="upload-file-input"
 				class="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
 				<div v-if=" fileName || file " class="flex flex-col items-center justify-center pt-5 pb-6 px-2">
 					<font-awesome-icon class="mb-2" :icon=" { prefix: 'fa', iconName: 'file' } " size="3x" style="color: white;" />
@@ -116,7 +116,7 @@ const handleOpenModal = () => {
 					<p class="text-xs text-gray-500 dark:text-gray-400">PDF (MAX. 2MB)</p>
 				</div>
 				<form @submit.prevent=" handleSubmitFile ">
-					<input @change=" handleFileChange " id="dropzone-file" type="file" class="hidden" ref="resourceFileForm.file" />
+					<input @change=" handleFileChange " id="upload-file-input" type="file" class="hidden" ref="resourceFileForm.file" />
 				</form>
 			</label>
 			<Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">

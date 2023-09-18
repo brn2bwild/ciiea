@@ -16,12 +16,12 @@ trait HasFile
 		return $this->morphOne(File::class, 'fileable');
 	}
 
-	public function getExistingFile()
+	public function getExistingFile(): File
 	{
 		return $this->file()->first();
 	}
 
-	public function attachFile(Request $request)
+	public function attachFile(Request $request): void
 	{
 		$current = $this->getExistingFile();
 
@@ -43,7 +43,7 @@ trait HasFile
 		$this->file()->save($newFile);
 	}
 
-	public function detachFile()
+	public function detachFile(): void
 	{
 		$file = $this->getExistingFile();
 

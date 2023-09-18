@@ -54,10 +54,12 @@ class BookController extends Controller
 
 	public function update(BookUpdateRequest $request): RedirectResponse
 	{
-		Book::findOrFail($request->id)
-			->update($request->validated());
+		$validated_data = $request->validate();
 
-		return Redirect::back();
+		Book::findOrFail($request->id)
+			->update($validated_data);
+
+		return back();
 	}
 
 	public function destroy(Request $request): RedirectResponse
