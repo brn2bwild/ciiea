@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Str;
 
 class PublicationController extends Controller
 {
@@ -29,6 +30,16 @@ class PublicationController extends Controller
 				'publicated_at' => date('d M Y', strtotime($publication->publicated_at))
 			]),
 		]);
+	}
+
+	public function store(Request $request): RedirectResponse
+	{
+		Publication::create([
+			'title'=> $request->title,
+			'publicated_at' => $request->publicated_at,
+			'slug' => Str::slug(($request->title)),
+		]);
+		return back()->with('success','');
 	}
 
 	public function edit(Request $request): Response

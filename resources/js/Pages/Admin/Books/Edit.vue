@@ -1,23 +1,22 @@
 <script setup>
 import AdminLayout from '@/Layouts/AdminLayout.vue'
-import { Head, useForm, usePage } from "@inertiajs/vue3";
+import { Head, useForm } from "@inertiajs/vue3";
 import TextInput from '@/Components/TextInput.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import FileInput from '@/Components/FileInput.vue';
 import InputError from '@/Components/InputError.vue';
-import PdfViewer from '@/Components/PdfViewer.vue';
 
 defineOptions({
 	layout: AdminLayout
-});
+})
 
 const props = defineProps({
 	book: {
 		type: Object,
 		required: true
 	}
-});
+})
 
 const bookForm = useForm({
 	id: props.book.id,
@@ -25,11 +24,11 @@ const bookForm = useForm({
 	authors: props.book.authors,
 	isbn: props.book.isbn,
 	publicated_at: props.book.publicated_at,
-});
+})
 
 const handleUpdateBook = () => {
 	bookForm.patch(route('admin.books.update'));
-};
+}
 
 </script>
 

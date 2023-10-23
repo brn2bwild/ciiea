@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
-
+use Illuminate\Support\Str;
 
 class BookController extends Controller
 {
@@ -34,6 +34,19 @@ class BookController extends Controller
 					'publicated_at' => date('d M Y', strtotime($book->publicated_at))
 				]),
 		]);
+	}
+
+	public function store(Request $request): RedirectResponse
+	{
+		Book::create([
+			'title' => $request->title,
+			'authors' => $request->authors,
+			'isbn' => $request->isbn ?? '',
+			'publicated_at' => $request->publicated_at,
+			'slug' => Str::slug($request->title),
+		]);
+
+		return back();
 	}
 
 	public function edit(Request $request): Response

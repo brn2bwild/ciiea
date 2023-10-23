@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Str;
 
 class MagazineController extends Controller
 {
@@ -29,6 +30,16 @@ class MagazineController extends Controller
 					"publicated_at" => date("d M Y", strtotime($magazine->publicated_at)),
 				]),
 		]);
+	}
+
+	public function store(Request $request): RedirectResponse
+	{
+		Magazine::create([
+			'name' => $request->name,
+			'publicated_at' => $request->publicated_at,
+			'slug' => Str::slug($request->name),
+		]);
+		return back();
 	}
 
 	public function edit(Request $request): Response

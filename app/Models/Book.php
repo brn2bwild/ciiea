@@ -11,10 +11,10 @@ class Book extends Model
 	use HasFactory, HasFile;
 
 	protected $fillable = [
-		'uuid',
 		'title',
 		'authors',
 		'isbn',
 		'publicated_at',
+		'slug',
 	];
 }

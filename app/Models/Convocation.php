@@ -18,6 +18,7 @@ class Convocation extends Model
 		'time',
 		'location',
 		'description',
+		'slug'
 	];
 
 	// protected $casts = [

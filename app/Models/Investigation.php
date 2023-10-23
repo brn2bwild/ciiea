@@ -16,5 +16,6 @@ class Investigation extends Model
 		'authors',
 		'short_description',
 		'publicated_at',
+		'slug',
 	];
 }

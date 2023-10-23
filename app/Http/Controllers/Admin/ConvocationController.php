@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Str;
 
 class ConvocationController extends Controller
 {
@@ -33,6 +34,19 @@ class ConvocationController extends Controller
 					'location' => $convocation->location,
 				])
 		]);
+	}
+
+	public function store(Request $request): RedirectResponse
+	{
+		Convocation::create([
+			'name' => $request->name,
+			'location' => $request->location,
+			'date' => $request->date,
+			'time'=> $request->time,
+			'description' => $request->description,
+			'slug' => Str::slug($request->name),
+		]);
+		return back()->with('success','');
 	}
 
 	public function edit(Request $request): Response

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Str;
 
 class GalleryController extends Controller
 {
@@ -33,6 +34,17 @@ class GalleryController extends Controller
 					]),
 			]
 		);
+	}
+
+	public function store(Request $request): RedirectResponse
+	{
+		Event::create([
+			'name' => $request->name,
+			'date' => $request->date,
+			'slug' => Str::slug($request->name),
+		]);
+
+		return back()->with('success','');
 	}
 
 	public function edit(Request $request): Response

@@ -13,6 +13,7 @@ class Publication extends Model
 	protected $fillable = [
 		'title',
 		'publicated_at',
+		'slug',
 	];
 
 }

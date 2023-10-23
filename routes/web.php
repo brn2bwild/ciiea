@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdministratorController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ConvocationController;
@@ -73,7 +74,8 @@ Route::get('/contact', function () {
 	]);
 })->name('contact');
 
-Route::get('/files/{file}', [FileController::class, 'show'])->name('file.show');
+Route::get('/files/{file}', [FileController::class, 'show'])
+	->name('file.show');
 
 Route::get('/dashboard', function () {
 	return Inertia::render('Dashboard');
@@ -111,6 +113,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		})->name('admin.dashboard');
 
 		Route::get('/books', [BookController::class, 'index'])->name('admin.books.index');
+		Route::post('/books', [BookController::class, 'store'])->name('admin.books.store');
 		Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('admin.books.edit');
 		Route::patch('/books', [BookController::class, 'update'])->name('admin.books.update');
 		Route::delete('/books', [BookController::class, 'destroy'])->name('admin.books.destroy');
@@ -118,6 +121,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::delete('/book/file', [BookController::class, 'deleteFile'])->name('admin.books.delete-file');
 
 		Route::get('/magazines', [MagazineController::class, 'index'])->name('admin.magazines.index');
+		Route::post('/magazines', [MagazineController::class, 'store'])->name('admin.magazines.store');
 		Route::get('/magazines/{id}/edit', [MagazineController::class, 'edit'])->name('admin.magazines.edit');
 		Route::patch('/magazines', [MagazineController::class, 'update'])->name('admin.magazines.update');
 		Route::delete('/magazines', [MagazineController::class, 'destroy'])->name('admin.magazines.destroy');
@@ -125,6 +129,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::delete('/magazines/file', [MagazineController::class, 'deleteFile'])->name('admin.magazines.delete-file');
 
 		Route::get('/historical-publications', [PublicationController::class, 'index'])->name('admin.historical-publications.index');
+		Route::post('/historical-publications', [PublicationController::class, 'store'])->name('admin.historical-publications.store');
 		Route::get('/historical-publications/{id}/edit', [PublicationController::class, 'edit'])->name('admin.historical-publications.edit');
 		Route::patch('/historical-publications', [PublicationController::class, 'update'])->name('admin.historical-publications.update');
 		Route::delete('/historical-publications', [PublicationController::class, 'destroy'])->name('admin.historical-publications.destroy');
@@ -132,6 +137,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::delete('/historical-publications/file', [PublicationController::class, 'deleteFile'])->name('admin.historical-publications.delete-file');
 
 		Route::get('/investigations', [InvestigationController::class, 'index'])->name('admin.investigations.index');
+		Route::post('/investigations', [InvestigationController::class, 'store'])->name('admin.investigations.store');
 		Route::get('/investigations/{id}/edit', [InvestigationController::class, 'edit'])->name('admin.investigations.edit');
 		Route::patch('/investigations', [InvestigationController::class, 'update'])->name('admin.investigations.update');
 		Route::delete('/investigations', [InvestigationController::class, 'destroy'])->name('admin.investigations.destroy');
@@ -139,6 +145,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::delete('/investigations/file', [InvestigationController::class, 'deleteFile'])->name('admin.investigations.delete-file');
 
 		Route::get('/convocations', [ConvocationController::class, 'index'])->name('admin.convocations.index');
+		Route::post('/convocations', [ConvocationController::class, 'store'])->name('admin.convocations.store');
 		Route::get('/convocations/{id}/edit', [ConvocationController::class, 'edit'])->name('admin.convocations.edit');
 		Route::patch('/convocations', [ConvocationController::class, 'update'])->name('admin.convocations.update');
 		Route::delete('/convocations', [ConvocationController::class, 'destroy'])->name('admin.convocations.destroy');
@@ -146,10 +153,18 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::delete('/convocations/file', [ConvocationController::class, 'deleteFile'])->name('admin.convocations.delete-file');
 
 		Route::get('/gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
+		Route::post('/gallery', [GalleryController::class, 'store'])->name('admin.gallery.store');
 		Route::get('/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('admin.gallery.edit');
 		Route::delete('/gallery', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
 		Route::post('/gallery/images', [GalleryController::class, 'uploadImages'])->name('admin.gallery.upload-images');
 		Route::delete('/gallery/images', [GalleryController::class, 'deleteImages'])->name('admin.gallery.delete-images');
+
+		Route::get('/administrators', [AdministratorController::class, 'index'])->name('admin.administrators.index');
+		Route::post('/administrators', [AdministratorController::class, 'store'])->name('admin.administrators.store');
+		Route::get('/administrators/{id}/edit', [AdministratorController::class, 'edit'])->name('admin.administrators.edit');
+		Route::patch('/administrators', [AdministratorController::class, 'update'])->name('admin.administrators.update');
+		Route::delete('/administrators', [AdministratorController::class, 'destroy'])->name('admin.administrators.destroy');
+
 
 		Route::get('/contact', function () {
 			return Inertia::render('Admin/Contact', [
@@ -170,7 +185,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 					]
 				]
 			]);
-		})->name('admin.contact');
+		})
+			->name('admin.contact');
 		Route::post('/contact', [ContactController::class, 'update'])
 			->name('admin.contact.update');
 	});

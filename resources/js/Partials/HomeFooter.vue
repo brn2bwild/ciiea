@@ -14,10 +14,10 @@
 			</div>
 			<div class="w-1/2 flex justify-center items-center gap-8">
 				<a href="https://facebook.com" target="_blank">
-					<font-awesome-icon :icon=" { prefix: 'fab', iconName: 'facebook' } " size="3x" style="color: white;" />
+					<font-awesome-icon :icon=" [ 'fab', 'facebook' ] " size="3x" style="color: white;" />
 				</a>
 				<a href="https://facebook.com" target="_blank">
-					<font-awesome-icon :icon=" { prefix: 'fab', iconName: 'twitter' } " size="3x" style="color: white;" />
+					<font-awesome-icon :icon=" [ 'fab', 'twitter' ] " size="3x" style="color: white;" />
 				</a>
 			</div>
 		</div>

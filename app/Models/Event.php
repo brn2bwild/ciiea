@@ -15,6 +15,7 @@ class Event extends Model
 	protected $fillable = [
 		'name',
 		'date',
+		'slug',
 	];
 
 	// Se castea la fecha para que tenga el formato adecuado

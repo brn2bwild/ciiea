@@ -16,9 +16,9 @@ trait HasFile
 		return $this->morphOne(File::class, 'fileable');
 	}
 
-	public function getExistingFile(): File
+	public function getExistingFile(): File|null
 	{
-		return $this->file()->first();
+		return ($this->file()->first()) ?? null;
 	}
 
 	public function attachFile(Request $request): void

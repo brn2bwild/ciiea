@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -44,22 +45,22 @@ class PermissionsSeeer extends Seeder
 		]);
 		$user->assignRole($userRole);
 
-		$user = User::factory()->create([
+		$editor = User::factory()->create([
 			'name' => 'Example Editor',
 			'email' => 'editor@example.com',
 		]);
-		$user->assignRole($editorRole);
+		$editor->assignRole($editorRole);
 
-		$user = User::factory()->create([
+		$admin = User::factory()->create([
 			'name' => 'Example Admin User',
 			'email' => 'admin@example.com',
 		]);
-		$user->assignRole($adminRole);
+		$admin->assignRole($adminRole);
 
-		$user = User::factory()->create([
+		$super_admin = User::factory()->create([
 			'name' => 'Example Super-Admin User',
 			'email' => 'superadmin@example.com',
 		]);
-		$user->assignRole($superAdminRole);
+		$super_admin->assignRole($superAdminRole);
 	}
 }
