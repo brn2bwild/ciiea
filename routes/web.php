@@ -4,19 +4,15 @@ use App\Http\Controllers\Admin\AdministratorController;
 use App\Http\Controllers\Admin\BookController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ConvocationController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\InvestigationController;
 use App\Http\Controllers\Admin\MagazineController;
 use App\Http\Controllers\Admin\PublicationController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Book;
-use App\Models\Convocation;
-use App\Models\Event;
-use App\Models\Investigation;
-use App\Models\Magazine;
-use App\Models\Publication;
-use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,8 +22,6 @@ Route::get('/', function () {
 	return Inertia::render('Home', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
-		'laravelVersion' => Application::VERSION,
-		'phpVersion' => PHP_VERSION,
 	]);
 })->name('home');
 
@@ -37,6 +31,17 @@ Route::get('/divulgation', function () {
 		'canRegister' => Route::has('register'),
 	]);
 })->name('divulgation');
+
+Route::get('books', function () {
+	return Inertia::render('Books', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+		'books' => Book::with('file')
+			->select('title', 'authors', 'isbn', 'publicated_at', 'slug')
+			->get()
+			->toArray(),
+	]);
+})->name('books');
 
 Route::get('/convocations', function () {
 	return Inertia::render('Convocations', [
@@ -74,8 +79,7 @@ Route::get('/contact', function () {
 	]);
 })->name('contact');
 
-Route::get('/files/{file}', [FileController::class, 'show'])
-	->name('file.show');
+Route::get('/files/{file}', [FileController::class, 'show'])->name('file.show');
 
 Route::get('/dashboard', function () {
 	return Inertia::render('Dashboard');
@@ -91,26 +95,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'verified', 'role:admin'])
 	->prefix('admin')
 	->group(function () {
-		Route::get('/dashboard', function () {
-			$admin_users = User::with('roles')->get()->filter(
-				fn ($user) => $user->roles->where('name', 'admin')->toArray()
-			)->count();
-
-			$users = User::with('roles')->get()->filter(
-				fn ($user) => $user->roles->whereNotIn('name', 'admin')->toArray()
-			)->count();
-
-			return Inertia::render('Admin/Dashboard', [
-				'books' => Book::get()->count(),
-				'magazines' => Magazine::get()->count(),
-				'publications' => Publication::get()->count(),
-				'investigations' => Investigation::get()->count(),
-				'convocations' => Convocation::get()->count(),
-				'gallery' => Event::get()->count(),
-				'admin_users' => $admin_users,
-				'users' => $users
-			]);
-		})->name('admin.dashboard');
+		Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
 		Route::get('/books', [BookController::class, 'index'])->name('admin.books.index');
 		Route::post('/books', [BookController::class, 'store'])->name('admin.books.store');
@@ -164,6 +149,9 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::get('/administrators/{id}/edit', [AdministratorController::class, 'edit'])->name('admin.administrators.edit');
 		Route::patch('/administrators', [AdministratorController::class, 'update'])->name('admin.administrators.update');
 		Route::delete('/administrators', [AdministratorController::class, 'destroy'])->name('admin.administrators.destroy');
+
+		Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+		Route::delete('/users', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
 
 		Route::get('/contact', function () {

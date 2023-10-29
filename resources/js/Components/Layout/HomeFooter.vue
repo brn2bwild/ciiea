@@ -2,8 +2,8 @@
 
 </script>
 <template>
-	<footer class="w-full h-24 bg-rose-950 absolute">
-		<div class="flex justify-between p-4 pt-6">
+	<footer class="w-full h-24 bg-rose-950 relative">
+		<div class="absolute flex justify-between left-96">
 			<div class="w-1/2 text-white text-right">
 				<p>
 					Dirección: Carretera a las Grutas S/N, Colonia Eureka y Belen, C.P. 66800 Teapa, Tab.

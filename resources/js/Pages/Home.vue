@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/vue3';
 
 defineOptions({
 	layout: HomeLayout
-});
+})
 
 defineProps({
 	canLogin: {
@@ -13,15 +13,7 @@ defineProps({
 	canRegister: {
 		type: Boolean,
 	},
-	laravelVersion: {
-		type: String,
-		required: true,
-	},
-	phpVersion: {
-		type: String,
-		required: true,
-	},
-});
+})
 
 
 </script>

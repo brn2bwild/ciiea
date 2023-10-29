@@ -19,8 +19,8 @@ const emit = defineEmits(['openModal']);
 				<SidebarLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
 					Inicio
 				</SidebarLink>
-				<SidebarLink :href=" route( 'divulgation' ) " :active=" route().current( 'divulgation' ) ">
-					Divulgación
+				<SidebarLink :href=" route( 'books' ) " :active=" route().current( 'books' ) ">
+					Libros
 				</SidebarLink>
 				<SidebarLink :href=" route( 'convocations.index' ) " :active=" route().current( 'convocations.index' ) ">
 					Convocatorias

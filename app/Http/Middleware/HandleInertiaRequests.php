@@ -2,6 +2,13 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Book;
+use App\Models\Convocation;
+use App\Models\Event;
+use App\Models\Investigation;
+use App\Models\Magazine;
+use App\Models\Publication;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -45,6 +52,21 @@ class HandleInertiaRequests extends Middleware
 					'location' => $request->url(),
 				]);
 			},
+			'data' => function () use ($request) {
+				if ($request->user() && $request->user()->role('admin')) {
+					return array_merge([
+						'books' => Book::get()->count(),
+						'magazines' => Magazine::get()->count(),
+						'publications' => Publication::get()->count(),
+						'investigations' => Investigation::get()->count(),
+						'convocations' => Convocation::get()->count(),
+						'galleries' => Event::get()->count(),
+						'admin_users' => User::role('admin')->get()->count(),
+						'users' => User::role('user')->get()->count(),
+					]);
+				}
+				return null;
+			}
 		]);
 	}
 }

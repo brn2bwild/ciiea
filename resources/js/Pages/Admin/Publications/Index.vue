@@ -74,7 +74,7 @@ const handleDeletePublication = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<ResourceCard v-for="  publication   in   publications  " :key=" publication.index "
+			<ResourceCard v-for="   publication    in    publications   " :key=" publication.index "
 				@open-delete-modal="handleOpenDeleteModal( publication.id )"
 				:edit-route=" route( 'admin.historical-publications.edit', publication.id ) ">
 				<template v-slot:title>{{ publication.title.substr( 0, 20 ) }}...</template>
@@ -128,4 +128,5 @@ const handleDeletePublication = () => {
 				</div>
 			</div>
 		</div>
-</Modal></template>
+	</Modal>
+</template>

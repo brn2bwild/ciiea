@@ -1,14 +1,15 @@
 <script setup>
 import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
-import HomeNavbar from "@/Partials/HomeNavbar.vue";
-import HomeSidebar from "@/Partials/HomeSidebar.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Checkbox from "@/Components/Checkbox.vue";
 import { defineAsyncComponent } from "vue";
+import HomeNavbar from "@/Components/Layout/HomeNavbar.vue";
+import HomeSidebar from "@/Components/Layout/HomeSidebar.vue";
+import HomeFooter from "@/Components/Layout/HomeFooter.vue";
 
 const props = defineProps({
 	canLogin: {
@@ -93,6 +94,10 @@ const Modal = defineAsyncComponent(() =>
 		<main class="min-h-screen sm:ml-64 sm:pt-14">
 			<slot />
 		</main>
+
+
+		<!-- Footer -->
+		<HomeFooter />
 
 		<Modal @close=" closeModalFn()" :show=" showModal " :max-width=" 'xl' ">
 			<div class="bg-white w-full p-8">

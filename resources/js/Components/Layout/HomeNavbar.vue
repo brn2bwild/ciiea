@@ -67,10 +67,12 @@ const emit = defineEmits(['openModal', 'closeModal']);
 						<div v-if=" $page.props.auth.user.name ">
 							<Link v-if=" $page.props.auth.user.role == 'admin' " :href=" route( 'admin.dashboard' ) "
 								class=" text-neutral-950 hover:text-neutral-600 focus:no-underline">
-							Dashboard</Link>
-							<Link v-else=" $page.props.auth.user.role == 'editor' " :href=" route( 'profile.edit' ) "
-								class=" text-neutral-950 hover:text-neutral-600 focus:no-underline">
-							{{ $page.props.auth.user.name }}</Link>
+							Dashboard
+							</Link>
+							<Link v-else=" $page.props.auth.user.role == 'editor' || $page.props.auth.user.role == 'user' "
+								:href=" route( 'profile.edit' ) " class=" text-neutral-950 hover:text-neutral-600 focus:no-underline">
+							{{ $page.props.auth.user.name }}
+							</Link>
 						</div>
 
 						<template v-else>
