@@ -13,6 +13,10 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Book;
+use App\Models\Convocation;
+use App\Models\Investigation;
+use App\Models\Magazine;
+use App\Models\Publication;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,7 +36,7 @@ Route::get('/divulgation', function () {
 	]);
 })->name('divulgation');
 
-Route::get('books', function () {
+Route::get('/books', function () {
 	return Inertia::render('Books', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
@@ -43,12 +47,49 @@ Route::get('books', function () {
 	]);
 })->name('books');
 
+Route::get('/magazines', function () {
+	return Inertia::render('Magazines', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+		'magazines' => Magazine::with('file')
+			->select('name', 'publicated_at', 'slug')
+			->get()
+			->toArray(),
+	]);
+})->name('magazines');
+
+Route::get('/hist-publications', function () {
+	return Inertia::render('Publications', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+		'publications' => Publication::with('file')
+			->select('title', 'publicated_at', 'slug')
+			->get()
+			->toArray(),
+	]);
+})->name('hist-publications');
+
+Route::get('/investigations', function () {
+	return Inertia::render('Investigations', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+		'investigations' => Investigation::with('file')
+			->select('title', 'publicated_at', 'slug')
+			->get()
+			->toArray(),
+	]);
+})->name('investigations');
+
 Route::get('/convocations', function () {
 	return Inertia::render('Convocations', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
+		'convocations' => Convocation::with('file')
+			->select('name', 'date', 'time', 'location', 'description', 'slug')
+			->get()
+			->toArray(),
 	]);
-})->name('convocations.index');
+})->name('convocations');
 
 Route::get('/gallery', function () {
 	return Inertia::render('Gallery', [

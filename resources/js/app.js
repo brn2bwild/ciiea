@@ -15,7 +15,6 @@ import {
     faHouse,
 		faComment,
 		faHeart,
-		faH,
 		faBars,
 		faXmark,
 		faBook,

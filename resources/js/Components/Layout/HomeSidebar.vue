@@ -15,12 +15,21 @@ const emit = defineEmits(['openModal']);
 		<!-- Primary Sidebar Menu -->
 		<div class="w-full h-full mx-auto flex flex-col justify-between">
 			<!-- Navigation Links -->
-			<div class="flex flex-col gap-y-1">
+			<div class="flex flex-col">
 				<SidebarLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
 					Inicio
 				</SidebarLink>
 				<SidebarLink :href=" route( 'books' ) " :active=" route().current( 'books' ) ">
 					Libros
+				</SidebarLink>
+				<SidebarLink :href=" route( 'magazines' ) " :active=" route().current( 'magazines' ) ">
+					Revistas
+				</SidebarLink>
+				<SidebarLink :href=" route( 'hist-publications' ) " :active=" route().current( 'hist-publications' ) ">
+					Publicaciones Históricas
+				</SidebarLink>
+				<SidebarLink :href=" route( 'investigations' ) " :active=" route().current( 'investigations' ) ">
+					Investigaciones
 				</SidebarLink>
 				<SidebarLink :href=" route( 'convocations.index' ) " :active=" route().current( 'convocations.index' ) ">
 					Convocatorias

@@ -83,21 +83,21 @@ const Modal = defineAsyncComponent(() =>
 </script>
 
 <template>
-	<div class="min-h-screen bg-gray-200">
+	<div class="w-full min-h-screen bg-gray-50">
 		<!-- Navbar -->
 		<HomeNavbar @open-modal=" openModalFn " :canLogin=" canLogin " :canRegister=" canRegister " />
 
 		<!-- Sidebar -->
-		<HomeSidebar @open-modal=" openModalFn " :canRegister=" canRegister " />
+		<!-- <HomeSidebar @open-modal=" openModalFn " :canRegister=" canRegister " /> -->
 
 		<!-- Page Content -->
-		<main class="min-h-screen sm:ml-64 sm:pt-14">
+		<main class="min-h-screen sm:pt-20">
 			<slot />
 		</main>
 
 
 		<!-- Footer -->
-		<HomeFooter />
+		<!-- <HomeFooter /> -->
 
 		<Modal @close=" closeModalFn()" :show=" showModal " :max-width=" 'xl' ">
 			<div class="bg-white w-full p-8">
