@@ -7,6 +7,9 @@ defineOptions({
 });
 
 defineProps({
+	convocations: {
+		type: Object,
+	},
 	canLogin: {
 		type: Boolean
 	},
@@ -15,9 +18,6 @@ defineProps({
 	}
 });
 
-function saludar() {
-	alert('hola');
-}
 </script>
 <template>
 	<Head title="Convocatorias" />
@@ -25,96 +25,46 @@ function saludar() {
 		<input class="text-neutral-900 rounded-full bg-neutral-200 focus:ring-neutral-400 focus:ring-2 ring-0 border-0 w-1/2" type="text"
 			placeholder="Buscar convocatoria por nombre">
 	</div> -->
-	<section class="w-full px-4 pt-20 pb-10 sm:p-12 grid grid-cols-1 md:grid-cols-3">
-		<div class="col-span-2 flex flex-col gap-y-6">
-			<div class="rounded-lg bg-neutral-50 ring-1 ring-neutral-200 hover:ring-rose-900">
-				<div class="px-4 py-2">
-					<div class="flex flex-wrap justify-start items-center mb-2">
-						<h1 class="w-full sm:w-1/3 font-bold text-xl mr-4 text-neutral-900">Cine debate</h1>
-						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline text-sm">Publicado por Daniel
-							Pérez Flores</h3>
-						<h3 class="text-neutral-600 text-sm">hace 3 horas</h3>
-					</div>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id molestiae
-						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
-					</p>
+	<div class="w-full flex flex-col items-center justify-center sm:px-60 sm:py-10">
+		<section class="w-full pt-10 pb-20">
+			<div class="w-full h-full rounded-xl flex justify-between items-center bg-white p-4 shadow-lg shadow-slate-100">
+				<div class="w-1/2 py-2">
+					<h5 class="text-neutral-500 font-sans">
+						{{ convocations[0].date }} - {{ convocations[0].time }}
+					</h5>
+					<h1 class="text-3xl font-extrabold font-sans mt-2 text-neutral-700">
+						{{ convocations[0].name }}
+					</h1>
+					<h2 class="text-lg font-medium text-neutral-600 mt-2">
+						{{ convocations[0].description.substr(0, 100) }}
+					</h2>
+					<button class="bg-indigo-600 px-4 py-2 rounded-xl text-neutral-50 font-bold mt-4">Leer más</button>
 				</div>
-				<img class="" src="/storage/convocations/conv1.jpg" alt="conv1" />
-				<div class="w-full py-2 flex justify-evenly items-center text-neutral-800">
-					<Link :href=" route( 'home' ) " class="hover:text-green-500">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'comment' } " /> 9
-					</Link>
-					<Link :href=" route( 'home' ) " class="hover:text-rose-500">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'heart' } " /> 10
-					</Link>
+				<div class="w-1/2 rounded-xl overflow-hidden">
+					<img src="/storage/gallery/foro-1.jpg" alt="imagen1">
 				</div>
 			</div>
-			<div class="rounded-lg bg-neutral-50 ring-1 ring-neutral-200 hover:ring-rose-900">
-				<div class="px-4 py-2">
-					<div class="flex flex-wrap justify-start items-center mb-2">
-						<h1 class="w-full sm:w-1/3 font-bold text-xl mr-4 text-neutral-900">Cine debate</h1>
-						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline text-sm">Publicado por Daniel
-							Pérez Flores</h3>
-						<h3 class="text-neutral-600 text-sm">hace 3 horas</h3>
-					</div>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id molestiae
-						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
+		</section>
+		<section class="w-full pb-6">
+			<h1 class="text-xl text-neutral-600 font-bold">Últimas Convocatorias</h1>
+		</section>
+		<section class="w-full grid grid-cols-1 sm:grid-cols-2 gap-10">
+			<div v-for="  convocation   in   convocations  " :key=" convocation.index "
+				class="w-full rounded-xl flex flex-col justify-center items-start bg-white p-4 shadow-lg shadow-slate-100">
+				<img class="rounded-xl" src="/storage/convocations/conv1.jpg" :alt=" 'convocation' + convocation.index " />
+				<div class="flex flex-col justify-between items-start">
+					<h3 class="text-neutral-600 text-sm">
+						{{ convocation.date }} - {{ convocation.time }}
+					</h3>
+					<h1 class="w-full font-bold text-xl mr-4 text-neutral-900">{{ convocation.name }}</h1>
+					<p>
+						{{ convocation.description.substr( 0, 100 ) }}...
 					</p>
-				</div>
-				<!-- <img class="" src="/storage/convocations/conv1.jpg" alt="conv1" /> -->
-				<div class="w-full py-2 flex justify-evenly items-center text-neutral-800">
-					<Link :href=" route( 'home' ) " class="hover:text-green-500">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'comment' } " /> 34
-					</Link>
-					<Link :href=" route( 'home' ) " class="hover:text-rose-500">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'heart' } " /> 21
-					</Link>
+					<h3 class="text-neutral-600 text-sm">
+						Publicado hace 3 horas
+					</h3>
 				</div>
 			</div>
-			<div class="rounded-lg bg-neutral-50 ring-1 ring-neutral-200 hover:ring-rose-900">
-				<div class="px-4 py-2 text-neutral-800">
-					<div class="flex justify-start items-center">
-						<h1 class="font-bold text-xl mr-4">Cine debate</h1>
-						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline">Publicado por Daniel
-							Pérez Flores</h3>
-						<h3 class="text-neutral-600">hace 3 horas</h3>
-					</div>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id molestiae
-						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
-					</p>
-				</div>
-				<img class="" src="/storage/convocations/conv2.jpg" alt="conv2" />
-				<div class="w-full py-2 flex justify-evenly items-center text-neutral-800">
-					<Link :href=" route( 'home' ) " class="hover:text-green-500">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'comment' } " /> 23
-					</Link>
-					<Link :href=" route( 'home' ) " class="hover:text-rose-500">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'heart' } " /> 16
-					</Link>
-				</div>
-			</div>
-			<div class="rounded-lg bg-neutral-50 ring-1 ring-neutral-200 hover:ring-rose-900">
-				<div class="px-4 py-2 text-neutral-800">
-					<div class="flex justify-start items-center">
-						<h1 class="font-bold text-xl mr-4">Cine debate</h1>
-						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline">Publicado por Daniel
-							Pérez Flores</h3>
-						<h3 class="text-neutral-600">hace 3 horas</h3>
-					</div>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id molestiae
-						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
-					</p>
-				</div>
-				<img class="" src="/storage/convocations/conv3.jpg" alt="conv3" />
-				<div class="w-full py-2 flex justify-evenly items-center text-neutral-800">
-					<Link :href=" route( 'home' ) " class="hover:text-green-500">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'comment' } " /> 3
-					</Link>
-					<Link :href=" route( 'home' ) " class="hover:text-rose-500">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'heart' } " /> 2
-					</Link>
-				</div>
-			</div>
-		</div>
-	</section>
+		</section>
+	</div>
 </template>

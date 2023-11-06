@@ -83,7 +83,7 @@ const Modal = defineAsyncComponent(() =>
 </script>
 
 <template>
-	<div class="w-full min-h-screen bg-gray-50">
+	<div class="w-full min-h-screen bg-neutral-50">
 		<!-- Navbar -->
 		<HomeNavbar @open-modal=" openModalFn " :canLogin=" canLogin " :canRegister=" canRegister " />
 

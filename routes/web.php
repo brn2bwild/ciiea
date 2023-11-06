@@ -74,7 +74,7 @@ Route::get('/investigations', function () {
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'investigations' => Investigation::with('file')
-			->select('title', 'publicated_at', 'slug')
+			->select('title', 'publicated_at', 'short_description', 'slug')
 			->get()
 			->toArray(),
 	]);

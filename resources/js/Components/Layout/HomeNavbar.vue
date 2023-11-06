@@ -2,7 +2,6 @@
 import { ref } from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from "@/Components/Dropdown.vue";
-import DropdownLink from "@/Components/DropdownLink.vue";
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import NavLink from '@/Components/NavLink.vue'
 
@@ -67,8 +66,8 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					<Dropdown align="right" width="56">
 						<template #trigger>
 							<span
-								class="inline-flex items-center px-4 py-2 font-bold text-gray-500 hover:text-neutral-50 hover:bg-sky-400 rounded-xl transition duration-150 ease-in-out"
-								:class=" { 'text-neutral-50 bg-sky-400': route().current( 'books' ) || route().current( 'magazines' ) || route().current( 'hist-publications' ) || route().current( 'investigations' ) } ">
+								class="inline-flex items-center px-4 py-2 font-bold hover:text-neutral-50 hover:bg-sky-400 rounded-xl transition duration-150 ease-in-out cursor-pointer"
+								:class=" { 'text-sky-500': $page.url === '/books' || $page.url === '/magazines' || $page.url === '/hist-publications' || $page.url === '/investigations',  'text-gray-500' : $page.url !== '/books' || $page.url !== '/magazines' || $page.url !== '/hist-publications' || $page.url !== '/investigations'} ">
 								Divulgación
 							</span>
 						</template>
