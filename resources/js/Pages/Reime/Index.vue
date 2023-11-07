@@ -17,8 +17,31 @@ defineProps({
 </script>
 <template>
 	<Head title="REIME" />
-	<section class="w-full px-4 pt-20 pb-10 sm:p-12 grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
-		<div class="flex flex-col col-span-1 sm:col-span-2 gap-y-6">
+	<div class="w-full px-4 pt-20 pb-10 sm:p-8 flex justify-between relative gap-4">
+		<section class="hidden w-1/4 sm:flex sm:flex-col h-full sticky top-20">
+			<div class="flex flex-col bg-white rounded-lg pb-4 px-4 pt-2">
+				<h1 class="text-neutral-500 font-medium">Investigadores destacados</h1>
+				<div class="w-full hover:bg-neutral-200 rounded-lg px-4 py-2 cursor-pointer mt-4 flex justify-start">
+					<img src="/storage/images/default-contact.png" alt="contacto" class="h-12 w-12 mr-4">
+					<div class="flex items-center">
+						<h5 class="font-bold">Ciro Gómez Leyva</h5>
+					</div>
+				</div>
+				<div class="w-full hover:bg-neutral-200 rounded-lg px-4 py-2 cursor-pointer mt-4 flex justify-start">
+					<img src="/storage/images/default-contact.png" alt="contacto" class="h-12 w-12 mr-4">
+					<div class="flex items-center">
+						<h5 class="font-bold">Ernesto Guzmán Sánchez</h5>
+					</div>
+				</div>
+				<div class="w-full hover:bg-neutral-200 rounded-lg px-4 py-2 cursor-pointer mt-4 flex justify-start">
+					<img src="/storage/images/default-contact.png" alt="contacto" class="h-12 w-12 mr-4">
+					<div class="flex items-center">
+						<h5 class="font-bold">Jaime López Méndez</h5>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="w-1/2 flex flex-col gap-y-6">
 			<div class="rounded-lg bg-white ring-1 ring-neutral-200 hover:ring-1 hover:ring-rose-900">
 				<div class="px-4 py-2 text-neutral-800">
 					<div class="flex justify-start items-center">
@@ -107,8 +130,8 @@ defineProps({
 					</Link>
 				</div>
 			</div>
-		</div>
-		<div class="hidden col-span-1 sm:flex sm:flex-col h-full sticky top-20">
+		</section>
+		<section class="hidden w-1/4 sm:flex sm:flex-col h-full sticky top-20">
 			<div class="flex flex-col bg-white rounded-lg pb-4 px-4 pt-2 mb-6">
 				<h1 class="text-neutral-500 font-medium">Publicaciones destacadas</h1>
 				<div class="w-full bg-neutral-200 rounded-lg px-4 py-2 cursor-pointer mt-4">
@@ -161,27 +184,6 @@ defineProps({
 					</p>
 				</div>
 			</div>
-			<div class="flex flex-col bg-white rounded-lg pb-4 px-4 pt-2">
-				<h1 class="text-neutral-500 font-medium">Investigadores destacados</h1>
-				<div class="w-full hover:bg-neutral-200 rounded-lg px-4 py-2 cursor-pointer mt-4 flex justify-start">
-					<img src="/storage/images/default-contact.png" alt="contacto" class="h-12 w-12 mr-4">
-					<div class="flex items-center">
-						<h5 class="font-bold">Ciro Gómez Leyva</h5>
-					</div>
-				</div>
-				<div class="w-full hover:bg-neutral-200 rounded-lg px-4 py-2 cursor-pointer mt-4 flex justify-start">
-					<img src="/storage/images/default-contact.png" alt="contacto" class="h-12 w-12 mr-4">
-					<div class="flex items-center">
-						<h5 class="font-bold">Ernesto Guzmán Sánchez</h5>
-					</div>
-				</div>
-				<div class="w-full hover:bg-neutral-200 rounded-lg px-4 py-2 cursor-pointer mt-4 flex justify-start">
-					<img src="/storage/images/default-contact.png" alt="contacto" class="h-12 w-12 mr-4">
-					<div class="flex items-center">
-						<h5 class="font-bold">Jaime López Méndez</h5>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+		</section>
+	</div>
 </template>
