@@ -17,6 +17,7 @@ const openModal = (event) => {
 </script>
 
 <template>
+  
   <div class="relative group">
     <a :href="editRoute" class="block">
       <div class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 transform hover:scale-105 border border-gray-300">
@@ -54,15 +55,12 @@ const openModal = (event) => {
   .relative {
     position: relative;
   }
-
   .absolute {
     position: absolute;
   }
-
   .z-0 {
     z-index: 0;
   }
-
   .z-10 {
     z-index: 10;
   }
