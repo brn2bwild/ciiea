@@ -54,14 +54,18 @@ const openModal = (event) => {
 <style scoped>
   .relative {
     position: relative;
+
   }
   .absolute {
     position: absolute;
+
   }
   .z-0 {
     z-index: 0;
   }
+
   .z-10 {
     z-index: 10;
-  }
+   }
+   
 </style>
