@@ -11,6 +11,7 @@ use App\Models\Publication;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Spatie\Permission\Models\Role;
 use Tightenco\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
@@ -63,6 +64,7 @@ class HandleInertiaRequests extends Middleware
 						'galleries' => Event::get()->count(),
 						'admin_users' => User::role('admin')->get()->count(),
 						'users' => User::role('user')->get()->count(),
+						'roles' => Role::get()->count(),
 					]);
 				}
 				return null;

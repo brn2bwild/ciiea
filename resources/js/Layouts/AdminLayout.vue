@@ -81,13 +81,13 @@ const showingNavigationDropdown = ref(false);
 							class="inline-flex items-center justify-center px-2 py-0 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
 							<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 								<path :class=" {
-									hidden: showingNavigationDropdown,
-									'inline-flex': !showingNavigationDropdown,
-								} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+								hidden: showingNavigationDropdown,
+								'inline-flex': !showingNavigationDropdown,
+							} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
 								<path :class=" {
-									hidden: !showingNavigationDropdown,
-									'inline-flex': showingNavigationDropdown,
-								} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+								hidden: !showingNavigationDropdown,
+								'inline-flex': showingNavigationDropdown,
+							} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 							</svg>
 						</button>
 					</div>
@@ -134,28 +134,36 @@ const showingNavigationDropdown = ref(false);
 			<div class="pl-4">
 				<SidebarLink :href=" route( 'admin.books.index' ) " :active=" $page.url.includes( '/admin/books' ) ">
 					<div class="flex justify-between items-center w-full">
-						<span>Libros</span><span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">{{ $page.props.data.books
-						}}</span>
+						<span>Libros</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.books }}
+						</span>
 					</div>
 				</SidebarLink>
 				<SidebarLink :href=" route( 'admin.magazines.index' ) " :active=" $page.url.includes( '/admin/magazines' ) ">
 					<div class="flex justify-between items-center w-full">
-						<span>Revistas</span><span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">{{
-							$page.props.data.magazines }}</span>
+						<span>Revistas</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.magazines }}
+						</span>
 					</div>
 				</SidebarLink>
 				<SidebarLink :href=" route( 'admin.historical-publications.index' ) "
 					:active=" $page.url.includes( '/admin/historical-publications' ) ">
 					<div class="flex justify-between items-center w-full">
-						<span>Publicaciones</span><span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">{{
-							$page.props.data.publications }}</span>
+						<span>Publicaciones</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.publications }}
+						</span>
 					</div>
 				</SidebarLink>
 				<SidebarLink :href=" route( 'admin.investigations.index' ) "
 					:active=" $page.url.includes( '/admin/investigations' ) ">
 					<div class="flex justify-between items-center w-full">
-						<span>Investigaciones</span><span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">{{
-							$page.props.data.investigations }}</span>
+						<span>Investigaciones</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.investigations }}
+						</span>
 					</div>
 				</SidebarLink>
 			</div>
@@ -164,37 +172,54 @@ const showingNavigationDropdown = ref(false);
 				<SidebarLink :href=" route( 'admin.convocations.index' ) "
 					:active=" $page.url.includes( '/admin/convocations' ) ">
 					<div class="flex justify-between items-center w-full">
-						<span>Convocatorias</span><span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">{{
-							$page.props.data.convocations }}</span>
+						<span>Convocatorias</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.convocations }}
+						</span>
 					</div>
 				</SidebarLink>
 				<SidebarLink :href=" route( 'admin.gallery.index' ) " :active=" $page.url.includes( '/admin/gallery' ) ">
 					<div class="flex justify-between items-center w-full">
-						<span>Galería</span><span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">{{
-							$page.props.data.galleries }}</span>
+						<span>Galería</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.galleries }}
+						</span>
 					</div>
 				</SidebarLink>
 			</div>
 			<h2 class="px-4 font-semibold text-neutral-500 mt-4 mb-2">Administración</h2>
 			<div class="pl-4">
+				<SidebarLink :href=" route( 'admin.users.index' ) " :active=" $page.url.includes( '/admin/users' ) ">
+					<div class="flex justify-between items-center w-full">
+						<span>Usuarios</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.users }}
+						</span>
+					</div>
+				</SidebarLink>
 				<SidebarLink :href=" route( 'admin.administrators.index' ) "
 					:active=" $page.url.includes( '/admin/administrators' ) ">
 					<div class="flex justify-between items-center w-full">
-						<span>Administradores</span><span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">{{
-							$page.props.data.admin_users }}</span>
+						<span>Administradores</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.admin_users }}
+						</span>
 					</div>
 				</SidebarLink>
-				<SidebarLink :href=" route( 'admin.users.index' ) " :active=" $page.url.includes( '/admin/users' ) ">
+				<SidebarLink :href=" route( 'admin.roles.index' ) " :active=" $page.url.includes( '/admin/roles' ) ">
 					<div class="flex justify-between items-center w-full">
-						<span>Usuarios</span><span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">{{ $page.props.data.users
-						}}</span>
+						<span>Roles</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.roles }}
+						</span>
 					</div>
 				</SidebarLink>
 			</div>
 		</aside>
 
-	<!-- Page Content -->
-	<main class="pt-20 sm:pl-64">
-		<slot />
-	</main>
-</div></template>
+		<!-- Page Content -->
+		<main class="pt-20 sm:pl-64">
+			<slot />
+		</main>
+	</div>
+</template>

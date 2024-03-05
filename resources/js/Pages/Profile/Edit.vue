@@ -7,7 +7,7 @@ import { Head } from '@inertiajs/vue3';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 
 defineOptions({
-	layout: AdminLayout
+	layout: AuthenticatedLayout
 })
 
 defineProps({
@@ -21,8 +21,9 @@ defineProps({
 </script>
 
 <template>
+
 	<Head title="Perfil" />
-	<h1 class="text-3xl font-bold pl-8">Editar perfíl</h1>
+	<!-- <h1 class="text-3xl font-bold pl-8">Editar perfíl</h1> -->
 	<!-- <AuthenticatedLayout> -->
 	<!-- <template #header>
 				<h2 class="font-semibold text-xl text-gray-800 leading-tight">Perfil</h2>

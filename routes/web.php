@@ -9,11 +9,13 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\InvestigationController;
 use App\Http\Controllers\Admin\MagazineController;
 use App\Http\Controllers\Admin\PublicationController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Book;
 use App\Models\Convocation;
+use App\Models\Event;
 use App\Models\Investigation;
 use App\Models\Magazine;
 use App\Models\Publication;
@@ -92,11 +94,26 @@ Route::get('/convocations', function () {
 })->name('convocations');
 
 Route::get('/gallery', function () {
-	return Inertia::render('Gallery', [
+	// $events = Event::with('images')->get();
+	// dd($events);
+	return Inertia::render('Gallery/Index', [
+		'events' => Event::with('images')->get(),
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 	]);
-})->name('gallery');
+})->name('gallery.index');
+
+Route::get('/gallery/{event}', function ($event) {
+	$event = Event::where('id', $event)->first();
+
+	$images = $event->images;
+
+	return Inertia::render('Gallery/Details', [
+		'images' => $images,
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+	]);
+})->name('gallery.details');
 
 Route::get('/reime', function () {
 	return Inertia::render('Reime/Index', [
@@ -191,9 +208,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::patch('/administrators', [AdministratorController::class, 'update'])->name('admin.administrators.update');
 		Route::delete('/administrators', [AdministratorController::class, 'destroy'])->name('admin.administrators.destroy');
 
+		Route::get('/roles', [RoleController::class, 'index'])->name('admin.roles.index');
+		Route::get('/roles/{id}/edit', [RoleController::class, 'edit'])->name('admin.roles.edit');
+
 		Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
 		Route::delete('/users', [UserController::class, 'destroy'])->name('admin.users.destroy');
-
 
 		Route::get('/contact', function () {
 			return Inertia::render('Admin/Contact', [
@@ -214,10 +233,9 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 					]
 				]
 			]);
-		})
-			->name('admin.contact');
-		Route::post('/contact', [ContactController::class, 'update'])
-			->name('admin.contact.update');
+		})->name('admin.contact');
+
+		Route::post('/contact', [ContactController::class, 'update'])->name('admin.contact.update');
 	});
 
 require __DIR__ . '/auth.php';

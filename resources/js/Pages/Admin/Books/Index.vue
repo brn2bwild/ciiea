@@ -75,7 +75,7 @@ const handleDeleteBook = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<ResourceCard v-for="      book      in      books      " :key=" book.index "
+			<ResourceCard v-for=" book in books " :key=" book.index "
 				@open-delete-modal="handleOpenDeleteModal( book.id )" :edit-route=" route( 'admin.books.edit', book.id ) ">
 				<template v-slot:title>{{ book.title.substr( 0, 20 ) }}...</template>
 				<template v-slot:subtitle>{{ book.authors }}</template>

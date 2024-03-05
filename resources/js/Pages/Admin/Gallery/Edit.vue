@@ -72,7 +72,9 @@ const handleSubmitImages = (images) => {
 	}
 }
 </script>
+
 <template>
+
 	<Head title="Galería" />
 	<h1 class="text-3xl font-bold pl-8">Galería evento {{ event.name }}</h1>
 	<h2 class="text-xl font-semibold pl-8">Fecha: {{ event.date }}</h2>
@@ -88,13 +90,13 @@ const handleSubmitImages = (images) => {
 					:icon=" { prefix: 'fa', iconName: 'plus-circle' } " />
 				<h1 class="font-bold">Agregar imágenes</h1>
 			</label>
-			<div v-for=" image in event.images " :key=" image.index "
+			<div v-for="  image  in  event.images  " :key=" image.index "
 				class="bg-white h-40 rounded-xl overflow-hidden cursor-pointer group relative">
 				<!-- {{ image.path }} -->
 				<img @click="handleShowImageModal( route( 'home' ) + '/storage/' + image.path, image.title )"
 					class="w-full h-full object-cover group-hover:opacity-40 transition-all duration-200"
 					:src=" route( 'home' ) + '/storage/' + image.path ">
-				<button @click=" handleShowDeleteModal(image.id) "
+				<button @click=" handleShowDeleteModal( image.id )"
 					class="block sm:hidden group-hover:block transition-all duration-200 text-5xl text-red-400 sm:text-red-300 hover:text-red-400 rounded-full absolute top-4 right-4">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'circle-xmark' } " />
 				</button>
@@ -119,4 +121,3 @@ const handleSubmitImages = (images) => {
 		</div>
 	</Modal>
 </template>
-

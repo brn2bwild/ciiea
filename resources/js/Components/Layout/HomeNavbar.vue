@@ -46,13 +46,13 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					class="inline-flex items-center justify-center p-2 rounded-md text-neutral-400 hover:text-neutral-500 hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 focus:text-neutral-500 transition duration-150 ease-in-out">
 					<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 						<path :class=" {
-							hidden: showingNavigationDropdown,
-							'inline-flex': !showingNavigationDropdown,
-						} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+					hidden: showingNavigationDropdown,
+					'inline-flex': !showingNavigationDropdown,
+				} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
 						<path :class=" {
-							hidden: !showingNavigationDropdown,
-							'inline-flex': showingNavigationDropdown,
-						} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					hidden: !showingNavigationDropdown,
+					'inline-flex': showingNavigationDropdown,
+				} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 					</svg>
 				</button>
 			</div>
@@ -67,10 +67,11 @@ const emit = defineEmits(['openModal', 'closeModal']);
 						<template #trigger>
 							<span
 								class="inline-flex items-center px-4 py-2 font-bold hover:text-neutral-50 hover:bg-sky-400 rounded-xl transition duration-150 ease-in-out cursor-pointer"
-								:class=" { 'text-sky-500': $page.url === '/books' || $page.url === '/magazines' || $page.url === '/hist-publications' || $page.url === '/investigations',  'text-gray-500' : $page.url !== '/books' || $page.url !== '/magazines' || $page.url !== '/hist-publications' || $page.url !== '/investigations'} ">
+								:class=" { 'text-sky-500': $page.url === '/books' || $page.url === '/magazines' || $page.url === '/hist-publications' || $page.url === '/investigations', 'text-gray-500': $page.url !== '/books' || $page.url !== '/magazines' || $page.url !== '/hist-publications' || $page.url !== '/investigations' } ">
 								Divulgación
 							</span>
 						</template>
+
 						<template #content>
 							<div class="flex flex-col">
 								<NavLink :href=" route( 'books' ) " :active=" route().current( 'books' ) ">
@@ -91,6 +92,9 @@ const emit = defineEmits(['openModal', 'closeModal']);
 				</div>
 				<NavLink :href=" route( 'convocations' ) " :active=" route().current( 'convocations' ) ">
 					Convocatorias
+				</NavLink>
+				<NavLink :href=" route( 'gallery.index' ) " :active=" route().current( 'gallery.index' ) ">
+					Galería
 				</NavLink>
 				<NavLink :href=" route( 'reime' ) " :active=" route().current( 'reime' ) ">
 					REIME
@@ -199,8 +203,8 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					:active=" route().current( 'convocations' ) ">
 					Convocatorias
 				</ResponsiveNavLink>
-				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'gallery' ) "
-					:active=" route().current( 'gallery' ) ">
+				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'gallery.index' ) "
+					:active=" route().current( 'gallery.index' ) ">
 					Galería
 				</ResponsiveNavLink>
 				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'reime' ) "

@@ -36,7 +36,7 @@ class AdministratorController extends Controller
 		]);
 
 		$user->assignRole('admin');
-		
+
 		return back()->with('success', '');
 	}
 
@@ -49,11 +49,25 @@ class AdministratorController extends Controller
 
 	public function update(Request $request): RedirectResponse
 	{
+		//falta agregar la autorización
+
+		//falta agregar la validación
+
 		User::where('id', $request->id)->update([
 			'name' => $request->name,
-			'email' => $request->email
+			'email' => $request->email,
+			'mobile' => $request->mobile,
+			'short_description' => $request->short_description,
+			'long_description' => $request->long_description,
 		]);
 
+		return back()->with('success', '');
+	}
+
+	public function destroy(Request $request): RedirectResponse
+	{
+		User::findOrFail($request->id)->delete();
+		  
 		return back()->with('success', '');
 	}
 }
