@@ -7,9 +7,9 @@ import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Checkbox from "@/Components/Checkbox.vue";
 import { defineAsyncComponent } from "vue";
-import HomeNavbar from "@/Components/Layout/HomeNavbar.vue";
-import HomeSidebar from "@/Components/Layout/HomeSidebar.vue";
-import HomeFooter from "@/Components/Layout/HomeFooter.vue";
+import HomeNavbar from "@/Components/Partials/HomeNavbar.vue";
+// import HomeSidebar from "@/Components/Partials/HomeSidebar.vue";
+// import HomeFooter from "@/Components/Partials/HomeFooter.vue";
 
 const props = defineProps({
 	canLogin: {
@@ -125,8 +125,8 @@ const Modal = defineAsyncComponent(() =>
 							<div class="mt-4">
 								<InputLabel for="password" value="Contraseña" />
 
-								<TextInput id="password" type="password" class="mt-1 block w-full" v-model=" loginForm.password " required
-									autocomplete="current-password" />
+								<TextInput id="password" type="password" class="mt-1 block w-full" v-model=" loginForm.password "
+									required autocomplete="current-password" />
 
 								<InputError class="mt-2" :message=" loginForm.errors.password " />
 							</div>
@@ -204,7 +204,8 @@ const Modal = defineAsyncComponent(() =>
 									</Link> -->
 								<span @click="userIsLogin = true; modalTitle = 'Iniciar sesión'"
 									class="cursor-pointer text-sm hover:underline text-neutral-600 mr-4">¿Ya tienes una cuenta?</span>
-								<PrimaryButton :class=" { 'opacity-25': registerForm.processing } " :disabled=" registerForm.processing ">
+								<PrimaryButton :class=" { 'opacity-25': registerForm.processing } "
+									:disabled=" registerForm.processing ">
 									Registrarse
 								</PrimaryButton>
 							</div>

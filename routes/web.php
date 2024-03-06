@@ -39,7 +39,7 @@ Route::get('/divulgation', function () {
 })->name('divulgation');
 
 Route::get('/books', function () {
-	return Inertia::render('Books', [
+	return Inertia::render('Resources/Books/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'books' => Book::with('file')
@@ -50,7 +50,7 @@ Route::get('/books', function () {
 })->name('books');
 
 Route::get('/magazines', function () {
-	return Inertia::render('Magazines', [
+	return Inertia::render('Resources/Magazines/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'magazines' => Magazine::with('file')
@@ -61,7 +61,7 @@ Route::get('/magazines', function () {
 })->name('magazines');
 
 Route::get('/hist-publications', function () {
-	return Inertia::render('Publications', [
+	return Inertia::render('Resources/Publications/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'publications' => Publication::with('file')
@@ -72,7 +72,7 @@ Route::get('/hist-publications', function () {
 })->name('hist-publications');
 
 Route::get('/investigations', function () {
-	return Inertia::render('Investigations', [
+	return Inertia::render('Resources/Investigations/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'investigations' => Investigation::with('file')
@@ -83,7 +83,7 @@ Route::get('/investigations', function () {
 })->name('investigations');
 
 Route::get('/convocations', function () {
-	return Inertia::render('Convocations', [
+	return Inertia::render('Convocations/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'convocations' => Convocation::with('file')

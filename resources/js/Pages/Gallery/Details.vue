@@ -23,14 +23,18 @@ const showModal = ref(false)
 
 	<Head title="Galería" />
 
-	<section class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 p-8">
+	<section v-if=" Object.keys( images ).length !== 0 " class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 p-8">
 		<div
 			class="w-full rounded-xl flex flex-col justify-start items-start bg-white shadow-lg shadow-slate-100 overflow-hidden cursor-pointer"
-			v-for="              image              in              images              " :key=" image.index ">
+			v-for="                             image                             in                             images                             "
+			:key=" image.index ">
 			<div @click="showModal = true; modalImageUrl = '/storage/' + image.path">
 				<img class="object-cover" :src=" '/storage/' + image.path " alt="image">
 			</div>
 		</div>
+	</section>
+	<section v-else class="w-full min-h-screen px-8 flex justify-center items-center">
+		<h2>No hay imágenes agregadas para este evento</h2>
 	</section>
 
 	<Modal @close="showModal = false" :show=" showModal " :maxWidth=" '3xl' ">
