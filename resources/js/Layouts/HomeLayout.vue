@@ -91,7 +91,7 @@ const Modal = defineAsyncComponent(() =>
 		<!-- <HomeSidebar @open-modal=" openModalFn " :canRegister=" canRegister " /> -->
 
 		<!-- Page Content -->
-		<main class="min-h-screen sm:pt-20">
+		<main class="min-h-screen sm:pt-14">
 			<slot />
 		</main>
 
