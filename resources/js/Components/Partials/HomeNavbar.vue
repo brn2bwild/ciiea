@@ -20,7 +20,7 @@ const emit = defineEmits(['openModal', 'closeModal']);
 </script>
 
 <template>
-	<nav class="w-full bg-neutral-50 z-50 p-4 fixed">
+	<nav class="w-full bg-neutral-50 z-50 p-4 fixed shadow-neutral-300 shadow-md">
 		<!-- Primary Navigation Menu -->
 		<div class="flex justify-between">
 			<div class="flex justify-between">
@@ -66,7 +66,7 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					<Dropdown align="right" width="56">
 						<template #trigger>
 							<span
-								class="inline-flex items-center px-4 py-2 font-bold hover:text-neutral-50 hover:bg-sky-400 rounded-xl transition duration-150 ease-in-out cursor-pointer"
+								class="inline-flex items-center px-4 py-2 font-bold hover:text-sky-500 rounded-xl transition duration-150 ease-in-out cursor-pointer"
 								:class=" { 'text-sky-500': $page.url === '/books' || $page.url === '/magazines' || $page.url === '/hist-publications' || $page.url === '/investigations', 'text-gray-500': $page.url !== '/books' || $page.url !== '/magazines' || $page.url !== '/hist-publications' || $page.url !== '/investigations' } ">
 								Divulgación
 							</span>
@@ -90,7 +90,8 @@ const emit = defineEmits(['openModal', 'closeModal']);
 						</template>
 					</Dropdown>
 				</div>
-				<NavLink :href=" route( 'convocations' ) " :active=" route().current( 'convocations' ) ">
+				<NavLink :href=" route( 'convocations.index' ) "
+					:active=" route().current( 'convocations.index' ) || $page.url.includes( 'convocations' ) ">
 					Convocatorias
 				</NavLink>
 				<NavLink :href=" route( 'gallery.index' ) " :active=" route().current( 'gallery.index' ) ">
@@ -199,8 +200,8 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					:active=" route().current( 'divulgation' ) ">
 					Divulgación
 				</ResponsiveNavLink>
-				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'convocations' ) "
-					:active=" route().current( 'convocations' ) ">
+				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'convocations.index' ) "
+					:active=" route().current( 'convocations.index' ) ">
 					Convocatorias
 				</ResponsiveNavLink>
 				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'gallery.index' ) "
