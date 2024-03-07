@@ -16,13 +16,15 @@ defineProps({
 });
 
 </script>
+
 <template>
+
 	<Head title="Contacto" />
 	<section class="w-full pt-20 px-4 sm:p-12 grid grid-cols-1 md:grid-cols-3 gap-4">
 		<div class="bg-transparent w-full rounded-sm flex relative group mb-32">
 			<img class="h-32 w-32 z-20" src="/storage/images/default-contact.png" alt="default-contact">
 			<div
-				class="bg-indigo-800 w-3/4 p-4 rounded-xl absolute top-10 left-5 z-10 h-52 flex flex-col justify-between items-center">
+				class="bg-blue-950 w-3/4 p-4 rounded-xl absolute top-10 left-5 z-10 h-52 flex flex-col justify-between items-center">
 				<div class="flex flex-col items-end pl-24">
 					<h1 class="text-white text-lg font-bold">
 						Miguel Ordoñez Ordoñez
@@ -50,7 +52,7 @@ defineProps({
 		<div class="bg-transparent w-full rounded-sm flex relative group mb-32">
 			<img class="h-32 w-32 z-20" src="/storage/images/default-contact.png" alt="default-contact">
 			<div
-				class="bg-indigo-800 w-3/4 p-4 rounded-xl absolute top-10 left-5 z-10 h-52 flex flex-col justify-between items-center">
+				class="bg-blue-950 w-3/4 p-4 rounded-xl absolute top-10 left-5 z-10 h-52 flex flex-col justify-between items-center">
 				<div class="flex flex-col items-end pl-24">
 					<h1 class="text-white text-lg font-bold">
 						Ing. Selene
@@ -78,7 +80,7 @@ defineProps({
 		<div class="bg-transparent w-full rounded-sm flex relative group mb-32">
 			<img class="h-32 w-32 z-20" src="/storage/images/default-contact.png" alt="default-contact">
 			<div
-				class="bg-indigo-800 w-3/4 p-4 rounded-xl absolute top-10 left-5 z-10 h-52 flex flex-col justify-between items-center">
+				class="bg-blue-950 w-3/4 p-4 rounded-xl absolute top-10 left-5 z-10 h-52 flex flex-col justify-between items-center">
 				<div class="flex flex-col items-end pl-24">
 					<h1 class="text-white text-lg font-bold">
 						Juan Carlos Rodríguez Méndez
@@ -144,7 +146,7 @@ defineProps({
 	<!-- <h1 class="text-xl sm:text-2xl font-bold mb-4">
 		Centro de Investigación e Innovación para la Enseñanza y el Aprendizaje
 	</h1> -->
-	<div class="w-full flex flex-col justify-center items-center gap-4 bg-indigo-800 p-8">
+	<div class="w-full flex flex-col justify-center items-center gap-4 bg-blue-950 p-8">
 		<h1 class="text-xl text-neutral-100">Centro de Investigación e Innovación para la Enseñanza y el Aprendizaje</h1>
 		<div class="flex justify-center gap-10">
 			<a href="https://facebook.com" target="_blank">
@@ -154,4 +156,5 @@ defineProps({
 				<font-awesome-icon :icon=" [ 'fab', 'twitter' ] " class="text-neutral-50 text-5xl" />
 			</a>
 		</div>
-	</div></template>
+	</div>
+</template>

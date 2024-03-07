@@ -19,6 +19,7 @@ use App\Models\Event;
 use App\Models\Investigation;
 use App\Models\Magazine;
 use App\Models\Publication;
+use Carbon\Carbon;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -91,7 +92,21 @@ Route::get('/convocations', function () {
 			->get()
 			->toArray(),
 	]);
-})->name('convocations');
+})->name('convocations.index');
+
+Route::get('/convocations/{slug}', function ($slug) {
+	$convocation = Convocation::where('slug', $slug)->first()->toArray();
+
+	$convocation['date'] = Carbon::createFromDate($convocation['date'])->isoFormat('LL');
+
+	$convocation['time'] = Carbon::createFromTimeString($convocation['time'])->format('g:i a');
+
+	return Inertia::render('Convocations/Show', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+		'convocation' => $convocation,
+	]);
+})->name('convocations.show');
 
 Route::get('/gallery', function () {
 	// $events = Event::with('images')->get();
