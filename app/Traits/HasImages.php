@@ -26,6 +26,21 @@ trait HasImages
 		return $this->images()->get();
 	}
 
+	public function attachImage(Request $request): void
+	{
+		$size_bytes = $request->image->getSize();
+		$title = $request->image->getClientOriginalName();
+		$path = Storage::disk('public')->put('gallery/' . $this->slug, $request->image);
+
+		$newImage = new Image([
+			'title' => $title,
+			'path' => $path,
+			'size_bytes' => $size_bytes,
+		]);
+
+		$this->image()->save($newImage);
+	}
+
 	public function attachImages(Request $request): void
 	{
 		foreach ($request->images as $image) {
