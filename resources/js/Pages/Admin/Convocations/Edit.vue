@@ -1,5 +1,5 @@
 <script setup>
-import FileInput from "@/Components/FileInput.vue";
+import ImageInput from "@/Components/ImageInput.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
@@ -30,8 +30,10 @@ const convocationForm = useForm({
 const handleUpdateConvocation = () => {
 	convocationForm.patch(route('admin.convocations.update'))
 }
+
 </script>
 <template>
+
 	<Head title="Convocatoria" />
 	<h1 class="text-3xl font-bold pl-8">Editar revista</h1>
 	<div class="w-full p-8">
@@ -59,14 +61,14 @@ const handleUpdateConvocation = () => {
 				</div>
 				<div class="mt-4">
 					<InputLabel for="location" value="Locación" />
-					<TextInput id="location" type="text" class="mt-1 block w-full" v-model=" convocationForm.location " required autofocus
-						autocomplete="convocation_location" />
+					<TextInput id="location" type="text" class="mt-1 block w-full" v-model=" convocationForm.location " required
+						autofocus autocomplete="convocation_location" />
 					<InputError class="mt-2" :message=" convocationForm.errors.location " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="description" value="Descripción" />
-					<TextInput id="description" type="text" class="mt-1 block w-full" v-model=" convocationForm.description " required autofocus
-						autocomplete="convocation_description" />
+					<TextInput id="description" type="text" class="mt-1 block w-full" v-model=" convocationForm.description "
+						required autofocus autocomplete="convocation_description" />
 					<InputError class="mt-2" :message=" convocationForm.errors.description " />
 				</div>
 				<div class="flex items-center gap-4 mt-4">
@@ -76,10 +78,9 @@ const handleUpdateConvocation = () => {
 					</Transition>
 				</div>
 			</form>
-			<FileInput :file=" convocation.file " :resource-id=" convocation.id "
-				:upload-file-route=" route( 'admin.convocations.upload-file' ) "
-				:delete-file-route=" route( 'admin.convocations.delete-file' ) " class="w-1/4" />
+			<ImageInput :image=" convocation.image " :resource-id=" convocation.id "
+				:upload-image-route=" route( 'admin.convocations.upload-image' ) "
+				:delete-image-route=" route( 'admin.convocations.delete-image' ) " class="w-1/4" />
 		</section>
 	</div>
 </template>
-

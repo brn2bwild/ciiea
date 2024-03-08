@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\convocationUpdateRequest;
-use App\Http\Requests\UpdateFileRequest;
+use App\Http\Requests\UploadSingleImageRequest;
 use App\Models\Convocation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -42,17 +42,28 @@ class ConvocationController extends Controller
 			'name' => $request->name,
 			'location' => $request->location,
 			'date' => $request->date,
-			'time'=> $request->time,
+			'time' => $request->time,
 			'description' => $request->description,
 			'slug' => Str::slug($request->name),
 		]);
-		return back()->with('success','');
+		return back()->with('success', '');
 	}
 
 	public function edit(Request $request): Response
 	{
+		// dd(Convocation::where('id', $request->id)
+		// 	->select(
+		// 		'id',
+		// 		'name',
+		// 		'date',
+		// 		'time',
+		// 		'location',
+		// 		'description'
+		// 	)
+		// 	->with('image')
+		// 	->first());
 		return Inertia::render('Admin/Convocations/Edit', [
-			'convocation' => fn() => Convocation::where('id', $request->id)
+			'convocation' => fn () => Convocation::where('id', $request->id)
 				->select(
 					'id',
 					'name',
@@ -61,7 +72,7 @@ class ConvocationController extends Controller
 					'location',
 					'description'
 				)
-				->with('file')
+				->with('image')
 				->first()
 		]);
 	}
@@ -69,7 +80,7 @@ class ConvocationController extends Controller
 	public function update(convocationUpdateRequest $request): RedirectResponse
 	{
 		Convocation::findOrFail($request->input('id'))
-		->update($request->validated());
+			->update($request->validated());
 
 		return Redirect::back();
 	}
@@ -78,27 +89,27 @@ class ConvocationController extends Controller
 	{
 		$convocation = Convocation::findOrFail($request->input('id'));
 
-		$convocation->detachFile();
+		$convocation->detachImage();
 
 		$convocation->delete();
 
 		return Redirect::back();
 	}
 
-	public function uploadFile(UpdateFileRequest $request): RedirectResponse
+	public function uploadImage(UploadSingleImageRequest $request): RedirectResponse
 	{
 		$convocation = Convocation::findOrFail($request->input('id'));
 
-		$convocation->attachFile($request);
+		$convocation->attachImage($request);
 
 		return Redirect::route('admin.convocations.edit', $request->input('id'));
 	}
 
-	public function deleteFile(Request $request): RedirectResponse
+	public function deleteImage(Request $request): RedirectResponse
 	{
 		$convocation = Convocation::findOrFail($request->input('id'));
 
-		$convocation->detachFile();
+		$convocation->detachImage();
 
 		return Redirect::back();
 	}

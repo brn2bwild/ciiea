@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasFile;
+use App\Traits\HasImages;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Convocation extends Model
 {
-	use HasFactory, HasFile;
+	use HasFactory, HasImages;
 
 	protected $fillable = [
 		'name',
@@ -38,7 +39,7 @@ class Convocation extends Model
 	protected function date(): Attribute
 	{
 		return Attribute::make(
-			get: fn(string $value) => Carbon::createFromDate($value)->toDateString(),
+			get: fn (string $value) => Carbon::createFromDate($value)->toDateString(),
 		);
 	}
 }
