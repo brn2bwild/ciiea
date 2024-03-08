@@ -99,7 +99,8 @@ const handleOpenModal = () => {
 			<label for="upload-file-input"
 				class="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
 				<div v-if=" fileName || file " class="flex flex-col items-center justify-center pt-5 pb-6 px-2">
-					<font-awesome-icon class="mb-2" :icon=" { prefix: 'fa', iconName: 'file' } " size="3x" style="color: white;" />
+					<font-awesome-icon class="mb-2" :icon=" { prefix: 'fa', iconName: 'file' } " size="3x"
+						style="color: white;" />
 					<p class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-center">
 						<span class="font-semibold">{{ fileName }}</span>
 					</p>
@@ -116,7 +117,8 @@ const handleOpenModal = () => {
 					<p class="text-xs text-gray-500 dark:text-gray-400">PDF (MAX. 2MB)</p>
 				</div>
 				<form @submit.prevent=" handleSubmitFile ">
-					<input @change=" handleFileChange " id="upload-file-input" type="file" class="hidden" ref="resourceFileForm.file" />
+					<input @change=" handleFileChange " id="upload-file-input" type="file" class="hidden"
+						ref="resourceFileForm.file" accept=".pdf" />
 				</form>
 			</label>
 			<Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">

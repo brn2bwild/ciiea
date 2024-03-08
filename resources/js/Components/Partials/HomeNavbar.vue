@@ -106,12 +106,14 @@ const emit = defineEmits(['openModal', 'closeModal']);
 
 				<div v-if=" canLogin " class="hidden sm:flex sm:items-center">
 					<Link v-if=" $page.props.auth.user.name && $page.props.auth.user.role == 'admin' "
-						:href=" route( 'admin.dashboard' ) " class=" text-neutral-950 hover:text-neutral-600 focus:no-underline">
+						:href=" route( 'admin.dashboard' ) "
+						class=" text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-md transition-all ease-in-out focus:no-underline font-medium">
 					Dashboard
 					</Link>
 					<Link
 						v-else="$page.props.auth.user.name &&  $page.props.auth.user.role == 'editor' || $page.props.auth.user.role == 'user' "
-						:href=" route( 'profile.edit' ) " class=" text-neutral-950 hover:text-neutral-600 focus:no-underline">
+						:href=" route( 'profile.edit' ) "
+						class=" text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-md transition-all ease-in-out focus:no-underline font-medium">
 					{{ $page.props.auth.user.name }}
 					</Link>
 

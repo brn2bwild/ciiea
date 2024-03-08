@@ -99,7 +99,7 @@ const Modal = defineAsyncComponent(() =>
 		<!-- Footer -->
 		<!-- <HomeFooter /> -->
 
-		<Modal @close=" closeModalFn()" :show=" showModal " :max-width=" 'xl' ">
+		<Modal @close=" closeModalFn()" :show=" showModal " :max-width=" 'lg' ">
 			<div class="bg-white w-full p-8">
 				<div class="flex justify-between items-center mb-4">
 					<h1>{{ modalTitle }}</h1>
