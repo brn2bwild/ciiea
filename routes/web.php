@@ -207,8 +207,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::get('/convocations/{id}/edit', [ConvocationController::class, 'edit'])->name('admin.convocations.edit');
 		Route::patch('/convocations', [ConvocationController::class, 'update'])->name('admin.convocations.update');
 		Route::delete('/convocations', [ConvocationController::class, 'destroy'])->name('admin.convocations.destroy');
-		Route::post('/convocations/file', [ConvocationController::class, 'uploadFile'])->name('admin.convocations.upload-file');
-		Route::delete('/convocations/file', [ConvocationController::class, 'deleteFile'])->name('admin.convocations.delete-file');
+		Route::post('/convocations/image', [ConvocationController::class, 'uploadImage'])->name('admin.convocations.upload-image');
+		Route::delete('/convocations/image', [ConvocationController::class, 'deleteImage'])->name('admin.convocations.delete-image');
 
 		Route::get('/gallery', [GalleryController::class, 'index'])->name('admin.gallery.index');
 		Route::post('/gallery', [GalleryController::class, 'store'])->name('admin.gallery.store');
