@@ -104,34 +104,28 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					Contacto
 				</NavLink>
 
-				<div v-if=" canLogin " class="hidden sm:flex sm:items-center">
-					<Link v-if=" $page.props.auth.user.name && $page.props.auth.user.role == 'admin' "
-						:href=" route( 'admin.dashboard' ) "
-						class=" text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-md transition-all ease-in-out focus:no-underline font-medium">
+				<div v-if=" canLogin && $page.props.auth.user.name !== null " class="hidden sm:flex sm:items-center">
+					<Link v-if=" $page.props.auth.user.role == 'admin' " :href=" route( 'admin.dashboard' ) "	class=" text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-md transition-all ease-in-out focus:no-underline font-medium">
 					Dashboard
 					</Link>
-					<Link
-						v-else="$page.props.auth.user.name &&  $page.props.auth.user.role == 'editor' || $page.props.auth.user.role == 'user' "
+					<Link v-else=" $page.props.auth.user.role == 'editor' || $page.props.auth.user.role == 'user' "
 						:href=" route( 'profile.edit' ) "
 						class=" text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-md transition-all ease-in-out focus:no-underline font-medium">
 					{{ $page.props.auth.user.name }}
 					</Link>
-
-					<template v-if=" !$page.props.auth.user.name ">
-						<!-- <Link :href=" route( 'login' ) "
-								class="font-bold text-neutral-50 bg-neutral-900 px-5 py-2 rounded-full hover:bg-neutral-700 focus:no-underline transition-all duration-200">
-							Iniciar sesión</Link> -->
-						<button @click="emit( 'openModal', 'login' )"
-							class="font-bold text-neutral-50 bg-sky-400 px-4 py-2 rounded-xl hover:bg-sky-600 hover:text-neutral-50 focus:no-underline transition-all duration-200">
-							Iniciar sesión
-						</button>
-						<!-- <Link v-if=" canRegister " :href=" route( 'register' ) "
-								class="ml-6 font-medium text-neutral-50 bg-neutral-900 px-4 py-2 rounded-full hover:bg-neutral-700 focus:no-underline">
-							Registrarse</Link> -->
-					</template>
 				</div>
-
-
+				<template v-if=" !$page.props.auth.user.name ">
+					<!-- <Link :href=" route( 'login' ) "
+							class="font-bold text-neutral-50 bg-neutral-900 px-5 py-2 rounded-full hover:bg-neutral-700 focus:no-underline transition-all duration-200">
+						Iniciar sesión</Link> -->
+					<button @click="emit( 'openModal', 'login' )"
+						class="hidden sm:block font-bold text-neutral-50 bg-sky-400 px-4 py-2 rounded-xl hover:bg-sky-600 hover:text-neutral-50 focus:no-underline transition-all duration-200">
+						Iniciar sesión
+					</button>
+					<!-- <Link v-if=" canRegister " :href=" route( 'register' ) "
+							class="ml-6 font-medium text-neutral-50 bg-neutral-900 px-4 py-2 rounded-full hover:bg-neutral-700 focus:no-underline">
+						Registrarse</Link> -->
+				</template>
 				<!-- Settings Dropdown -->
 				<!-- <div class="hidden sm:flex sm:items-center sm:justify-center">
 						<div class="relative">
