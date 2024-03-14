@@ -108,6 +108,7 @@ class ConvocationController extends Controller
 	public function deleteImage(Request $request): RedirectResponse
 	{
 		$convocation = Convocation::findOrFail($request->input('id'));
+		// dd($convocation);
 
 		$convocation->detachImage();
 

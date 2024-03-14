@@ -29,11 +29,11 @@ trait HasImages
 	public function attachImage(Request $request): void
 	{
 		$size_bytes = $request->image->getSize();
-		$title = $request->image->getClientOriginalName();
+		$name = $request->image->getClientOriginalName();
 		$path = Storage::disk('public')->put('gallery/' . $this->slug, $request->image);
 
 		$newImage = new Image([
-			'title' => $title,
+			'name' => $name,
 			'path' => $path,
 			'size_bytes' => $size_bytes,
 		]);
@@ -58,7 +58,18 @@ trait HasImages
 		}
 	}
 
+	public function getExistingImage(): Image|null
+	{
+		return ($this->image()->first()) ?? null;
+	}
+
 	public function detachImage(): void
 	{
+		$image = $this->getExistingImage();
+
+		if ($image) {
+			Storage::disk("local")->delete($image->path);
+			$image->delete();
+		}
 	}
 }
