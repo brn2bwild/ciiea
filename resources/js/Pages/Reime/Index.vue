@@ -16,6 +16,7 @@ defineProps({
 })
 </script>
 <template>
+
 	<Head title="REIME" />
 	<div class="w-full px-4 pt-20 pb-10 sm:p-8 flex justify-between relative gap-4">
 		<section class="hidden w-1/4 sm:flex sm:flex-col h-full sticky top-20">
@@ -42,7 +43,7 @@ defineProps({
 			</div>
 		</section>
 		<section class="w-1/2 flex flex-col gap-y-6">
-			<div class="rounded-lg bg-white ring-1 ring-neutral-200 hover:ring-1 hover:ring-rose-900">
+			<div class="rounded-lg bg-white ring-1 ring-neutral-200 hover:ring-1 hover:ring-sky-900">
 				<div class="px-4 py-2 text-neutral-800">
 					<div class="flex justify-start items-center">
 						<h1 class="font-bold text-xl mr-4">Cine debate</h1>
@@ -54,7 +55,7 @@ defineProps({
 						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
 					</p>
 				</div>
-				<img class="" src="/storage/convocations/conv1.jpg" alt="conv1" />
+				<img class="" src="/storage/images/magazines.jpg" alt="conv1" />
 				<div class="w-full py-2 flex justify-evenly items-center text-neutral-800">
 					<Link :href=" route( 'home' ) " class="hover:text-green-500">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'comment' } " /> 9
@@ -64,7 +65,7 @@ defineProps({
 					</Link>
 				</div>
 			</div>
-			<div class="rounded-lg bg-white ring-1 ring-neutral-200 hover:ring-1 hover:ring-rose-900">
+			<div class="rounded-lg bg-white ring-1 ring-neutral-200 hover:ring-1 hover:ring-sky-900">
 				<div class="px-4 py-2 text-neutral-800">
 					<div class="flex justify-start items-center">
 						<h1 class="font-bold text-xl mr-4">Cine debate</h1>
@@ -76,7 +77,7 @@ defineProps({
 						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
 					</p>
 				</div>
-				<!-- <img class="" src="/storage/convocations/conv1.jpg" alt="conv1" /> -->
+				<!-- <img class="" src="/storage/images/magazines.jpg" alt="conv1" /> -->
 				<div class="w-full py-2 flex justify-evenly items-center text-neutral-800">
 					<Link :href=" route( 'home' ) " class="hover:text-green-500">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'comment' } " /> 34
@@ -86,7 +87,7 @@ defineProps({
 					</Link>
 				</div>
 			</div>
-			<div class="rounded-lg bg-white ring-1 ring-neutral-200 hover:ring-1 hover:ring-rose-900">
+			<div class="rounded-lg bg-white ring-1 ring-neutral-200 hover:ring-1 hover:ring-sky-900">
 				<div class="px-4 py-2 text-neutral-800">
 					<div class="flex justify-start items-center">
 						<h1 class="font-bold text-xl mr-4">Cine debate</h1>
@@ -98,7 +99,7 @@ defineProps({
 						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
 					</p>
 				</div>
-				<img class="" src="/storage/convocations/conv2.jpg" alt="conv2" />
+				<img class="" src="/storage/images/books.jpg" alt="conv2" />
 				<div class="w-full py-2 flex justify-evenly items-center text-neutral-800">
 					<Link :href=" route( 'home' ) " class="hover:text-green-500">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'comment' } " /> 23
@@ -108,7 +109,7 @@ defineProps({
 					</Link>
 				</div>
 			</div>
-			<div class="rounded-lg bg-white ring-1 ring-neutral-200 hover:ring-1 hover:ring-rose-900">
+			<div class="rounded-lg bg-white ring-1 ring-neutral-200 hover:ring-1 hover:ring-sky-900">
 				<div class="px-4 py-2 text-neutral-800">
 					<div class="flex justify-start items-center">
 						<h1 class="font-bold text-xl mr-4">Cine debate</h1>
@@ -120,7 +121,7 @@ defineProps({
 						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
 					</p>
 				</div>
-				<img class="" src="/storage/convocations/conv3.jpg" alt="conv3" />
+				<img class="" src="/storage/images/ciiea.jpg" alt="conv3" />
 				<div class="w-full py-2 flex justify-evenly items-center text-neutral-800">
 					<Link :href=" route( 'home' ) " class="hover:text-green-500">
 					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'comment' } " /> 3
