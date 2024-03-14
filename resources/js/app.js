@@ -13,24 +13,24 @@ import {
     faMagnifyingGlass,
     faEllipsis,
     faHouse,
-		faComment,
-		faHeart,
-		faBars,
-		faXmark,
-		faBook,
-		faBookOpen,
-		faFile,
-		faUserLock,
-		faUsers,
-		faFileArrowUp,
-		faCalendar,
-		faAngleLeft,
-		faAngleRight,
-		faImages,
-		faCircleXmark,
-		faPlusCircle,
-		faTriangleExclamation,
-		faImage,
+    faComment,
+    faHeart,
+    faBars,
+    faXmark,
+    faBook,
+    faBookOpen,
+    faFile,
+    faUserLock,
+    faUsers,
+    faFileArrowUp,
+    faCalendar,
+    faAngleLeft,
+    faAngleRight,
+    faImages,
+    faCircleXmark,
+    faPlusCircle,
+    faTriangleExclamation,
+    faImage,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -45,26 +45,26 @@ library.add(
     faMagnifyingGlass,
     faEllipsis,
     faHouse,
-		faComment,
-		faHeart,
-		faBars,
-		faXmark,
-		faBook,
-		faBookOpen,
-		faFile,
-		faMagnifyingGlass,
-		faUserLock,
-		faUsers,
-		faFileArrowUp,
-		faFile,
-		faCalendar,
-		faAngleLeft,
-		faAngleRight,
-		faImages,
-		faCircleXmark,
-		faPlusCircle,
-		faTriangleExclamation,
-		faImage
+    faComment,
+    faHeart,
+    faBars,
+    faXmark,
+    faBook,
+    faBookOpen,
+    faFile,
+    faMagnifyingGlass,
+    faUserLock,
+    faUsers,
+    faFileArrowUp,
+    faFile,
+    faCalendar,
+    faAngleLeft,
+    faAngleRight,
+    faImages,
+    faCircleXmark,
+    faPlusCircle,
+    faTriangleExclamation,
+    faImage
 );
 
 const appName =
@@ -80,13 +80,13 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
             .use(plugin)
-						.use(VueLazyload)
-						.use(ZiggyVue, Ziggy)
+            .use(VueLazyload)
+            .use(ZiggyVue, Ziggy)
             .component("font-awesome-icon", FontAwesomeIcon)
-						.component("Link", Link)
+            .component("Link", Link)
             .mount(el);
     },
     progress: {
-        color: "#450a0a",
+        color: "#1e3a8a",
     },
 });
