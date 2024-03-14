@@ -19,6 +19,7 @@ use App\Models\Event;
 use App\Models\Investigation;
 use App\Models\Magazine;
 use App\Models\Publication;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
@@ -87,8 +88,8 @@ Route::get('/convocations', function () {
 	return Inertia::render('Convocations/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
-		'convocations' => Convocation::with('file')
-			->select('name', 'date', 'time', 'location', 'description', 'slug')
+		'convocations' => Convocation::select('id', 'name', 'date', 'time', 'location', 'description', 'slug')
+			->with('image')
 			->get()
 			->toArray(),
 	]);
@@ -138,17 +139,12 @@ Route::get('/reime', function () {
 })->name('reime');
 
 Route::get('/contact', function () {
+
+	// dd(User::get()->toArray());
 	return Inertia::render('Contact', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
-		'users' => [
-			[
-				'name' => 'daniel'
-			],
-			[
-				'name' => 'Carlos'
-			]
-		]
+		'administrators' => User::role('admin')->get()->toArray(),
 	]);
 })->name('contact');
 

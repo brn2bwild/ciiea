@@ -1,6 +1,7 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import { Head } from "@inertiajs/vue3";
+import { computed, toRef } from "vue";
 
 defineOptions({
 	layout: HomeLayout,
@@ -12,8 +13,16 @@ defineProps({
 	},
 	canRegister: {
 		type: Boolean
+	},
+	administrators: {
+		type: Object,
+		required: true,
 	}
 });
+
+// const socialMedia = toRef(() => {
+// 	return JSON.parse(administrators)
+// })
 
 </script>
 
@@ -21,35 +30,43 @@ defineProps({
 
 	<Head title="Contacto" />
 	<section class="w-full pt-20 px-4 sm:p-12 grid grid-cols-1 md:grid-cols-3 gap-4">
-		<div class="bg-transparent w-full rounded-sm flex relative group mb-32">
+		<div
+			v-for="                             administrator                              in                              administrators                             "
+			:key=" administrator.index " class="bg-transparent w-full rounded-sm flex relative group mb-32">
 			<img class="h-32 w-32 z-20" src="/storage/images/default-contact.png" alt="default-contact">
 			<div
 				class="bg-blue-950 w-3/4 p-4 rounded-xl absolute top-10 left-5 z-10 h-52 flex flex-col justify-between items-center">
 				<div class="flex flex-col items-end pl-24">
 					<h1 class="text-white text-lg font-bold">
-						Miguel Ordoñez Ordoñez
+						{{ administrator.name }}
 					</h1>
 					<h2 class="text-neutral-200">
-						Director general
+						{{ administrator.short_description }}
 					</h2>
 				</div>
 				<div>
 					<p class="flex justify-start text-white mb-2">
 						<font-awesome-icon :icon=" [ 'fa', 'phone' ] " class="text-neutral-50 text-xl" />
-						<a href="https://whatsapp.com" class="ml-2">9234164</a>
+						<a href="https://whatsapp.com" class="ml-2">
+							{{ administrator.mobile }}
+						</a>
 					</p>
 					<p class="flex justify-start text-white mb-2">
 						<font-awesome-icon :icon=" [ 'fa', 'envelope' ] " class="text-neutral-50 text-xl" />
-						<a href="https://outlook.com" class="ml-2">admin@example.com</a>
+						<a href="https://outlook.com" class="ml-2">
+							{{ administrator.email }}
+						</a>
 					</p>
 					<p class="flex justify-start text-white">
 						<font-awesome-icon :icon=" [ 'fab', 'twitter' ] " class="text-neutral-50 text-xl" />
-						<a href="https://outlook.com" class="ml-2">@ciiea</a>
+						<a href="https://outlook.com" class="ml-2">
+							{{ administrator.social_media.twitter }}
+						</a>
 					</p>
 				</div>
 			</div>
 		</div>
-		<div class="bg-transparent w-full rounded-sm flex relative group mb-32">
+		<!-- <div class="bg-transparent w-full rounded-sm flex relative group mb-32">
 			<img class="h-32 w-32 z-20" src="/storage/images/default-contact.png" alt="default-contact">
 			<div
 				class="bg-blue-950 w-3/4 p-4 rounded-xl absolute top-10 left-5 z-10 h-52 flex flex-col justify-between items-center">
@@ -104,7 +121,7 @@ defineProps({
 					</p>
 				</div>
 			</div>
-		</div>
+		</div> -->
 	</section>
 	<section class="px-4 sm:px-0 pb-16 mb-10 relative">
 		<iframe

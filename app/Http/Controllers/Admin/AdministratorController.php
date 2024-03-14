@@ -33,6 +33,11 @@ class AdministratorController extends Controller
 			'name' => $request->name,
 			'email' => $request->email,
 			'password' => Hash::make($request->password),
+			'social_media' => [
+				'twitter' => null,
+				'facebook' => null,
+				'linkedin' => null,
+			]
 		]);
 
 		$user->assignRole('admin');
@@ -67,7 +72,7 @@ class AdministratorController extends Controller
 	public function destroy(Request $request): RedirectResponse
 	{
 		User::findOrFail($request->id)->delete();
-		  
+
 		return back()->with('success', '');
 	}
 }

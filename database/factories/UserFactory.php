@@ -21,11 +21,11 @@ class UserFactory extends Factory
 			'mobile' => fake()->phoneNumber(),
 			'short_description' => fake()->userName(),
 			'long_description' => '',
-			'social_media' => json_encode([
-				'twitter' => '@'.fake()->lastName(),
-				'facebook' => '@'.fake()->lastName(),
-				'linkedin' => '@'.fake()->lastName(),
-			]),
+			'social_media' => [
+				'twitter' => '@' . fake()->lastName(),
+				'facebook' => '@' . fake()->lastName(),
+				'linkedin' => '@' . fake()->lastName(),
+			],
 		];
 	}
 
