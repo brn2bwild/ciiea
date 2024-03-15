@@ -46,11 +46,10 @@ defineProps({
 					Leer más
 					</Link>
 				</div>
-				<div class="w-1/2 object-fill overflow-hidden">
+				<div class="w-1/2 h-80 object-fill overflow-hidden">
 					<img class="h-full scale-125"
 						:src=" '/storage/' + ( convocations[ 0 ].image ? convocations[ 0 ].image.path : '/images/magazines-optimized.jpg' ) "
-						:alt=" ( convocations[ 0 ].image ? convocations[ 0 ].image.name : 'default-image' ) ">
-
+						:alt=" ( convocations[ 0 ].image ? convocations[ 0 ].image.name : 'default-convocation-image' ) ">
 				</div>
 			</div>
 		</section>
@@ -58,9 +57,7 @@ defineProps({
 			<h1 class="text-xl text-neutral-600 font-bold">Últimas Convocatorias</h1>
 		</section>
 		<section class="w-full grid grid-cols-1 sm:grid-cols-2 gap-10">
-			<div
-				v-for="                      convocation                       in                       convocations                      "
-				:key=" convocation.index "
+			<div v-for="      convocation       in        convocations       " :key=" convocation.index "
 				class="w-full rounded-xl flex flex-col justify-center items-start bg-white shadow-lg shadow-slate-100">
 				<!-- <div class="w-full mb-2">
 					<img src="/storage/convocations/conv1.jpg" :alt=" 'convocation' + convocation.index " />
@@ -74,7 +71,7 @@ defineProps({
 						{{ convocation.description.substr( 0, 100 ) }}...
 					</p>
 					<h3 class="text-neutral-600 text-sm">
-						Publicado hace 3 horas
+						Compartido {{ convocation.created_at_for_humans }}
 					</h3>
 					<Link :href=" route( 'convocations.show', convocation.slug ) "
 						class="bg-sky-500 px-4 py-2 rounded-lg text-neutral-50 font-bold text-sm">

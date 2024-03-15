@@ -44,7 +44,9 @@ defineProps({
 					ipsum dolor, sit amet consectetur adipisicing elit. Dolor illo culpa, nisi a possimus optio minima ipsum natus
 					autem quaerat. Veritatis quis ea adipisci esse ipsam dicta, earum ad distinctio.
 				</p>
-				<img class="w-1/2 h-[600px] object-cover" src="/storage/images/books.jpg" alt="books">
+				<img class="w-1/2 h-[600px] object-cover"
+					:src=" '/storage/' + ( convocation.image ? convocation.image.path : '/images/magazines-optimized.jpg' ) "
+					:alt=" ( convocation.image ? convocation.image.name : 'default-convocation-image' ) ">
 			</div>
 			<!-- <div class="py-10">
 				<h1 class="w-full text-center text-3xl font-medium">Información adicional</h1>
