@@ -15,8 +15,7 @@ class ConvocationFactory extends Factory
 		$name = fake()->sentence(10, true);
 		return [
 			'name' => $name,
-			'date' => fake()->date(),
-			'time' => fake()->time(),
+			'date_time' => fake()->dateTimeThisDecade(),
 			'location' => fake()->address(),
 			'description' => fake()->sentence(150, true),
 			'slug' => Str::slug($name),

@@ -11,8 +11,7 @@ return new class extends Migration
 		Schema::create('convocations', function (Blueprint $table) {
 			$table->id();
 			$table->string('name');
-			$table->date('date');
-			$table->time('time');
+			$table->timestamp('date_time');
 			$table->string('location')->nullable();
 			$table->longText('description')
 				->max(500)

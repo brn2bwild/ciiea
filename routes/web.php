@@ -45,8 +45,11 @@ Route::get('/books', function () {
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'books' => Book::with('file')
-			->select('title', 'authors', 'isbn', 'publicated_at', 'slug')
+			->select('id', 'title', 'authors', 'isbn', 'publicated_at', 'slug')
 			->get()
+			->each(function ($book, $index) {
+				$book->publicated_at = Carbon::createFromDate($book->publicated_at)->isoFormat('LL');
+			})
 			->toArray(),
 	]);
 })->name('books');
@@ -88,9 +91,15 @@ Route::get('/convocations', function () {
 	return Inertia::render('Convocations/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
-		'convocations' => Convocation::select('id', 'name', 'date', 'time', 'location', 'description', 'slug')
+		'convocations' => Convocation::select('id', 'name', 'date_time', 'location', 'description', 'slug', 'created_at')
 			->with('image')
 			->get()
+			->each(function ($convocation, $index) {
+				$date_time = Carbon::create($convocation->date_time);
+				$convocation->date = $date_time->isoFormat('LL');
+				$convocation->time = $date_time->isoFormat('h:mm');
+				$convocation->created_at_for_humans = Carbon::createFromTimestamp($convocation->created_at)->diffForHumans();
+			})
 			->toArray(),
 	]);
 })->name('convocations.index');
@@ -98,9 +107,11 @@ Route::get('/convocations', function () {
 Route::get('/convocations/{slug}', function ($slug) {
 	$convocation = Convocation::where('slug', $slug)->first()->toArray();
 
-	$convocation['date'] = Carbon::createFromDate($convocation['date'])->isoFormat('LL');
+	$date_time = Carbon::createFromDate($convocation['date_time']);
 
-	$convocation['time'] = Carbon::createFromTimeString($convocation['time'])->format('g:i a');
+	$convocation['date'] = $date_time->isoFormat('LL');
+
+	$convocation['time'] = $date_time->format('g:i a');
 
 	return Inertia::render('Convocations/Show', [
 		'canLogin' => Route::has('login'),
