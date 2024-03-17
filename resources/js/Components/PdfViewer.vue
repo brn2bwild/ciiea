@@ -1,6 +1,8 @@
 <script setup>
 import { VuePDF, usePDF } from '@tato30/vue-pdf';
 import { ref } from 'vue';
+
+
 const { pdf, pages, info } = usePDF('/' + props.url)
 
 const page = ref(1);
