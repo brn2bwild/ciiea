@@ -61,6 +61,7 @@ const handleDeletePublication = () => {
 }
 </script>
 <template>
+
 	<Head title="Publicaciones históricas" />
 	<div class="flex justify-between px-8">
 		<h1 class="text-3xl font-bold">
@@ -73,11 +74,11 @@ const handleDeletePublication = () => {
 	</div>
 
 	<div class="w-full p-8">
-		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<ResourceCard v-for="   publication    in    publications   " :key=" publication.index "
+		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
+			<ResourceCard v-for="    publication     in     publications    " :key=" publication.index "
 				@open-delete-modal="handleOpenDeleteModal( publication.id )"
 				:edit-route=" route( 'admin.historical-publications.edit', publication.id ) ">
-				<template v-slot:title>{{ publication.title.substr( 0, 20 ) }}...</template>
+				<template v-slot:title>{{ publication.title }}...</template>
 				<template v-slot:subtitle>{{ publication.publicated_at }}</template>
 				<template v-slot:content>
 					<div class="flex justify-center gap-2">

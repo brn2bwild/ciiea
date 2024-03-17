@@ -59,15 +59,17 @@ const handleDeleteEvent = () => {
 </script>
 
 <template>
+
 	<Head title="Galería" />
 	<div class="flex justify-between px-8">
 		<h1 class="text-3xl font-bold">Galería</h1>
 		<button @click="showCreateModal = true"
-			class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200">Nuevo evento</button>
+			class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200">Nuevo
+			evento</button>
 	</div>
 	<div class="w-full p-8">
-		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<ResourceCard v-for="   event   in   events   " :key=" event.index "
+		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
+			<ResourceCard v-for="    event    in    events    " :key=" event.index "
 				:edit-route=" route( 'admin.gallery.edit', event.id ) " @open-delete-modal="handleOpenDeleteModal( event.id )">
 				<template #title>{{ event.name }}</template>
 				<template #subtitle>{{ event.date }}</template>

@@ -62,8 +62,9 @@ const handleDeleteInvestigation = () => {
 	})
 }
 
-</script>	
+</script>
 <template>
+
 	<Head title="Investigaciones" />
 	<div class="flex justify-between px-8">
 		<h1 class="text-3xl font-bold">
@@ -75,11 +76,11 @@ const handleDeleteInvestigation = () => {
 		</button>
 	</div>
 	<div class="w-full p-8">
-		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<ResourceCard v-for="   investigation    in    investigations   " :key=" investigation.index "
+		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
+			<ResourceCard v-for="     investigation      in      investigations     " :key=" investigation.index "
 				@open-delete-modal="handleOpenDeleteModal( investigation.id )"
 				:edit-route=" route( 'admin.investigations.edit', investigation.id ) ">
-				<template v-slot:title>{{ investigation.title.substr( 0, 20 ) }}...</template>
+				<template v-slot:title>{{ investigation.title }}...</template>
 				<template v-slot:subtitle>{{ investigation.publicated_at }}</template>
 				<template v-slot:content>{{ investigation.authors }}
 				</template>

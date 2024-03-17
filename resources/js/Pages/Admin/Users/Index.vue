@@ -15,6 +15,7 @@ defineProps({
 })
 </script>
 <template>
+
 	<Head title="Usuarios" />
 	<div class="flex justify-between px-8">
 		<h1 class="text-3xl font-bold">
@@ -22,13 +23,12 @@ defineProps({
 		</h1>
 	</div>
 	<div class="w-full p-8">
-		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<ResourceCard v-for=" user in users " :key=" user.index "
-				@open-delete-modal="handleOpenDeleteModal( user.id )"
-				:edit-route="''">
+		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
+			<ResourceCard v-for="  user  in  users  " :key=" user.index " @open-delete-modal="handleOpenDeleteModal( user.id )"
+				:edit-route=" '' ">
 				<template v-slot:title>{{ user.name }}</template>
 				<template v-slot:subtitle>
-					
+
 				</template>
 				<template v-slot:content>
 					lkjhljk

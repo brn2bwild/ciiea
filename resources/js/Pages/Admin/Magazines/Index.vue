@@ -64,6 +64,7 @@ const handleDeleteMagazine = () => {
 </script>
 
 <template>
+
 	<Head title="Revistas" />
 	<div class="flex justify-between px-8">
 		<h1 class="text-3xl font-bold">
@@ -76,11 +77,11 @@ const handleDeleteMagazine = () => {
 	</div>
 
 	<div class="w-full p-8">
-		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<ResourceCard v-for="  magazine   in   magazines  " :key=" magazine.index "
+		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
+			<ResourceCard v-for="    magazine     in     magazines    " :key=" magazine.index "
 				@open-delete-modal="handleOpenDeleteModal( magazine.id )"
 				:edit-route=" route( 'admin.magazines.edit', magazine.id ) ">
-				<template v-slot:title>{{ magazine.name.substr( 0, 20 ) }}...</template>
+				<template v-slot:title>{{ magazine.name }}...</template>
 				<template v-slot:subtitle>{{ magazine.publicated_at }}</template>
 				<template v-slot:content>
 					<div class="flex justify-center gap-2">
@@ -103,12 +104,13 @@ const handleDeleteMagazine = () => {
 				</div>
 				<div class="mt-4">
 					<InputLabel for="publicated_at" value="Fecha de publicación" />
-					<TextInput id="publicated_at" type="date" class="mt-1 block w-full" v-model=" magazineCreateForm.publicated_at "
-						required autocomplete="publicated_at" />
+					<TextInput id="publicated_at" type="date" class="mt-1 block w-full"
+						v-model=" magazineCreateForm.publicated_at " required autocomplete="publicated_at" />
 					<InputError class="mt-2" :message=" magazineCreateForm.errors.publicated_at " />
 				</div>
 				<div class="w-full flex justify-end mt-8 gap-4">
-					<PrimaryButton :class=" { 'opacity-25': magazineCreateForm.processing } " :disabled=" magazineCreateForm.processing ">
+					<PrimaryButton :class=" { 'opacity-25': magazineCreateForm.processing } "
+						:disabled=" magazineCreateForm.processing ">
 						Guardar
 					</PrimaryButton>
 					<SecondaryButton @click="handleCloseCreateModal()">

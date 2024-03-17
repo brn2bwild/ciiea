@@ -67,17 +67,20 @@ const handleDeleteBook = () => {
 </script>
 
 <template>
+
 	<Head title="Libros" />
 	<div class="flex justify-between items-center px-8">
 		<h1 class="text-3xl font-bold">Libros</h1>
-		<button @click="showCreateModal = true" class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200">Nuevo libro</button>
+		<button @click="showCreateModal = true"
+			class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200">Nuevo
+			libro</button>
 	</div>
 
 	<div class="w-full p-8">
-		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<ResourceCard v-for=" book in books " :key=" book.index "
+		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
+			<ResourceCard v-for="      book      in      books      " :key=" book.index "
 				@open-delete-modal="handleOpenDeleteModal( book.id )" :edit-route=" route( 'admin.books.edit', book.id ) ">
-				<template v-slot:title>{{ book.title.substr( 0, 20 ) }}...</template>
+				<template v-slot:title class="truncate">{{ book.title }}</template>
 				<template v-slot:subtitle>{{ book.authors }}</template>
 				<template v-slot:content>{{ book.publicated_at }}</template>
 			</ResourceCard>
@@ -89,22 +92,26 @@ const handleDeleteBook = () => {
 			<form @submit.prevent=" handleCreateBook()">
 				<div class="mt-4">
 					<InputLabel for="title" value="Nombre del libro" />
-					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" bookCreateForm.title " required autocomplete="title" />
+					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" bookCreateForm.title " required
+						autocomplete="title" />
 					<InputError class="mt-2" :message=" bookCreateForm.errors.title " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="authors" value="Autor(es) del libro" />
-					<TextInput id="authors" type="text" class="mt-1 block w-full" v-model=" bookCreateForm.authors " required autocomplete="authors" />
+					<TextInput id="authors" type="text" class="mt-1 block w-full" v-model=" bookCreateForm.authors " required
+						autocomplete="authors" />
 					<InputError class="mt-2" :message=" bookCreateForm.errors.authors " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="isbn" value="ISBN" />
-					<TextInput id="isbn" type="text" class="mt-1 block w-full" v-model=" bookCreateForm.isbn " required autocomplete="isbn" />
+					<TextInput id="isbn" type="text" class="mt-1 block w-full" v-model=" bookCreateForm.isbn " required
+						autocomplete="isbn" />
 					<InputError class="mt-2" :message=" bookCreateForm.errors.isbn " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="publicated_at" value="Fecha de publicación" />
-					<TextInput id="publicated_at" type="date" class="mt-1 block w-full" v-model=" bookCreateForm.publicated_at " required autocomplete="publicated_at" />
+					<TextInput id="publicated_at" type="date" class="mt-1 block w-full" v-model=" bookCreateForm.publicated_at "
+						required autocomplete="publicated_at" />
 					<InputError class="mt-2" :message=" bookCreateForm.errors.publicated_at " />
 				</div>
 				<div class="w-full flex justify-end mt-8 gap-4">

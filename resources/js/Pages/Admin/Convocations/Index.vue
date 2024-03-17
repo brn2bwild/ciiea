@@ -61,6 +61,7 @@ const handleDeleteConvocation = () => {
 }
 </script>
 <template>
+
 	<Head title="Convocatorias" />
 	<div class="flex justify-between px-8">
 		<h1 class="text-3xl font-bold">
@@ -73,11 +74,12 @@ const handleDeleteConvocation = () => {
 	</div>
 
 	<div class="w-full p-8">
-		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<ResourceCard v-for="    convocation    in    convocations    " :key=" convocation.index "
+		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
+			<ResourceCard v-for="          convocation          in          convocations          " :key=" convocation.index "
 				@open-delete-modal="handleOpenDeleteModal( convocation.id )"
-				:edit-route=" route( 'admin.convocations.edit', convocation.id ) ">
-				<template v-slot:title>{{ convocation.name.substr( 0, 20 ) }}...</template>
+				:edit-route=" route( 'admin.convocations.edit', convocation.id ) "
+				:image-path=" ( convocation.image !== null ? convocation.image.path : null ) ">
+				<template v-slot:title>{{ convocation.name }}...</template>
 				<template v-slot:subtitle>{{ convocation.date }}</template>
 				<template v-slot:content>{{ convocation.location.substr( 1, 20 ) }}...
 				</template>
@@ -144,4 +146,3 @@ const handleDeleteConvocation = () => {
 		</div>
 	</Modal>
 </template>
-
