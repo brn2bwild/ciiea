@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\convocationUpdateRequest;
 use App\Http\Requests\UploadSingleImageRequest;
 use App\Models\Convocation;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -21,18 +22,15 @@ class ConvocationController extends Controller
 			'convocations' => fn () => Convocation::select(
 				'id',
 				'name',
-				'date',
-				'time',
+				'date_time',
 				'location',
 			)
+				->with('image')
 				->get()
-				->transform(fn ($convocation) => [
-					'id' => $convocation->id,
-					'name' => $convocation->name,
-					'date' => $convocation->date,
-					'time' => $convocation->time,
-					'location' => $convocation->location,
-				])
+				->each(function ($convocation, $index) {
+					$convocation->date = $convocation->date_time->isoFormat('LL');
+					$convocation->time = $convocation->date_time->isoFormat('h:mm');
+				})
 		]);
 	}
 
@@ -51,24 +49,12 @@ class ConvocationController extends Controller
 
 	public function edit(Request $request): Response
 	{
-		// dd(Convocation::where('id', $request->id)
-		// 	->select(
-		// 		'id',
-		// 		'name',
-		// 		'date',
-		// 		'time',
-		// 		'location',
-		// 		'description'
-		// 	)
-		// 	->with('image')
-		// 	->first());
 		return Inertia::render('Admin/Convocations/Edit', [
 			'convocation' => fn () => Convocation::where('id', $request->id)
 				->select(
 					'id',
 					'name',
-					'date',
-					'time',
+					'date_time',
 					'location',
 					'description'
 				)
