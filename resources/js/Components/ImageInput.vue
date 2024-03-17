@@ -97,22 +97,21 @@ const handleOpenModal = () => {
 		<div class="flex flex-col items-center justify-center w-full gap-y-2">
 			<label for="upload-image-input"
 				class="flex flex-col items-center justify-center w-full h-52 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-				<div v-if=" imageName || image " class="flex flex-col items-center justify-center pt-5 pb-6 px-2">
+				<div v-if=" imageName || image " class="flex flex-col items-center justify-center pt-5 pb-6 px-2 text-ellipsis">
 					<font-awesome-icon class="mb-2" :icon=" { prefix: 'fa', iconName: 'image' } " size="3x"
 						style="color: white;" />
-					<p class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-center">
-						<span class="font-semibold">{{ imageName }}</span>
-					</p>
+					<span class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-center font-semibold break-all">
+						{{ imageName }}
+					</span>
 					<p class="text-xs text-gray-500 dark:text-gray-400">({{ imageSize }})</p>
 					<DangerButton @click=" handleOpenModal " class="mt-4">Eliminar archivo</DangerButton>
-
 				</div>
 				<div v-else class="flex flex-col items-center justify-center pt-5 pb-6 px-2">
 					<font-awesome-icon class="mb-2" :icon=" { prefix: 'fa', iconName: 'image' } " size="3x"
 						style="color: white;" />
-					<p class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-center">
-						<span class="font-semibold">Click para buscar</span> el archivo a subir
-					</p>
+					<span class="mb-2 text-sm text-gray-500 dark:text-gray-400 text-center font-semibold">
+						Click para buscar el archivo a subir
+					</span>
 					<p class="text-xs text-gray-500 dark:text-gray-400">Imágen (MAX. 2MB)</p>
 				</div>
 				<form @submit.prevent=" handleSubmitImage ">
