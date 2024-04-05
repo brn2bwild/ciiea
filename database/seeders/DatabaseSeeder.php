@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
 			InvestigationSeeder::class,
 			ConvocationSeeder::class,
 			EventSeeder::class,
+			SoftwareSeeder::class,
+			InfographicSeeder::class,
 		]);
 	}
 }

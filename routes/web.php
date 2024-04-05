@@ -16,15 +16,18 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Book;
 use App\Models\Convocation;
 use App\Models\Event;
+use App\Models\Infographic;
 use App\Models\Investigation;
 use App\Models\Magazine;
 use App\Models\Publication;
+use App\Models\Software;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use PHPUnit\Framework\MockObject\Stub\ReturnCallback;
 
 Route::get('/', function () {
 	return Inertia::render('Home', [
@@ -41,7 +44,7 @@ Route::get('/divulgation', function () {
 })->name('divulgation');
 
 Route::get('/books', function () {
-	return Inertia::render('Resources/Books/Index', [
+	return Inertia::render('Divulgation/Books/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'books' => Book::with('file')
@@ -55,7 +58,7 @@ Route::get('/books', function () {
 })->name('books');
 
 Route::get('/magazines', function () {
-	return Inertia::render('Resources/Magazines/Index', [
+	return Inertia::render('Divulgation/Magazines/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'magazines' => Magazine::with('file')
@@ -66,7 +69,7 @@ Route::get('/magazines', function () {
 })->name('magazines');
 
 Route::get('/hist-publications', function () {
-	return Inertia::render('Resources/Publications/Index', [
+	return Inertia::render('Divulgation/Publications/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'publications' => Publication::with('file')
@@ -77,7 +80,7 @@ Route::get('/hist-publications', function () {
 })->name('hist-publications');
 
 Route::get('/investigations', function () {
-	return Inertia::render('Resources/Investigations/Index', [
+	return Inertia::render('Divulgation/Investigations/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
 		'investigations' => Investigation::with('file')
@@ -87,12 +90,64 @@ Route::get('/investigations', function () {
 	]);
 })->name('investigations');
 
+Route::get('/educational-software', function () {
+	return Inertia::render('Innovation/Software/Index', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+		'software_resources' => Software::with('image')
+			->get()
+			->toArray(),
+	]);
+})->name('educational-software.index');
+
+
+Route::get('/educational-software/{slug}', function ($slug) {
+	return Inertia::render('Innovation/Software/Show', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+		'software' => Software::where('slug', $slug)
+			->first()
+			->toArray(),
+	]);
+})->name('educational-software.show');
+
+Route::get('/infographics', function () {
+	return Inertia::render('Innovation/Infographics/Index', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+		'infographics' => Infographic::with('image')
+			->get()
+			->toArray(),
+	]);
+})->name('infographics.index');
+
+Route::get('/infographics/{slug}', function ($slug) {
+	return Inertia::render('Innovation/Infographics/Show', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
+		'infographic' => Infographic::where('slug', $slug)
+			->first()
+			->toArray(),
+	]);
+})->name('infographics.show');
+
+Route::get('/social-service', function(){
+	return Inertia::render('Vinculation/SocialService');
+})->name('social-service');
+
+Route::get('/profesional-practice', function(){
+	return Inertia::render('Vinculation/ProfesionalPractice');
+})->name('profesional-practice');
+
+Route::get('/vinculation-resources', function(){
+	return Inertia::render('Vinculation/Resources');
+})->name('vinculation-resources');
+
 Route::get('/convocations', function () {
 	return Inertia::render('Convocations/Index', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),
-		'convocations' => Convocation::select('id', 'name', 'date_time', 'location', 'description', 'slug', 'created_at')
-			->with('image')
+		'convocations' => Convocation::with('image')
 			->get()
 			->each(function ($convocation, $index) {
 				$date_time = Carbon::create($convocation->date_time);
