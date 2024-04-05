@@ -62,6 +62,7 @@ const emit = defineEmits(['openModal', 'closeModal']);
 				<NavLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
 					Inicio
 				</NavLink>
+				<!-- Divulgación -->
 				<div class="relative">
 					<Dropdown align="right" width="56">
 						<template #trigger>
@@ -90,11 +91,60 @@ const emit = defineEmits(['openModal', 'closeModal']);
 						</template>
 					</Dropdown>
 				</div>
+				<!-- Innovación -->
+				<div class="relative">
+					<Dropdown align="right" width="56">
+						<template #trigger>
+							<span
+								class="inline-flex items-center px-4 py-2 font-bold hover:text-sky-500 rounded-xl transition duration-150 ease-in-out cursor-pointer"
+								:class=" { 'text-sky-500': $page.url.includes('educational-software') || $page.url.includes('infographics'), 'text-gray-500': !$page.url.includes('educational-software') || !$page.url.includes('infographics') } ">
+								Innovación
+							</span>
+						</template>
+
+						<template #content>
+							<div class="flex flex-col">
+								<NavLink :href=" route( 'educational-software.index' ) " :active=" route().current( 'educational-software.index' ) || $page.url.includes('educational-software') ">
+									Software educativo
+								</NavLink>
+								<NavLink :href=" route( 'infographics.index' ) " :active=" route().current( 'infographics.index' ) || $page.url.includes('infographics') ">
+									Infografías
+								</NavLink>
+							</div>
+						</template>
+					</Dropdown>
+				</div>
+				<!-- Vinculación -->
+				<div class="relative">
+					<Dropdown align="right" width="56">
+						<template #trigger>
+							<span
+								class="inline-flex items-center px-4 py-2 font-bold hover:text-sky-500 rounded-xl transition duration-150 ease-in-out cursor-pointer"
+								:class=" { 'text-sky-500': $page.url.includes('social-service')|| $page.url.includes('profesional-practice') || $page.url.includes('vinculation-resources'), 'text-gray-500': !$page.url.includes('social-service')|| !$page.url.includes('profesional-practice') || !$page.url.includes('vinculation-resources') } ">
+								Vinculación
+							</span>
+						</template>
+
+						<template #content>
+							<div class="flex flex-col">
+								<NavLink :href=" route( 'social-service' ) " :active=" route().current( 'social-service' ) ">
+									Servicio social
+								</NavLink>
+								<NavLink :href=" route( 'profesional-practice' ) " :active=" route().current( 'profesional-practice' ) ">
+									Residencia
+								</NavLink>
+								<NavLink :href=" route( 'vinculation-resources' ) " :active=" route().current( 'vinculation-resources' ) ">
+									Recursos
+								</NavLink>
+							</div>
+						</template>
+					</Dropdown>
+				</div>
 				<NavLink :href=" route( 'convocations.index' ) "
 					:active=" route().current( 'convocations.index' ) || $page.url.includes( 'convocations' ) ">
 					Convocatorias
 				</NavLink>
-				<NavLink :href=" route( 'gallery.index' ) " :active=" route().current( 'gallery.index' ) ">
+				<NavLink :href=" route( 'gallery.index' ) " :active=" route().current( 'gallery.index' ) || $page.url.includes('gallery') ">
 					Galería
 				</NavLink>
 				<NavLink :href=" route( 'reime' ) " :active=" route().current( 'reime' ) ">
@@ -105,7 +155,8 @@ const emit = defineEmits(['openModal', 'closeModal']);
 				</NavLink>
 
 				<div v-if=" canLogin && $page.props.auth.user.name !== null " class="hidden sm:flex sm:items-center">
-					<Link v-if=" $page.props.auth.user.role == 'admin' " :href=" route( 'admin.dashboard' ) "	class=" text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-md transition-all ease-in-out focus:no-underline font-medium">
+					<Link v-if=" $page.props.auth.user.role == 'admin' " :href=" route( 'admin.dashboard' ) "
+						class=" text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-md transition-all ease-in-out focus:no-underline font-medium">
 					Dashboard
 					</Link>
 					<Link v-else=" $page.props.auth.user.role == 'editor' || $page.props.auth.user.role == 'user' "
@@ -195,6 +246,10 @@ const emit = defineEmits(['openModal', 'closeModal']);
 				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'divulgation' ) "
 					:active=" route().current( 'divulgation' ) ">
 					Divulgación
+				</ResponsiveNavLink>
+				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'divulgation' ) "
+					:active=" route().current( 'divulgation' ) ">
+					Innovación
 				</ResponsiveNavLink>
 				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'convocations.index' ) "
 					:active=" route().current( 'convocations.index' ) ">

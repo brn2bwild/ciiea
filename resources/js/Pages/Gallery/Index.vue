@@ -29,15 +29,15 @@ const modalImageUrl = ref('');
 </script>
 
 <template>
-
 	<Head title="Galería" />
-	<div class="w-full pt-20 px-4 sm:p-12 grid grid-cols-1 sm:grid-cols-5 gap-4 sm:gap-6">
+	<section class="w-full px-12 pt-10">
+		<h1 class="text-xl text-neutral-600 font-bold">Eventos</h1>
+	</section>
 
+	<div class="w-full pt-8 px-4 sm:px-12 sm:pt-8 sm:pb-12 grid grid-cols-1 sm:grid-cols-5 gap-4 sm:gap-6">
 		<!-- <div v-for=" event in events " :key=" event.index "
 			@click="showModal = true; modalImageUrl = '/storage/gallery/foro-1.jpg'" class="group cursor-pointer"> -->
-		<div class="group cursor-pointer"
-			v-for="                   event                   in                   events                   "
-			:key=" event.index ">
+		<div class="group cursor-pointer" v-for="  event in events  " :key=" event.index ">
 			<Link :href=" route( 'gallery.details', event.id ) ">
 			<div class="block rounded-lg bg-neutral-50 overflow-hidden transition-all duration-300 ease-in-out relative">
 				<img loading="lazy" class="h-80 z-0 object-cover" src="/storage/images/gallery-index.jpeg" alt="foro-1" />

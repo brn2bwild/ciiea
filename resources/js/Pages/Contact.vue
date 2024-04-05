@@ -160,18 +160,4 @@ defineProps({
 			</div>
 		</div>
 	</section>
-	<!-- <h1 class="text-xl sm:text-2xl font-bold mb-4">
-		Centro de Investigación e Innovación para la Enseñanza y el Aprendizaje
-	</h1> -->
-	<div class="w-full flex flex-col justify-center items-center gap-4 bg-blue-950 p-8">
-		<h1 class="text-xl text-neutral-100">Centro de Investigación e Innovación para la Enseñanza y el Aprendizaje</h1>
-		<div class="flex justify-center gap-10">
-			<a href="https://facebook.com" target="_blank">
-				<font-awesome-icon :icon=" [ 'fab', 'facebook' ] " class="text-neutral-50 text-5xl" />
-			</a>
-			<a href="https://facebook.com" target="_blank">
-				<font-awesome-icon :icon=" [ 'fab', 'twitter' ] " class="text-neutral-50 text-5xl" />
-			</a>
-		</div>
-	</div>
 </template>

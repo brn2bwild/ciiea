@@ -9,7 +9,7 @@ import Checkbox from "@/Components/Checkbox.vue";
 import { defineAsyncComponent } from "vue";
 import HomeNavbar from "@/Components/Partials/HomeNavbar.vue";
 // import HomeSidebar from "@/Components/Partials/HomeSidebar.vue";
-// import HomeFooter from "@/Components/Partials/HomeFooter.vue";
+import HomeFooter from "@/Components/Partials/HomeFooter.vue";
 
 const props = defineProps({
 	canLogin: {
@@ -97,7 +97,7 @@ const Modal = defineAsyncComponent(() =>
 
 
 		<!-- Footer -->
-		<!-- <HomeFooter /> -->
+		<HomeFooter />
 
 		<Modal @close=" closeModalFn()" :show=" showModal " :max-width=" 'lg' ">
 			<div class="bg-white w-full p-8">
