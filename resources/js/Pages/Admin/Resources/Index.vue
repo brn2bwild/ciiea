@@ -64,7 +64,7 @@ const handleDeleteresource = () => {
 	<div class="flex justify-between items-center px-8">
 		<h1 class="text-3xl font-bold">Infografías</h1>
 		<button @click="showCreateModal = true"
-			class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200">Nueva infografía</button>
+			class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200">Nuevo recurso</button>
 	</div>
 
 	<div class="w-full p-8">
@@ -82,7 +82,7 @@ const handleDeleteresource = () => {
 		<div class="p-4">
 			<form @submit.prevent=" handleCreateSoftware()">
 				<div class="mt-4">
-					<InputLabel for="title" value="Título de la infografía" />
+					<InputLabel for="title" value="Nombre del recurso" />
 					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" resourceCreateForm.title " required
 						autocomplete="title" />
 					<InputError class="mt-2" :message=" resourceCreateForm.errors.title " />
@@ -103,7 +103,7 @@ const handleDeleteresource = () => {
 		<div class="p-4">
 			<div class="w-full flex flex-col justify-center items-center">
 				<font-awesome-icon :icon=" [ 'fa', 'triangle-exclamation' ] " class="text-neutral-900 text-8xl mb-4" />
-				<h2 class="text-xl">¿Deseas eliminar la infografía?</h2>
+				<h2 class="text-xl">¿Deseas eliminar el recurso?</h2>
 				<div class="w-full flex justify-end mt-4 gap-4">
 					<DangerButton @click="handleDeleteresource()">
 						Eliminar
