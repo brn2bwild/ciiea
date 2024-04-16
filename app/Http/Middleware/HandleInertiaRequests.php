@@ -5,9 +5,12 @@ namespace App\Http\Middleware;
 use App\Models\Book;
 use App\Models\Convocation;
 use App\Models\Event;
+use App\Models\Infographic;
 use App\Models\Investigation;
 use App\Models\Magazine;
 use App\Models\Publication;
+use App\Models\Resource;
+use App\Models\Software;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -62,6 +65,9 @@ class HandleInertiaRequests extends Middleware
 						'investigations' => Investigation::get()->count(),
 						'convocations' => Convocation::get()->count(),
 						'galleries' => Event::get()->count(),
+						'software_resources' => Software::get()->count(),
+						'infographics' => Infographic::get()->count(),
+						'resources' => Resource::get()->count(),
 						'admin_users' => User::role('admin')->get()->count(),
 						'users' => User::role('user')->get()->count(),
 						'roles' => Role::get()->count(),

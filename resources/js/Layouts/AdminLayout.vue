@@ -130,8 +130,8 @@ const showingNavigationDropdown = ref(false);
 			<SidebarLink :href=" route( 'admin.dashboard' ) " :active=" $page.url.includes( '/admin/dashboard' ) ">
 				Dashboard
 			</SidebarLink>
-			<h2 class="px-4 font-semibold text-neutral-500 mt-4 mb-2">Divulgación</h2>
-			<div class="pl-4">
+			<h2 class="px-4 font-semibold mt-4 mb-1 text-sky-950">Divulgación</h2>
+			<div class="">
 				<SidebarLink :href=" route( 'admin.books.index' ) " :active=" $page.url.includes( '/admin/books' ) ">
 					<div class="flex justify-between items-center w-full">
 						<span>Libros</span>
@@ -167,8 +167,8 @@ const showingNavigationDropdown = ref(false);
 					</div>
 				</SidebarLink>
 			</div>
-			<h2 class="px-4 font-semibold text-neutral-500 mt-4 mb-2">Recursos</h2>
-			<div class="pl-4">
+			<h2 class="px-4 font-semibold mt-4 mb-1 text-sky-950">Recursos</h2>
+			<div class="">
 				<SidebarLink :href=" route( 'admin.convocations.index' ) "
 					:active=" $page.url.includes( '/admin/convocations' ) ">
 					<div class="flex justify-between items-center w-full">
@@ -186,9 +186,34 @@ const showingNavigationDropdown = ref(false);
 						</span>
 					</div>
 				</SidebarLink>
+				
+				<SidebarLink :href=" route( 'admin.software.index' ) " :active=" $page.url.includes( '/admin/software' ) ">
+					<div class="flex justify-between items-center w-full">
+						<span>Software Educativo</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.software_resources }}
+						</span>
+					</div>
+				</SidebarLink>
+				<SidebarLink :href=" route( 'admin.infographics.index' ) " :active=" $page.url.includes( '/admin/infographics' ) ">
+					<div class="flex justify-between items-center w-full">
+						<span>Infografías</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.infographics }}
+						</span>
+					</div>
+				</SidebarLink>
+				<SidebarLink :href=" route( 'admin.resources.index' ) " :active=" $page.url.includes( '/admin/resources' ) ">
+					<div class="flex justify-between items-center w-full">
+						<span>Cartas de intención</span>
+						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
+							{{ $page.props.data.resources }}
+						</span>
+					</div>
+				</SidebarLink>
 			</div>
-			<h2 class="px-4 font-semibold text-neutral-500 mt-4 mb-2">Administración</h2>
-			<div class="pl-4">
+			<h2 class="px-4 font-semibold mt-4 mb-1 text-sky-950">Administración</h2>
+			<div class="">
 				<SidebarLink :href=" route( 'admin.users.index' ) " :active=" $page.url.includes( '/admin/users' ) ">
 					<div class="flex justify-between items-center w-full">
 						<span>Usuarios</span>

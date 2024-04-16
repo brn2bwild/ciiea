@@ -8,7 +8,7 @@ defineProps({
 	},
 	imagePath: {
 		type: String,
-		required: true,
+		required: false,
 	}
 });
 

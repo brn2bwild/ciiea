@@ -68,7 +68,7 @@ class ConvocationController extends Controller
 		Convocation::findOrFail($request->input('id'))
 			->update($request->validated());
 
-		return Redirect::back();
+		return back()->with('success', '');
 	}
 
 	public function destroy(Request $request): RedirectResponse

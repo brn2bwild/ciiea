@@ -9,4 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class Infographic extends Model
 {
     use HasFactory, HasImages;
+
+		protected $fillable = [
+			'title'
+		];
 }

@@ -11,8 +11,11 @@ use App\Http\Controllers\Admin\MagazineController;
 use App\Http\Controllers\Admin\PublicationController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\EducationalSoftwareController;
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\InfographicController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResourceController;
 use App\Models\Book;
 use App\Models\Convocation;
 use App\Models\Event;
@@ -20,6 +23,7 @@ use App\Models\Infographic;
 use App\Models\Investigation;
 use App\Models\Magazine;
 use App\Models\Publication;
+use App\Models\Resource;
 use App\Models\Software;
 use App\Models\User;
 use Carbon\Carbon;
@@ -100,7 +104,6 @@ Route::get('/educational-software', function () {
 	]);
 })->name('educational-software.index');
 
-
 Route::get('/educational-software/{slug}', function ($slug) {
 	return Inertia::render('Innovation/Software/Show', [
 		'canLogin' => Route::has('login'),
@@ -131,16 +134,23 @@ Route::get('/infographics/{slug}', function ($slug) {
 	]);
 })->name('infographics.show');
 
-Route::get('/social-service', function(){
+Route::get('/social-service', function () {
 	return Inertia::render('Vinculation/SocialService');
 })->name('social-service');
 
-Route::get('/profesional-practice', function(){
+Route::get('/profesional-practice', function () {
 	return Inertia::render('Vinculation/ProfesionalPractice');
 })->name('profesional-practice');
 
-Route::get('/vinculation-resources', function(){
-	return Inertia::render('Vinculation/Resources');
+Route::get('/vinculation-resources', function () {
+	return Inertia::render('Vinculation/Resources', [
+		'resources' => Resource::with('file')
+			->get()
+			->each(function ($resource, $index) {
+				$resource->created_at_for_humans = $resource->created_at->diffForHumans();
+			})
+			->toArray(),
+	]);
 })->name('vinculation-resources');
 
 Route::get('/convocations', function () {
@@ -153,7 +163,7 @@ Route::get('/convocations', function () {
 				$date_time = Carbon::create($convocation->date_time);
 				$convocation->date = $date_time->isoFormat('LL');
 				$convocation->time = $date_time->isoFormat('h:mm');
-				$convocation->created_at_for_humans = Carbon::createFromTimestamp($convocation->created_at)->diffForHumans();
+				$convocation->created_at_for_humans = $convocation->created_at->diffForHumans();
 			})
 			->toArray(),
 	]);
@@ -278,6 +288,30 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::delete('/gallery', [GalleryController::class, 'destroy'])->name('admin.gallery.destroy');
 		Route::post('/gallery/images', [GalleryController::class, 'uploadImages'])->name('admin.gallery.upload-images');
 		Route::delete('/gallery/images', [GalleryController::class, 'deleteImages'])->name('admin.gallery.delete-images');
+
+		Route::get('/software', [EducationalSoftwareController::class, 'index'])->name('admin.software.index');
+		Route::post('/software', [EducationalSoftwareController::class, 'store'])->name('admin.software.store');
+		Route::get('/software/{id}/edit', [EducationalSoftwareController::class, 'edit'])->name('admin.software.edit');
+		Route::patch('/software', [EducationalSoftwareController::class, 'update'])->name('admin.software.update');
+		Route::delete('/software', [EducationalSoftwareController::class, 'destroy'])->name('admin.software.destroy');
+		Route::post('/software/image', [EducationalSoftwareController::class, 'uploadImage'])->name('admin.software.upload-image');
+		Route::delete('/software/image', [EducationalSoftwareController::class, 'deleteImage'])->name('admin.software.delete-image');
+
+		Route::get('/infographics', [InfographicController::class, 'index'])->name('admin.infographics.index');
+		Route::post('/infographics', [InfographicController::class, 'store'])->name('admin.infographics.store');
+		Route::get('/infographics/{id}/edit', [InfographicController::class, 'edit'])->name('admin.infographics.edit');
+		Route::patch('/infographics', [InfographicController::class, 'update'])->name('admin.infographics.update');
+		Route::delete('/infographics', [InfographicController::class, 'destroy'])->name('admin.infographics.destroy');
+		Route::post('/infographics/image', [InfographicController::class, 'uploadImage'])->name('admin.infographics.upload-image');
+		Route::delete('/infographics/image', [InfographicController::class, 'deleteImage'])->name('admin.infographics.delete-image');
+
+		Route::get('/resources', [ResourceController::class, 'index'])->name('admin.resources.index');
+		Route::post('/resources', [ResourceController::class, 'store'])->name('admin.resources.store');
+		Route::get('/resources/{id}/edit', [ResourceController::class, 'edit'])->name('admin.resources.edit');
+		Route::patch('/resources', [ResourceController::class, 'update'])->name('admin.resources.update');
+		Route::delete('/resources', [ResourceController::class, 'destroy'])->name('admin.resources.destroy');
+		Route::post('/resources/file', [ResourceController::class, 'uploadFile'])->name('admin.resources.upload-file');
+		Route::delete('/resources/file', [ResourceController::class, 'deleteFile'])->name('admin.resources.delete-file');
 
 		Route::get('/administrators', [AdministratorController::class, 'index'])->name('admin.administrators.index');
 		Route::post('/administrators', [AdministratorController::class, 'store'])->name('admin.administrators.store');

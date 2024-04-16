@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
 			EventSeeder::class,
 			SoftwareSeeder::class,
 			InfographicSeeder::class,
+			ResourceSeeder::class,
 		]);
 	}
 }

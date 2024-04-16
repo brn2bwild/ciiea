@@ -67,7 +67,6 @@ const handleDeleteBook = () => {
 </script>
 
 <template>
-
 	<Head title="Libros" />
 	<div class="flex justify-between items-center px-8">
 		<h1 class="text-3xl font-bold">Libros</h1>

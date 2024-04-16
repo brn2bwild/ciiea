@@ -23,7 +23,6 @@ class Convocation extends Model
 
 	protected $casts = [
 		'date_time' => 'datetime',
-		'created_at' => 'timestamp',
 	];
 
 	// Se castea la hora proporcionada al atributo 'time' para que no guarde segundos
