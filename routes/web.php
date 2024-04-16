@@ -135,15 +135,23 @@ Route::get('/infographics/{slug}', function ($slug) {
 })->name('infographics.show');
 
 Route::get('/social-service', function () {
-	return Inertia::render('Vinculation/SocialService');
+	return Inertia::render('Vinculation/SocialService', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register')
+	]);
 })->name('social-service');
 
 Route::get('/profesional-practice', function () {
-	return Inertia::render('Vinculation/ProfesionalPractice');
+	return Inertia::render('Vinculation/ProfesionalPractice', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register')
+	]);
 })->name('profesional-practice');
 
 Route::get('/vinculation-resources', function () {
 	return Inertia::render('Vinculation/Resources', [
+		'canLogin' => Route::has('login'),
+		'canRegister' => Route::has('register'),
 		'resources' => Resource::with('file')
 			->get()
 			->each(function ($resource, $index) {
