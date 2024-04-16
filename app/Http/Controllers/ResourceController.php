@@ -51,7 +51,7 @@ class ResourceController extends Controller
 	{
 		$resource = Resource::findOrFail($request->input('id'));
 
-		$resource->detachImage();
+		$resource->detachFile();
 
 		$resource->delete();
 
