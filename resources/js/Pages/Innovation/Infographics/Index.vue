@@ -39,7 +39,7 @@ defineProps({
 						{{ infographic.title }}
 					</h1>
 					<!-- <h2 class="text-md font-medium text-neutral-600">{{ infographic.authors }}</h2> -->
-					<Link :href="route('infographics.show', infographic.slug)" class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold text-sm">Leer más</Link>
+					<Link :href="route('guest.infographics.show', infographic.slug)" class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold text-sm">Leer más</Link>
 				</div>
 			</div>
 		</section>

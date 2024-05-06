@@ -105,12 +105,12 @@ const emit = defineEmits(['openModal', 'closeModal']);
 
 						<template #content>
 							<div class="flex flex-col">
-								<NavLink :href=" route( 'educational-software.index' ) "
-									:active=" route().current( 'educational-software.index' ) || $page.url.includes( 'educational-software' ) ">
+								<NavLink :href=" route( 'guest.educational-software.index' ) "
+									:active=" route().current( 'guest.educational-software.index' ) || $page.url.includes( 'educational-software' ) ">
 									Software educativo
 								</NavLink>
-								<NavLink :href=" route( 'infographics.index' ) "
-									:active=" route().current( 'infographics.index' ) || $page.url.includes( 'infographics' ) ">
+								<NavLink :href=" route( 'guest.infographics.index' ) "
+									:active=" route().current( 'guest.infographics.index' ) || $page.url.includes( 'infographics' ) ">
 									Infografías
 								</NavLink>
 							</div>
@@ -145,18 +145,18 @@ const emit = defineEmits(['openModal', 'closeModal']);
 						</template>
 					</Dropdown>
 				</div>
-				<NavLink :href=" route( 'convocations.index' ) "
-					:active=" route().current( 'convocations.index' ) || $page.url.includes( 'convocations' ) ">
+				<NavLink :href=" route( 'guest.convocations.index' ) "
+					:active=" route().current( 'guest.convocations.index' ) || $page.url.includes( 'convocations' ) ">
 					Convocatorias
 				</NavLink>
-				<NavLink :href=" route( 'gallery.index' ) "
-					:active=" route().current( 'gallery.index' ) || $page.url.includes( 'gallery' ) ">
+				<NavLink :href=" route( 'guest.gallery.index' ) "
+					:active=" route().current( 'guest.gallery.index' ) || $page.url.includes( 'gallery' ) ">
 					Galería
 				</NavLink>
 				<NavLink :href=" route( 'reime' ) " :active=" route().current( 'reime' ) ">
 					REIME
 				</NavLink>
-				<NavLink :href=" route( 'contact' ) " :active=" route().current( 'contact' ) ">
+				<NavLink :href=" route( 'guest.contact.index' ) " :active=" route().current( 'guest.contact.index' ) ">
 					Contacto
 				</NavLink>
 
@@ -249,28 +249,28 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					:active=" route().current( 'home' ) ">
 					Inicio
 				</ResponsiveNavLink>
-				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'divulgation' ) "
+				<!-- <ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'divulgation' ) "
 					:active=" route().current( 'divulgation' ) ">
 					Divulgación
 				</ResponsiveNavLink>
 				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'divulgation' ) "
 					:active=" route().current( 'divulgation' ) ">
 					Innovación
-				</ResponsiveNavLink>
-				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'convocations.index' ) "
+				</ResponsiveNavLink> -->
+				<!-- <ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'convocations.index' ) "
 					:active=" route().current( 'convocations.index' ) ">
 					Convocatorias
 				</ResponsiveNavLink>
 				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'gallery.index' ) "
 					:active=" route().current( 'gallery.index' ) ">
 					Galería
-				</ResponsiveNavLink>
+				</ResponsiveNavLink> -->
 				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'reime' ) "
 					:active=" route().current( 'reime' ) ">
 					REIME
 				</ResponsiveNavLink>
-				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'contact' ) "
-					:active=" route().current( 'contact' ) ">
+				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'guest.contact.index' ) "
+					:active=" route().current( 'guest.contact.index' ) ">
 					Contacto
 				</ResponsiveNavLink>
 			</div>

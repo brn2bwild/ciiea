@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Infographic;
+use App\Models\Software;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class InfographicController extends Controller
+class EducationalSoftwareController extends Controller
 {
     public function index(): Response
     {
-        return Inertia::render('Innovation/Infographics/Index', [
+        return Inertia::render('Innovation/Software/Index', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'infographics' => Infographic::with('image')
+            'software_resources' => Software::with('image')
                 ->get()
                 ->toArray(),
         ]);
@@ -23,10 +23,10 @@ class InfographicController extends Controller
 
     public function show(Request $request): Response
     {
-        return Inertia::render('Innovation/Infographics/Show', [
+        return Inertia::render('Innovation/Software/Show', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'infographic' => Infographic::where('slug', $request->slug)
+            'software' => Software::where('slug', $request->slug)
                 ->first()
                 ->toArray(),
         ]);

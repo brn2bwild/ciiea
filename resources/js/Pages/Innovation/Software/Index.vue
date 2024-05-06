@@ -39,7 +39,7 @@ defineProps({
 						{{ software.name }}
 					</h1>
 					<!-- <h2 class="text-md font-medium text-neutral-600">{{ software.authors }}</h2> -->
-					<Link :href="route('educational-software.show', software.slug)" class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold text-sm">Leer más</Link>
+					<Link :href="route('guest.educational-software.show', software.slug)" class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold text-sm">Leer más</Link>
 				</div>
 			</div>
 		</section>

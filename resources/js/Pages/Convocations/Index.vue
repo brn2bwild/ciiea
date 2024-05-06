@@ -37,7 +37,7 @@ defineProps({
 					<h2 class="text-lg font-medium text-neutral-600 mt-2 mb-4">
 						{{ convocations[ 0 ].description.substr( 0, 100 ) }}
 					</h2>
-					<Link :href=" route( 'convocations.show', convocations[ 0 ].slug ) "
+					<Link :href=" route( 'guest.convocations.show', convocations[ 0 ].slug ) "
 						class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold">
 					Leer más
 					</Link>
@@ -66,7 +66,7 @@ defineProps({
 					<h3 class="text-neutral-600 text-sm">
 						Compartido {{ convocation.created_at_for_humans }}
 					</h3>
-					<Link :href=" route( 'convocations.show', convocation.slug ) "
+					<Link :href=" route( 'guest.convocations.show', convocation.slug ) "
 						class="bg-sky-500 px-4 py-2 rounded-lg text-neutral-50 font-bold text-sm">
 					Leer más
 					</Link>

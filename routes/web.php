@@ -12,30 +12,25 @@ use App\Http\Controllers\Admin\PublicationController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\EducationalSoftwareController;
+use App\Http\Controllers\Admin\InfographicController;
 use App\Http\Controllers\BookController as GuestBookController;
+use App\Http\Controllers\ContactController as GuestContactController;
+use App\Http\Controllers\ConvocationController as GuestConvocationController;
+use App\Http\Controllers\EducationalSoftwareController as GuestEducationalSoftwareController;
 use App\Http\Controllers\FileController;
-use App\Http\Controllers\InfographicController;
+use App\Http\Controllers\GalleryController as GuestGalleryController;
+use App\Http\Controllers\InfographicController as GuestInfographicController;
 use App\Http\Controllers\InvestigationController as GuestInvestigationController;
 use App\Http\Controllers\MagazineController as GuestMagazineController;
+use App\Http\Controllers\ProfesionalPracticeController as GuestProfesionalPracticeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicationController as GuestPublicationController;
 use App\Http\Controllers\ResourceController;
-use App\Models\Book;
-use App\Models\Convocation;
-use App\Models\Event;
-use App\Models\Infographic;
-use App\Models\Investigation;
-use App\Models\Magazine;
-use App\Models\Publication;
+use App\Http\Controllers\SocialServiceController as GuestSocialServiceController;
+use App\Http\Controllers\VinculationResourceController as GuestVinculationResourceController;
 use App\Models\Resource;
-use App\Models\Software;
-use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use PHPUnit\Framework\MockObject\Stub\ReturnCallback;
 
 Route::get('/', function () {
 	return Inertia::render('Home', [
@@ -44,138 +39,26 @@ Route::get('/', function () {
 	]);
 })->name('home');
 
-Route::get('/divulgation', function () {
-	return Inertia::render('Divulgation', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-	]);
-})->name('divulgation');
-
 Route::get('/books', [GuestBookController::class, 'index'])->name('guest.books.index');
 Route::get('/magazines', [GuestMagazineController::class, 'index'])->name('guest.magazines.index');
 Route::get('/hist-publications', [GuestPublicationController::class, 'index'])->name('guest.hist-publications.index');
 Route::get('/investigations', [GuestInvestigationController::class, 'index'])->name('guest.investigations.index');
 
-Route::get('/educational-software', function () {
-	return Inertia::render('Innovation/Software/Index', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'software_resources' => Software::with('image')
-			->get()
-			->toArray(),
-	]);
-})->name('educational-software.index');
+Route::get('/educational-software', [GuestEducationalSoftwareController::class, 'index'])->name('guest.educational-software.index');
+Route::get('/educational-software/{slug}', [GuestEducationalSoftwareController::class, 'show'])->name('guest.educational-software.show');
 
-Route::get('/educational-software/{slug}', function ($slug) {
-	return Inertia::render('Innovation/Software/Show', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'software' => Software::where('slug', $slug)
-			->first()
-			->toArray(),
-	]);
-})->name('educational-software.show');
+Route::get('/infographics', [GuestInfographicController::class, 'index'])->name('guest.infographics.index');
+Route::get('/infographics/{slug}', [GuestInfographicController::class, 'show'])->name('guest.infographics.show');
 
-Route::get('/infographics', function () {
-	return Inertia::render('Innovation/Infographics/Index', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'infographics' => Infographic::with('image')
-			->get()
-			->toArray(),
-	]);
-})->name('infographics.index');
+Route::get('/social-service', [GuestSocialServiceController::class, 'show'])->name('social-service');
+Route::get('/profesional-practice', [GuestProfesionalPracticeController::class, 'show'])->name('profesional-practice');
+Route::get('/vinculation-resources', [GuestVinculationResourceController::class, 'index'])->name('vinculation-resources');
 
-Route::get('/infographics/{slug}', function ($slug) {
-	return Inertia::render('Innovation/Infographics/Show', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'infographic' => Infographic::where('slug', $slug)
-			->first()
-			->toArray(),
-	]);
-})->name('infographics.show');
+Route::get('/convocations', [GuestConvocationController::class, 'index'])->name('guest.convocations.index');
+Route::get('/convocations/{slug}', [GuestConvocationController::class, 'show'])->name('guest.convocations.show');
 
-Route::get('/social-service', function () {
-	return Inertia::render('Vinculation/SocialService', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register')
-	]);
-})->name('social-service');
-
-Route::get('/profesional-practice', function () {
-	return Inertia::render('Vinculation/ProfesionalPractice', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register')
-	]);
-})->name('profesional-practice');
-
-Route::get('/vinculation-resources', function () {
-	return Inertia::render('Vinculation/Resources', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'resources' => Resource::with('file')
-			->get()
-			->each(function ($resource, $index) {
-				$resource->created_at_for_humans = $resource->created_at->diffForHumans();
-			})
-			->toArray(),
-	]);
-})->name('vinculation-resources');
-
-Route::get('/convocations', function () {
-	return Inertia::render('Convocations/Index', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'convocations' => Convocation::with('image')
-			->get()
-			->each(function ($convocation, $index) {
-				$date_time = Carbon::create($convocation->date_time);
-				$convocation->date = $date_time->isoFormat('LL');
-				$convocation->time = $date_time->isoFormat('h:mm');
-				$convocation->created_at_for_humans = $convocation->created_at->diffForHumans();
-			})
-			->toArray(),
-	]);
-})->name('convocations.index');
-
-Route::get('/convocations/{slug}', function ($slug) {
-	$convocation = Convocation::where('slug', $slug)->first()->toArray();
-
-	$date_time = Carbon::createFromDate($convocation['date_time']);
-
-	$convocation['date'] = $date_time->isoFormat('LL');
-
-	$convocation['time'] = $date_time->format('g:i a');
-
-	return Inertia::render('Convocations/Show', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'convocation' => $convocation,
-	]);
-})->name('convocations.show');
-
-Route::get('/gallery', function () {
-	// $events = Event::with('images')->get();
-	// dd($events);
-	return Inertia::render('Gallery/Index', [
-		'events' => Event::with('images')->get(),
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-	]);
-})->name('gallery.index');
-
-Route::get('/gallery/{event}', function ($event) {
-	$event = Event::where('id', $event)->first();
-
-	$images = $event->images;
-
-	return Inertia::render('Gallery/Details', [
-		'images' => $images,
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-	]);
-})->name('gallery.details');
+Route::get('/gallery', [GuestGalleryController::class, 'index'])->name('guest.gallery.index');
+Route::get('/gallery/{event}', [GuestGalleryController::class, 'show'])->name('guest.gallery.show');
 
 Route::get('/reime', function () {
 	return Inertia::render('Reime/Index', [
@@ -184,13 +67,7 @@ Route::get('/reime', function () {
 	]);
 })->name('reime');
 
-Route::get('/contact', function () {
-	return Inertia::render('Contact', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'administrators' => User::role('admin')->get()->toArray(),
-	]);
-})->name('contact');
+Route::get('/contact', [GuestContactController::class, 'index'])->name('guest.contact.index');
 
 Route::get('/files/{file}', [FileController::class, 'show'])->name('file.show');
 

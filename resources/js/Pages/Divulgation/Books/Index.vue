@@ -86,8 +86,7 @@ const handleClosePdfModal = () => {
 			</div>
 		</section>
 	</div>
-	<Modal @close=" handleClosePdfModal " :show=" showPdfModal " :max-width=" '3xl' "
-		class=" overflow-hidden h-[860px]">
+	<Modal @close=" handleClosePdfModal " :show=" showPdfModal " :max-width=" '3xl' ">
 		<PdfViewer :url=" urlToShow " class=" object-fill" />
 	</Modal>
 </template>
