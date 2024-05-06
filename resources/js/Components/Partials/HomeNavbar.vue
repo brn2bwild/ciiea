@@ -75,17 +75,17 @@ const emit = defineEmits(['openModal', 'closeModal']);
 
 						<template #content>
 							<div class="flex flex-col">
-								<NavLink :href=" route( 'books.index' ) "
+								<NavLink :href=" route( 'guest.books.index' ) "
 									:active=" route().current( 'books.index' ) || $page.url.includes( 'books' ) ">
 									Libros
 								</NavLink>
-								<NavLink :href=" route( 'magazines' ) " :active=" route().current( 'magazines' ) ">
+								<NavLink :href=" route( 'guest.magazines.index' ) " :active=" $page.url.includes( 'magazines' ) ">
 									Revistas
 								</NavLink>
-								<NavLink :href=" route( 'hist-publications' ) " :active=" route().current( 'hist-publications' ) ">
+								<NavLink :href=" route( 'guest.hist-publications.index' ) " :active=" $page.url.includes( 'hist-publications' ) ">
 									Publicaciones
 								</NavLink>
-								<NavLink :href=" route( 'investigations' ) " :active=" route().current( 'investigations' ) ">
+								<NavLink :href=" route( 'guest.investigations.index' ) " :active=" $page.url.includes( 'investigations' ) ">
 									Investigaciones
 								</NavLink>
 							</div>

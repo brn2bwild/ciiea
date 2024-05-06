@@ -44,14 +44,14 @@ const handleClosePdfModal = () => {
 			<div
 				class="w-full h-full rounded-xl overflow-hidden flex justify-between items-center bg-white shadow-lg shadow-slate-100">
 				<div class="w-1/2 p-4">
-					<h5 class="text-neutral-500 font-sans">{{ books[ 0 ].publicated_at }}</h5>
+					<h5 class="text-neutral-500 font-sans">{{ props.books[ 0 ].publicated_at }}</h5>
 					<h1 class="text-3xl font-extrabold font-sans mt-2 text-neutral-700">
-						{{ books[ 0 ].title }}
+						{{ props.books[ 0 ].title }}
 					</h1>
 					<h2 class="text-lg font-medium text-neutral-600 mt-2">
-						{{ books[ 0 ].authors }}
+						{{ props.books[ 0 ].authors }}
 					</h2>
-					<button v-if="books[0].file" @click="handleOpenPdfModal(books[0].file.path)" class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold mt-4">Leer más</button>
+					<button v-if="props.books[0].file" @click="handleOpenPdfModal(props.books[0].file.path)" class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold mt-4">Leer más</button>
 				</div>
 				<div class="w-1/2 h-80 overflow-hidden object-contain flex justify-center">
 					<div v-if=" props.books[ 0 ].file !== null " class=" scale-90 -m-[20px]">
@@ -65,7 +65,7 @@ const handleClosePdfModal = () => {
 			<h1 class="text-xl text-neutral-600 font-bold">Libros recientes</h1>
 		</section>
 		<section class="w-full grid grid-cols-1 md:grid-cols-3 gap-10">
-			<div v-for="                       book in books                       " :key=" book.index "
+			<div v-for="                       book in props.books                       " :key=" book.index "
 				class="w-full rounded-xl flex flex-col justify-start items-start bg-white shadow-lg shadow-slate-100 overflow-hidden">
 				<div class="w-full h-60 mb-2 overflow-hidden object-contain flex justify-center items-start">
 					<div v-if=" book.file !== null " class="scale-[60%] -m-[160px]">

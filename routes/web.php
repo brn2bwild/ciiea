@@ -15,7 +15,10 @@ use App\Http\Controllers\Admin\EducationalSoftwareController;
 use App\Http\Controllers\BookController as GuestBookController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\InfographicController;
+use App\Http\Controllers\InvestigationController as GuestInvestigationController;
+use App\Http\Controllers\MagazineController as GuestMagazineController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicationController as GuestPublicationController;
 use App\Http\Controllers\ResourceController;
 use App\Models\Book;
 use App\Models\Convocation;
@@ -48,40 +51,10 @@ Route::get('/divulgation', function () {
 	]);
 })->name('divulgation');
 
-Route::get('/books', [GuestBookController::class, 'index'])->name('books.index');
-
-Route::get('/magazines', function () {
-	return Inertia::render('Divulgation/Magazines/Index', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'magazines' => Magazine::with('file')
-			->select('name', 'publicated_at', 'slug')
-			->get()
-			->toArray(),
-	]);
-})->name('magazines');
-
-Route::get('/hist-publications', function () {
-	return Inertia::render('Divulgation/Publications/Index', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'publications' => Publication::with('file')
-			->select('title', 'publicated_at', 'slug')
-			->get()
-			->toArray(),
-	]);
-})->name('hist-publications');
-
-Route::get('/investigations', function () {
-	return Inertia::render('Divulgation/Investigations/Index', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'investigations' => Investigation::with('file')
-			->select('title', 'publicated_at', 'short_description', 'slug')
-			->get()
-			->toArray(),
-	]);
-})->name('investigations');
+Route::get('/books', [GuestBookController::class, 'index'])->name('guest.books.index');
+Route::get('/magazines', [GuestMagazineController::class, 'index'])->name('guest.magazines.index');
+Route::get('/hist-publications', [GuestPublicationController::class, 'index'])->name('guest.hist-publications.index');
+Route::get('/investigations', [GuestInvestigationController::class, 'index'])->name('guest.investigations.index');
 
 Route::get('/educational-software', function () {
 	return Inertia::render('Innovation/Software/Index', [
