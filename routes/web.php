@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PublicationController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\EducationalSoftwareController;
+use App\Http\Controllers\BookController as GuestBookController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\InfographicController;
 use App\Http\Controllers\ProfileController;
@@ -47,19 +48,7 @@ Route::get('/divulgation', function () {
 	]);
 })->name('divulgation');
 
-Route::get('/books', function () {
-	return Inertia::render('Divulgation/Books/Index', [
-		'canLogin' => Route::has('login'),
-		'canRegister' => Route::has('register'),
-		'books' => Book::with('file')
-			->select('id', 'title', 'authors', 'isbn', 'publicated_at', 'slug')
-			->get()
-			->each(function ($book, $index) {
-				$book->publicated_at = Carbon::createFromDate($book->publicated_at)->isoFormat('LL');
-			})
-			->toArray(),
-	]);
-})->name('books');
+Route::get('/books', [GuestBookController::class, 'index'])->name('books.index');
 
 Route::get('/magazines', function () {
 	return Inertia::render('Divulgation/Magazines/Index', [
@@ -223,8 +212,6 @@ Route::get('/reime', function () {
 })->name('reime');
 
 Route::get('/contact', function () {
-
-	// dd(User::get()->toArray());
 	return Inertia::render('Contact', [
 		'canLogin' => Route::has('login'),
 		'canRegister' => Route::has('register'),

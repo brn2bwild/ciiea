@@ -46,13 +46,13 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					class="inline-flex items-center justify-center p-2 rounded-md text-neutral-400 hover:text-neutral-500 hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 focus:text-neutral-500 transition duration-150 ease-in-out">
 					<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 						<path :class=" {
-					hidden: showingNavigationDropdown,
-					'inline-flex': !showingNavigationDropdown,
-				} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+							hidden: showingNavigationDropdown,
+							'inline-flex': !showingNavigationDropdown,
+						} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
 						<path :class=" {
-					hidden: !showingNavigationDropdown,
-					'inline-flex': showingNavigationDropdown,
-				} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+							hidden: !showingNavigationDropdown,
+							'inline-flex': showingNavigationDropdown,
+						} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 					</svg>
 				</button>
 			</div>
@@ -75,7 +75,8 @@ const emit = defineEmits(['openModal', 'closeModal']);
 
 						<template #content>
 							<div class="flex flex-col">
-								<NavLink :href=" route( 'books' ) " :active=" route().current( 'books' ) ">
+								<NavLink :href=" route( 'books.index' ) "
+									:active=" route().current( 'books.index' ) || $page.url.includes( 'books' ) ">
 									Libros
 								</NavLink>
 								<NavLink :href=" route( 'magazines' ) " :active=" route().current( 'magazines' ) ">
@@ -97,17 +98,19 @@ const emit = defineEmits(['openModal', 'closeModal']);
 						<template #trigger>
 							<span
 								class="inline-flex items-center px-4 py-2 font-bold hover:text-sky-500 rounded-xl transition duration-150 ease-in-out cursor-pointer"
-								:class=" { 'text-sky-500': $page.url.includes('educational-software') || $page.url.includes('infographics'), 'text-gray-500': !$page.url.includes('educational-software') || !$page.url.includes('infographics') } ">
+								:class=" { 'text-sky-500': $page.url.includes( 'educational-software' ) || $page.url.includes( 'infographics' ), 'text-gray-500': !$page.url.includes( 'educational-software' ) || !$page.url.includes( 'infographics' ) } ">
 								Innovación
 							</span>
 						</template>
 
 						<template #content>
 							<div class="flex flex-col">
-								<NavLink :href=" route( 'educational-software.index' ) " :active=" route().current( 'educational-software.index' ) || $page.url.includes('educational-software') ">
+								<NavLink :href=" route( 'educational-software.index' ) "
+									:active=" route().current( 'educational-software.index' ) || $page.url.includes( 'educational-software' ) ">
 									Software educativo
 								</NavLink>
-								<NavLink :href=" route( 'infographics.index' ) " :active=" route().current( 'infographics.index' ) || $page.url.includes('infographics') ">
+								<NavLink :href=" route( 'infographics.index' ) "
+									:active=" route().current( 'infographics.index' ) || $page.url.includes( 'infographics' ) ">
 									Infografías
 								</NavLink>
 							</div>
@@ -120,7 +123,7 @@ const emit = defineEmits(['openModal', 'closeModal']);
 						<template #trigger>
 							<span
 								class="inline-flex items-center px-4 py-2 font-bold hover:text-sky-500 rounded-xl transition duration-150 ease-in-out cursor-pointer"
-								:class=" { 'text-sky-500': $page.url.includes('social-service')|| $page.url.includes('profesional-practice') || $page.url.includes('vinculation-resources'), 'text-gray-500': !$page.url.includes('social-service')|| !$page.url.includes('profesional-practice') || !$page.url.includes('vinculation-resources') } ">
+								:class=" { 'text-sky-500': $page.url.includes( 'social-service' ) || $page.url.includes( 'profesional-practice' ) || $page.url.includes( 'vinculation-resources' ), 'text-gray-500': !$page.url.includes( 'social-service' ) || !$page.url.includes( 'profesional-practice' ) || !$page.url.includes( 'vinculation-resources' ) } ">
 								Vinculación
 							</span>
 						</template>
@@ -130,10 +133,12 @@ const emit = defineEmits(['openModal', 'closeModal']);
 								<NavLink :href=" route( 'social-service' ) " :active=" route().current( 'social-service' ) ">
 									Servicio social
 								</NavLink>
-								<NavLink :href=" route( 'profesional-practice' ) " :active=" route().current( 'profesional-practice' ) ">
+								<NavLink :href=" route( 'profesional-practice' ) "
+									:active=" route().current( 'profesional-practice' ) ">
 									Residencia
 								</NavLink>
-								<NavLink :href=" route( 'vinculation-resources' ) " :active=" route().current( 'vinculation-resources' ) ">
+								<NavLink :href=" route( 'vinculation-resources' ) "
+									:active=" route().current( 'vinculation-resources' ) ">
 									Recursos
 								</NavLink>
 							</div>
@@ -144,7 +149,8 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					:active=" route().current( 'convocations.index' ) || $page.url.includes( 'convocations' ) ">
 					Convocatorias
 				</NavLink>
-				<NavLink :href=" route( 'gallery.index' ) " :active=" route().current( 'gallery.index' ) || $page.url.includes('gallery') ">
+				<NavLink :href=" route( 'gallery.index' ) "
+					:active=" route().current( 'gallery.index' ) || $page.url.includes( 'gallery' ) ">
 					Galería
 				</NavLink>
 				<NavLink :href=" route( 'reime' ) " :active=" route().current( 'reime' ) ">

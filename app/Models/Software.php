@@ -13,6 +13,7 @@ class Software extends Model
 
 		protected $fillable = [
 			'name',
-			'description'
+			'description',
+			'url',
 		];
 }

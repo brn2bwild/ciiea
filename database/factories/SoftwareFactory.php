@@ -21,6 +21,7 @@ class SoftwareFactory extends Factory
 		return [
 			'name' => $name,
 			'description' => fake()->text(100),
+			'url' => fake()->url(),
 			'slug' => Str::slug($name),
 		];
 	}

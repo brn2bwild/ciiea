@@ -21,6 +21,7 @@ const props = defineProps({
 const softwareForm = useForm({
 	id: props.software.id,
 	name: props.software.name,
+	url: props.software.url,
 	description: props.software.description,
 })
 
@@ -47,6 +48,12 @@ const handleUpdateSoftware = () => {
 					<TextInput id="description" type="text" class="mt-1 block w-full" v-model=" softwareForm.description "
 						required autofocus autocomplete="software_description" />
 					<InputError class="mt-2" :message=" softwareForm.errors.description " />
+				</div>
+				<div class="mt-4">
+					<InputLabel for="url" value="Link de descarga" />
+					<TextInput id="url" type="text" class="mt-1 block w-full" v-model=" softwareForm.url "
+						required autofocus autocomplete="software_url" />
+					<InputError class="mt-2" :message=" softwareForm.errors.url " />
 				</div>
 				<div class="flex items-center gap-4 mt-4">
 					<PrimaryButton :disabled=" softwareForm.processing ">Guardar</PrimaryButton>

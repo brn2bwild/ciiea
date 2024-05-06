@@ -1,15 +1,16 @@
 <script setup>
-defineProps({
-	documentUrl: {
+import { VuePDF, usePDF } from '@tato30/vue-pdf';
+
+const props = defineProps({
+	url: {
 		type: String,
 		required: true
 	}
 })
+
+const { pdf } = usePDF('/' + props.url)
 </script>
 
 <template>
-	<div>
-		<iframe title="PDF" width="100%" height="1000px"
-			:src=" `/pdfjs-3.4.379-dist/web/viewer.html?file=${ documentUrl }` "></iframe>
-	</div>
+	<VuePDF :pdf=" pdf " />
 </template>
