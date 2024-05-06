@@ -15,7 +15,7 @@ class ContactController extends Controller
         return Inertia::render('Contact', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'administrators' => User::role('admin')->get()->toArray(),
+            'administrators' => User::role(['admin', 'editor'])->where('is_admin_contact', true)->get()->toArray(),
         ]);
     }
 }

@@ -48,18 +48,21 @@ class PermissionsSeeer extends Seeder
 		$editor = User::factory()->create([
 			'name' => 'Example Editor',
 			'email' => 'editor@example.com',
+			'is_admin_contact' => true
 		]);
 		$editor->assignRole($editorRole);
 
 		$admin = User::factory()->create([
 			'name' => 'Example Admin User',
 			'email' => 'admin@example.com',
+			'is_admin_contact' => true
 		]);
 		$admin->assignRole($adminRole);
 
 		$super_admin = User::factory()->create([
 			'name' => 'Example Super-Admin User',
 			'email' => 'superadmin@example.com',
+			'is_admin_contact' => true
 		]);
 		$super_admin->assignRole($superAdminRole);
 	}

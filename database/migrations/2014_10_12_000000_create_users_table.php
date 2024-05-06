@@ -25,6 +25,7 @@ return new class extends Migration
 			$table->json('social_media');
 			$table->rememberToken();
 			$table->timestamp('last_login')->nullable();
+			$table->boolean('is_admin_contact')->default(false);
 			$table->timestamps();
 		});
 	}

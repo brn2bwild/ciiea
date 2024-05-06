@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -17,7 +16,7 @@ class AdministratorController extends Controller
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Administrators/Index', [
-			'administrators' => User::role('admin')->get(),
+			'administrators' => User::role(['admin', 'editor'])->get(),
 		]);
 	}
 
@@ -48,7 +47,7 @@ class AdministratorController extends Controller
 	public function edit(Request $request): Response
 	{
 		return Inertia::render('Admin/Administrators/Edit', [
-			'administrator' => User::where('id', $request->id)->role('admin')->first(),
+			'administrator' => User::where('id', $request->id)->role(['admin', 'editor'])->first(),
 		]);
 	}
 
@@ -64,6 +63,7 @@ class AdministratorController extends Controller
 			'mobile' => $request->mobile,
 			'short_description' => $request->short_description,
 			'long_description' => $request->long_description,
+			'is_admin_contact' => $request->is_contact
 		]);
 
 		return back()->with('success', '');

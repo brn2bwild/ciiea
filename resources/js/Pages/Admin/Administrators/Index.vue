@@ -78,13 +78,11 @@ const handleCloseDeleteModal = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<AdminCard v-for="           administrator           in           administrators           "
-				:key=" administrator.index " @open-delete-modal="handleOpenDeleteModal( administrator.id )"
+			<AdminCard v-for=" administrator in administrators " :key=" administrator.index "
+				@open-delete-modal="handleOpenDeleteModal( administrator.id )"
 				:edit-route=" route( 'admin.administrators.edit', administrator.id ) ">
 				<template v-slot:title>{{ administrator.name }}</template>
-
 				<template v-slot:subtitle>{{ administrator.email }}</template>
-
 				<template v-slot:content>{{ administrator.mobile }}</template>
 			</AdminCard>
 		</section>
@@ -95,14 +93,14 @@ const handleCloseDeleteModal = () => {
 			<form @submit.prevent=" handleCreateAdministrator()">
 				<div class="mt-4">
 					<InputLabel for="name" value="Nombre del administrador" />
-					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" administratorCreateForm.name " required
-						autocomplete="name" />
+					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" administratorCreateForm.name "
+						required autocomplete="name" />
 					<InputError class="mt-2" :message=" administratorCreateForm.errors.name " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="email" value="Correo electrónico" />
-					<TextInput id="email" type="email" class="mt-1 block w-full" v-model=" administratorCreateForm.email "
-						required autocomplete="email" />
+					<TextInput id="email" type="email" class="mt-1 block w-full"
+						v-model=" administratorCreateForm.email " required autocomplete="email" />
 					<InputError class="mt-2" :message=" administratorCreateForm.errors.email " />
 				</div>
 				<div class="mt-4">
@@ -114,7 +112,8 @@ const handleCloseDeleteModal = () => {
 				<div class="mt-4">
 					<InputLabel for="password_confirmation" value="Confirmar contraseña" />
 					<TextInput id="password_confirmation" type="password" class="mt-1 block w-full"
-						v-model=" administratorCreateForm.password_confirmation " required autocomplete="password_confirmation" />
+						v-model=" administratorCreateForm.password_confirmation " required
+						autocomplete="password_confirmation" />
 					<InputError class="mt-2" :message=" administratorCreateForm.errors.password_confirmation " />
 				</div>
 				<div class="w-full flex justify-end mt-8 gap-4">

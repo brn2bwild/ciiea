@@ -68,7 +68,7 @@ class HandleInertiaRequests extends Middleware
 						'software_resources' => Software::get()->count(),
 						'infographics' => Infographic::get()->count(),
 						'resources' => Resource::get()->count(),
-						'admin_users' => User::role('admin')->get()->count(),
+						'admin_users' => User::role(['admin', 'editor'])->get()->count(),
 						'users' => User::role('user')->get()->count(),
 						'roles' => Role::get()->count(),
 					]);
