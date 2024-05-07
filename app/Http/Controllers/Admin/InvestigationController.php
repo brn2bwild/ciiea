@@ -18,34 +18,36 @@ class InvestigationController extends Controller
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Investigations/Index', [
-			'investigations' => fn() => Investigation::select(
+			'investigations' => fn () => Investigation::select(
 				'id',
 				'title',
 				'authors',
 				'short_description',
 				'publicated_at'
 			)
-			->get()
-			->transform(fn($investigation) => [
-				'id' => $investigation->id,
-				'title' => $investigation->title,
-				'authors' => $investigation->authors,
-				'short_description' => $investigation->short_description,
-				'publicated_at' => date('d M Y', strtotime($investigation->publicated_at))
-			]),
+				->with('file')
+				->get()
+				->transform(fn ($investigation) => [
+					'id' => $investigation->id,
+					'title' => $investigation->title,
+					'authors' => $investigation->authors,
+					'short_description' => $investigation->short_description,
+					'publicated_at' => date('d M Y', strtotime($investigation->publicated_at)),
+					'file' => $investigation->file
+				]),
 		]);
 	}
 
 	public function store(Request $request): RedirectResponse
 	{
 		Investigation::create([
-			'title'=> $request->title,
+			'title' => $request->title,
 			'authors' => $request->authors,
-			'short_description'=> $request->short_description,
+			'short_description' => $request->short_description,
 			'publicated_at' => $request->publicated_at,
 			'slug' => Str::slug($request->title),
 		]);
-		return back()->with('success','');
+		return back()->with('success', '');
 	}
 
 	public function edit(Request $request): Response

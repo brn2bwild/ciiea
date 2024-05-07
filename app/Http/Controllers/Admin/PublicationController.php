@@ -18,28 +18,30 @@ class PublicationController extends Controller
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Publications/Index', [
-			'publications' => fn() => Publication::select(
+			'publications' => fn () => Publication::select(
 				'id',
 				'title',
 				'publicated_at'
 			)
-			->get()
-			->transform(fn($publication) => [
-				'id' => $publication->id,
-				'title' => $publication->title,
-				'publicated_at' => date('d M Y', strtotime($publication->publicated_at))
-			]),
+				->with('file')
+				->get()
+				->transform(fn ($publication) => [
+					'id' => $publication->id,
+					'title' => $publication->title,
+					'publicated_at' => date('d M Y', strtotime($publication->publicated_at)),
+					'file' => $publication->file
+				]),
 		]);
 	}
 
 	public function store(Request $request): RedirectResponse
 	{
 		Publication::create([
-			'title'=> $request->title,
+			'title' => $request->title,
 			'publicated_at' => $request->publicated_at,
 			'slug' => Str::slug(($request->title)),
 		]);
-		return back()->with('success','');
+		return back()->with('success', '');
 	}
 
 	public function edit(Request $request): Response

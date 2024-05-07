@@ -10,6 +10,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import PdfThumbnail from '@/Components/PdfThumbnail.vue';
 
 defineOptions({
 	layout: AdminLayout
@@ -81,6 +82,10 @@ const handleDeleteMagazine = () => {
 			<ResourceCard v-for="    magazine     in     magazines    " :key=" magazine.index "
 				@open-delete-modal="handleOpenDeleteModal( magazine.id )"
 				:edit-route=" route( 'admin.magazines.edit', magazine.id ) ">
+				<template v-slot:image class="overflow-hidden">
+					<PdfThumbnail v-if=" magazine.file " :url=" magazine.file.path " :scale=" 0.5 " />
+					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" />
+				</template>
 				<template v-slot:title>{{ magazine.name }}...</template>
 				<template v-slot:subtitle>{{ magazine.publicated_at }}</template>
 				<template v-slot:content>

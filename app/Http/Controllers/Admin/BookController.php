@@ -25,13 +25,15 @@ class BookController extends Controller
 				'isbn',
 				'publicated_at',
 			)
+				->with('file')
 				->get()
-				->transform(fn($book) => [
-					'id'=>$book->id,
-					'title'=> $book->title,
-					'authors'=> $book->authors,
-					'isbn'=> $book->isbn ?? '',
-					'publicated_at' => date('d M Y', strtotime($book->publicated_at))
+				->transform(fn ($book) => [
+					'id' => $book->id,
+					'title' => $book->title,
+					'authors' => $book->authors,
+					'isbn' => $book->isbn ?? '',
+					'publicated_at' => date('d M Y', strtotime($book->publicated_at)),
+					'file' => $book->file
 				]),
 		]);
 	}
@@ -93,7 +95,7 @@ class BookController extends Controller
 		$book = Book::findOrFail($request->input('id'));
 
 		$book->attachFile($request);
-		
+
 		return Redirect::route('admin.books.edit', $request->input('id'));
 	}
 
@@ -102,7 +104,7 @@ class BookController extends Controller
 		$book = Book::findOrFail($request->input('id'));
 
 		$book->detachFile();
-		
+
 		return Redirect::back();
 	}
 }

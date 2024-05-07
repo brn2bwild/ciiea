@@ -1,5 +1,5 @@
 <script setup>
-import {Head, useForm} from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import ResourceCard from '@/Components/ResourceCard.vue';
 import { ref } from 'vue';
@@ -16,7 +16,7 @@ defineOptions({
 })
 
 defineProps({
-	software_resources:	{
+	software_resources: {
 		type: Object,
 		required: true
 	}
@@ -70,12 +70,21 @@ const handleDeleteSoftware = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for=" software_resource in software_resources " :key=" software_resource.index " @open-delete-modal="handleOpenDeleteModal( software_resource.id )" 
+			<ResourceCard v-for="   software_resource in software_resources   " :key=" software_resource.index "
+				@open-delete-modal="handleOpenDeleteModal( software_resource.id )"
 				:edit-route=" route( 'admin.software.edit', software_resource.id ) "
 				:image-path=" ( software_resource.image !== null ? software_resource.image.path : null ) ">
-				<template v-slot:title class="truncate">{{ software_resource.name }}</template>
-				<template v-slot:subtitle></template>
-				<template v-slot:content>{{ software_resource.description }}</template>
+				<template #image>
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+						stroke="currentColor" class="w-24 h-24">
+						<path stroke-linecap="round" stroke-linejoin="round"
+							d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+					</svg>
+
+				</template>
+				<template #title class="truncate">{{ software_resource.name }}</template>
+				<template #subtitle></template>
+				<template #content>{{ software_resource.description }}</template>
 			</ResourceCard>
 		</section>
 	</div>
@@ -85,18 +94,19 @@ const handleDeleteSoftware = () => {
 			<form @submit.prevent=" handleCreateSoftware()">
 				<div class="mt-4">
 					<InputLabel for="name" value="Nombre del software" />
-					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" softwareCreateForm.name " required
-						autocomplete="name" />
+					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" softwareCreateForm.name "
+						required autocomplete="name" />
 					<InputError class="mt-2" :message=" softwareCreateForm.errors.name " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="description" value="Descripción" />
-					<TextInput id="description" type="text" class="mt-1 block w-full" v-model=" softwareCreateForm.description " required
-						autocomplete="description" />
+					<TextInput id="description" type="text" class="mt-1 block w-full"
+						v-model=" softwareCreateForm.description " required autocomplete="description" />
 					<InputError class="mt-2" :message=" softwareCreateForm.errors.description " />
 				</div>
 				<div class="w-full flex justify-end mt-8 gap-4">
-					<PrimaryButton :class=" { 'opacity-25': softwareCreateForm.processing } " :disabled=" softwareCreateForm.processing ">
+					<PrimaryButton :class=" { 'opacity-25': softwareCreateForm.processing } "
+						:disabled=" softwareCreateForm.processing ">
 						Guardar
 					</PrimaryButton>
 					<SecondaryButton @click="handleCloseCreateModal()">

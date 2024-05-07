@@ -28,15 +28,14 @@ const openModal = (event) => {
 				class="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 transform hover:scale-[102%] border border-gray-300">
 				<!-- Imagen del libro -->
 				<div class="h-40 bg-gray-200 flex items-center justify-center overflow-hidden">
-					<!-- <h1>{{ imagePath }}</h1> -->
-					<slot name="image">
-						<svg v-if=" imagePath === null " class="w-24 h-24 text-gray-400" fill="none" viewBox="0 0 24 24"
+					<slot name="image" class="flex justify-center items-center">
+						<!-- <svg v-if=" imagePath === null " class="w-24 h-24 text-gray-400" fill="none" viewBox="0 0 24 24"
 							stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 								d="M21 21H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8.586a1 1 0 0 1 .707.293l2.828 2.828A1 1 0 0 0 17.415 7H21a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2zM15 3v4a1 1 0 0 0 1 1h4">
 							</path>
 						</svg>
-						<img v-else :src=" '/storage/' + imagePath " alt="resource-image" class="object-cover">
+						<img v-else :src=" '/storage/' + imagePath " alt="resource-image" class="object-cover"> -->
 					</slot>
 				</div>
 				<!-- Contenido del libro -->

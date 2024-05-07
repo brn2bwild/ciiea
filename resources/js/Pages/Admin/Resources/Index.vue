@@ -1,5 +1,5 @@
 <script setup>
-import {Head, useForm} from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import ResourceCard from '@/Components/ResourceCard.vue';
 import { ref } from 'vue';
@@ -16,7 +16,7 @@ defineOptions({
 })
 
 defineProps({
-	resources:	{
+	resources: {
 		type: Object,
 		required: true
 	}
@@ -64,16 +64,25 @@ const handleDeleteresource = () => {
 	<div class="flex justify-between items-center px-8">
 		<h1 class="text-3xl font-bold">Infografías</h1>
 		<button @click="showCreateModal = true"
-			class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200">Nuevo recurso</button>
+			class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200">Nuevo
+			recurso</button>
 	</div>
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for=" resource in resources " :key=" resource.index " @open-delete-modal="handleOpenDeleteModal( resource.id )" 
+			<ResourceCard v-for="  resource in resources  " :key=" resource.index "
+				@open-delete-modal="handleOpenDeleteModal( resource.id )"
 				:edit-route=" route( 'admin.resources.edit', resource.id ) ">
-				<template v-slot:title class="truncate">{{ resource.name }}</template>
-				<template v-slot:subtitle></template>
-				<template v-slot:content>{{ resource.description }}</template>
+				<template #image>
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+						stroke="currentColor" class="w-24 h-24">
+						<path stroke-linecap="round" stroke-linejoin="round"
+							d="m18.375 12.739-7.693 7.693a4.5 4.5 0 0 1-6.364-6.364l10.94-10.94A3 3 0 1 1 19.5 7.372L8.552 18.32m.009-.01-.01.01m5.699-9.941-7.81 7.81a1.5 1.5 0 0 0 2.112 2.13" />
+					</svg>
+				</template>
+				<template #title class="truncate">{{ resource.name }}</template>
+				<template #subtitle></template>
+				<template #content>{{ resource.description }}</template>
 			</ResourceCard>
 		</section>
 	</div>
@@ -83,12 +92,13 @@ const handleDeleteresource = () => {
 			<form @submit.prevent=" handleCreateSoftware()">
 				<div class="mt-4">
 					<InputLabel for="title" value="Nombre del recurso" />
-					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" resourceCreateForm.title " required
-						autocomplete="title" />
+					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" resourceCreateForm.title "
+						required autocomplete="title" />
 					<InputError class="mt-2" :message=" resourceCreateForm.errors.title " />
 				</div>
 				<div class="w-full flex justify-end mt-8 gap-4">
-					<PrimaryButton :class=" { 'opacity-25': resourceCreateForm.processing } " :disabled=" resourceCreateForm.processing ">
+					<PrimaryButton :class=" { 'opacity-25': resourceCreateForm.processing } "
+						:disabled=" resourceCreateForm.processing ">
 						Guardar
 					</PrimaryButton>
 					<SecondaryButton @click="handleCloseCreateModal()">

@@ -23,11 +23,13 @@ class MagazineController extends Controller
 				'name',
 				'publicated_at',
 			)
+				->with('file')
 				->get()
 				->transform(fn ($magazine) => [
-					"id" => $magazine->id,
-					"name" => ucwords($magazine->name),
-					"publicated_at" => date("d M Y", strtotime($magazine->publicated_at)),
+					'id' => $magazine->id,
+					'name' => ucwords($magazine->name),
+					'publicated_at' => date("d M Y", strtotime($magazine->publicated_at)),
+					'file' => $magazine->file
 				]),
 		]);
 	}

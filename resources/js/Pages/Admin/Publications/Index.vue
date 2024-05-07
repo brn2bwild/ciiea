@@ -10,6 +10,7 @@ import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import PdfThumbnail from "@/Components/PdfThumbnail.vue";
 
 defineOptions({
 	layout: AdminLayout,
@@ -75,9 +76,13 @@ const handleDeletePublication = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="    publication     in     publications    " :key=" publication.index "
+			<ResourceCard v-for="     publication in publications     " :key=" publication.index "
 				@open-delete-modal="handleOpenDeleteModal( publication.id )"
 				:edit-route=" route( 'admin.historical-publications.edit', publication.id ) ">
+				<template v-slot:image class="overflow-hidden">
+					<PdfThumbnail v-if=" publication.file " :url=" publication.file.path " :scale=" 0.5 " />
+					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" />
+				</template>
 				<template v-slot:title>{{ publication.title }}...</template>
 				<template v-slot:subtitle>{{ publication.publicated_at }}</template>
 				<template v-slot:content>
@@ -95,8 +100,8 @@ const handleDeletePublication = () => {
 			<form @submit.prevent=" handleCreatePublication()">
 				<div class="mt-4">
 					<InputLabel for="title" value="Nombre de la publicación" />
-					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" publicationCreateForm.title " required
-						autocomplete="title" />
+					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" publicationCreateForm.title "
+						required autocomplete="title" />
 					<InputError class="mt-2" :message=" publicationCreateForm.errors.title " />
 				</div>
 				<div class="mt-4">

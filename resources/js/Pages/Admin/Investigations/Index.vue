@@ -10,6 +10,7 @@ import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import PdfThumbnail from "@/Components/PdfThumbnail.vue";
 
 defineOptions({
 	layout: AdminLayout
@@ -77,9 +78,13 @@ const handleDeleteInvestigation = () => {
 	</div>
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="     investigation      in      investigations     " :key=" investigation.index "
+			<ResourceCard v-for="      investigation in investigations      " :key=" investigation.index "
 				@open-delete-modal="handleOpenDeleteModal( investigation.id )"
 				:edit-route=" route( 'admin.investigations.edit', investigation.id ) ">
+				<template v-slot:image class="overflow-hidden">
+					<PdfThumbnail v-if=" investigation.file " :url=" investigation.file.path " :scale=" 0.5 " />
+					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" />
+				</template>
 				<template v-slot:title>{{ investigation.title }}...</template>
 				<template v-slot:subtitle>{{ investigation.publicated_at }}</template>
 				<template v-slot:content>{{ investigation.authors }}
@@ -93,14 +98,14 @@ const handleDeleteInvestigation = () => {
 			<form @submit.prevent=" handleCreateInvestigation()">
 				<div class="mt-4">
 					<InputLabel for="title" value="Título de la investigación" />
-					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" investigationCreateForm.title " required
-						autocomplete="title" />
+					<TextInput id="title" type="text" class="mt-1 block w-full"
+						v-model=" investigationCreateForm.title " required autocomplete="title" />
 					<InputError class="mt-2" :message=" investigationCreateForm.errors.title " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="authors" value="Autor(es) de la investigación" />
-					<TextInput id="authors" type="text" class="mt-1 block w-full" v-model=" investigationCreateForm.authors "
-						required autocomplete="authors" />
+					<TextInput id="authors" type="text" class="mt-1 block w-full"
+						v-model=" investigationCreateForm.authors " required autocomplete="authors" />
 					<InputError class="mt-2" :message=" investigationCreateForm.errors.authors " />
 				</div>
 				<div class="mt-4">
@@ -112,7 +117,8 @@ const handleDeleteInvestigation = () => {
 				<div class="mt-4">
 					<InputLabel for="short_description" value="Descripción breve" />
 					<TextInput id="short_description" type="text" class="mt-1 block w-full"
-						v-model=" investigationCreateForm.short_description " required autocomplete="short_description" />
+						v-model=" investigationCreateForm.short_description " required
+						autocomplete="short_description" />
 					<InputError class="mt-2" :message=" investigationCreateForm.errors.short_description " />
 				</div>
 				<div class="w-full flex justify-end mt-8 gap-4">
