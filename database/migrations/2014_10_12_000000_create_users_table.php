@@ -22,7 +22,7 @@ return new class extends Migration
 			$table->string('long_description')
 				->max(300)
 				->nullable();
-			$table->json('social_media');
+			$table->json('social_media')->nullable();
 			$table->rememberToken();
 			$table->timestamp('last_login')->nullable();
 			$table->boolean('is_admin_contact')->default(false);
