@@ -14,7 +14,7 @@ return new class extends Migration
 			$table->timestamp('date_time');
 			$table->string('location')->nullable();
 			$table->longText('description')
-				->max(500)
+				->max(750)
 				->nullable();
 			$table->string('slug')->unique();
 			$table->timestamps();

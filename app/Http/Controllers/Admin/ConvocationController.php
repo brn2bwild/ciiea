@@ -39,11 +39,11 @@ class ConvocationController extends Controller
 		Convocation::create([
 			'name' => $request->name,
 			'location' => $request->location,
-			'date' => $request->date,
-			'time' => $request->time,
+			'date_time' => Carbon::createFromDate($request->date . $request->time),
 			'description' => $request->description,
 			'slug' => Str::slug($request->name),
 		]);
+
 		return back()->with('success', '');
 	}
 
