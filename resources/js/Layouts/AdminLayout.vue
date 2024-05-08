@@ -205,7 +205,7 @@ const showingNavigationDropdown = ref(false);
 				</SidebarLink>
 				<SidebarLink :href=" route( 'admin.resources.index' ) " :active=" $page.url.includes( '/admin/resources' ) ">
 					<div class="flex justify-between items-center w-full">
-						<span>Cartas de intención</span>
+						<span>Vinculación</span>
 						<span class="bg-sky-200 px-2 py-0 text-neutral-900 rounded-sm text-sm">
 							{{ $page.props.data.resources }}
 						</span>

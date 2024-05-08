@@ -81,13 +81,13 @@ const handleDeleteBook = () => {
 			<ResourceCard v-for="    book in books    " :key=" book.index "
 				@open-delete-modal="handleOpenDeleteModal( book.id )"
 				:edit-route=" route( 'admin.books.edit', book.id ) ">
-				<template v-slot:image class="overflow-hidden">
+				<template #image class="overflow-hidden">
 					<PdfThumbnail v-if=" book.file " :url=" book.file.path " :scale=" 0.5 " />
 					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" />
 				</template>
-				<template v-slot:title class="truncate">{{ book.title }}</template>
-				<template v-slot:subtitle>{{ book.authors }}</template>
-				<template v-slot:content>{{ book.publicated_at }}</template>
+				<template #title class="truncate">{{ book.title }}</template>
+				<template #subtitle>{{ book.authors }}</template>
+				<template #content>{{ book.publicated_at }}</template>
 			</ResourceCard>
 		</section>
 	</div>

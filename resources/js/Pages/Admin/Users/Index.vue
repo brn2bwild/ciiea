@@ -24,13 +24,13 @@ defineProps({
 	</div>
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="  user  in  users  " :key=" user.index " @open-delete-modal="handleOpenDeleteModal( user.id )"
-				:edit-route=" '' ">
-				<template v-slot:title>{{ user.name }}</template>
-				<template v-slot:subtitle>
+			<ResourceCard v-for="   user in users   " :key=" user.index "
+				@open-delete-modal="handleOpenDeleteModal( user.id )" :edit-route=" '' ">
+				<template #title>{{ user.name }}</template>
+				<template #subtitle>
 
 				</template>
-				<template v-slot:content>
+				<template #content>
 					lkjhljk
 				</template>
 			</ResourceCard>

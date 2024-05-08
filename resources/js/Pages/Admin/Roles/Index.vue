@@ -29,9 +29,10 @@ const props = defineProps({
 
 		<div class="w-full p-8">
 			<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
-				<RoleCard v-for="        role        in        roles        " :key=" role.index "
-					@open-delete-modal="handleOpenDeleteModal( role.id )" :edit-route=" route( 'admin.roles.edit', role.id ) ">
-					<template v-slot:name>{{ role.name }}</template>
+				<RoleCard v-for="         role in roles         " :key=" role.index "
+					@open-delete-modal="handleOpenDeleteModal( role.id )"
+					:edit-route=" route( 'admin.roles.edit', role.id ) ">
+					<template #name>{{ role.name }}</template>
 				</RoleCard>
 			</section>
 		</div>

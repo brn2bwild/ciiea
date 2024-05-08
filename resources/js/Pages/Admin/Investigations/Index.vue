@@ -78,16 +78,16 @@ const handleDeleteInvestigation = () => {
 	</div>
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="      investigation in investigations      " :key=" investigation.index "
+			<ResourceCard v-for="       investigation in investigations       " :key=" investigation.index "
 				@open-delete-modal="handleOpenDeleteModal( investigation.id )"
 				:edit-route=" route( 'admin.investigations.edit', investigation.id ) ">
-				<template v-slot:image class="overflow-hidden">
+				<template #image class="overflow-hidden">
 					<PdfThumbnail v-if=" investigation.file " :url=" investigation.file.path " :scale=" 0.5 " />
 					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" />
 				</template>
-				<template v-slot:title>{{ investigation.title }}...</template>
-				<template v-slot:subtitle>{{ investigation.publicated_at }}</template>
-				<template v-slot:content>{{ investigation.authors }}
+				<template #title>{{ investigation.title }}...</template>
+				<template #subtitle>{{ investigation.publicated_at }}</template>
+				<template #content>{{ investigation.authors }}
 				</template>
 			</ResourceCard>
 		</section>

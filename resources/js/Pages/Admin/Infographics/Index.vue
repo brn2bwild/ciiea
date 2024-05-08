@@ -1,5 +1,5 @@
 <script setup>
-import {Head, useForm} from '@inertiajs/vue3';
+import { Head, useForm } from '@inertiajs/vue3';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import ResourceCard from '@/Components/ResourceCard.vue';
 import { ref } from 'vue';
@@ -16,7 +16,7 @@ defineOptions({
 })
 
 defineProps({
-	infographics:	{
+	infographics: {
 		type: Object,
 		required: true
 	}
@@ -64,17 +64,23 @@ const handleDeleteInfographic = () => {
 	<div class="flex justify-between items-center px-8">
 		<h1 class="text-3xl font-bold">Infografías</h1>
 		<button @click="showCreateModal = true"
-			class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200">Nueva infografía</button>
+			class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200">Nueva
+			infografía</button>
 	</div>
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for=" infographic in infographics " :key=" infographic.index " @open-delete-modal="handleOpenDeleteModal( infographic.id )" 
+			<ResourceCard v-for="   infographic in infographics   " :key=" infographic.index "
+				@open-delete-modal="handleOpenDeleteModal( infographic.id )"
 				:edit-route=" route( 'admin.infographics.edit', infographic.id ) "
 				:image-path=" ( infographic.image !== null ? infographic.image.path : null ) ">
-				<template v-slot:title class="truncate">{{ infographic.title }}</template>
-				<template v-slot:subtitle></template>
-				<template v-slot:content></template>
+				<template #image>
+					<img v-if=" infographic.image " :src=" infographic.image.path " alt="convocation-image" />
+					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" />
+				</template>
+				<template #title class="truncate">{{ infographic.title }}</template>
+				<template #subtitle></template>
+				<template #content></template>
 			</ResourceCard>
 		</section>
 	</div>
@@ -84,12 +90,13 @@ const handleDeleteInfographic = () => {
 			<form @submit.prevent=" handleCreateSoftware()">
 				<div class="mt-4">
 					<InputLabel for="title" value="Título de la infografía" />
-					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" infographicCreateForm.title " required
-						autocomplete="title" />
+					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" infographicCreateForm.title "
+						required autocomplete="title" />
 					<InputError class="mt-2" :message=" infographicCreateForm.errors.title " />
 				</div>
 				<div class="w-full flex justify-end mt-8 gap-4">
-					<PrimaryButton :class=" { 'opacity-25': infographicCreateForm.processing } " :disabled=" infographicCreateForm.processing ">
+					<PrimaryButton :class=" { 'opacity-25': infographicCreateForm.processing } "
+						:disabled=" infographicCreateForm.processing ">
 						Guardar
 					</PrimaryButton>
 					<SecondaryButton @click="handleCloseCreateModal()">

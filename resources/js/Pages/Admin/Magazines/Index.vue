@@ -79,16 +79,16 @@ const handleDeleteMagazine = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="    magazine     in     magazines    " :key=" magazine.index "
+			<ResourceCard v-for="     magazine in magazines     " :key=" magazine.index "
 				@open-delete-modal="handleOpenDeleteModal( magazine.id )"
 				:edit-route=" route( 'admin.magazines.edit', magazine.id ) ">
-				<template v-slot:image class="overflow-hidden">
+				<template #image class="overflow-hidden">
 					<PdfThumbnail v-if=" magazine.file " :url=" magazine.file.path " :scale=" 0.5 " />
 					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" />
 				</template>
-				<template v-slot:title>{{ magazine.name }}...</template>
-				<template v-slot:subtitle>{{ magazine.publicated_at }}</template>
-				<template v-slot:content>
+				<template #title>{{ magazine.name }}...</template>
+				<template #subtitle>{{ magazine.publicated_at }}</template>
+				<template #content>
 					<div class="flex justify-center gap-2">
 						<span class="px-1 bg-sky-200 rounded-full">Ciencia</span>
 						<span class="px-1 bg-sky-200 rounded-full">Educación</span>
@@ -103,8 +103,8 @@ const handleDeleteMagazine = () => {
 			<form @submit.prevent=" handleCreateMagazine()">
 				<div class="mt-4">
 					<InputLabel for="name" value="Nombre de la revista" />
-					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" magazineCreateForm.name " required
-						autocomplete="name" />
+					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" magazineCreateForm.name "
+						required autocomplete="name" />
 					<InputError class="mt-2" :message=" magazineCreateForm.errors.name " />
 				</div>
 				<div class="mt-4">

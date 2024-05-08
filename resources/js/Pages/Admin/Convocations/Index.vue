@@ -39,6 +39,7 @@ const showCreateModal = ref(false)
 const handleCloseCreateModal = () => {
 	showCreateModal.value = false
 }
+
 const handleCreateConvocation = () => {
 	convocationCreateForm.post(route('admin.convocations.store'), {
 		onSuccess: () => showCreateModal.value = false,
@@ -50,9 +51,11 @@ const handleOpenDeleteModal = (id) => {
 	convocationForm.id = id
 	showDeleteModal.value = true
 }
+
 const handleCloseModal = () => {
 	showDeleteModal.value = false
 }
+
 const handleDeleteConvocation = () => {
 	convocationForm.delete(route('admin.convocations.destroy'), {
 		onSuccess: () => handleCloseModal(),
@@ -75,13 +78,17 @@ const handleDeleteConvocation = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for=" convocation in convocations " :key=" convocation.index "
+			<ResourceCard v-for="     convocation in convocations     " :key=" convocation.index "
 				@open-delete-modal="handleOpenDeleteModal( convocation.id )"
 				:edit-route=" route( 'admin.convocations.edit', convocation.id ) "
 				:image-path=" ( convocation.image !== null ? convocation.image.path : null ) ">
-				<template v-slot:title>{{ convocation.name }}...</template>
-				<template v-slot:subtitle>{{ convocation.date }}</template>
-				<template v-slot:content>{{ convocation.location.substr( 1, 20 ) }}...
+				<template #image>
+					<img v-if=" convocation.image " :src=" convocation.image.path " alt="convocation-image" />
+					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" />
+				</template>
+				<template #title>{{ convocation.name }}...</template>
+				<template #subtitle>{{ convocation.date }}</template>
+				<template #content>{{ convocation.location.substr( 1, 20 ) }}...
 				</template>
 			</ResourceCard>
 		</section>
@@ -92,26 +99,26 @@ const handleDeleteConvocation = () => {
 			<form @submit.prevent=" handleCreateConvocation()">
 				<div class="mt-4">
 					<InputLabel for="name" value="Nombre de la convocatoria" />
-					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" convocationCreateForm.name " required
-						autocomplete="name" />
+					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" convocationCreateForm.name "
+						required autocomplete="name" />
 					<InputError class="mt-2" :message=" convocationCreateForm.errors.name " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="location" value="Ubicación" />
-					<TextInput id="location" type="text" class="mt-1 block w-full" v-model=" convocationCreateForm.location "
-						required autocomplete="location" />
+					<TextInput id="location" type="text" class="mt-1 block w-full"
+						v-model=" convocationCreateForm.location " required autocomplete="location" />
 					<InputError class="mt-2" :message=" convocationCreateForm.errors.location " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="date" value="Fecha de la convocatoria" />
-					<TextInput id="date" type="date" class="mt-1 block w-full" v-model=" convocationCreateForm.date " required
-						autocomplete="date" />
+					<TextInput id="date" type="date" class="mt-1 block w-full" v-model=" convocationCreateForm.date "
+						required autocomplete="date" />
 					<InputError class="mt-2" :message=" convocationCreateForm.errors.date " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="time" value="Hora de la convocatoria" />
-					<TextInput id="time" type="time" class="mt-1 block w-full" v-model=" convocationCreateForm.time " required
-						autocomplete="time" />
+					<TextInput id="time" type="time" class="mt-1 block w-full" v-model=" convocationCreateForm.time "
+						required autocomplete="time" />
 					<InputError class="mt-2" :message=" convocationCreateForm.errors.time " />
 				</div>
 				<div class="mt-4">

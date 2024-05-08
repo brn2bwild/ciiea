@@ -76,16 +76,16 @@ const handleDeletePublication = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="     publication in publications     " :key=" publication.index "
+			<ResourceCard v-for="      publication in publications      " :key=" publication.index "
 				@open-delete-modal="handleOpenDeleteModal( publication.id )"
 				:edit-route=" route( 'admin.historical-publications.edit', publication.id ) ">
-				<template v-slot:image class="overflow-hidden">
+				<template #image class="overflow-hidden">
 					<PdfThumbnail v-if=" publication.file " :url=" publication.file.path " :scale=" 0.5 " />
 					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" />
 				</template>
-				<template v-slot:title>{{ publication.title }}...</template>
-				<template v-slot:subtitle>{{ publication.publicated_at }}</template>
-				<template v-slot:content>
+				<template #title>{{ publication.title }}...</template>
+				<template #subtitle>{{ publication.publicated_at }}</template>
+				<template #content>
 					<div class="flex justify-center gap-2">
 						<span class="px-1 bg-sky-200 rounded-full">Ciencia</span>
 						<span class="px-1 bg-sky-200 rounded-full">Educación</span>
