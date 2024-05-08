@@ -9,7 +9,7 @@ class BookUpdateRequest extends FormRequest
 	public function authorize(): bool
 	{
 		//Verificamos mediante el usuario que hizo la petición si tiene el rol de admin
-		return ($this->user()->getMainRole() == 'admin');
+		return ($this->user()->getMainRole() === 'admin');
 	}
 
 	public function rules(): array
