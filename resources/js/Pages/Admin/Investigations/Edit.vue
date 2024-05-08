@@ -31,6 +31,7 @@ const handleUpdateInvestigation = () => {
 }
 </script>
 <template>
+
 	<Head title="Investigación" />
 	<h1 class="text-3xl font-bold pl-8">Editar Investigación</h1>
 	<div class="w-full p-8">
@@ -38,14 +39,14 @@ const handleUpdateInvestigation = () => {
 			<form @submit.prevent=" handleUpdateInvestigation " class="w-3/4">
 				<div>
 					<InputLabel for="name" value="Título de la investigación" />
-					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" investigationForm.title " required
-						autofocus autocomplete="investigation_title" />
+					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" investigationForm.title "
+						required autofocus autocomplete="investigation_title" />
 					<InputError class="mt-2" :message=" investigationForm.errors.title " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="authors" value="Autores" />
-					<TextInput id="authors" type="text" class="mt-1 block w-full" v-model=" investigationForm.authors " required
-						autofocus autocomplete="investigation_authors" />
+					<TextInput id="authors" type="text" class="mt-1 block w-full" v-model=" investigationForm.authors "
+						required autofocus autocomplete="investigation_authors" />
 					<InputError class="mt-2" :message=" investigationForm.errors.authors " />
 				</div>
 				<div class="mt-4">
@@ -57,8 +58,8 @@ const handleUpdateInvestigation = () => {
 				</div>
 				<div class="mt-4">
 					<InputLabel for="publicated_at" value="Fecha de publicación" />
-					<TextInput id="publicated_at" type="date" class="mt-1 block w-full" v-model=" investigationForm.publicated_at "
-						required />
+					<TextInput id="publicated_at" type="date" class="mt-1 block w-full"
+						v-model=" investigationForm.publicated_at " required />
 					<InputError class="mt-2" :message=" investigationForm.errors.publicated_at " />
 				</div>
 				<div class="flex items-center gap-4 mt-4">

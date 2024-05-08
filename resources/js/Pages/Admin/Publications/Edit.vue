@@ -29,6 +29,7 @@ const handleUpdatePublication = () => {
 }
 </script>
 <template>
+
 	<Head title="Publicación" />
 	<h1 class="text-3xl font-bold pl-8">Editar publicación</h1>
 	<div class="w-full p-8">
@@ -36,14 +37,14 @@ const handleUpdatePublication = () => {
 			<form @submit.prevent=" handleUpdatePublication " class="w-3/4">
 				<div>
 					<InputLabel for="title" value="Título de la publicación" />
-					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" publicationForm.title " required autofocus
-						autocomplete="publication_title" />
+					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" publicationForm.title "
+						required autofocus autocomplete="publication_title" />
 					<InputError class="mt-2" :message=" publicationForm.errors.title " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="publicated_at" value="Fecha de publicación" />
-					<TextInput id="publicated_at" type="date" class="mt-1 block w-full" v-model=" publicationForm.publicated_at "
-						required/>
+					<TextInput id="publicated_at" type="date" class="mt-1 block w-full"
+						v-model=" publicationForm.publicated_at " required />
 					<InputError class="mt-2" :message=" publicationForm.errors.publicated_at " />
 				</div>
 				<div class="flex items-center gap-4 mt-4">

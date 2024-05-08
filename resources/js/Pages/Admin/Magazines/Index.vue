@@ -16,7 +16,7 @@ defineOptions({
 	layout: AdminLayout
 })
 
-defineProps({
+const props = defineProps({
 	magazines: {
 		type: Array,
 		required: true,
@@ -79,7 +79,7 @@ const handleDeleteMagazine = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="     magazine in magazines     " :key=" magazine.index "
+			<ResourceCard v-for="         magazine in magazines         " :key=" magazine.index "
 				@open-delete-modal="handleOpenDeleteModal( magazine.id )"
 				:edit-route=" route( 'admin.magazines.edit', magazine.id ) ">
 				<template #image class="overflow-hidden">

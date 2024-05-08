@@ -78,7 +78,7 @@ const handleCloseDeleteModal = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-4 gap-4">
-			<AdminCard v-for="  administrator in administrators  " :key=" administrator.index "
+			<AdminCard v-for="       administrator in administrators       " :key=" administrator.index "
 				@open-delete-modal="handleOpenDeleteModal( administrator.id )"
 				:edit-route=" route( 'admin.administrators.edit', administrator.id ) ">
 				<template #title>{{ administrator.name }}</template>

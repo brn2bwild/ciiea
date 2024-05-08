@@ -7,7 +7,7 @@ defineOptions({
 	layout: AdminLayout
 })
 
-defineProps({
+const props = defineProps({
 	users: {
 		type: Object,
 		required: true,
@@ -24,7 +24,7 @@ defineProps({
 	</div>
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="   user in users   " :key=" user.index "
+			<ResourceCard v-for="       user in users       " :key=" user.index "
 				@open-delete-modal="handleOpenDeleteModal( user.id )" :edit-route=" '' ">
 				<template #title>{{ user.name }}</template>
 				<template #subtitle>

@@ -8,7 +8,7 @@ defineOptions({
 	layout: HomeLayout
 })
 
-defineProps({
+const props = defineProps({
 	events: {
 		type: Object,
 	},
@@ -38,7 +38,7 @@ const modalImageUrl = ref('');
 	<div class="w-full pt-8 px-4 sm:px-12 sm:pt-8 sm:pb-12 grid grid-cols-1 sm:grid-cols-5 gap-4 sm:gap-6">
 		<!-- <div v-for=" event in events " :key=" event.index "
 			@click="showModal = true; modalImageUrl = '/storage/gallery/foro-1.jpg'" class="group cursor-pointer"> -->
-		<div class="group cursor-pointer" v-for="   event in events   " :key=" event.index ">
+		<div class="group cursor-pointer" v-for="       event in events       " :key=" event.index ">
 			<Link :href=" route( 'guest.gallery.show', event.id ) ">
 			<div
 				class="block rounded-lg bg-neutral-50 overflow-hidden transition-all duration-300 ease-in-out relative">

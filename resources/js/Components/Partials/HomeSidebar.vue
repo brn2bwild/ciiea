@@ -1,7 +1,7 @@
 <script setup>
 import SidebarLink from '@/Components/SidebarLink.vue';
 
-defineProps({
+const props = defineProps({
 	canRegister: {
 		type: Boolean,
 	},
@@ -31,7 +31,8 @@ const emit = defineEmits(['openModal']);
 				<SidebarLink :href=" route( 'investigations' ) " :active=" route().current( 'investigations' ) ">
 					Investigaciones
 				</SidebarLink>
-				<SidebarLink :href=" route( 'convocations.index' ) " :active=" route().current( 'convocations.index' ) ">
+				<SidebarLink :href=" route( 'convocations.index' ) "
+					:active=" route().current( 'convocations.index' ) ">
 					Convocatorias
 				</SidebarLink>
 				<SidebarLink :href=" route( 'gallery' ) " :active=" route().current( 'gallery' ) ">
@@ -51,13 +52,14 @@ const emit = defineEmits(['openModal']);
 					class="px-8 py-2 rounded-full bg-neutral-200 text-sky-500 hover:bg-sky-500 hover:text-white font-bold transition-all duration-200">
 				Página principal REIME
 				</Link>
-				
+
 				<!-- <Link v-else :href=" route( 'register' ) "
 					class="px-8 py-2 rounded-full bg-neutral-200 text-sky-500 hover:bg-sky-500 hover:text-white font-bold transition-all duration-200">
 				Únete a la REIME
 				</Link> -->
 
-				<span v-else @click="emit('openModal', 'register')" class="px-8 py-2 rounded-full bg-neutral-200 text-sky-500 hover:bg-sky-500 hover:text-white font-bold transition-all duration-200">
+				<span v-else @click="emit( 'openModal', 'register' )"
+					class="px-8 py-2 rounded-full bg-neutral-200 text-sky-500 hover:bg-sky-500 hover:text-white font-bold transition-all duration-200">
 					Únete a la REIME
 				</span>
 			</div>

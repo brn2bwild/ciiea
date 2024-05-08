@@ -15,7 +15,7 @@ defineOptions({
 	layout: AdminLayout
 })
 
-defineProps({
+const props = defineProps({
 	convocations: {
 		type: Object,
 		required: true,
@@ -78,7 +78,7 @@ const handleDeleteConvocation = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="     convocation in convocations     " :key=" convocation.index "
+			<ResourceCard v-for="         convocation in convocations         " :key=" convocation.index "
 				@open-delete-modal="handleOpenDeleteModal( convocation.id )"
 				:edit-route=" route( 'admin.convocations.edit', convocation.id ) "
 				:image-path=" ( convocation.image !== null ? convocation.image.path : null ) ">

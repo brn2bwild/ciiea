@@ -7,7 +7,7 @@ defineOptions({
 	layout: AdminLayout,
 });
 
-// defineProps({
+// const props = defineProps({
 // 	books: {
 // 		type: Number,
 // 		require: true,
@@ -52,6 +52,7 @@ defineOptions({
 
 </script>
 <template>
+
 	<Head title="Dashboard" />
 	<h1 class="text-3xl font-bold pl-8">Dashboard</h1>
 	<!-- <section class="w-full p-8 grid grid-cols-1 md:grid-cols-4 gap-4">

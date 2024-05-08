@@ -109,15 +109,16 @@ const Modal = defineAsyncComponent(() =>
 				<div v-if=" $page.props.auth.user.name == null ">
 					<Transition v-if=" userIsLogin == true " enter-active-class="ease-out duration-300"
 						enter-from-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-						enter-to-class="opacity-100 translate-y-0 sm:scale-100" leave-active-class="ease-in duration-200"
+						enter-to-class="opacity-100 translate-y-0 sm:scale-100"
+						leave-active-class="ease-in duration-200"
 						leave-from-class="opacity-100 translate-y-0 sm:scale-100"
 						leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
 						<form @submit.prevent=" submitLogin()">
 							<div>
 								<InputLabel for="email" value="Correo electrónico" />
 
-								<TextInput id="email" type="email" class="mt-1 block w-full" v-model=" loginForm.email " required
-									autofocus autocomplete="username" />
+								<TextInput id="email" type="email" class="mt-1 block w-full" v-model=" loginForm.email "
+									required autofocus autocomplete="username" />
 
 								<InputError class="mt-2" :message=" loginForm.errors.email " />
 							</div>
@@ -125,8 +126,8 @@ const Modal = defineAsyncComponent(() =>
 							<div class="mt-4">
 								<InputLabel for="password" value="Contraseña" />
 
-								<TextInput id="password" type="password" class="mt-1 block w-full" v-model=" loginForm.password "
-									required autocomplete="current-password" />
+								<TextInput id="password" type="password" class="mt-1 block w-full"
+									v-model=" loginForm.password " required autocomplete="current-password" />
 
 								<InputError class="mt-2" :message=" loginForm.errors.password " />
 							</div>
@@ -146,8 +147,10 @@ const Modal = defineAsyncComponent(() =>
 
 							<div class="flex items-center justify-end mt-4">
 								<span @click="userIsLogin = false; modalTitle = 'Registrarse'"
-									class="cursor-pointer text-sm hover:underline text-neutral-600 mr-4">¿No tienes cuenta?</span>
-								<PrimaryButton :class=" { 'opacity-25': loginForm.processing } " :disabled=" loginForm.processing ">
+									class="cursor-pointer text-sm hover:underline text-neutral-600 mr-4">¿No tienes
+									cuenta?</span>
+								<PrimaryButton :class=" { 'opacity-25': loginForm.processing } "
+									:disabled=" loginForm.processing ">
 									Iniciar sesión
 								</PrimaryButton>
 							</div>
@@ -155,15 +158,16 @@ const Modal = defineAsyncComponent(() =>
 					</Transition>
 					<Transition v-else enter-active-class="ease-out duration-300"
 						enter-from-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-						enter-to-class="opacity-100 translate-y-0 sm:scale-100" leave-active-class="ease-in duration-200"
+						enter-to-class="opacity-100 translate-y-0 sm:scale-100"
+						leave-active-class="ease-in duration-200"
 						leave-from-class="opacity-100 translate-y-0 sm:scale-100"
 						leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
 						<form @submit.prevent=" submitRegister()">
 							<div>
 								<InputLabel for="name" value="Nombre" />
 
-								<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" registerForm.name " required
-									autofocus autocomplete="name" />
+								<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" registerForm.name "
+									required autofocus autocomplete="name" />
 
 								<InputError class="mt-2" :message=" registerForm.errors.name " />
 							</div>
@@ -171,8 +175,8 @@ const Modal = defineAsyncComponent(() =>
 							<div class="mt-4">
 								<InputLabel for="email" value="Correo electrónico" />
 
-								<TextInput id="email" type="email" class="mt-1 block w-full" v-model=" registerForm.email " required
-									autocomplete="username" />
+								<TextInput id="email" type="email" class="mt-1 block w-full"
+									v-model=" registerForm.email " required autocomplete="username" />
 
 								<InputError class="mt-2" :message=" registerForm.errors.email " />
 							</div>
@@ -180,8 +184,8 @@ const Modal = defineAsyncComponent(() =>
 							<div class="mt-4">
 								<InputLabel for="password" value="Contraseña" />
 
-								<TextInput id="password" type="password" class="mt-1 block w-full" v-model=" registerForm.password "
-									required autocomplete="new-password" />
+								<TextInput id="password" type="password" class="mt-1 block w-full"
+									v-model=" registerForm.password " required autocomplete="new-password" />
 
 								<InputError class="mt-2" :message=" registerForm.errors.password " />
 							</div>
@@ -190,7 +194,8 @@ const Modal = defineAsyncComponent(() =>
 								<InputLabel for="password_confirmation" value="Confirmar contraseña" />
 
 								<TextInput id="password_confirmation" type="password" class="mt-1 block w-full"
-									v-model=" registerForm.password_confirmation " required autocomplete="new-password" />
+									v-model=" registerForm.password_confirmation " required
+									autocomplete="new-password" />
 
 								<InputError class="mt-2" :message=" registerForm.errors.password_confirmation " />
 							</div>
@@ -203,7 +208,8 @@ const Modal = defineAsyncComponent(() =>
 											¿Ya tienes una cuenta?
 									</Link> -->
 								<span @click="userIsLogin = true; modalTitle = 'Iniciar sesión'"
-									class="cursor-pointer text-sm hover:underline text-neutral-600 mr-4">¿Ya tienes una cuenta?</span>
+									class="cursor-pointer text-sm hover:underline text-neutral-600 mr-4">¿Ya tienes una
+									cuenta?</span>
 								<PrimaryButton :class=" { 'opacity-25': registerForm.processing } "
 									:disabled=" registerForm.processing ">
 									Registrarse

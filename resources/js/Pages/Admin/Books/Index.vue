@@ -16,7 +16,7 @@ defineOptions({
 	layout: AdminLayout
 })
 
-defineProps({
+const props = defineProps({
 	books: {
 		type: Object,
 		required: true,
@@ -78,7 +78,7 @@ const handleDeleteBook = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="    book in books    " :key=" book.index "
+			<ResourceCard v-for="        book in books        " :key=" book.index "
 				@open-delete-modal="handleOpenDeleteModal( book.id )"
 				:edit-route=" route( 'admin.books.edit', book.id ) ">
 				<template #image class="overflow-hidden">

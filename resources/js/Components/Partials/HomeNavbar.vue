@@ -7,7 +7,7 @@ import NavLink from '@/Components/NavLink.vue'
 
 const showingNavigationDropdown = ref(false);
 
-defineProps({
+const props = defineProps({
 	canLogin: {
 		type: Boolean,
 	},
@@ -79,13 +79,16 @@ const emit = defineEmits(['openModal', 'closeModal']);
 									:active=" route().current( 'books.index' ) || $page.url.includes( 'books' ) ">
 									Libros
 								</NavLink>
-								<NavLink :href=" route( 'guest.magazines.index' ) " :active=" $page.url.includes( 'magazines' ) ">
+								<NavLink :href=" route( 'guest.magazines.index' ) "
+									:active=" $page.url.includes( 'magazines' ) ">
 									Revistas
 								</NavLink>
-								<NavLink :href=" route( 'guest.hist-publications.index' ) " :active=" $page.url.includes( 'hist-publications' ) ">
+								<NavLink :href=" route( 'guest.hist-publications.index' ) "
+									:active=" $page.url.includes( 'hist-publications' ) ">
 									Publicaciones
 								</NavLink>
-								<NavLink :href=" route( 'guest.investigations.index' ) " :active=" $page.url.includes( 'investigations' ) ">
+								<NavLink :href=" route( 'guest.investigations.index' ) "
+									:active=" $page.url.includes( 'investigations' ) ">
 									Investigaciones
 								</NavLink>
 							</div>
@@ -130,7 +133,8 @@ const emit = defineEmits(['openModal', 'closeModal']);
 
 						<template #content>
 							<div class="flex flex-col">
-								<NavLink :href=" route( 'social-service' ) " :active=" route().current( 'social-service' ) ">
+								<NavLink :href=" route( 'social-service' ) "
+									:active=" route().current( 'social-service' ) ">
 									Servicio social
 								</NavLink>
 								<NavLink :href=" route( 'profesional-practice' ) "

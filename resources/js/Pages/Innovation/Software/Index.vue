@@ -6,7 +6,7 @@ defineOptions({
 	layout: HomeLayout
 })
 
-defineProps({
+const props = defineProps({
 	software_resources: {
 		type: Object,
 	},
@@ -26,7 +26,7 @@ defineProps({
 			<h1 class="text-xl text-neutral-600 font-bold">Software Educativo</h1>
 		</section>
 		<section class="w-full grid grid-cols-1 md:grid-cols-3 gap-10">
-			<div v-for=" software in software_resources " :key=" software.index "
+			<div v-for="     software in software_resources     " :key=" software.index "
 				class="w-full rounded-xl flex flex-col justify-start items-start bg-white shadow-lg shadow-slate-100 overflow-hidden">
 				<div class="w-full h-60 mb-2 overflow-hidden">
 					<img class="object-center object-cover"
@@ -39,7 +39,8 @@ defineProps({
 						{{ software.name }}
 					</h1>
 					<!-- <h2 class="text-md font-medium text-neutral-600">{{ software.authors }}</h2> -->
-					<Link :href="route('guest.educational-software.show', software.slug)" class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold text-sm">Leer más</Link>
+					<Link :href=" route( 'guest.educational-software.show', software.slug ) "
+						class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold text-sm">Leer más</Link>
 				</div>
 			</div>
 		</section>

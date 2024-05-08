@@ -6,7 +6,7 @@ defineOptions({
 	layout: HomeLayout,
 })
 
-defineProps({
+const props = defineProps({
 	infographic: {
 		type: Object,
 		required: true
@@ -16,6 +16,7 @@ defineProps({
 
 <template>
 	<div>
+
 		<Head title="Infografías" />
 		<section class="w-full min-h-screen px-80 pb-10">
 			<h1 class="w-full text-left text-6xl pt-12 font-bold">
@@ -23,14 +24,19 @@ defineProps({
 			</h1>
 			<div class="flex justify-between items-center mt-10 gap-8">
 				<div>
-					<p class="w-full text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, hic harum,
+					<p class="w-full text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, hic
+						harum,
 						dolorum facere
 						dolor officia
-						ipsum in tempore ullam recusandae maxime. Quod doloremque nobis sunt corrupti unde repellendus vero
+						ipsum in tempore ullam recusandae maxime. Quod doloremque nobis sunt corrupti unde repellendus
+						vero
 						nesciunt?
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad odio quis et eum? Eos veniam blanditiis aliquam
-						molestiae inventore, ipsam placeat distinctio iusto magnam error modi? Itaque quidem dicta tempore! Lorem
-						ipsum dolor, sit amet consectetur adipisicing elit. Dolor illo culpa, nisi a possimus optio minima ipsum
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad odio quis et eum? Eos veniam
+						blanditiis aliquam
+						molestiae inventore, ipsam placeat distinctio iusto magnam error modi? Itaque quidem dicta
+						tempore! Lorem
+						ipsum dolor, sit amet consectetur adipisicing elit. Dolor illo culpa, nisi a possimus optio
+						minima ipsum
 						natus
 						autem quaerat. Veritatis quis ea adipisci esse ipsam dicta, earum ad distinctio.
 					</p>

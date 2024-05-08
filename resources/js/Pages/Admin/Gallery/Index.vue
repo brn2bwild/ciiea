@@ -69,7 +69,7 @@ const handleDeleteEvent = () => {
 	</div>
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="      event in events      " :key=" event.index "
+			<ResourceCard v-for="           event in events           " :key=" event.index "
 				:edit-route=" route( 'admin.gallery.edit', event.id ) "
 				@open-delete-modal="handleOpenDeleteModal( event.id )">
 				<template #image>

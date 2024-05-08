@@ -33,6 +33,7 @@ const handleUpdateBook = () => {
 </script>
 
 <template>
+
 	<Head title="Libro" />
 	<h1 class="text-3xl font-bold pl-8">Editar libro</h1>
 	<div class="w-full p-8">
@@ -40,27 +41,27 @@ const handleUpdateBook = () => {
 			<form @submit.prevent=" handleUpdateBook " class="w-3/4">
 				<div>
 					<InputLabel for="title" value="Título del libro" />
-					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" bookForm.title " required autofocus
-						autocomplete="book_title" />
+					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" bookForm.title " required
+						autofocus autocomplete="book_title" />
 					<InputError class="mt-2" :message=" bookForm.errors.title " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="authors" value="Autor(es)" />
-					<TextInput id="book_authors" type="text" class="mt-1 block w-full" v-model=" bookForm.authors " required
-						autocomplete="authors" />
+					<TextInput id="book_authors" type="text" class="mt-1 block w-full" v-model=" bookForm.authors "
+						required autocomplete="authors" />
 					<InputError class="mt-2" :message=" bookForm.errors.authors " />
 				</div>
 				<div class="flex justify-between mt-4 gap-x-4">
 					<div class="w-1/2">
 						<InputLabel for="isbn" value="ISBN" />
-						<TextInput id="book_isbn" type="text" class="mt-1 block w-full" v-model=" bookForm.isbn " required
-							autocomplete="isbn" />
+						<TextInput id="book_isbn" type="text" class="mt-1 block w-full" v-model=" bookForm.isbn "
+							required autocomplete="isbn" />
 						<InputError class="mt-2" :message=" bookForm.errors.isbn " />
 					</div>
 					<div class="w-1/2">
 						<InputLabel for="publicated_at" value="Fecha de publicación" />
-						<TextInput id="book_publicated_at" type="date" class="mt-1 block w-full" v-model=" bookForm.publicated_at "
-							required />
+						<TextInput id="book_publicated_at" type="date" class="mt-1 block w-full"
+							v-model=" bookForm.publicated_at " required />
 						<InputError class="mt-2" :message=" bookForm.errors.publicated_at " />
 					</div>
 				</div>
@@ -71,10 +72,10 @@ const handleUpdateBook = () => {
 					</Transition>
 				</div>
 			</form>
-			<FileInput :resource-id=" book.id " :file=" book.file " :upload-file-route=" route( 'admin.books.upload-file' ) "
+			<FileInput :resource-id=" book.id " :file=" book.file "
+				:upload-file-route=" route( 'admin.books.upload-file' ) "
 				:delete-file-route=" route( 'admin.books.delete-file' ) " class="w-1/4" />
 			<!-- <PdfViewer :url="book.file.path" /> -->
 		</section>
 	</div>
 </template>
-

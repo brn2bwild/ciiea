@@ -6,7 +6,7 @@ defineOptions({
 	layout: HomeLayout
 })
 
-defineProps({
+const props = defineProps({
 	canLogin: {
 		type: Boolean
 	},
@@ -16,29 +16,39 @@ defineProps({
 })
 </script>
 <template>
+
 	<Head title="REIME" />
 	<section class="w-full h-[480px] bg-rose-900 flex justify-start items-center">
 		<img class="w-[65%]" src="/storage/images/reime-logo-blanco.png" alt="reime-logo">
 		<div class="w-[35%] text-right px-8 py-8 h-full flex justify-end items-end">
-			<Link :href=" route( 'register' ) " class="text-white text-xl">¿Quieres formar parte del REIME? Regístrate</Link>
+			<Link :href=" route( 'register' ) " class="text-white text-xl">¿Quieres formar parte del REIME? Regístrate
+			</Link>
 		</div>
 	</section>
 	<section class="w-full flex justify-between items-center h-[560px]">
 		<h1 class="w-1/3 text-4xl text-right font-medium">Historia</h1>
 		<p class="w-2/3 px-32 text-lg leading-9">
-			La riqueza de estas redes consiste en el intercambio de conocimientos, entre comunidades de diferentes estados o
-			regiones, construyendo así, un proyecto educativo para atender las demandas más urgentes del sector educativo, con
-			una visión más humanista que trascienda en la mejora de la calidad educativa en este caso del estado. De ahí la
-			intención del Centro de Investigación e Innovación para la Enseñanza y el Aprendizaje, (CIIEA) de conformar una Red
-			Estatal de Investigadores en Materia Educativa, REIME, que propicie el desarrollo de las capacidades científicas,
-			tecnológicas, educativas, de investigación y de innovación, abordándolas con el conocimiento de diferentes grupos
-			que fomenten el desarrollo de proyectos específicos de docencia, investigación, extensión, vinculación, cooperación
+			La riqueza de estas redes consiste en el intercambio de conocimientos, entre comunidades de diferentes
+			estados o
+			regiones, construyendo así, un proyecto educativo para atender las demandas más urgentes del sector
+			educativo, con
+			una visión más humanista que trascienda en la mejora de la calidad educativa en este caso del estado. De ahí
+			la
+			intención del Centro de Investigación e Innovación para la Enseñanza y el Aprendizaje, (CIIEA) de conformar
+			una Red
+			Estatal de Investigadores en Materia Educativa, REIME, que propicie el desarrollo de las capacidades
+			científicas,
+			tecnológicas, educativas, de investigación y de innovación, abordándolas con el conocimiento de diferentes
+			grupos
+			que fomenten el desarrollo de proyectos específicos de docencia, investigación, extensión, vinculación,
+			cooperación
 			y transferencia de conocimientos y saberes educativos.
 		</p>
 	</section>
 	<section class="w-full flex justify-between items-center h-[320px] bg-rose-900 text-white">
 		<p class="w-2/3 px-32 text-lg leading-9">
-			Conformar una Red Estatal de Investigadores en Materia Educativa, que realicen trabajo de investigación e innovación
+			Conformar una Red Estatal de Investigadores en Materia Educativa, que realicen trabajo de investigación e
+			innovación
 			educativa, para la producción e intercambio del conocimiento en apoyo al sector educativo de Tabasco.
 		</p>
 		<h1 class="w-1/3 text-4xl text-left font-medium">Objetivo</h1>
@@ -56,7 +66,8 @@ defineProps({
 			<h1 class="text-4xl font-medium mb-6">Visión</h1>
 			<p class="px-32 text-lg leading-9">
 				Consolidar al CIIEA como una institución reconocida en la generación de investigación educativa, con la
-				participación de profesionales que generen programas, proyectos y productos de investigación que respondan a las
+				participación de profesionales que generen programas, proyectos y productos de investigación que
+				respondan a las
 				necesidades educativas del estado.
 			</p>
 		</div>

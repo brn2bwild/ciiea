@@ -7,7 +7,7 @@ defineOptions({
 	layout: AuthenticatedLayout,
 });
 
-// defineProps({
+// const props = defineProps({
 // 	books: {
 // 		type: Number,
 // 		require: true,

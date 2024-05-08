@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
     value: {
         type: String,
     },
@@ -8,7 +8,9 @@ defineProps({
 
 <template>
     <label class="block font-medium text-sm text-gray-700">
-        <span v-if="value">{{ value }}</span>
-        <span v-else><slot /></span>
+        <span v-if=" value ">{{ value }}</span>
+        <span v-else>
+            <slot />
+        </span>
     </label>
 </template>

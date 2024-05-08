@@ -37,8 +37,8 @@ const handleUpdateInfographic = () => {
 			<form @submit.prevent=" handleUpdateInfographic " class="w-3/4">
 				<div>
 					<InputLabel for="title" value="Título de la infografía" />
-					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" infographicForm.title " required autofocus
-						autocomplete="software_title" />
+					<TextInput id="title" type="text" class="mt-1 block w-full" v-model=" infographicForm.title "
+						required autofocus autocomplete="software_title" />
 					<InputError class="mt-2" :message=" infographicForm.errors.title " />
 				</div>
 				<div class="flex items-center gap-4 mt-4">

@@ -15,7 +15,7 @@ defineOptions({
 	layout: AdminLayout
 })
 
-defineProps({
+const props = defineProps({
 	software_resources: {
 		type: Object,
 		required: true
@@ -70,7 +70,7 @@ const handleDeleteSoftware = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="   software_resource in software_resources   " :key=" software_resource.index "
+			<ResourceCard v-for="       software_resource in software_resources       " :key=" software_resource.index "
 				@open-delete-modal="handleOpenDeleteModal( software_resource.id )"
 				:edit-route=" route( 'admin.software.edit', software_resource.id ) "
 				:image-path=" ( software_resource.image !== null ? software_resource.image.path : null ) ">

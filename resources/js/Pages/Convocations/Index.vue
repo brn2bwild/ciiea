@@ -6,7 +6,7 @@ defineOptions({
 	layout: HomeLayout
 });
 
-defineProps({
+const props = defineProps({
 	convocations: {
 		type: Object,
 	},
@@ -53,7 +53,7 @@ defineProps({
 			<h1 class="text-xl text-neutral-600 font-bold">Últimas Convocatorias</h1>
 		</section>
 		<section class="w-full grid grid-cols-1 sm:grid-cols-2 gap-10">
-			<div v-for="              convocation in convocations               " :key=" convocation.index "
+			<div v-for="                  convocation in convocations                   " :key=" convocation.index "
 				class="w-full rounded-xl flex flex-col justify-center items-start bg-white shadow-lg shadow-slate-100">
 				<div class="w-full h-full flex flex-col items-start justify-between p-4 gap-2">
 					<h3 class="text-neutral-600 text-sm">

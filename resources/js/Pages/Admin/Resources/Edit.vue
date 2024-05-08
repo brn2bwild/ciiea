@@ -39,14 +39,15 @@ const handleUpdateResource = () => {
 			<form @submit.prevent=" handleUpdateResource " class="w-3/4">
 				<div>
 					<InputLabel for="name" value="Nombre del recurso" />
-					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" resourceForm.name " required autofocus
-						autocomplete="software_name" />
+					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" resourceForm.name " required
+						autofocus autocomplete="software_name" />
 					<InputError class="mt-2" :message=" resourceForm.errors.name " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="description" value="Descripción" />
-					<TextInput id="description" type="text" class="mt-1 block w-full" v-model=" resourceForm.description "
-						required autofocus autocomplete="convocation_description" />
+					<TextInput id="description" type="text" class="mt-1 block w-full"
+						v-model=" resourceForm.description " required autofocus
+						autocomplete="convocation_description" />
 					<InputError class="mt-2" :message=" resourceForm.errors.description " />
 				</div>
 				<div class="flex items-center gap-4 mt-4">

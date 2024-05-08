@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
 	editRoute: {
 		type: String,
 		required: true,
@@ -15,6 +15,6 @@ const openModal = () => {
 
 <template>
 	<div class="bg-white p-4 rounded-lg">
-		<slot name="name"/>
+		<slot name="name" />
 	</div>
 </template>

@@ -6,7 +6,7 @@ defineOptions({
 	layout: HomeLayout
 })
 
-defineProps({
+const props = defineProps({
 	canLogin: {
 		type: Boolean
 	},
@@ -47,12 +47,15 @@ defineProps({
 				<div class="px-4 py-2 text-neutral-800">
 					<div class="flex justify-start items-center">
 						<h1 class="font-bold text-xl mr-4">Cine debate</h1>
-						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline">Publicado por Daniel
+						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline">Publicado
+							por Daniel
 							Pérez Flores</h3>
 						<h3 class="text-neutral-600">hace 3 horas</h3>
 					</div>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id molestiae
-						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id
+						molestiae
+						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem!
+						Non, alias!
 					</p>
 				</div>
 				<img class="" src="/storage/images/magazines.jpg" alt="conv1" />
@@ -69,12 +72,15 @@ defineProps({
 				<div class="px-4 py-2 text-neutral-800">
 					<div class="flex justify-start items-center">
 						<h1 class="font-bold text-xl mr-4">Cine debate</h1>
-						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline">Publicado por Daniel
+						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline">Publicado
+							por Daniel
 							Pérez Flores</h3>
 						<h3 class="text-neutral-600">hace 3 horas</h3>
 					</div>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id molestiae
-						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id
+						molestiae
+						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem!
+						Non, alias!
 					</p>
 				</div>
 				<!-- <img class="" src="/storage/images/magazines.jpg" alt="conv1" /> -->
@@ -91,12 +97,15 @@ defineProps({
 				<div class="px-4 py-2 text-neutral-800">
 					<div class="flex justify-start items-center">
 						<h1 class="font-bold text-xl mr-4">Cine debate</h1>
-						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline">Publicado por Daniel
+						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline">Publicado
+							por Daniel
 							Pérez Flores</h3>
 						<h3 class="text-neutral-600">hace 3 horas</h3>
 					</div>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id molestiae
-						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id
+						molestiae
+						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem!
+						Non, alias!
 					</p>
 				</div>
 				<img class="" src="/storage/images/books.jpg" alt="conv2" />
@@ -113,12 +122,15 @@ defineProps({
 				<div class="px-4 py-2 text-neutral-800">
 					<div class="flex justify-start items-center">
 						<h1 class="font-bold text-xl mr-4">Cine debate</h1>
-						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline">Publicado por Daniel
+						<h3 @click.prevent-default=" saludar " class="text-neutral-600 mr-2 hover:underline">Publicado
+							por Daniel
 							Pérez Flores</h3>
 						<h3 class="text-neutral-600">hace 3 horas</h3>
 					</div>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id molestiae
-						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem! Non, alias!
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad nulla excepturi modi, at officia id
+						molestiae
+						natus mollitia unde laudantium! Nesciunt eum, veritatis ab possimus autem corrupti voluptatem!
+						Non, alias!
 					</p>
 				</div>
 				<img class="" src="/storage/images/ciiea.jpg" alt="conv3" />
@@ -148,7 +160,8 @@ defineProps({
 						</h5>
 					</div>
 					<p>
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint natus tempora asperiores fugit facilis amet
+						Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint natus tempora asperiores fugit
+						facilis amet
 						recusandae quia...
 					</p>
 				</div>
@@ -181,7 +194,8 @@ defineProps({
 						</h5>
 					</div>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum debitis tempora veritatis minima...
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum debitis tempora veritatis
+						minima...
 					</p>
 				</div>
 			</div>

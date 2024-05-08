@@ -16,7 +16,7 @@ defineOptions({
 	layout: AdminLayout
 })
 
-defineProps({
+const props = defineProps({
 	investigations: {
 		type: Object,
 		required: true
@@ -78,7 +78,7 @@ const handleDeleteInvestigation = () => {
 	</div>
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="       investigation in investigations       " :key=" investigation.index "
+			<ResourceCard v-for="           investigation in investigations           " :key=" investigation.index "
 				@open-delete-modal="handleOpenDeleteModal( investigation.id )"
 				:edit-route=" route( 'admin.investigations.edit', investigation.id ) ">
 				<template #image class="overflow-hidden">

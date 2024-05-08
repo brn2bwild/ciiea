@@ -8,7 +8,7 @@ defineOptions({
 	layout: HomeLayout
 })
 
-defineProps({
+const props = defineProps({
 	infographics: {
 		type: Object,
 	},
@@ -41,7 +41,7 @@ const handleCloseImageModal = () => {
 			<h1 class="text-xl text-neutral-600 font-bold">Infografías</h1>
 		</section>
 		<section class="w-full grid grid-cols-1 md:grid-cols-3 gap-10">
-			<div v-for="             infographic in infographics             " :key=" infographic.index "
+			<div v-for="                 infographic in infographics                 " :key=" infographic.index "
 				class="w-full rounded-xl flex flex-col justify-start items-start bg-white shadow-lg shadow-slate-100 overflow-hidden">
 				<div class="w-full h-60 mb-2 overflow-hidden flex justify-center">
 					<img class="w-full"
@@ -54,7 +54,7 @@ const handleCloseImageModal = () => {
 					</h1>
 					<!-- <Link :href=" route( 'guest.infographics.show', infographic.slug ) "
 						class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold text-sm">Ver</Link> -->
-					<button v-if="infographic.image" @click=" handleOpenImageModal( infographic.image.path )"
+					<button v-if=" infographic.image " @click=" handleOpenImageModal( infographic.image.path )"
 						class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold text-sm">Ver</button>
 				</div>
 			</div>

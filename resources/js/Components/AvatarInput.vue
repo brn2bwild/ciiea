@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
 	<div>
-		<img v-if="props.avatarUrl !== ''" :src="props.avatarUrl" alt="avatar" />
+		<img v-if=" props.avatarUrl !== '' " :src=" props.avatarUrl " alt="avatar" />
 		<label v-else for="avatar-file" class="cursor-pointer">
 			<span>Buscar</span>
 			<span>{{ props.avatarUrl }}</span>
@@ -18,4 +18,3 @@ const props = defineProps({
 		</label>
 	</div>
 </template>
-

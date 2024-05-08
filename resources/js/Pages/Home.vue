@@ -6,7 +6,7 @@ defineOptions({
 	layout: HomeLayout
 })
 
-defineProps({
+const props = defineProps({
 	canLogin: {
 		type: Boolean,
 	},
@@ -18,6 +18,7 @@ defineProps({
 </script>
 
 <template>
+
 	<Head title="Inicio" />
 	<section class="w-full overflow-hidden">
 		<img v-lazy=" '/storage/images/ciiea.jpeg' " class="w-full h-80 sm:h-[600px] object-cover object-left" />
@@ -28,7 +29,8 @@ defineProps({
 				¿Qué es el CIIEA?
 			</h1>
 			<p class="w-full mt-4 text-md font-extralight leading-7 px-4 sm:px-20">
-				El CIIEA es un órgano descentralizado de la Secretaria de Educacion, que desarrolla funciones de investigación,
+				El CIIEA es un órgano descentralizado de la Secretaria de Educacion, que desarrolla funciones de
+				investigación,
 				innovación, servicios académicos, vinculación y difusión.
 			</p>
 		</div>
@@ -39,7 +41,8 @@ defineProps({
 				class="min-h-full px-10 py-6 bg-neutral-50 rounded-xl text-neutral-900 text-center flex flex-col items-center justify-center shadow-gray-400 shadow-sm leading-7">
 				<span class="text-2xl font-bold text-neutral-800">Objetivo</span>
 				<p class="mt-4 text-md font-extralight leading-6 text-neutral-700">
-					Proponer y ejecutar las acciones necesarias, que contribuyan a elevar la calidad de la educación en el estado
+					Proponer y ejecutar las acciones necesarias, que contribuyan a elevar la calidad de la educación en
+					el estado
 					de
 					Tabasco.
 				</p>
@@ -48,8 +51,10 @@ defineProps({
 				class="min-h-full px-10 py-6 bg-neutral-50 rounded-xl text-neutral-900 text-center flex flex-col items-center justify-center shadow-gray-400 shadow-sm leading-7">
 				<span class="text-2xl font-bold text-neutral-800">Misión</span>
 				<p class="mt-4 text-md font-extralight leading-6 text-neutral-700">
-					Desarrollar un centro público de investigación dedicado a la generación y divulgación de conocimientos
-					especializados en la educación, para elevar la calidad educativa, la formación de recursos humanos, el
+					Desarrollar un centro público de investigación dedicado a la generación y divulgación de
+					conocimientos
+					especializados en la educación, para elevar la calidad educativa, la formación de recursos humanos,
+					el
 					fortalecimiento de los servicios académicos y la vinculación con los sectores públicos y privados.
 				</p>
 			</div>
@@ -57,8 +62,10 @@ defineProps({
 				class="min-h-full px-10 py-6 bg-neutral-50 rounded-xl text-neutral-900 text-center flex flex-col items-center justify-center shadow-gray-400 shadow-sm leading-7">
 				<span class="text-2xl font-bold text-neutral-800">Visión</span>
 				<p class="mt-4 text-md font-extralight leading-6 text-neutral-700">
-					Consolidar al CIIEA como una institución reconocida en la generacion de investigación educativa, con la
-					participacion de profesionales que generen programas, proyectos y productos de investigación que respondan a
+					Consolidar al CIIEA como una institución reconocida en la generacion de investigación educativa, con
+					la
+					participacion de profesionales que generen programas, proyectos y productos de investigación que
+					respondan a
 					las
 					necesidades educativas del estado.
 				</p>

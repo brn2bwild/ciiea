@@ -23,7 +23,8 @@ const props = defineProps({
 })
 </script>
 <template>
-	<Link :href=" route " class="flex flex-col justify-between rounded-lg bg-white hover:bg-neutral-200 transition duration-200 px-8 py-6 h-40">
+	<Link :href=" route "
+		class="flex flex-col justify-between rounded-lg bg-white hover:bg-neutral-200 transition duration-200 px-8 py-6 h-40">
 	<div class="text-xl font-medium leading-tight text-neutral-700">
 		{{ text }}
 	</div>

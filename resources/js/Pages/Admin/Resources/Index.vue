@@ -15,7 +15,7 @@ defineOptions({
 	layout: AdminLayout
 })
 
-defineProps({
+const props = defineProps({
 	resources: {
 		type: Object,
 		required: true
@@ -70,7 +70,7 @@ const handleDeleteresource = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="  resource in resources  " :key=" resource.index "
+			<ResourceCard v-for="      resource in resources      " :key=" resource.index "
 				@open-delete-modal="handleOpenDeleteModal( resource.id )"
 				:edit-route=" route( 'admin.resources.edit', resource.id ) ">
 				<template #image>

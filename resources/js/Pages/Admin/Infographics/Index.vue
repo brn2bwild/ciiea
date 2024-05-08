@@ -15,7 +15,7 @@ defineOptions({
 	layout: AdminLayout
 })
 
-defineProps({
+const props = defineProps({
 	infographics: {
 		type: Object,
 		required: true
@@ -70,7 +70,7 @@ const handleDeleteInfographic = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="   infographic in infographics   " :key=" infographic.index "
+			<ResourceCard v-for="       infographic in infographics       " :key=" infographic.index "
 				@open-delete-modal="handleOpenDeleteModal( infographic.id )"
 				:edit-route=" route( 'admin.infographics.edit', infographic.id ) "
 				:image-path=" ( infographic.image !== null ? infographic.image.path : null ) ">

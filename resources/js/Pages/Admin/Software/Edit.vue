@@ -39,20 +39,20 @@ const handleUpdateSoftware = () => {
 			<form @submit.prevent=" handleUpdateSoftware " class="w-3/4">
 				<div>
 					<InputLabel for="name" value="Nombre del software" />
-					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" softwareForm.name " required autofocus
-						autocomplete="software_name" />
+					<TextInput id="name" type="text" class="mt-1 block w-full" v-model=" softwareForm.name " required
+						autofocus autocomplete="software_name" />
 					<InputError class="mt-2" :message=" softwareForm.errors.name " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="description" value="Descripción" />
-					<TextInput id="description" type="text" class="mt-1 block w-full" v-model=" softwareForm.description "
-						required autofocus autocomplete="software_description" />
+					<TextInput id="description" type="text" class="mt-1 block w-full"
+						v-model=" softwareForm.description " required autofocus autocomplete="software_description" />
 					<InputError class="mt-2" :message=" softwareForm.errors.description " />
 				</div>
 				<div class="mt-4">
 					<InputLabel for="url" value="Link de descarga" />
-					<TextInput id="url" type="text" class="mt-1 block w-full" v-model=" softwareForm.url "
-						required autofocus autocomplete="software_url" />
+					<TextInput id="url" type="text" class="mt-1 block w-full" v-model=" softwareForm.url " required
+						autofocus autocomplete="software_url" />
 					<InputError class="mt-2" :message=" softwareForm.errors.url " />
 				</div>
 				<div class="flex items-center gap-4 mt-4">

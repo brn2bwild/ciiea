@@ -7,7 +7,7 @@ defineOptions({
 	layout: HomeLayout,
 });
 
-defineProps({
+const props = defineProps({
 	canLogin: {
 		type: Boolean
 	},
@@ -30,8 +30,7 @@ defineProps({
 
 	<Head title="Contacto" />
 	<section class="w-full pt-20 px-4 sm:p-12 grid grid-cols-1 md:grid-cols-3 gap-4">
-		<div
-			v-for="                             administrator                              in                              administrators                             "
+		<div v-for="                                 administrator in administrators                                 "
 			:key=" administrator.index " class="bg-transparent w-full rounded-sm flex relative group mb-32">
 			<img class="h-32 w-32 z-20" src="/storage/images/default-contact.png" alt="default-contact">
 			<div

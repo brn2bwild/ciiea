@@ -6,7 +6,7 @@ defineOptions({
 	layout: HomeLayout
 })
 
-defineProps({
+const props = defineProps({
 	resources: {
 		type: Object,
 		required: true,
@@ -22,7 +22,7 @@ defineProps({
 			<h1 class="text-xl text-neutral-600 font-bold">Recursos de vinculación</h1>
 		</section>
 		<section class="w-full grid grid-cols-1 sm:grid-cols-3 gap-10">
-			<div v-for="  resource in resources  " :key=" resource.index "
+			<div v-for="      resource in resources      " :key=" resource.index "
 				class="w-full rounded-xl flex flex-col justify-center items-start bg-white shadow-lg shadow-slate-100">
 				<!-- <div class="w-full mb-2">
 					<img src="/storage/resources/conv1.jpg" :alt=" 'resource' + resource.index " />
@@ -37,7 +37,8 @@ defineProps({
 					<h3 class="text-neutral-600 text-sm">
 						Compartido {{ resource.created_at_for_humans }}
 					</h3>
-					<Link href="/storage/archivo.pdf" class="bg-sky-500 px-4 py-2 rounded-lg text-neutral-50 font-bold text-sm">
+					<Link href="/storage/archivo.pdf"
+						class="bg-sky-500 px-4 py-2 rounded-lg text-neutral-50 font-bold text-sm">
 					Descargar
 					</Link>
 				</div>

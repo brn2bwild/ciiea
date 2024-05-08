@@ -16,7 +16,7 @@ defineOptions({
 	layout: AdminLayout,
 })
 
-defineProps({
+const props = defineProps({
 	publications: {
 		type: Object,
 		required: true,
@@ -76,7 +76,7 @@ const handleDeletePublication = () => {
 
 	<div class="w-full p-8">
 		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="      publication in publications      " :key=" publication.index "
+			<ResourceCard v-for="          publication in publications          " :key=" publication.index "
 				@open-delete-modal="handleOpenDeleteModal( publication.id )"
 				:edit-route=" route( 'admin.historical-publications.edit', publication.id ) ">
 				<template #image class="overflow-hidden">

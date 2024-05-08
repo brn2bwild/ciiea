@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
 
-defineProps({
+const props = defineProps({
 	editRoute: {
 		type: String,
 		required: true,

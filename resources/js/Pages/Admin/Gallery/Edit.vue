@@ -87,7 +87,7 @@ const handleSubmitImages = (images) => {
 					:icon=" { prefix: 'fa', iconName: 'plus-circle' } " />
 				<h1 class="font-bold">Agregar imágenes</h1>
 			</label>
-			<div v-for="     image in event.images     " :key=" image.index "
+			<div v-for="          image in event.images          " :key=" image.index "
 				class="bg-white h-40 rounded-xl overflow-hidden cursor-pointer group relative">
 				<!-- {{ image.path }} -->
 				<img @click="handleShowImageModal( route( 'home' ) + '/storage/' + image.path, image.title )"

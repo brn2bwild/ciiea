@@ -12,7 +12,7 @@ defineOptions({
 	layout: AdminLayout,
 });
 
-defineProps({
+const props = defineProps({
 	users: {
 		type: Object,
 	}
@@ -48,9 +48,10 @@ const submit = () => {
 </script>
 
 <template>
+
 	<Head title="Contacto" />
 	<div class="w-full py-8 px-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-		<div @click="editContactUser( user )" v-for="(  user, index  ) in   users  " :key=" index "
+		<div @click="editContactUser( user )" v-for="(      user, index  ) in users  " :key=" index "
 			class="bg-rose-900 w-full rounded-lg flex items-center p-2 gap-4 overflow-hidden cursor-pointer">
 			<img class="h-32 w-32" src="/storage/images/default-contact.png" alt="default-contact">
 			<div class="bg-transparent w-3/4">
@@ -65,11 +66,13 @@ const submit = () => {
 					<a href="https://whatsapp.com" class="ml-2">{{ user.celular_number }}</a>
 				</p>
 				<p class="flex justify-start text-white mb-2">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'envelope' } " size="lg" style="color: white;" />
+					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'envelope' } " size="lg"
+						style="color: white;" />
 					<a href="https://outlook.com" class="ml-2">{{ user.email }}</a>
 				</p>
 				<p class="flex justify-start text-white mb-2">
-					<font-awesome-icon :icon=" { prefix: 'fab', iconName: 'twitter' } " size="lg" style="color: white;" />
+					<font-awesome-icon :icon=" { prefix: 'fab', iconName: 'twitter' } " size="lg"
+						style="color: white;" />
 					<a href="https://outlook.com" class="ml-2">{{ user.twitter }}</a>
 				</p>
 			</div>
@@ -103,7 +106,8 @@ const submit = () => {
 		<div class="bg-white w-full p-4">
 			<div class="flex justify-between items-center mb-4">
 				<h1>{{ modalTitle }}</h1>
-				<font-awesome-icon @click="showModal = false" :icon=" { prefix: 'fa', iconName: 'xmark' } " class="cursor-pointer"/>
+				<font-awesome-icon @click="showModal = false" :icon=" { prefix: 'fa', iconName: 'xmark' } "
+					class="cursor-pointer" />
 			</div>
 			<form @submit.prevent=" submit ">
 				<div>
@@ -118,8 +122,8 @@ const submit = () => {
 				<div class="mt-4">
 					<InputLabel for="position" value="Posición" />
 
-					<TextInput id="position" type="text" class="mt-1 block w-full" v-model=" form.position " required autofocus
-						autocomplete="position" />
+					<TextInput id="position" type="text" class="mt-1 block w-full" v-model=" form.position " required
+						autofocus autocomplete="position" />
 
 					<InputError class="mt-2" :message=" form.errors.position " />
 				</div>
@@ -127,8 +131,8 @@ const submit = () => {
 				<div class="mt-4">
 					<InputLabel for="celular_number" value="Número celular" />
 
-					<TextInput id="celular_number" type="number" class="mt-1 block w-full" v-model=" form.celular_number " required
-						autofocus autocomplete="celular_number" />
+					<TextInput id="celular_number" type="number" class="mt-1 block w-full"
+						v-model=" form.celular_number " required autofocus autocomplete="celular_number" />
 
 					<InputError class="mt-2" :message=" form.errors.celular_number " />
 				</div>
@@ -136,8 +140,8 @@ const submit = () => {
 				<div class="mt-4">
 					<InputLabel for="email" value="Correo electrónico" />
 
-					<TextInput id="email" type="email" class="mt-1 block w-full" v-model=" form.email " required autofocus
-						autocomplete="email" />
+					<TextInput id="email" type="email" class="mt-1 block w-full" v-model=" form.email " required
+						autofocus autocomplete="email" />
 
 					<InputError class="mt-2" :message=" form.errors.email " />
 				</div>
@@ -145,14 +149,15 @@ const submit = () => {
 				<div class="mt-4">
 					<InputLabel for="twitter" value="Twitter" />
 
-					<TextInput id="twitter" type="text" class="mt-1 block w-full" v-model=" form.twitter " required autofocus
-						autocomplete="twitter" />
+					<TextInput id="twitter" type="text" class="mt-1 block w-full" v-model=" form.twitter " required
+						autofocus autocomplete="twitter" />
 
 					<InputError class="mt-2" :message=" form.errors.twitter " />
 				</div>
 
 				<div class="flex items-center justify-end mt-4">
-					<PrimaryButton class="ml-4" :class=" { 'opacity-25': form.processing } " :disabled=" form.processing ">
+					<PrimaryButton class="ml-4" :class=" { 'opacity-25': form.processing } "
+						:disabled=" form.processing ">
 						Guardar
 					</PrimaryButton>
 				</div>

@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 
-defineProps({
+const props = defineProps({
 	modelValue: {
 		type: String,
 		required: true,

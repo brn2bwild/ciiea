@@ -65,7 +65,7 @@ const handleClosePdfModal = () => {
 			<h1 class="text-xl text-neutral-600 font-bold">Revistas recientes</h1>
 		</section>
 		<section class="w-full grid grid-cols-1 md:grid-cols-3 gap-10">
-			<div v-for="           magazine in props.magazines           " :key=" magazine.index "
+			<div v-for="                magazine in props.magazines                " :key=" magazine.index "
 				class="w-full rounded-xl flex flex-col justify-start items-start bg-white shadow-lg shadow-slate-100 overflow-hidden">
 				<div class="w-full h-60 mb-2 overflow-hidden object-contain flex justify-center items-start">
 					<div v-if=" magazine.file !== null " class="scale-[60%] -m-[160px]">
