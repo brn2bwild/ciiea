@@ -4,7 +4,6 @@ import Modal from '@/Components/Modal.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
-import { handleError } from 'vue';
 import { ref } from 'vue';
 
 defineOptions({
@@ -65,9 +64,6 @@ const handleSubmitImages = (images) => {
 		imagesForm.images = images
 
 		imagesForm.post(route('admin.gallery.upload-images'), {
-			// onSuccess: () => {
-			// 	console.log('subidas')
-			// }
 		})
 	}
 }
@@ -86,11 +82,12 @@ const handleSubmitImages = (images) => {
 					<input @change=" handleImagesChange " type="file" class="hidden" id="upload-images-input"
 						accept="image/png, image/jpg, image/jpeg" multiple>
 				</form>
-				<font-awesome-icon class="mb-2 text-4xl text-neutral-300 group-hover:text-neutral-400 transition duration-200"
+				<font-awesome-icon
+					class="mb-2 text-4xl text-neutral-300 group-hover:text-neutral-400 transition duration-200"
 					:icon=" { prefix: 'fa', iconName: 'plus-circle' } " />
 				<h1 class="font-bold">Agregar imágenes</h1>
 			</label>
-			<div v-for="  image  in  event.images  " :key=" image.index "
+			<div v-for="     image in event.images     " :key=" image.index "
 				class="bg-white h-40 rounded-xl overflow-hidden cursor-pointer group relative">
 				<!-- {{ image.path }} -->
 				<img @click="handleShowImageModal( route( 'home' ) + '/storage/' + image.path, image.title )"

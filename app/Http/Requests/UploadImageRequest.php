@@ -24,7 +24,7 @@ class UploadImageRequest extends FormRequest
 		return [
 			'id' => ['required', 'numeric'],
 			'images' => ['required'],
-			'images.*' => ['required', 'mimes:png,jpg,jpeg', 'max:2048']
+			'images.*' => ['required', 'mimes:png,jpg,jpeg', 'max:5120']
 		];
 	}
 }
