@@ -18,23 +18,16 @@ class BookController extends Controller
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Books/Index', [
-			'books' => fn () => Book::select(
-				'id',
-				'title',
-				'authors',
-				'isbn',
-				'publicated_at',
-			)
-				->with('file')
-				->get()
-				->transform(fn ($book) => [
-					'id' => $book->id,
-					'title' => $book->title,
-					'authors' => $book->authors,
-					'isbn' => $book->isbn ?? '',
-					'publicated_at' => date('d M Y', strtotime($book->publicated_at)),
-					'file' => $book->file
-				]),
+			'books' => fn () => Book::with('file')
+				->paginate(6)
+			// ->transform(fn ($book) => [
+			// 	'id' => $book->id,
+			// 	'title' => $book->title,
+			// 	'authors' => $book->authors,
+			// 	'isbn' => $book->isbn ?? '',
+			// 	'publicated_at' => date('d M Y', strtotime($book->publicated_at)),
+			// 	'file' => $book->file
+			// ]),
 		]);
 	}
 

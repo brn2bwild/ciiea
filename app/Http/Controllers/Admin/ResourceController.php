@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\resourceUpdateRequest;
 use App\Http\Requests\UpdateFileRequest;
 use App\Models\Resource;
@@ -16,7 +17,7 @@ class ResourceController extends Controller
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Resources/Index', [
-			'resources' => fn () => Resource::get()
+			'resources' => fn () => Resource::paginate(6)
 		]);
 	}
 

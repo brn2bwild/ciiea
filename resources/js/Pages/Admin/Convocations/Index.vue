@@ -10,6 +10,7 @@ import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import Pagination from "@/Components/Pagination.vue";
 
 defineOptions({
 	layout: AdminLayout
@@ -77,14 +78,14 @@ const handleDeleteConvocation = () => {
 	</div>
 
 	<div class="w-full p-8">
-		<section class="grid grid-cols-1 md:grid-cols-5 gap-4">
-			<ResourceCard v-for="         convocation in convocations         " :key=" convocation.index "
+		<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+			<ResourceCard v-for="         convocation in convocations.data         " :key=" convocation.index "
 				@open-delete-modal="handleOpenDeleteModal( convocation.id )"
 				:edit-route=" route( 'admin.convocations.edit', convocation.id ) "
 				:image-path=" ( convocation.image !== null ? convocation.image.path : null ) ">
 				<template #image>
 					<img v-if=" convocation.image " :src=" convocation.image.path " alt="convocation-image" />
-					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" />
+					<img v-else src="/storage/images/bookshelve-optimized.jpg" alt="default-image" class="w-full" />
 				</template>
 				<template #title>{{ convocation.name }}...</template>
 				<template #subtitle>{{ convocation.date }}</template>
@@ -92,6 +93,7 @@ const handleDeleteConvocation = () => {
 				</template>
 			</ResourceCard>
 		</section>
+		<Pagination :links="props.convocations.links" class="mt-8 flex justify-center" />
 	</div>
 
 	<Modal @close=" handleCloseCreateModal " :show=" showCreateModal " :max-width=" 'lg' ">

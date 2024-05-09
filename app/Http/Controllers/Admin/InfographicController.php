@@ -18,7 +18,7 @@ class InfographicController extends Controller
 	{
 		return Inertia::render('Admin/Infographics/Index', [
 			'infographics' => fn () => Infographic::with('image')
-				->get()
+				->paginate(6)
 		]);
 	}
 

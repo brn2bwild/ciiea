@@ -18,23 +18,16 @@ class InvestigationController extends Controller
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Investigations/Index', [
-			'investigations' => fn () => Investigation::select(
-				'id',
-				'title',
-				'authors',
-				'short_description',
-				'publicated_at'
-			)
-				->with('file')
-				->get()
-				->transform(fn ($investigation) => [
-					'id' => $investigation->id,
-					'title' => $investigation->title,
-					'authors' => $investigation->authors,
-					'short_description' => $investigation->short_description,
-					'publicated_at' => date('d M Y', strtotime($investigation->publicated_at)),
-					'file' => $investigation->file
-				]),
+			'investigations' => fn () => Investigation::with('file')
+				->paginate(6)
+				// ->transform(fn ($investigation) => [
+				// 	'id' => $investigation->id,
+				// 	'title' => $investigation->title,
+				// 	'authors' => $investigation->authors,
+				// 	'short_description' => $investigation->short_description,
+				// 	'publicated_at' => date('d M Y', strtotime($investigation->publicated_at)),
+				// 	'file' => $investigation->file
+				// ]),
 		]);
 	}
 

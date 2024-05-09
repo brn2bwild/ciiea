@@ -18,7 +18,7 @@ class EducationalSoftwareController extends Controller
 	{
 		return Inertia::render('Admin/Software/Index', [
 			'software_resources' => fn () => Software::with('image')
-				->get()
+				->paginate(6)
 		]);
 	}
 

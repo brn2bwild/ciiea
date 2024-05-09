@@ -18,19 +18,14 @@ class MagazineController extends Controller
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Magazines/Index', [
-			'magazines' => Magazine::select(
-				'id',
-				'name',
-				'publicated_at',
-			)
-				->with('file')
-				->get()
-				->transform(fn ($magazine) => [
-					'id' => $magazine->id,
-					'name' => ucwords($magazine->name),
-					'publicated_at' => date("d M Y", strtotime($magazine->publicated_at)),
-					'file' => $magazine->file
-				]),
+			'magazines' => Magazine::with('file')
+				->paginate(6)
+				// ->transform(fn ($magazine) => [
+				// 	'id' => $magazine->id,
+				// 	'name' => ucwords($magazine->name),
+				// 	'publicated_at' => date("d M Y", strtotime($magazine->publicated_at)),
+				// 	'file' => $magazine->file
+				// ]),
 		]);
 	}
 

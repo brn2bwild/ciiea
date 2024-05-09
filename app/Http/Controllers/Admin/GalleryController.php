@@ -21,17 +21,12 @@ class GalleryController extends Controller
 		return Inertia::render(
 			'Admin/Gallery/Index',
 			[
-				'events' => fn () => Event::select(
-					'id',
-					'date',
-					'name',
-				)
-					->get()
-					->transform(fn ($event) => [
-						'id' => $event->id,
-						'date' => $event->date,
-						'name' => $event->name,
-					]),
+				'events' => fn () => Event::paginate(6)
+				// ->transform(fn ($event) => [
+				// 	'id' => $event->id,
+				// 	'date' => $event->date,
+				// 	'name' => $event->name,
+				// ]),
 			]
 		);
 	}
@@ -44,7 +39,7 @@ class GalleryController extends Controller
 			'slug' => Str::slug($request->name),
 		]);
 
-		return back()->with('success','');
+		return back()->with('success', '');
 	}
 
 	public function edit(Request $request): Response

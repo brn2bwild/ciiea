@@ -18,19 +18,14 @@ class PublicationController extends Controller
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Publications/Index', [
-			'publications' => fn () => Publication::select(
-				'id',
-				'title',
-				'publicated_at'
-			)
-				->with('file')
-				->get()
-				->transform(fn ($publication) => [
-					'id' => $publication->id,
-					'title' => $publication->title,
-					'publicated_at' => date('d M Y', strtotime($publication->publicated_at)),
-					'file' => $publication->file
-				]),
+			'publications' => fn () => Publication::with('file')
+				->paginate(6)
+				// ->transform(fn ($publication) => [
+				// 	'id' => $publication->id,
+				// 	'title' => $publication->title,
+				// 	'publicated_at' => date('d M Y', strtotime($publication->publicated_at)),
+				// 	'file' => $publication->file
+				// ]),
 		]);
 	}
 
