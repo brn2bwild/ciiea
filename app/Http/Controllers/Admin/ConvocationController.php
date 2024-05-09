@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\convocationUpdateRequest;
+use App\Http\Requests\ConvocationUpdateRequest;
 use App\Http\Requests\UploadSingleImageRequest;
 use App\Models\Convocation;
 use Carbon\Carbon;
@@ -21,10 +21,10 @@ class ConvocationController extends Controller
 		return Inertia::render('Admin/Convocations/Index', [
 			'convocations' => fn () => Convocation::with('image')
 				->paginate(6)
-				// ->each(function ($convocation, $index) {
-				// 	$convocation->date = $convocation->date_time->isoFormat('LL');
-				// 	$convocation->time = $convocation->date_time->isoFormat('h:mm');
-				// })
+			// ->each(function ($convocation, $index) {
+			// 	$convocation->date = $convocation->date_time->isoFormat('LL');
+			// 	$convocation->time = $convocation->date_time->isoFormat('h:mm');
+			// })
 		]);
 	}
 
@@ -57,7 +57,7 @@ class ConvocationController extends Controller
 		]);
 	}
 
-	public function update(convocationUpdateRequest $request): RedirectResponse
+	public function update(ConvocationUpdateRequest $request): RedirectResponse
 	{
 		Convocation::findOrFail($request->input('id'))
 			->update($request->validated());

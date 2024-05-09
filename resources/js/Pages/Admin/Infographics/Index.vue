@@ -83,15 +83,14 @@ const handleDeleteInfographic = () => {
             >
                 <template #image>
                     <img
-                        v-if="infographic.image"
-                        :src="infographic.image.path"
-                        alt="convocation-image"
-                    />
-                    <img
-                        v-else
-                        src="/storage/images/bookshelve-optimized.jpg"
-                        alt="default-image"
-                        class="w-full"
+                        class="w-full h-full object-cover"
+                        :src="
+                            '/storage/' +
+                            (infographic.image
+                                ? infographic.image.path
+                                : 'images/bookshelve-optimized.jpg')
+                        "
+                        alt="infographics-image"
                     />
                 </template>
                 <template #title class="truncate">{{
@@ -101,7 +100,10 @@ const handleDeleteInfographic = () => {
                 <template #content></template>
             </ResourceCard>
         </section>
-        <Pagination :links="props.infographics.links" class="mt-8 flex justify-center" />
+        <Pagination
+            :links="props.infographics.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
 
     <Modal

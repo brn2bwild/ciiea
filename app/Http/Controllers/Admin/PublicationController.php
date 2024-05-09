@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\publicationUpdateRequest;
+use App\Http\Requests\PublicationUpdateRequest;
 use App\Http\Requests\UpdateFileRequest;
 use App\Models\Publication;
 use Illuminate\Http\RedirectResponse;
@@ -20,12 +20,12 @@ class PublicationController extends Controller
 		return Inertia::render('Admin/Publications/Index', [
 			'publications' => fn () => Publication::with('file')
 				->paginate(6)
-				// ->transform(fn ($publication) => [
-				// 	'id' => $publication->id,
-				// 	'title' => $publication->title,
-				// 	'publicated_at' => date('d M Y', strtotime($publication->publicated_at)),
-				// 	'file' => $publication->file
-				// ]),
+			// ->transform(fn ($publication) => [
+			// 	'id' => $publication->id,
+			// 	'title' => $publication->title,
+			// 	'publicated_at' => date('d M Y', strtotime($publication->publicated_at)),
+			// 	'file' => $publication->file
+			// ]),
 		]);
 	}
 
@@ -53,7 +53,7 @@ class PublicationController extends Controller
 		]);
 	}
 
-	public function update(publicationUpdateRequest $request): RedirectResponse
+	public function update(PublicationUpdateRequest $request): RedirectResponse
 	{
 		Publication::findOrFail($request->input('id'))
 			->update($request->validated());

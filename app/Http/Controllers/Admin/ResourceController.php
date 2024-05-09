@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\resourceUpdateRequest;
+use App\Http\Requests\ResourceUpdateRequest;
 use App\Http\Requests\UpdateFileRequest;
 use App\Models\Resource;
 use Illuminate\Http\RedirectResponse;
@@ -40,7 +40,7 @@ class ResourceController extends Controller
 		]);
 	}
 
-	public function update(resourceUpdateRequest $request): RedirectResponse
+	public function update(ResourceUpdateRequest $request): RedirectResponse
 	{
 		Resource::findOrFail($request->input('id'))
 			->update($request->validated());

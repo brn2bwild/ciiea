@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\investigationUpdateRequest;
+use App\Http\Requests\InvestigationUpdateRequest;
 use App\Http\Requests\UpdateFileRequest;
 use App\Models\Investigation;
 use Illuminate\Http\RedirectResponse;
@@ -20,14 +20,14 @@ class InvestigationController extends Controller
 		return Inertia::render('Admin/Investigations/Index', [
 			'investigations' => fn () => Investigation::with('file')
 				->paginate(6)
-				// ->transform(fn ($investigation) => [
-				// 	'id' => $investigation->id,
-				// 	'title' => $investigation->title,
-				// 	'authors' => $investigation->authors,
-				// 	'short_description' => $investigation->short_description,
-				// 	'publicated_at' => date('d M Y', strtotime($investigation->publicated_at)),
-				// 	'file' => $investigation->file
-				// ]),
+			// ->transform(fn ($investigation) => [
+			// 	'id' => $investigation->id,
+			// 	'title' => $investigation->title,
+			// 	'authors' => $investigation->authors,
+			// 	'short_description' => $investigation->short_description,
+			// 	'publicated_at' => date('d M Y', strtotime($investigation->publicated_at)),
+			// 	'file' => $investigation->file
+			// ]),
 		]);
 	}
 
@@ -59,7 +59,7 @@ class InvestigationController extends Controller
 		]);
 	}
 
-	public function update(investigationUpdateRequest $request): RedirectResponse
+	public function update(InvestigationUpdateRequest $request): RedirectResponse
 	{
 		investigation::findOrFail($request->input('id'))
 			->update($request->validated());

@@ -44,8 +44,8 @@ const handleCloseImageModal = () => {
 			<div v-for="                 infographic in infographics                 " :key=" infographic.index "
 				class="w-full rounded-xl flex flex-col justify-start items-start bg-white shadow-lg shadow-slate-100 overflow-hidden">
 				<div class="w-full h-60 mb-2 overflow-hidden flex justify-center">
-					<img class="w-full"
-						:src=" '/storage/' + ( infographic.image !== null ? infographic.image.path : 'images/bookshelve-optimized.jpg' ) "
+					<img class="w-full object-cover"
+						:src=" '/storage/' + ( infographic.image ? infographic.image.path : 'images/bookshelve-optimized.jpg' ) "
 						alt="book-cover">
 				</div>
 				<div class="w-full h-36 flex flex-col items-start justify-between p-4 gap-0">
@@ -61,6 +61,6 @@ const handleCloseImageModal = () => {
 		</section>
 	</div>
 	<Modal @close=" handleCloseImageModal " :show=" showImageModal " :max-width=" '3xl' ">
-		<img :src=" '/storage/' + urlToShow " alt="infographic" />
+		<img :src=" '/storage/' + urlToShow " alt="infographic" class="max-h-screen"/>
 	</Modal>
 </template>

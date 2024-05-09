@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\infographicUpdateRequest;
+use App\Http\Requests\InfographicUpdateRequest;
 use App\Http\Requests\UploadSingleImageRequest;
 use App\Models\Infographic;
 use Illuminate\Http\RedirectResponse;
@@ -40,7 +40,7 @@ class InfographicController extends Controller
 		]);
 	}
 
-	public function update(infographicUpdateRequest $request): RedirectResponse
+	public function update(InfographicUpdateRequest $request): RedirectResponse
 	{
 		Infographic::findOrFail($request->input('id'))
 			->update($request->validated());

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\softwareUpdateRequest;
+use App\Http\Requests\SoftwareUpdateRequest;
 use App\Http\Requests\UploadSingleImageRequest;
 use App\Models\Software;
 use Illuminate\Http\RedirectResponse;
@@ -41,7 +41,7 @@ class EducationalSoftwareController extends Controller
 		]);
 	}
 
-	public function update(softwareUpdateRequest $request): RedirectResponse
+	public function update(SoftwareUpdateRequest $request): RedirectResponse
 	{
 		Software::findOrFail($request->input('id'))
 			->update($request->validated());

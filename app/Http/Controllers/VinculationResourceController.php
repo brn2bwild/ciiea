@@ -16,11 +16,11 @@ class VinculationResourceController extends Controller
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
             'resources' => Resource::with('file')
-                ->get()
-                ->each(function ($resource, $index) {
-                    $resource->created_at_for_humans = $resource->created_at->diffForHumans();
-                })
-                ->toArray(),
+                ->paginate(6)
+                // ->each(function ($resource, $index) {
+                //     $resource->created_at_for_humans = $resource->created_at->diffForHumans();
+                // })
+                // ->toArray(),
         ]);
     }
 }
