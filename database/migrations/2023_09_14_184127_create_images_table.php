@@ -16,6 +16,7 @@ return new class extends Migration
 			$table->id();
 			$table->uuid('identifier')
 				->default(Str::uuid());
+			$table->string('name');
 			$table->morphs('imageable');
 			$table->string('path');
 			$table->string('size_bytes');

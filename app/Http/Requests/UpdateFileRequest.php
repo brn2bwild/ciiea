@@ -23,7 +23,7 @@ class UpdateFileRequest extends FormRequest
 	{
 		return [
 			'id' => ['required', 'numeric'],
-			'file' => ['required', 'file', 'mimes:pdf', 'max:2048']
+			'file' => ['required', 'file', 'mimes:pdf', 'max:5120']
 		];
 	}
 }

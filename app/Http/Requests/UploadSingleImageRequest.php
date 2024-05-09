@@ -23,7 +23,7 @@ class UploadSingleImageRequest extends FormRequest
 	{
 		return [
 			'id' => ['required', 'numeric'],
-			'image' => ['required', 'mimes:png,jpg,jpeg', 'max:2048'],
+			'image' => ['required', 'mimes:png,jpg,jpeg', 'max:5120'],
 			// 'images.*' => ['required', 'mimes:png,jpg,jpeg', 'max:2048']
 		];
 	}
