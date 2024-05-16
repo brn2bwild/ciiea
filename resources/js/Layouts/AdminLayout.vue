@@ -186,7 +186,6 @@ const showingNavigationDropdown = ref(false);
 						</span>
 					</div>
 				</SidebarLink>
-				
 				<SidebarLink :href=" route( 'admin.software.index' ) " :active=" $page.url.includes( '/admin/software' ) ">
 					<div class="flex justify-between items-center w-full">
 						<span>Software Educativo</span>

@@ -1,39 +1,67 @@
 <script setup>
 const props = defineProps({
-	editRoute: {
-		type: String,
-		required: true,
-	}
-})
+    editRoute: {
+        type: String,
+        required: true,
+    },
+});
 
-const emit = defineEmits(['openDeleteModal'])
+const emit = defineEmits(["openDeleteModal"]);
 
 const openModal = () => {
-	emit('openDeleteModal')
-}
+    emit("openDeleteModal");
+};
 </script>
 <template>
-	<div class="relative group">
-		<Link :href=" editRoute ">
-		<div
-			class="flex h-40 bg-white group-hover:bg-neutral-200 group-hover:ring-1 transition-all duration-200 rounded-xl p-4">
-			<img src="/storage/images/default-contact.png" alt="avatar-img" class="h-20 mr-4">
-			<div>
-				<div class="text-lg font-bold truncate">
-					<slot name="title" />
-				</div>
-				<div class="text-neutral-600 mt-1 truncate">
-					<slot name="subtitle" />
-				</div>
-				<div class="text-neutral-900 mt-1 truncate">
-					<slot name="content" />
-				</div>
-			</div>
-		</div>
-		</Link>
-		<button @click=" openModal "
-			class="block sm:hidden group-hover:block transition-all duration-200 text-5xl text-red-400 sm:text-red-300 hover:text-red-400 rounded-full absolute top-4 right-4">
-			<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'circle-xmark' } " />
-		</button>
-	</div>
+    <div class="relative group">
+        <div
+            class="flex justify-between gap-6 bg-white group-hover:bg-neutral-200 group-hover:ring-2 transition-all duration-200 rounded-xl shadow-md p-2"
+        >
+            <div class="w-20 flex items-start justify-center">
+                <img
+                    src="/storage/images/default-contact.png"
+                    alt="avatar-img"
+                    class=""
+                />
+            </div>
+            <div class="w-full flex items-center justify-evenly">
+                <h2>
+                    <slot
+                        name="title"
+                        class="block text-lg font-bold truncate"
+                    />
+                </h2>
+                <h3>
+                    <slot
+                        name="subtitle"
+                        class="block text-neutral-600 mt-1 truncate"
+                    />
+                </h3>
+                <span>
+                    <slot
+                        name="content"
+                        class="text-neutral-900 mt-1 truncate"
+                    />
+                </span>
+            </div>
+            <div class="w-1/12 flex items-center justify-between">
+                <Link
+                    :href="editRoute"
+                    class="block transition-all duration-200 text-2xl text-orange-500 hover:text-orange-700 rounded-full"
+                >
+                    <font-awesome-icon
+                        :icon="{ prefix: 'fa', iconName: 'pen-to-square' }"
+                    />
+                </Link>
+                <button
+                    @click="openModal"
+                    class="block transition-all duration-200 text-2xl text-red-500 hover:text-red-700 rounded-full"
+                >
+                    <font-awesome-icon
+                        :icon="{ prefix: 'fa', iconName: 'trash' }"
+                    />
+                </button>
+            </div>
+        </div>
+    </div>
 </template>
