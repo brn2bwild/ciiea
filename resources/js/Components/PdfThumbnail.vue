@@ -1,16 +1,16 @@
 <script setup>
-import { VuePDF, usePDF } from '@tato30/vue-pdf';
+import { VuePDF, usePDF } from "@tato30/vue-pdf";
 
 const props = defineProps({
-	url: {
-		type: String,
-		required: true
-	}
-})
+    url: {
+        type: String,
+        required: true,
+    },
+});
 
-const { pdf } = usePDF('/' + props.url)
+const { pdf } = usePDF("/" + props.url);
 </script>
 
 <template>
-	<VuePDF :pdf=" pdf " />
+    <VuePDF :pdf="pdf" />
 </template>

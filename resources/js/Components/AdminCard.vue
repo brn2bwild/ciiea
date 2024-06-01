@@ -13,41 +13,41 @@ const openModal = () => {
 };
 </script>
 <template>
-    <div class="relative group">
+    <div class="group relative">
         <div
-            class="flex justify-between gap-6 bg-white group-hover:bg-neutral-200 group-hover:ring-2 transition-all duration-200 rounded-xl shadow-md p-2"
+            class="flex justify-between gap-6 rounded-xl bg-white p-2 shadow-md transition-all duration-200 group-hover:bg-neutral-200 group-hover:ring-2"
         >
-            <div class="w-20 flex items-start justify-center">
+            <div class="flex w-20 items-start justify-center">
                 <img
                     src="/storage/images/default-contact.png"
                     alt="avatar-img"
                     class=""
                 />
             </div>
-            <div class="w-full flex items-center justify-evenly">
+            <div class="flex w-full items-center justify-evenly">
                 <h2>
                     <slot
                         name="title"
-                        class="block text-lg font-bold truncate"
+                        class="block truncate text-lg font-bold"
                     />
                 </h2>
                 <h3>
                     <slot
                         name="subtitle"
-                        class="block text-neutral-600 mt-1 truncate"
+                        class="mt-1 block truncate text-neutral-600"
                     />
                 </h3>
                 <span>
                     <slot
                         name="content"
-                        class="text-neutral-900 mt-1 truncate"
+                        class="mt-1 truncate text-neutral-900"
                     />
                 </span>
             </div>
-            <div class="w-1/12 flex items-center justify-between">
+            <div class="flex w-1/12 items-center justify-between">
                 <Link
                     :href="editRoute"
-                    class="block transition-all duration-200 text-2xl text-orange-500 hover:text-orange-700 rounded-full"
+                    class="block rounded-full text-2xl text-orange-500 transition-all duration-200 hover:text-orange-700"
                 >
                     <font-awesome-icon
                         :icon="{ prefix: 'fa', iconName: 'pen-to-square' }"
@@ -55,7 +55,7 @@ const openModal = () => {
                 </Link>
                 <button
                     @click="openModal"
-                    class="block transition-all duration-200 text-2xl text-red-500 hover:text-red-700 rounded-full"
+                    class="block rounded-full text-2xl text-red-500 transition-all duration-200 hover:text-red-700"
                 >
                     <font-awesome-icon
                         :icon="{ prefix: 'fa', iconName: 'trash' }"

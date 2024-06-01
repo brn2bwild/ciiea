@@ -4,7 +4,7 @@ import AdminLayout from "@/Layouts/AdminLayout.vue";
 import CountCard from "@/Components/CountCard.vue";
 
 defineOptions({
-	layout: AdminLayout,
+    layout: AdminLayout,
 });
 
 // const props = defineProps({
@@ -49,13 +49,11 @@ defineOptions({
 // 		default: 0,
 // 	}
 // });
-
 </script>
 <template>
-
-	<Head title="Dashboard" />
-	<h1 class="text-3xl font-bold pl-8">Dashboard</h1>
-	<!-- <section class="w-full p-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+    <Head title="Dashboard" />
+    <h1 class="pl-8 text-3xl font-bold">Dashboard</h1>
+    <!-- <section class="w-full p-8 grid grid-cols-1 md:grid-cols-4 gap-4">
 		<CountCard :route=" route( 'admin.books.index' ) " :count=" books " :text=" 'Libros' " :icon=" 'book' " />
 		<CountCard :route=" route( 'admin.magazines.index' ) " :count=" magazines " :text=" 'Revistas' "
 			:icon=" 'book-open' " />

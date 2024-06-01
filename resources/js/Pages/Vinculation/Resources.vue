@@ -31,36 +31,36 @@ const handleClosePdfModal = () => {
 <template>
     <Head title="Recursos" />
     <div
-        class="w-full flex flex-col items-center justify-center sm:px-60 sm:py-10"
+        class="flex w-full flex-col items-center justify-center sm:px-60 sm:py-10"
     >
         <section class="w-full pb-6">
-            <h1 class="text-xl text-neutral-600 font-bold">
+            <h1 class="text-xl font-bold text-neutral-600">
                 Recursos de vinculación
             </h1>
         </section>
-        <section class="w-full grid grid-cols-1 sm:grid-cols-3 gap-10">
+        <section class="grid w-full grid-cols-1 gap-10 sm:grid-cols-3">
             <div
                 v-for="resource in resources.data"
                 :key="resource.index"
-                class="w-full rounded-xl flex flex-col justify-center items-start bg-white shadow-lg shadow-slate-100"
+                class="flex w-full flex-col items-start justify-center rounded-xl bg-white shadow-lg shadow-slate-100"
             >
                 <!-- <div class="w-full mb-2">
 					<img src="/storage/resources/conv1.jpg" :alt=" 'resource' + resource.index " />
 				</div> -->
                 <div
-                    class="w-full h-full flex flex-col items-start justify-between p-4 gap-2"
+                    class="flex h-full w-full flex-col items-start justify-between gap-2 p-4"
                 >
-                    <h1 class="w-full font-bold text-xl mr-4 text-neutral-900">
+                    <h1 class="mr-4 w-full text-xl font-bold text-neutral-900">
                         {{ resource.name }}
                     </h1>
                     <p>{{ resource.description.substr(0, 100) }}...</p>
-                    <h3 class="text-neutral-600 text-sm">
-                        Compartido {{ resource.created_at }}
+                    <h3 class="text-sm text-neutral-600">
+                        Compartido el {{ resource.created_at }}
                     </h3>
                     <button
                         v-if="resource.file"
                         @click="handleShowPdfModal(resource.file.path)"
-                        class="bg-sky-500 px-4 py-2 rounded-lg text-neutral-50 font-bold text-sm"
+                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
                     >
                         Ver
                     </button>

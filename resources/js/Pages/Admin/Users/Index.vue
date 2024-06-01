@@ -20,7 +20,7 @@ const props = defineProps({
         <h1 class="text-3xl font-bold">Usuarios</h1>
     </div>
     <div class="w-full p-8">
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <section class="grid grid-cols-1 gap-4 md:grid-cols-3">
             <ResourceCard
                 v-for="user in users"
                 :key="user.index"

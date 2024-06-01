@@ -61,7 +61,7 @@ const handleDeletePublication = () => {
         {
             onSuccess: () => handleCloseDeleteModal(),
             onFinish: () => publicationDeleteForm.reset("id"),
-        }
+        },
     );
 };
 </script>
@@ -71,14 +71,14 @@ const handleDeletePublication = () => {
         <h1 class="text-3xl font-bold">Publicaciones Históricas</h1>
         <button
             @click="showCreateModal = true"
-            class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200"
+            class="rounded-full bg-sky-500 px-4 py-2 font-medium text-neutral-50 transition-all duration-200 hover:bg-sky-700"
         >
             Nueva publicación
         </button>
     </div>
 
     <div class="w-full p-8">
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <section class="grid grid-cols-1 gap-4 md:grid-cols-3">
             <ResourceCard
                 v-for="publication in publications.data"
                 :key="publication.index"
@@ -104,17 +104,20 @@ const handleDeletePublication = () => {
                 <template #subtitle>{{ publication.publicated_at }}</template>
                 <template #content>
                     <div class="flex justify-center gap-2">
-                        <span class="px-1 bg-sky-200 rounded-full"
+                        <span class="rounded-full bg-sky-200 px-1"
                             >Ciencia</span
                         >
-                        <span class="px-1 bg-sky-200 rounded-full"
+                        <span class="rounded-full bg-sky-200 px-1"
                             >Educación</span
                         >
                     </div>
                 </template>
             </ResourceCard>
         </section>
-        <Pagination :links="props.publications.links" class="mt-8 flex justify-center" />
+        <Pagination
+            :links="props.publications.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
 
     <Modal
@@ -157,7 +160,7 @@ const handleDeletePublication = () => {
                         :message="publicationCreateForm.errors.publicated_at"
                     />
                 </div>
-                <div class="w-full flex justify-end mt-8 gap-4">
+                <div class="mt-8 flex w-full justify-end gap-4">
                     <PrimaryButton
                         :class="{
                             'opacity-25': publicationCreateForm.processing,
@@ -180,13 +183,13 @@ const handleDeletePublication = () => {
         :max-width="'lg'"
     >
         <div class="p-4">
-            <div class="w-full flex flex-col justify-center items-center">
+            <div class="flex w-full flex-col items-center justify-center">
                 <font-awesome-icon
                     :icon="['fa', 'triangle-exclamation']"
-                    class="text-neutral-900 text-8xl mb-4"
+                    class="mb-4 text-8xl text-neutral-900"
                 />
                 <h2 class="text-xl">¿Deseas eliminar la publicación?</h2>
-                <div class="w-full flex justify-end mt-4 gap-4">
+                <div class="mt-4 flex w-full justify-end gap-4">
                     <DangerButton @click="handleDeletePublication()"
                         >Eliminar</DangerButton
                     >

@@ -15,7 +15,7 @@ const openModal = (event) => {
 </script>
 
 <template>
-    <div class="bg-white border-gray-300 border p-4 rounded-lg">
+    <div class="rounded-lg border border-gray-300 bg-white p-4">
         <slot name="name" />
         <a :href="props.editRoute">Editar</a>
         <button @click="openModal">Eliminar</button>

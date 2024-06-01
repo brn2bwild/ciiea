@@ -1,78 +1,90 @@
 <script setup>
-import HomeLayout from '@/Layouts/HomeLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import HomeLayout from "@/Layouts/HomeLayout.vue";
+import { Head } from "@inertiajs/vue3";
 
 defineOptions({
-	layout: HomeLayout
-})
+    layout: HomeLayout,
+});
 
 const props = defineProps({
-	canLogin: {
-		type: Boolean,
-	},
-	canRegister: {
-		type: Boolean,
-	},
-})
-
+    canLogin: {
+        type: Boolean,
+    },
+    canRegister: {
+        type: Boolean,
+    },
+});
 </script>
 
 <template>
-
-	<Head title="Inicio" />
-	<section class="w-full overflow-hidden">
-		<img v-lazy=" '/storage/images/ciiea.jpeg' " class="w-full h-80 sm:h-[600px] object-cover object-left" />
-	</section>
-	<section class="w-full flex justify-center text-center py-14 bg-rose-800 text-neutral-50">
-		<div class="w-2/3">
-			<h1 class="w-full text-2xl font-bold">
-				¿Qué es el CIIEA?
-			</h1>
-			<p class="w-full mt-4 text-md font-extralight leading-7 px-4 sm:px-20">
-				El CIIEA es un órgano descentralizado de la Secretaria de Educacion, que desarrolla funciones de
-				investigación,
-				innovación, servicios académicos, vinculación y difusión.
-			</p>
-		</div>
-	</section>
-	<section class="min-h-1/2 w-full sm:px-40 pb-16 py-10">
-		<div class="w-full grid grid-cols-1 md:grid-cols-3 gap-8">
-			<div
-				class="min-h-full px-10 py-6 bg-neutral-50 rounded-xl text-neutral-900 text-center flex flex-col items-center justify-center shadow-gray-400 shadow-sm leading-7">
-				<span class="text-2xl font-bold text-neutral-800">Objetivo</span>
-				<p class="mt-4 text-md font-extralight leading-6 text-neutral-700">
-					Proponer y ejecutar las acciones necesarias, que contribuyan a elevar la calidad de la educación en
-					el estado
-					de
-					Tabasco.
-				</p>
-			</div>
-			<div
-				class="min-h-full px-10 py-6 bg-neutral-50 rounded-xl text-neutral-900 text-center flex flex-col items-center justify-center shadow-gray-400 shadow-sm leading-7">
-				<span class="text-2xl font-bold text-neutral-800">Misión</span>
-				<p class="mt-4 text-md font-extralight leading-6 text-neutral-700">
-					Desarrollar un centro público de investigación dedicado a la generación y divulgación de
-					conocimientos
-					especializados en la educación, para elevar la calidad educativa, la formación de recursos humanos,
-					el
-					fortalecimiento de los servicios académicos y la vinculación con los sectores públicos y privados.
-				</p>
-			</div>
-			<div
-				class="min-h-full px-10 py-6 bg-neutral-50 rounded-xl text-neutral-900 text-center flex flex-col items-center justify-center shadow-gray-400 shadow-sm leading-7">
-				<span class="text-2xl font-bold text-neutral-800">Visión</span>
-				<p class="mt-4 text-md font-extralight leading-6 text-neutral-700">
-					Consolidar al CIIEA como una institución reconocida en la generacion de investigación educativa, con
-					la
-					participacion de profesionales que generen programas, proyectos y productos de investigación que
-					respondan a
-					las
-					necesidades educativas del estado.
-				</p>
-			</div>
-		</div>
-	</section>
-	<!-- <section class="w-full min-h-screen py-16">
+    <Head title="Inicio" />
+    <section class="w-full overflow-hidden">
+        <img
+            v-lazy="'/storage/images/ciiea.jpeg'"
+            class="h-80 w-full object-cover object-left sm:h-[600px]"
+        />
+    </section>
+    <section
+        class="flex w-full justify-center bg-rose-800 py-14 text-center text-neutral-50"
+    >
+        <div class="w-2/3">
+            <h1 class="w-full text-2xl font-bold">¿Qué es el CIIEA?</h1>
+            <p
+                class="text-md mt-4 w-full px-4 font-extralight leading-7 sm:px-20"
+            >
+                El CIIEA es un órgano descentralizado de la Secretaria de
+                Educacion, que desarrolla funciones de investigación,
+                innovación, servicios académicos, vinculación y difusión.
+            </p>
+        </div>
+    </section>
+    <section class="min-h-1/2 w-full py-10 pb-16 sm:px-40">
+        <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
+            <div
+                class="flex min-h-full flex-col items-center justify-center rounded-xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+            >
+                <span class="text-2xl font-bold text-neutral-800"
+                    >Objetivo</span
+                >
+                <p
+                    class="text-md mt-4 font-extralight leading-6 text-neutral-700"
+                >
+                    Proponer y ejecutar las acciones necesarias, que contribuyan
+                    a elevar la calidad de la educación en el estado de Tabasco.
+                </p>
+            </div>
+            <div
+                class="flex min-h-full flex-col items-center justify-center rounded-xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+            >
+                <span class="text-2xl font-bold text-neutral-800">Misión</span>
+                <p
+                    class="text-md mt-4 font-extralight leading-6 text-neutral-700"
+                >
+                    Desarrollar un centro público de investigación dedicado a la
+                    generación y divulgación de conocimientos especializados en
+                    la educación, para elevar la calidad educativa, la formación
+                    de recursos humanos, el fortalecimiento de los servicios
+                    académicos y la vinculación con los sectores públicos y
+                    privados.
+                </p>
+            </div>
+            <div
+                class="flex min-h-full flex-col items-center justify-center rounded-xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+            >
+                <span class="text-2xl font-bold text-neutral-800">Visión</span>
+                <p
+                    class="text-md mt-4 font-extralight leading-6 text-neutral-700"
+                >
+                    Consolidar al CIIEA como una institución reconocida en la
+                    generacion de investigación educativa, con la participacion
+                    de profesionales que generen programas, proyectos y
+                    productos de investigación que respondan a las necesidades
+                    educativas del estado.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- <section class="w-full min-h-screen py-16">
 		<div class="flex justify-center mb-12">
 			<h1 class="text-3xl font-medium">Últimas convocatorias</h1>
 		</div>

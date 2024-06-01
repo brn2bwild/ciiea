@@ -1,36 +1,38 @@
 <script setup>
-import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import { ref } from "vue";
+import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import Dropdown from "@/Components/Dropdown.vue";
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import NavLink from '@/Components/NavLink.vue'
+import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+import NavLink from "@/Components/NavLink.vue";
 
 const showingNavigationDropdown = ref(false);
 
 const props = defineProps({
-	canLogin: {
-		type: Boolean,
-	},
-	canRegister: {
-		type: Boolean,
-	},
+    canLogin: {
+        type: Boolean,
+    },
+    canRegister: {
+        type: Boolean,
+    },
 });
 
-const emit = defineEmits(['openModal', 'closeModal']);
+const emit = defineEmits(["openModal", "closeModal"]);
 </script>
 
 <template>
-	<nav class="w-full bg-neutral-50 z-50 p-4 fixed shadow-neutral-300 shadow-md">
-		<!-- Primary Navigation Menu -->
-		<div class="flex justify-between">
-			<div class="flex justify-between">
-				<!-- Logo -->
-				<Link :href=" route( 'home' ) ">
-				<ApplicationLogo />
-				</Link>
+    <nav
+        class="fixed z-50 w-full bg-neutral-50 p-4 shadow-md shadow-neutral-300"
+    >
+        <!-- Primary Navigation Menu -->
+        <div class="flex justify-between">
+            <div class="flex justify-between">
+                <!-- Logo -->
+                <Link :href="route('home')">
+                    <ApplicationLogo />
+                </Link>
 
-				<!-- Search input-->
-				<!-- <div class="relative shrink-0 hidden sm:flex items-center w-1/2">
+                <!-- Search input-->
+                <!-- <div class="relative shrink-0 hidden sm:flex items-center w-1/2">
 						<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
 							<font-awesome-icon :icon=" [ 'fas', 'magnifying-glass' ] " class="w-4 h-4 text-neutral-500" />
 						</div>
@@ -38,157 +40,294 @@ const emit = defineEmits(['openModal', 'closeModal']);
 						<button type="submit"
 							class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
 					</div> -->
-			</div>
+            </div>
 
-			<!-- 	Main dropdown menu-->
-			<div class="-mr-2 flex items-center sm:hidden">
-				<button @click="showingNavigationDropdown = !showingNavigationDropdown"
-					class="inline-flex items-center justify-center p-2 rounded-md text-neutral-400 hover:text-neutral-500 hover:bg-neutral-100 focus:outline-none focus:bg-neutral-100 focus:text-neutral-500 transition duration-150 ease-in-out">
-					<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-						<path :class=" {
-							hidden: showingNavigationDropdown,
-							'inline-flex': !showingNavigationDropdown,
-						} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-						<path :class=" {
-							hidden: !showingNavigationDropdown,
-							'inline-flex': showingNavigationDropdown,
-						} " stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-					</svg>
-				</button>
-			</div>
+            <!-- 	Main dropdown menu-->
+            <div class="-mr-2 flex items-center sm:hidden">
+                <button
+                    @click="
+                        showingNavigationDropdown = !showingNavigationDropdown
+                    "
+                    class="inline-flex items-center justify-center rounded-md p-2 text-neutral-400 transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-neutral-500 focus:bg-neutral-100 focus:text-neutral-500 focus:outline-none"
+                >
+                    <svg
+                        class="h-6 w-6"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            :class="{
+                                hidden: showingNavigationDropdown,
+                                'inline-flex': !showingNavigationDropdown,
+                            }"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        />
+                        <path
+                            :class="{
+                                hidden: !showingNavigationDropdown,
+                                'inline-flex': showingNavigationDropdown,
+                            }"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+                </button>
+            </div>
 
-			<!--Login, Register and more options dropdown menu-->
-			<div class="hidden sm:flex items-center justify-between gap-6">
-				<NavLink :href=" route( 'home' ) " :active=" $page.url === '/' ">
-					Inicio
-				</NavLink>
-				<!-- Divulgación -->
-				<div class="relative">
-					<Dropdown align="right" width="56">
-						<template #trigger>
-							<span
-								class="inline-flex items-center px-4 py-2 font-bold hover:text-sky-500 rounded-xl transition duration-150 ease-in-out cursor-pointer"
-								:class=" { 'text-sky-500': $page.url === '/books' || $page.url === '/magazines' || $page.url === '/hist-publications' || $page.url === '/investigations', 'text-gray-500': $page.url !== '/books' || $page.url !== '/magazines' || $page.url !== '/hist-publications' || $page.url !== '/investigations' } ">
-								Divulgación
-							</span>
-						</template>
+            <!--Login, Register and more options dropdown menu-->
+            <div class="hidden items-center justify-between gap-6 sm:flex">
+                <NavLink :href="route('home')" :active="$page.url === '/'">
+                    Inicio
+                </NavLink>
+                <!-- Divulgación -->
+                <div class="relative">
+                    <Dropdown align="right" width="56">
+                        <template #trigger>
+                            <span
+                                class="inline-flex cursor-pointer items-center rounded-xl px-4 py-2 font-bold transition duration-150 ease-in-out hover:text-sky-500"
+                                :class="{
+                                    'text-sky-500':
+                                        $page.url === '/books' ||
+                                        $page.url === '/magazines' ||
+                                        $page.url === '/hist-publications' ||
+                                        $page.url === '/investigations',
+                                    'text-gray-500':
+                                        $page.url !== '/books' ||
+                                        $page.url !== '/magazines' ||
+                                        $page.url !== '/hist-publications' ||
+                                        $page.url !== '/investigations',
+                                }"
+                            >
+                                Divulgación
+                            </span>
+                        </template>
 
-						<template #content>
-							<div class="flex flex-col">
-								<NavLink :href=" route( 'guest.books.index' ) "
-									:active=" route().current( 'books.index' ) || $page.url.includes( 'books' ) ">
-									Libros
-								</NavLink>
-								<NavLink :href=" route( 'guest.magazines.index' ) "
-									:active=" $page.url.includes( 'magazines' ) ">
-									Revistas
-								</NavLink>
-								<NavLink :href=" route( 'guest.hist-publications.index' ) "
-									:active=" $page.url.includes( 'hist-publications' ) ">
-									Publicaciones
-								</NavLink>
-								<NavLink :href=" route( 'guest.investigations.index' ) "
-									:active=" $page.url.includes( 'investigations' ) ">
-									Investigaciones
-								</NavLink>
-							</div>
-						</template>
-					</Dropdown>
-				</div>
-				<!-- Innovación -->
-				<div class="relative">
-					<Dropdown align="right" width="56">
-						<template #trigger>
-							<span
-								class="inline-flex items-center px-4 py-2 font-bold hover:text-sky-500 rounded-xl transition duration-150 ease-in-out cursor-pointer"
-								:class=" { 'text-sky-500': $page.url.includes( 'educational-software' ) || $page.url.includes( 'infographics' ), 'text-gray-500': !$page.url.includes( 'educational-software' ) || !$page.url.includes( 'infographics' ) } ">
-								Innovación
-							</span>
-						</template>
+                        <template #content>
+                            <div class="flex flex-col">
+                                <NavLink
+                                    :href="route('guest.books.index')"
+                                    :active="
+                                        route().current('books.index') ||
+                                        $page.url.includes('books')
+                                    "
+                                >
+                                    Libros
+                                </NavLink>
+                                <NavLink
+                                    :href="route('guest.magazines.index')"
+                                    :active="$page.url.includes('magazines')"
+                                >
+                                    Revistas
+                                </NavLink>
+                                <NavLink
+                                    :href="
+                                        route('guest.hist-publications.index')
+                                    "
+                                    :active="
+                                        $page.url.includes('hist-publications')
+                                    "
+                                >
+                                    Publicaciones
+                                </NavLink>
+                                <NavLink
+                                    :href="route('guest.investigations.index')"
+                                    :active="
+                                        $page.url.includes('investigations')
+                                    "
+                                >
+                                    Investigaciones
+                                </NavLink>
+                            </div>
+                        </template>
+                    </Dropdown>
+                </div>
+                <!-- Innovación -->
+                <div class="relative">
+                    <Dropdown align="right" width="56">
+                        <template #trigger>
+                            <span
+                                class="inline-flex cursor-pointer items-center rounded-xl px-4 py-2 font-bold transition duration-150 ease-in-out hover:text-sky-500"
+                                :class="{
+                                    'text-sky-500':
+                                        $page.url.includes(
+                                            'educational-software',
+                                        ) || $page.url.includes('infographics'),
+                                    'text-gray-500':
+                                        !$page.url.includes(
+                                            'educational-software',
+                                        ) ||
+                                        !$page.url.includes('infographics'),
+                                }"
+                            >
+                                Innovación
+                            </span>
+                        </template>
 
-						<template #content>
-							<div class="flex flex-col">
-								<NavLink :href=" route( 'guest.educational-software.index' ) "
-									:active=" route().current( 'guest.educational-software.index' ) || $page.url.includes( 'educational-software' ) ">
-									Software educativo
-								</NavLink>
-								<NavLink :href=" route( 'guest.infographics.index' ) "
-									:active=" route().current( 'guest.infographics.index' ) || $page.url.includes( 'infographics' ) ">
-									Infografías
-								</NavLink>
-							</div>
-						</template>
-					</Dropdown>
-				</div>
-				<!-- Vinculación -->
-				<div class="relative">
-					<Dropdown align="right" width="56">
-						<template #trigger>
-							<span
-								class="inline-flex items-center px-4 py-2 font-bold hover:text-sky-500 rounded-xl transition duration-150 ease-in-out cursor-pointer"
-								:class=" { 'text-sky-500': $page.url.includes( 'social-service' ) || $page.url.includes( 'profesional-practice' ) || $page.url.includes( 'vinculation-resources' ), 'text-gray-500': !$page.url.includes( 'social-service' ) || !$page.url.includes( 'profesional-practice' ) || !$page.url.includes( 'vinculation-resources' ) } ">
-								Vinculación
-							</span>
-						</template>
+                        <template #content>
+                            <div class="flex flex-col">
+                                <NavLink
+                                    :href="
+                                        route(
+                                            'guest.educational-software.index',
+                                        )
+                                    "
+                                    :active="
+                                        route().current(
+                                            'guest.educational-software.index',
+                                        ) ||
+                                        $page.url.includes(
+                                            'educational-software',
+                                        )
+                                    "
+                                >
+                                    Software educativo
+                                </NavLink>
+                                <NavLink
+                                    :href="route('guest.infographics.index')"
+                                    :active="
+                                        route().current(
+                                            'guest.infographics.index',
+                                        ) || $page.url.includes('infographics')
+                                    "
+                                >
+                                    Infografías
+                                </NavLink>
+                            </div>
+                        </template>
+                    </Dropdown>
+                </div>
+                <!-- Vinculación -->
+                <div class="relative">
+                    <Dropdown align="right" width="56">
+                        <template #trigger>
+                            <span
+                                class="inline-flex cursor-pointer items-center rounded-xl px-4 py-2 font-bold transition duration-150 ease-in-out hover:text-sky-500"
+                                :class="{
+                                    'text-sky-500':
+                                        $page.url.includes('social-service') ||
+                                        $page.url.includes(
+                                            'profesional-practice',
+                                        ) ||
+                                        $page.url.includes(
+                                            'vinculation-resources',
+                                        ),
+                                    'text-gray-500':
+                                        !$page.url.includes('social-service') ||
+                                        !$page.url.includes(
+                                            'profesional-practice',
+                                        ) ||
+                                        !$page.url.includes(
+                                            'vinculation-resources',
+                                        ),
+                                }"
+                            >
+                                Vinculación
+                            </span>
+                        </template>
 
-						<template #content>
-							<div class="flex flex-col">
-								<NavLink :href=" route( 'social-service' ) "
-									:active=" route().current( 'social-service' ) ">
-									Servicio social
-								</NavLink>
-								<NavLink :href=" route( 'profesional-practice' ) "
-									:active=" route().current( 'profesional-practice' ) ">
-									Residencia
-								</NavLink>
-								<NavLink :href=" route( 'vinculation-resources' ) "
-									:active=" route().current( 'vinculation-resources' ) ">
-									Recursos
-								</NavLink>
-							</div>
-						</template>
-					</Dropdown>
-				</div>
-				<NavLink :href=" route( 'guest.convocations.index' ) "
-					:active=" route().current( 'guest.convocations.index' ) || $page.url.includes( 'convocations' ) ">
-					Convocatorias
-				</NavLink>
-				<NavLink :href=" route( 'guest.gallery.index' ) "
-					:active=" route().current( 'guest.gallery.index' ) || $page.url.includes( 'gallery' ) ">
-					Galería
-				</NavLink>
-				<NavLink :href=" route( 'reime' ) " :active=" route().current( 'reime' ) ">
-					REIME
-				</NavLink>
-				<NavLink :href=" route( 'guest.contact.index' ) " :active=" route().current( 'guest.contact.index' ) ">
-					Contacto
-				</NavLink>
+                        <template #content>
+                            <div class="flex flex-col">
+                                <NavLink
+                                    :href="route('social-service')"
+                                    :active="route().current('social-service')"
+                                >
+                                    Servicio social
+                                </NavLink>
+                                <NavLink
+                                    :href="route('profesional-practice')"
+                                    :active="
+                                        route().current('profesional-practice')
+                                    "
+                                >
+                                    Residencia
+                                </NavLink>
+                                <NavLink
+                                    :href="route('vinculation-resources')"
+                                    :active="
+                                        route().current('vinculation-resources')
+                                    "
+                                >
+                                    Recursos
+                                </NavLink>
+                            </div>
+                        </template>
+                    </Dropdown>
+                </div>
+                <NavLink
+                    :href="route('guest.convocations.index')"
+                    :active="
+                        route().current('guest.convocations.index') ||
+                        $page.url.includes('convocations')
+                    "
+                >
+                    Convocatorias
+                </NavLink>
+                <NavLink
+                    :href="route('guest.gallery.index')"
+                    :active="
+                        route().current('guest.gallery.index') ||
+                        $page.url.includes('gallery')
+                    "
+                >
+                    Galería
+                </NavLink>
+                <NavLink
+                    :href="route('reime')"
+                    :active="route().current('reime')"
+                >
+                    REIME
+                </NavLink>
+                <NavLink
+                    :href="route('guest.contact.index')"
+                    :active="route().current('guest.contact.index')"
+                >
+                    Contacto
+                </NavLink>
 
-				<div v-if=" canLogin && $page.props.auth.user.name !== null " class="hidden sm:flex sm:items-center">
-					<Link v-if=" $page.props.auth.user.role == 'admin' " :href=" route( 'admin.dashboard' ) "
-						class=" text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-md transition-all ease-in-out focus:no-underline font-medium">
-					Dashboard
-					</Link>
-					<Link v-else=" $page.props.auth.user.role == 'editor' || $page.props.auth.user.role == 'user' "
-						:href=" route( 'profile.edit' ) "
-						class=" text-white bg-sky-500 hover:bg-sky-600 px-4 py-2 rounded-md transition-all ease-in-out focus:no-underline font-medium">
-					{{ $page.props.auth.user.name }}
-					</Link>
-				</div>
-				<template v-if=" !$page.props.auth.user.name ">
-					<!-- <Link :href=" route( 'login' ) "
+                <div
+                    v-if="canLogin && $page.props.auth.user.name !== null"
+                    class="hidden sm:flex sm:items-center"
+                >
+                    <Link
+                        v-if="$page.props.auth.user.role == 'admin'"
+                        :href="route('admin.dashboard')"
+                        class="rounded-md bg-sky-500 px-4 py-2 font-medium text-white transition-all ease-in-out hover:bg-sky-600 focus:no-underline"
+                    >
+                        Dashboard
+                    </Link>
+                    <Link
+                        v-else="
+                            $page.props.auth.user.role == 'editor' ||
+                            $page.props.auth.user.role == 'user'
+                        "
+                        :href="route('profile.edit')"
+                        class="rounded-md bg-sky-500 px-4 py-2 font-medium text-white transition-all ease-in-out hover:bg-sky-600 focus:no-underline"
+                    >
+                        {{ $page.props.auth.user.name }}
+                    </Link>
+                </div>
+                <template v-if="!$page.props.auth.user.name">
+                    <!-- <Link :href=" route( 'login' ) "
 							class="font-bold text-neutral-50 bg-neutral-900 px-5 py-2 rounded-full hover:bg-neutral-700 focus:no-underline transition-all duration-200">
 						Iniciar sesión</Link> -->
-					<button @click="emit( 'openModal', 'login' )"
-						class="hidden sm:block font-bold text-neutral-50 bg-sky-400 px-4 py-2 rounded-xl hover:bg-sky-600 hover:text-neutral-50 focus:no-underline transition-all duration-200">
-						Iniciar sesión
-					</button>
-					<!-- <Link v-if=" canRegister " :href=" route( 'register' ) "
+                    <button
+                        @click="emit('openModal', 'login')"
+                        class="hidden rounded-xl bg-sky-400 px-4 py-2 font-bold text-neutral-50 transition-all duration-200 hover:bg-sky-600 hover:text-neutral-50 focus:no-underline sm:block"
+                    >
+                        Iniciar sesión
+                    </button>
+                    <!-- <Link v-if=" canRegister " :href=" route( 'register' ) "
 							class="ml-6 font-medium text-neutral-50 bg-neutral-900 px-4 py-2 rounded-full hover:bg-neutral-700 focus:no-underline">
 						Registrarse</Link> -->
-				</template>
-				<!-- Settings Dropdown -->
-				<!-- <div class="hidden sm:flex sm:items-center sm:justify-center">
+                </template>
+                <!-- Settings Dropdown -->
+                <!-- <div class="hidden sm:flex sm:items-center sm:justify-center">
 						<div class="relative">
 							<Dropdown align="right" width="56">
 								<template #trigger>
@@ -225,35 +364,54 @@ const emit = defineEmits(['openModal', 'closeModal']);
 							</Dropdown>
 						</div>
 					</div> -->
-			</div>
-		</div>
+            </div>
+        </div>
 
-		<!-- Responsive Navigation Menu -->
-		<div :class=" { block: showingNavigationDropdown, hidden: !showingNavigationDropdown } "
-			class="sm:hidden transition duration-300">
-			<!-- <div class="pt-2 pb-3 space-y-1">
+        <!-- Responsive Navigation Menu -->
+        <div
+            :class="{
+                block: showingNavigationDropdown,
+                hidden: !showingNavigationDropdown,
+            }"
+            class="transition duration-300 sm:hidden"
+        >
+            <!-- <div class="pt-2 pb-3 space-y-1">
 				<ResponsiveNavLink v-if=" $page.props.auth.user.name " :href=" route( 'dashboard' ) "
 					:active=" route().current( 'admin.dashboard' ) ">
 					Dashboard
 				</ResponsiveNavLink>
 			</div> -->
-			<div class="pt-2 pb-3">
-				<div class="w-full relative shrink-0 flex items-center p-2">
-					<div class="absolute inset-y-0 left-0 flex items-center pl-5 pointer-events-none">
-						<font-awesome-icon :icon=" { prefix: 'fas', iconName: 'magnifying-glass' } "
-							class="w-4 h-4 text-neutral-500" />
-					</div>
-					<input type="search" id="default-search"
-						class="block w-full p-2 pl-10 text-sm text-neutral-900 rounded-full bg-neutral-200 border-0 focus:ring-2 focus:ring-neutral-400"
-						placeholder="Buscar información" required>
-					<!-- <button type="submit"
+            <div class="pb-3 pt-2">
+                <div class="relative flex w-full shrink-0 items-center p-2">
+                    <div
+                        class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5"
+                    >
+                        <font-awesome-icon
+                            :icon="{
+                                prefix: 'fas',
+                                iconName: 'magnifying-glass',
+                            }"
+                            class="h-4 w-4 text-neutral-500"
+                        />
+                    </div>
+                    <input
+                        type="search"
+                        id="default-search"
+                        class="block w-full rounded-full border-0 bg-neutral-200 p-2 pl-10 text-sm text-neutral-900 focus:ring-2 focus:ring-neutral-400"
+                        placeholder="Buscar información"
+                        required
+                    />
+                    <!-- <button type="submit"
 						class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button> -->
-				</div>
-				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'home' ) "
-					:active=" route().current( 'home' ) ">
-					Inicio
-				</ResponsiveNavLink>
-				<!-- <ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'divulgation' ) "
+                </div>
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('home')"
+                    :active="route().current('home')"
+                >
+                    Inicio
+                </ResponsiveNavLink>
+                <!-- <ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'divulgation' ) "
 					:active=" route().current( 'divulgation' ) ">
 					Divulgación
 				</ResponsiveNavLink>
@@ -261,7 +419,7 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					:active=" route().current( 'divulgation' ) ">
 					Innovación
 				</ResponsiveNavLink> -->
-				<!-- <ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'convocations.index' ) "
+                <!-- <ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'convocations.index' ) "
 					:active=" route().current( 'convocations.index' ) ">
 					Convocatorias
 				</ResponsiveNavLink>
@@ -269,15 +427,21 @@ const emit = defineEmits(['openModal', 'closeModal']);
 					:active=" route().current( 'gallery.index' ) ">
 					Galería
 				</ResponsiveNavLink> -->
-				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'reime' ) "
-					:active=" route().current( 'reime' ) ">
-					REIME
-				</ResponsiveNavLink>
-				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'guest.contact.index' ) "
-					:active=" route().current( 'guest.contact.index' ) ">
-					Contacto
-				</ResponsiveNavLink>
-			</div>
-		</div>
-	</nav>
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('reime')"
+                    :active="route().current('reime')"
+                >
+                    REIME
+                </ResponsiveNavLink>
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.contact.index')"
+                    :active="route().current('guest.contact.index')"
+                >
+                    Contacto
+                </ResponsiveNavLink>
+            </div>
+        </div>
+    </nav>
 </template>

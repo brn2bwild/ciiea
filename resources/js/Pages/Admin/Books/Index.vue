@@ -69,18 +69,18 @@ const handleDeleteBook = () => {
 
 <template>
     <Head title="Libros" />
-    <div class="flex justify-between items-center px-8">
+    <div class="flex items-center justify-between px-8">
         <h1 class="text-3xl font-bold">Libros</h1>
         <button
             @click="showCreateModal = true"
-            class="bg-sky-500 rounded-full px-4 py-2 text-neutral-50 font-medium hover:bg-sky-700 transition-all duration-200"
+            class="rounded-full bg-sky-500 px-4 py-2 font-medium text-neutral-50 transition-all duration-200 hover:bg-sky-700"
         >
             Nuevo libro
         </button>
     </div>
 
     <div class="w-full p-8">
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <section class="grid grid-cols-1 gap-4 md:grid-cols-3">
             <ResourceCard
                 v-for="book in books.data"
                 :key="book.index"
@@ -105,7 +105,10 @@ const handleDeleteBook = () => {
                 <template #content>{{ book.publicated_at }}</template>
             </ResourceCard>
         </section>
-        <Pagination :links="$props.books.links" class="mt-8 flex justify-center" />
+        <Pagination
+            :links="$props.books.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
 
     <Modal
@@ -178,7 +181,7 @@ const handleDeleteBook = () => {
                         :message="bookCreateForm.errors.publicated_at"
                     />
                 </div>
-                <div class="w-full flex justify-end mt-8 gap-4">
+                <div class="mt-8 flex w-full justify-end gap-4">
                     <PrimaryButton
                         :class="{ 'opacity-25': bookCreateForm.processing }"
                         :disabled="bookCreateForm.processing"
@@ -199,13 +202,13 @@ const handleDeleteBook = () => {
         :max-width="'lg'"
     >
         <div class="p-4">
-            <div class="w-full flex flex-col justify-center items-center">
+            <div class="flex w-full flex-col items-center justify-center">
                 <font-awesome-icon
                     :icon="['fa', 'triangle-exclamation']"
-                    class="text-neutral-900 text-8xl mb-4"
+                    class="mb-4 text-8xl text-neutral-900"
                 />
                 <h2 class="text-xl">¿Deseas eliminar el libro?</h2>
-                <div class="w-full flex justify-end mt-4 gap-4">
+                <div class="mt-4 flex w-full justify-end gap-4">
                     <DangerButton @click="handleDeleteBook()">
                         Eliminar
                     </DangerButton>
