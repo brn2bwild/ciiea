@@ -1,5 +1,6 @@
 <script setup>
 import Modal from "@/Components/Modal.vue";
+import Pagination from "@/Components/Pagination.vue";
 import PdfThumbnail from "@/Components/PdfThumbnail.vue";
 import PdfViewer from "@/Components/PdfViewer.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
@@ -46,17 +47,19 @@ const handleClosePdfModal = () => {
             >
                 <div class="w-1/2 p-4">
                     <h5 class="font-sans text-neutral-500">
-                        {{ props.publications[0].publicated_at }}
+                        Fecha de publicación: {{ props.publications.data[0].publicated_at }}
                     </h5>
                     <h1
                         class="mt-2 font-sans text-4xl font-extrabold text-neutral-700"
                     >
-                        {{ props.publications[0].title }}
+                        {{ props.publications.data[0].title }}
                     </h1>
                     <button
-                        v-if="props.publications[0].file"
+                        v-if="props.publications.data[0].file"
                         @click="
-                            handleOpenPdfModal(props.publications[0].file.path)
+                            handleOpenPdfModal(
+                                props.publications.data[0].file.path,
+                            )
                         "
                         class="mt-4 rounded-xl bg-sky-500 px-4 py-2 font-bold text-neutral-50"
                     >
@@ -67,10 +70,12 @@ const handleClosePdfModal = () => {
                     class="flex h-80 w-1/2 justify-center overflow-hidden object-contain"
                 >
                     <div
-                        v-if="props.publications[0].file !== null"
+                        v-if="props.publications.data[0].file !== null"
                         class="-m-[20px] scale-90"
                     >
-                        <PdfThumbnail :url="props.publications[0].file.path" />
+                        <PdfThumbnail
+                            :url="props.publications.data[0].file.path"
+                        />
                     </div>
                     <img
                         v-else
@@ -87,7 +92,7 @@ const handleClosePdfModal = () => {
         </section>
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
             <div
-                v-for="publication in publications"
+                v-for="publication in props.publications.data"
                 :key="publication.index"
                 class="flex w-full flex-col items-start justify-center overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
             >
@@ -111,7 +116,7 @@ const handleClosePdfModal = () => {
                     class="flex h-44 w-full flex-col items-start justify-between gap-0 p-4"
                 >
                     <h5 class="font-sans text-sm text-neutral-500">
-                        {{ publication.publicated_at }}
+                        Fecha de publicacion: {{ publication.publicated_at }}
                     </h5>
                     <h1 class="font-sans text-xl font-extrabold">
                         {{ publication.title }}
@@ -126,6 +131,10 @@ const handleClosePdfModal = () => {
                 </div>
             </div>
         </section>
+        <Pagination
+            :links="props.publications.meta.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
     <Modal
         @close="handleClosePdfModal"

@@ -311,7 +311,7 @@ const showingNavigationDropdown = ref(false);
                         <span
                             class="rounded-sm bg-sky-200 px-2 py-0 text-sm text-neutral-900"
                         >
-                            {{ $page.props.data.resources }}
+                            {{ $page.props.data.vinculation_documents }}
                         </span>
                     </div>
                 </SidebarLink>

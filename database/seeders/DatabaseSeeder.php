@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Magazine;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,7 +28,7 @@ class DatabaseSeeder extends Seeder
 			EventSeeder::class,
 			SoftwareSeeder::class,
 			InfographicSeeder::class,
-			ResourceSeeder::class,
+			VinculationDocumentSeeder::class,
 		]);
 	}
 }

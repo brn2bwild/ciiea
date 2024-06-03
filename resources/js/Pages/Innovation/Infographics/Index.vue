@@ -1,5 +1,6 @@
 <script setup>
 import Modal from "@/Components/Modal.vue";
+import Pagination from "@/Components/Pagination.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import { Head } from "@inertiajs/vue3";
 import { ref } from "vue";
@@ -43,7 +44,7 @@ const handleCloseImageModal = () => {
         </section>
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
             <div
-                v-for="infographic in infographics"
+                v-for="infographic in props.infographics.data"
                 :key="infographic.index"
                 class="flex w-full flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
             >
@@ -69,8 +70,6 @@ const handleCloseImageModal = () => {
                     >
                         {{ infographic.title }}
                     </h1>
-                    <!-- <Link :href=" route( 'guest.infographics.show', infographic.slug ) "
-						class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold text-sm">Ver</Link> -->
                     <button
                         v-if="infographic.image"
                         @click="handleOpenImageModal(infographic.image.path)"
@@ -81,6 +80,10 @@ const handleCloseImageModal = () => {
                 </div>
             </div>
         </section>
+        <Pagination
+            :links="props.infographics.meta.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
     <Modal
         @close="handleCloseImageModal"

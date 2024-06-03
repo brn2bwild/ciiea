@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\EducationalSoftwareResource;
 use App\Models\Software;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,7 @@ class EducationalSoftwareController extends Controller
         return Inertia::render('Innovation/Software/Index', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'software_resources' => Software::with('image')
-                ->get()
-                ->toArray(),
+            'software_resources' => EducationalSoftwareResource::collection(Software::paginate(6))
         ]);
     }
 
@@ -28,7 +27,7 @@ class EducationalSoftwareController extends Controller
             'canRegister' => Route::has('register'),
             'software' => Software::where('slug', $request->slug)
                 ->first()
-                ->toArray(),
+                ->toArray()
         ]);
     }
 }

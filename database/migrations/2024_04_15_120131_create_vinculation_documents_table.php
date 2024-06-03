@@ -11,7 +11,7 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		Schema::create('resources', function (Blueprint $table) {
+		Schema::create('vinculation_documents', function (Blueprint $table) {
 			$table->id();
 			$table->string('name');
 			$table->longText('description');
@@ -24,6 +24,6 @@ return new class extends Migration
 	 */
 	public function down(): void
 	{
-		Schema::dropIfExists('resources');
+		Schema::dropIfExists('vinculation_documents');
 	}
 };

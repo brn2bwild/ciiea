@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ConvocationResource;
 use App\Models\Convocation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,15 +17,7 @@ class ConvocationController extends Controller
         return Inertia::render('Convocations/Index', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'convocations' => Convocation::with('image')
-                ->get()
-                ->each(function ($convocation, $index) {
-                    $date_time = Carbon::create($convocation->date_time);
-                    $convocation->date = $date_time->isoFormat('LL');
-                    $convocation->time = $date_time->isoFormat('h:mm');
-                    $convocation->created_at_for_humans = $convocation->created_at->diffForHumans();
-                })
-                ->toArray(),
+            'convocations' => ConvocationResource::collection(Convocation::paginate(6))
         ]);
     }
 
@@ -41,7 +34,7 @@ class ConvocationController extends Controller
         return Inertia::render('Convocations/Show', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'convocation' => $convocation,
+            'convocation' => ConvocationResource::make(Convocation::where('slug', $request->slug)->first())
         ]);
     }
 }

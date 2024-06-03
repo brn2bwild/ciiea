@@ -1,4 +1,5 @@
 <script setup>
+import Pagination from "@/Components/Pagination.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import { Head } from "@inertiajs/vue3";
 
@@ -30,7 +31,7 @@ const props = defineProps({
         </section>
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
             <div
-                v-for="software in software_resources"
+                v-for="software in props.software_resources.data"
                 :key="software.index"
                 class="flex w-full flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
             >
@@ -69,5 +70,9 @@ const props = defineProps({
                 </div>
             </div>
         </section>
+        <Pagination
+            :links="props.software_resources.meta.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
 </template>

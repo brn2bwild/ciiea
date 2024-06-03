@@ -1,5 +1,6 @@
 <script setup>
 import Modal from "@/Components/Modal.vue";
+import Pagination from "@/Components/Pagination.vue";
 import PdfThumbnail from "@/Components/PdfThumbnail.vue";
 import PdfViewer from "@/Components/PdfViewer.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
@@ -46,21 +47,21 @@ const handleClosePdfModal = () => {
             >
                 <div class="w-1/2 p-4">
                     <h5 class="font-sans text-neutral-500">
-                        {{ props.investigations[0].publicated_at }}
+                        {{ props.investigations.data[0].publicated_at }}
                     </h5>
                     <h1
                         class="mt-2 font-sans text-4xl font-extrabold text-neutral-700"
                     >
-                        {{ props.investigations[0].title }}
+                        {{ props.investigations.data[0].title }}
                     </h1>
                     <h2 class="mt-2 text-lg font-medium text-neutral-600">
-                        {{ props.investigations[0].short_description }}
+                        {{ props.investigations.data[0].short_description }}
                     </h2>
                     <button
-                        v-if="props.investigations[0].file"
+                        v-if="props.investigations.data[0].file"
                         @click="
                             handleOpenPdfModal(
-                                props.investigations[0].file.path,
+                                props.investigations.data[0].file.path,
                             )
                         "
                         class="mt-4 rounded-xl bg-sky-500 px-4 py-2 font-bold text-neutral-50"
@@ -72,11 +73,11 @@ const handleClosePdfModal = () => {
                     class="flex h-80 w-1/2 justify-center overflow-hidden object-contain"
                 >
                     <div
-                        v-if="props.investigations[0].file !== null"
+                        v-if="props.investigations.data[0].file !== null"
                         class="-m-[20px] scale-90"
                     >
                         <PdfThumbnail
-                            :url="props.investigations[0].file.path"
+                            :url="props.investigations.data[0].file.path"
                         />
                     </div>
                     <img
@@ -94,7 +95,7 @@ const handleClosePdfModal = () => {
         </section>
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
             <div
-                v-for="investigation in props.investigations"
+                v-for="investigation in props.investigations.data"
                 :key="investigation.index"
                 class="flex w-full flex-col items-start justify-center overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
             >
@@ -136,6 +137,10 @@ const handleClosePdfModal = () => {
                 </div>
             </div>
         </section>
+        <Pagination
+            :links="props.investigations.meta.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
     <Modal
         @close="handleClosePdfModal"

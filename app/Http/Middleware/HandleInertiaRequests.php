@@ -12,6 +12,7 @@ use App\Models\Publication;
 use App\Models\Resource;
 use App\Models\Software;
 use App\Models\User;
+use App\Models\VinculationDocument;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Spatie\Permission\Models\Role;
@@ -67,7 +68,7 @@ class HandleInertiaRequests extends Middleware
 						'galleries' => Event::get()->count(),
 						'software_resources' => Software::get()->count(),
 						'infographics' => Infographic::get()->count(),
-						'resources' => Resource::get()->count(),
+						'vinculation_documents' => VinculationDocument::get()->count(),
 						'admin_users' => User::role(['admin', 'editor'])->get()->count(),
 						'users' => User::role('user')->get()->count(),
 						'roles' => Role::get()->count(),

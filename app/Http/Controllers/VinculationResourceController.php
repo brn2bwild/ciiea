@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Resource;
+use App\Http\Resources\VinculationDocumentResource;
+use App\Models\VinculationDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -12,15 +13,10 @@ class VinculationResourceController extends Controller
 {
     public function index(): Response
     {
-        return Inertia::render('Vinculation/Resources', [
+        return Inertia::render('Vinculation/Documents', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'resources' => Resource::with('file')
-                ->paginate(6)
-                // ->each(function ($resource, $index) {
-                //     $resource->created_at_for_humans = $resource->created_at->diffForHumans();
-                // })
-                // ->toArray(),
+            'resources' => VinculationDocumentResource::collection(VinculationDocument::paginate(6))
         ]);
     }
 }

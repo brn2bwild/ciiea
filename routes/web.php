@@ -52,7 +52,7 @@ Route::get('/infographics/{slug}', [GuestInfographicController::class, 'show'])-
 
 Route::get('/social-service', [GuestSocialServiceController::class, 'show'])->name('social-service');
 Route::get('/profesional-practice', [GuestProfesionalPracticeController::class, 'show'])->name('profesional-practice');
-Route::get('/vinculation-resources', [GuestVinculationResourceController::class, 'index'])->name('vinculation-resources');
+Route::get('/vinculation-documents', [GuestVinculationResourceController::class, 'index'])->name('vinculation-documents');
 
 Route::get('/convocations', [GuestConvocationController::class, 'index'])->name('guest.convocations.index');
 Route::get('/convocations/{slug}', [GuestConvocationController::class, 'show'])->name('guest.convocations.show');

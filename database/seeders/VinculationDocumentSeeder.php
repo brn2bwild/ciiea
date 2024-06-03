@@ -2,17 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Resource;
+use App\Models\VinculationDocument;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ResourceSeeder extends Seeder
+class VinculationDocumentSeeder extends Seeder
 {
 	/**
 	 * Run the database seeds.
 	 */
 	public function run(): void
 	{
-		Resource::factory(5)->create();
+		VinculationDocument::factory(5)->create();
 	}
 }

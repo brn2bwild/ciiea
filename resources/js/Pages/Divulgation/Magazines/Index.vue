@@ -1,5 +1,6 @@
 <script setup>
 import Modal from "@/Components/Modal.vue";
+import Pagination from "@/Components/Pagination.vue";
 import PdfThumbnail from "@/Components/PdfThumbnail.vue";
 import PdfViewer from "@/Components/PdfViewer.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
@@ -46,17 +47,17 @@ const handleClosePdfModal = () => {
             >
                 <div class="w-1/2 p-4">
                     <h5 class="font-sans text-neutral-500">
-                        {{ magazines[0].publicated_at }}
+                        Fecha publicación: {{ props.magazines.data[0].publicated_at }}
                     </h5>
                     <h1
                         class="mt-2 font-sans text-4xl font-extrabold text-neutral-700"
                     >
-                        {{ magazines[0].name }}
+                        {{ props.magazines.data[0].name }}
                     </h1>
                     <button
-                        v-if="props.magazines[0].file"
+                        v-if="props.magazines.data[0].file"
                         @click="
-                            handleOpenPdfModal(props.magazines[0].file.path)
+                            handleOpenPdfModal(props.magazines.data[0].file.path)
                         "
                         class="mt-4 rounded-xl bg-sky-500 px-4 py-2 font-bold text-neutral-50"
                     >
@@ -67,10 +68,10 @@ const handleClosePdfModal = () => {
                     class="flex h-80 w-1/2 justify-center overflow-hidden object-contain"
                 >
                     <div
-                        v-if="props.magazines[0].file !== null"
+                        v-if="props.magazines.data[0].file !== null"
                         class="-m-[20px] scale-90"
                     >
-                        <PdfThumbnail :url="props.magazines[0].file.path" />
+                        <PdfThumbnail :url="props.magazines.data[0].file.path" />
                     </div>
                     <img
                         v-else
@@ -87,7 +88,7 @@ const handleClosePdfModal = () => {
         </section>
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
             <div
-                v-for="magazine in props.magazines"
+                v-for="magazine in props.magazines.data"
                 :key="magazine.index"
                 class="flex w-full flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
             >
@@ -111,7 +112,7 @@ const handleClosePdfModal = () => {
                     class="flex h-48 w-full flex-col items-start justify-between gap-0 p-4"
                 >
                     <h5 class="font-sans text-sm text-neutral-500">
-                        {{ magazine.publicated_at }}
+                        Fecha de publicación: {{ magazine.publicated_at }}
                     </h5>
                     <h1 class="font-sans text-xl font-extrabold">
                         {{ magazine.name }}
@@ -126,6 +127,10 @@ const handleClosePdfModal = () => {
                 </div>
             </div>
         </section>
+        <Pagination
+            :links="props.magazines.meta.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
     <Modal
         @close="handleClosePdfModal"

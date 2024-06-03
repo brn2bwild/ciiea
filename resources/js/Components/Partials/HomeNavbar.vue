@@ -215,7 +215,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
                                             'profesional-practice',
                                         ) ||
                                         $page.url.includes(
-                                            'vinculation-resources',
+                                            'vinculation-documents',
                                         ),
                                     'text-gray-500':
                                         !$page.url.includes('social-service') ||
@@ -223,7 +223,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
                                             'profesional-practice',
                                         ) ||
                                         !$page.url.includes(
-                                            'vinculation-resources',
+                                            'vinculation-documents',
                                         ),
                                 }"
                             >
@@ -248,12 +248,12 @@ const emit = defineEmits(["openModal", "closeModal"]);
                                     Residencia
                                 </NavLink>
                                 <NavLink
-                                    :href="route('vinculation-resources')"
+                                    :href="route('vinculation-documents')"
                                     :active="
-                                        route().current('vinculation-resources')
+                                        route().current('vinculation-documents')
                                     "
                                 >
-                                    Recursos
+                                    Documentos
                                 </NavLink>
                             </div>
                         </template>
@@ -303,8 +303,8 @@ const emit = defineEmits(["openModal", "closeModal"]);
                     </Link>
                     <Link
                         v-else="
-                            $page.props.auth.user.role == 'editor' ||
-                            $page.props.auth.user.role == 'user'
+                            $page.props.auth.user.role === 'editor' ||
+                            $page.props.auth.user.role === 'user'
                         "
                         :href="route('profile.edit')"
                         class="rounded-md bg-sky-500 px-4 py-2 font-medium text-white transition-all ease-in-out hover:bg-sky-600 focus:no-underline"

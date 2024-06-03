@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\InvestigationResource;
 use App\Models\Investigation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,7 @@ class InvestigationController extends Controller
         return Inertia::render('Divulgation/Investigations/Index', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'investigations' => Investigation::with('file')
-                ->select('id', 'title', 'publicated_at', 'short_description', 'slug')
-                ->get()
-                ->toArray(),
+            'investigations' => InvestigationResource::collection(Investigation::paginate(6))
         ]);
     }
 }

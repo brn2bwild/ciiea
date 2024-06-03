@@ -48,7 +48,7 @@ const handleClosePdfModal = () => {
             >
                 <div class="w-1/2 p-4">
                     <h5 class="font-sans text-neutral-500">
-                        {{ props.books.data[0].publicated_at }}
+                        Fecha de publicación: {{ props.books.data[0].publicated_at }}
                     </h5>
                     <h1
                         class="mt-2 font-sans text-3xl font-extrabold text-neutral-700"
@@ -114,7 +114,7 @@ const handleClosePdfModal = () => {
                     class="flex h-52 w-full flex-col items-start justify-between gap-0 p-4"
                 >
                     <h5 class="font-sans text-sm text-neutral-500">
-                        {{ book.publicated_at }}
+                        Fecha de publicación: {{ book.publicated_at }}
                     </h5>
                     <h1
                         class="font-sans text-lg font-extrabold text-neutral-700"

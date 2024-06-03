@@ -19,19 +19,19 @@ const props = defineProps({
         <Head title="Convocatoria" />
         <section class="min-h-screen w-full px-80 pb-10">
             <h1 class="w-full pt-12 text-left text-6xl font-bold">
-                {{ convocation.name }}
+                {{ props.convocation.data.name }}
             </h1>
             <h2 class="mt-6 text-xl text-neutral-800">
-                {{ convocation.location }}
+                {{ props.convocation.data.location }}
             </h2>
             <div
                 class="flex w-full justify-start gap-2 text-xl text-neutral-800"
             >
                 <h2>
-                    {{ convocation.date }}
+                    {{ props.convocation.data.date }}
                 </h2>
                 <h2>
-                    {{ convocation.time }}
+                    {{ props.convocation.data.time }}
                 </h2>
             </div>
             <div class="mt-10 flex items-center justify-between gap-8">
@@ -52,13 +52,13 @@ const props = defineProps({
                     class="h-[600px] w-1/2 object-cover"
                     :src="
                         '/storage/' +
-                        (convocation.image
-                            ? convocation.image.path
+                        (props.convocation.data.image
+                            ? props.convocation.data.image.path
                             : '/images/magazines-optimized.jpg')
                     "
                     :alt="
-                        convocation.image
-                            ? convocation.image.name
+                        props.convocation.data.image
+                            ? props.convocation.data.image.name
                             : 'default-convocation-image'
                     "
                 />

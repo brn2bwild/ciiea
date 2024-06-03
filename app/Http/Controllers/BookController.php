@@ -18,9 +18,7 @@ class BookController extends Controller
 		return Inertia::render('Divulgation/Books/Index', [
 			'canLogin' => Route::has('login'),
 			'canRegister' => Route::has('register'),
-			'books' => BookResource::collection(
-				Book::with('file')->paginate(6)
-			)
+			'books' => BookResource::collection(Book::paginate(6))
 		]);
 	}
 }

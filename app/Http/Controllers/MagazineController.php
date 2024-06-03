@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\MagazineResource;
 use App\Models\Magazine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,7 @@ class MagazineController extends Controller
         return Inertia::render('Divulgation/Magazines/Index', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'magazines' => Magazine::with('file')
-                ->select('id', 'name', 'publicated_at', 'slug')
-                ->get()
-                ->toArray(),
+            'magazines' => MagazineResource::collection(Magazine::paginate(6))
         ]);
     }
 }

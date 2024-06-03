@@ -1,5 +1,6 @@
 <script setup>
 import Modal from "@/Components/Modal.vue";
+import Pagination from "@/Components/Pagination.vue";
 import PdfViewer from "@/Components/PdfViewer.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import { Head } from "@inertiajs/vue3";
@@ -35,7 +36,7 @@ const handleClosePdfModal = () => {
     >
         <section class="w-full pb-6">
             <h1 class="text-xl font-bold text-neutral-600">
-                Recursos de vinculación
+                Documentos de vinculación
             </h1>
         </section>
         <section class="grid w-full grid-cols-1 gap-10 sm:grid-cols-3">
@@ -44,9 +45,6 @@ const handleClosePdfModal = () => {
                 :key="resource.index"
                 class="flex w-full flex-col items-start justify-center rounded-xl bg-white shadow-lg shadow-slate-100"
             >
-                <!-- <div class="w-full mb-2">
-					<img src="/storage/resources/conv1.jpg" :alt=" 'resource' + resource.index " />
-				</div> -->
                 <div
                     class="flex h-full w-full flex-col items-start justify-between gap-2 p-4"
                 >
@@ -67,6 +65,10 @@ const handleClosePdfModal = () => {
                 </div>
             </div>
         </section>
+        <Pagination
+            :links="props.resources.meta.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
     <Modal @close="handleClosePdfModal" :show="showModal" max>
         <PdfViewer :url="urlToShow" />

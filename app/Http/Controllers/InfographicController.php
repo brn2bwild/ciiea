@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\InfographicResource;
 use App\Models\Infographic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,7 @@ class InfographicController extends Controller
         return Inertia::render('Innovation/Infographics/Index', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'infographics' => Infographic::with('image')
-                ->get()
-                ->toArray(),
+            'infographics' => InfographicResource::collection(Infographic::paginate(6))
         ]);
     }
 

@@ -6,7 +6,7 @@ use App\Traits\HasFile;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Resource extends Model
+class VinculationDocument extends Model
 {
 	use HasFactory, HasFile;
 
