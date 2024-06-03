@@ -13,11 +13,15 @@ class File extends Model
 	protected $fillable = [
 		'name',
 		'path',
-		'size_bytes',
+		'size_bytes'
+	];
+
+	protected $hidden = [
+		'fileable_type'
 	];
 
 	public function fileable(): MorphTo
 	{
-		return $this->select('id')->morphTo();
+		return $this->morphTo();
 	}
 }

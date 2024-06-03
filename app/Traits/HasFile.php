@@ -3,7 +3,6 @@
 namespace App\Traits;
 
 use App\Models\File;
-use Hamcrest\Type\IsBoolean;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
