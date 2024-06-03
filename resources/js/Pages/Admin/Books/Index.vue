@@ -100,7 +100,7 @@ const handleDeleteBook = () => {
                         alt="default-image"
                     />
                 </template>
-                <template #title class="truncate">{{ book.title }}</template>
+                <template #title>{{ book.title }}</template>
                 <template #subtitle>{{ book.authors }}</template>
                 <template #content>{{ book.publicated_at }}</template>
             </ResourceCard>
