@@ -5,6 +5,7 @@ import PdfThumbnail from "@/Components/PdfThumbnail.vue";
 import PdfViewer from "@/Components/PdfViewer.vue";
 import Modal from "@/Components/Modal.vue";
 import { ref } from "vue";
+import Pagination from "@/Components/Pagination.vue";
 
 defineOptions({
     layout: HomeLayout,
@@ -47,19 +48,21 @@ const handleClosePdfModal = () => {
             >
                 <div class="w-1/2 p-4">
                     <h5 class="font-sans text-neutral-500">
-                        {{ props.books[0].publicated_at }}
+                        {{ props.books.data[0].publicated_at }}
                     </h5>
                     <h1
                         class="mt-2 font-sans text-3xl font-extrabold text-neutral-700"
                     >
-                        {{ props.books[0].title }}
+                        {{ props.books.data[0].title }}
                     </h1>
                     <h2 class="mt-2 text-lg font-medium text-neutral-600">
-                        {{ props.books[0].authors }}
+                        {{ props.books.data[0].authors }}
                     </h2>
                     <button
-                        v-if="props.books[0].file"
-                        @click="handleOpenPdfModal(props.books[0].file.path)"
+                        v-if="props.books.data[0].file"
+                        @click="
+                            handleOpenPdfModal(props.books.data[0].file.path)
+                        "
                         class="mt-4 rounded-xl bg-sky-500 px-4 py-2 font-bold text-neutral-50"
                     >
                         Leer más
@@ -69,10 +72,10 @@ const handleClosePdfModal = () => {
                     class="flex h-80 w-1/2 justify-center overflow-hidden object-contain"
                 >
                     <div
-                        v-if="props.books[0].file !== null"
+                        v-if="props.books.data[0].file !== null"
                         class="-m-[20px] scale-90"
                     >
-                        <PdfThumbnail :url="props.books[0].file.path" />
+                        <PdfThumbnail :url="props.books.data[0].file.path" />
                     </div>
                     <img
                         v-else
@@ -87,7 +90,7 @@ const handleClosePdfModal = () => {
         </section>
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
             <div
-                v-for="book in props.books"
+                v-for="book in props.books.data"
                 :key="book.index"
                 class="flex w-full flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
             >
@@ -131,6 +134,10 @@ const handleClosePdfModal = () => {
                 </div>
             </div>
         </section>
+        <Pagination
+            :links="props.books.meta.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
     <Modal @close="handleClosePdfModal" :show="showPdfModal" :max-width="'3xl'">
         <PdfViewer :url="urlToShow" class="object-fill" />

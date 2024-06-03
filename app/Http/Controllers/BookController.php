@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BookResource;
+use App\Http\Resources\BooksCollection;
 use App\Models\Book;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,13 +18,9 @@ class BookController extends Controller
 		return Inertia::render('Divulgation/Books/Index', [
 			'canLogin' => Route::has('login'),
 			'canRegister' => Route::has('register'),
-			'books' => Book::with('file')
-				->select('id', 'title', 'authors', 'isbn', 'publicated_at', 'slug')
-				->get()
-				->each(function ($book, $index) {
-					$book->publicated_at = Carbon::createFromDate($book->publicated_at)->isoFormat('LL');
-				})
-				->toArray(),
+			'books' => BookResource::collection(
+				Book::with('file')->paginate(6)
+			)
 		]);
 	}
 }
