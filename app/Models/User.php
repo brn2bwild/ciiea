@@ -4,10 +4,14 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Traits\HasImages;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -34,23 +38,44 @@ class User extends Authenticatable
 		'social_media' => 'array',
 	];
 
-	// protected function socialmedia(): Attribute
-	// {
-	// 	return Attribute::make(
-	// 		get: fn (string $value) => json_decode($value, true),
-	// 		set: fn (array $value) => json_encode($value),
-	// 	);
-	// }
-
-	public function getMainRole()
+	public function getMainRole(): String
 	{
 		return $this->getRoleNames()[0];
 	}
 
-	// protected function contact_info(): Attribute {
-	// 	return Attribute::make(
-	// 		get: fn ($value) => json_decode($value, true),
-	// 		set: fn ($value) => json_encode($value),
-	// 	);
-	// }
+	public function image(): MorphOne
+	{
+		return $this->morphOne(Image::class, 'imageable');
+	}
+
+	public function getCurrentProfileImage(): Image|null
+	{
+		return ($this->image()->first()) ?? null;
+	}
+
+	public function setProfileImage(Request $request): void
+	{
+		$currentImage = $this->getCurrentProfileImage();
+
+		if ($currentImage) {
+			Storage::delete($currentImage->path);
+			$currentImage->delete();
+		}
+
+		$size_bytes = $request->image->getSize();
+
+		// $name = 'profile-avatar-' . uniqid() . '.' . $request->image->getClientOriginalExtension();
+
+		$path = Storage::disk('local')->put('profile_images', $request->image);
+
+		$name = substr($path, 15);
+
+		$newImage = new Image([
+			'name' => $name,
+			'path' => $path,
+			'size_bytes' => $size_bytes,
+		]);
+
+		$this->image()->save($newImage);
+	}
 }
