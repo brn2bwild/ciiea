@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class VinculationResourceController extends Controller
+class VinculationDocumentController extends Controller
 {
     public function index(): Response
     {

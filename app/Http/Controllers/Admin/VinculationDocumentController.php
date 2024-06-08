@@ -5,25 +5,25 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ResourceUpdateRequest;
 use App\Http\Requests\UpdateFileRequest;
-use App\Models\Resource;
+use App\Models\VinculationDocument;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class ResourceController extends Controller
+class VinculationDocumentController extends Controller
 {
 	public function index(): Response
 	{
-		return Inertia::render('Admin/Resources/Index', [
-			'resources' => fn () => Resource::paginate(6)
+		return Inertia::render('Admin/VinculationDocuments/Index', [
+			'resources' => fn () => VinculationDocument::paginate(6)
 		]);
 	}
 
 	public function store(Request $request): RedirectResponse
 	{
-		Resource::create([
+		VinculationDocument::create([
 			'name' => $request->name,
 			'description' => $request->description
 		]);
@@ -33,8 +33,8 @@ class ResourceController extends Controller
 
 	public function edit(Request $request): Response
 	{
-		return Inertia::render('Admin/Resources/Edit', [
-			'resource' => fn () => Resource::where('id', $request->id)
+		return Inertia::render('Admin/VinculationDocuments/Edit', [
+			'resource' => fn () => VinculationDocument::where('id', $request->id)
 				->with('file')
 				->first()
 		]);
@@ -42,7 +42,7 @@ class ResourceController extends Controller
 
 	public function update(ResourceUpdateRequest $request): RedirectResponse
 	{
-		Resource::findOrFail($request->input('id'))
+		VinculationDocument::findOrFail($request->input('id'))
 			->update($request->validated());
 
 		return back();
@@ -50,7 +50,7 @@ class ResourceController extends Controller
 
 	public function destroy(Request $request): RedirectResponse
 	{
-		$resource = Resource::findOrFail($request->input('id'));
+		$resource = VinculationDocument::findOrFail($request->input('id'));
 
 		$resource->detachFile();
 
@@ -61,7 +61,7 @@ class ResourceController extends Controller
 
 	public function uploadFile(UpdateFileRequest $request): RedirectResponse
 	{
-		$resource = Resource::findOrFail($request->input('id'));
+		$resource = VinculationDocument::findOrFail($request->input('id'));
 
 		$resource->attachFile($request);
 
@@ -70,7 +70,7 @@ class ResourceController extends Controller
 
 	public function deleteFile(Request $request): RedirectResponse
 	{
-		$resource = Resource::findOrFail($request->input('id'));
+		$resource = VinculationDocument::findOrFail($request->input('id'));
 
 		$resource->detachFile();
 

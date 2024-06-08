@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UploadSingleImageRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -16,7 +18,7 @@ class AdministratorController extends Controller
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Administrators/Index', [
-			'administrators' => User::role(['admin', 'editor'])->get(),
+			'administrators' => User::with('image')->role(['admin', 'editor'])->paginate(10),
 		]);
 	}
 
@@ -47,7 +49,7 @@ class AdministratorController extends Controller
 	public function edit(Request $request): Response
 	{
 		return Inertia::render('Admin/Administrators/Edit', [
-			'administrator' => User::where('id', $request->id)->role(['admin', 'editor'])->first(),
+			'administrator' => User::with('image')->where('id', $request->id)->role(['admin', 'editor'])->first(),
 		]);
 	}
 
@@ -74,5 +76,23 @@ class AdministratorController extends Controller
 		User::findOrFail($request->id)->delete();
 
 		return back()->with('success', '');
+	}
+
+	public function uploadImage(UploadSingleImageRequest $request): RedirectResponse
+	{
+		$user = User::findOrFail($request->input('id'));
+
+		$user->setProfileImage($request);
+
+		return Redirect::route('admin.administrators.edit', $request->input('id'));
+	}
+
+	public function deleteImage(Request $request): RedirectResponse
+	{
+		$user = User::findOrFail($request->input('id'));
+
+		$user->detachImage();
+
+		return Redirect::back();
 	}
 }

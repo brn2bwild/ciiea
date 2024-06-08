@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\EducationalSoftwareController;
 use App\Http\Controllers\Admin\InfographicController;
-use App\Http\Controllers\Admin\ResourceController;
+use App\Http\Controllers\Admin\VinculationDocumentController;
 use App\Http\Controllers\BookController as GuestBookController;
 use App\Http\Controllers\ContactController as GuestContactController;
 use App\Http\Controllers\ConvocationController as GuestConvocationController;
@@ -27,7 +27,7 @@ use App\Http\Controllers\ProfesionalPracticeController as GuestProfesionalPracti
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicationController as GuestPublicationController;
 use App\Http\Controllers\SocialServiceController as GuestSocialServiceController;
-use App\Http\Controllers\VinculationResourceController as GuestVinculationResourceController;
+use App\Http\Controllers\VinculationDocumentController as GuestVinculationDocumentController;
 use App\Models\Resource;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -52,7 +52,7 @@ Route::get('/infographics/{slug}', [GuestInfographicController::class, 'show'])-
 
 Route::get('/social-service', [GuestSocialServiceController::class, 'show'])->name('social-service');
 Route::get('/profesional-practice', [GuestProfesionalPracticeController::class, 'show'])->name('profesional-practice');
-Route::get('/vinculation-documents', [GuestVinculationResourceController::class, 'index'])->name('vinculation-documents');
+Route::get('/vinculation-documents', [GuestVinculationDocumentController::class, 'index'])->name('vinculation-documents');
 
 Route::get('/convocations', [GuestConvocationController::class, 'index'])->name('guest.convocations.index');
 Route::get('/convocations/{slug}', [GuestConvocationController::class, 'show'])->name('guest.convocations.show');
@@ -69,12 +69,13 @@ Route::get('/reime', function () {
 
 Route::get('/contact', [GuestContactController::class, 'index'])->name('guest.contact.index');
 
-Route::get('/files/{file}', [FileController::class, 'show'])->name('file.show');
+Route::get('/public/{file}', [FileController::class, 'showPublicFile'])->name('public.file.show');
+
+Route::get('/profile_images/{image}', [FileController::class, 'showProfileImage'])->name('profile-images.show');
 
 Route::get('/dashboard', function () {
 	return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])
-	->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
 	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -150,48 +151,31 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::post('/infographics/image', [InfographicController::class, 'uploadImage'])->name('admin.infographics.upload-image');
 		Route::delete('/infographics/image', [InfographicController::class, 'deleteImage'])->name('admin.infographics.delete-image');
 
-		Route::get('/resources', [ResourceController::class, 'index'])->name('admin.resources.index');
-		Route::post('/resources', [ResourceController::class, 'store'])->name('admin.resources.store');
-		Route::get('/resources/{id}/edit', [ResourceController::class, 'edit'])->name('admin.resources.edit');
-		Route::patch('/resources', [ResourceController::class, 'update'])->name('admin.resources.update');
-		Route::delete('/resources', [ResourceController::class, 'destroy'])->name('admin.resources.destroy');
-		Route::post('/resources/file', [ResourceController::class, 'uploadFile'])->name('admin.resources.upload-file');
-		Route::delete('/resources/file', [ResourceController::class, 'deleteFile'])->name('admin.resources.delete-file');
+		Route::get('/vinculation-documents', [VinculationDocumentController::class, 'index'])->name('admin.vinculation-documents.index');
+		Route::post('/vinculation-documents', [VinculationDocumentController::class, 'store'])->name('admin.vinculation-documents.store');
+		Route::get('/vinculation-documents/{id}/edit', [VinculationDocumentController::class, 'edit'])->name('admin.vinculation-documents.edit');
+		Route::patch('/vinculation-documents', [VinculationDocumentController::class, 'update'])->name('admin.vinculation-documents.update');
+		Route::delete('/vinculation-documents', [VinculationDocumentController::class, 'destroy'])->name('admin.vinculation-documents.destroy');
+		Route::post('/vinculation-documents/file', [VinculationDocumentController::class, 'uploadFile'])->name('admin.vinculation-documents.upload-file');
+		Route::delete('/vinculation-documents/file', [VinculationDocumentController::class, 'deleteFile'])->name('admin.vinculation-documents.delete-file');
 
 		Route::get('/administrators', [AdministratorController::class, 'index'])->name('admin.administrators.index');
 		Route::post('/administrators', [AdministratorController::class, 'store'])->name('admin.administrators.store');
 		Route::get('/administrators/{id}/edit', [AdministratorController::class, 'edit'])->name('admin.administrators.edit');
 		Route::patch('/administrators', [AdministratorController::class, 'update'])->name('admin.administrators.update');
 		Route::delete('/administrators', [AdministratorController::class, 'destroy'])->name('admin.administrators.destroy');
-
-		Route::get('/roles', [RoleController::class, 'index'])->name('admin.roles.index');
-		Route::get('/roles/{id}/edit', [RoleController::class, 'edit'])->name('admin.roles.edit');
+		Route::post('/administrators/image', [AdministratorController::class, 'uploadImage'])->name('admin.administrators.upload-image');
+		Route::delete('/administrators/image', [AdministratorController::class, 'deleteImage'])->name('admin.administrators.delete-image');
 
 		Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+		Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
+		Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+		Route::patch('/users', [UserController::class, 'update'])->name('admin.users.update');
 		Route::delete('/users', [UserController::class, 'destroy'])->name('admin.users.destroy');
+		Route::post('/users/image', [UserController::class, 'uploadImage'])->name('admin.users.upload-image');
+		Route::delete('/users/image', [UserController::class, 'deleteImage'])->name('admin.users.delete-image');
 
-		Route::get('/contact', function () {
-			return Inertia::render('Admin/Contact', [
-				'users' => [
-					[
-						'name' => 'danie',
-						'position' => 'director general',
-						'celular_number' => '9321123242',
-						'email' => 'admin@example.com',
-						'twitter' => '@dir_ciiea',
-					],
-					[
-						'name' => 'carlos',
-						'position' => 'sistemas',
-						'celular_number' => '9321132242',
-						'email' => 'sistemas@example.com',
-						'twitter' => '@sistemas_ciiea',
-					]
-				]
-			]);
-		})->name('admin.contact');
-
-		Route::post('/contact', [ContactController::class, 'update'])->name('admin.contact.update');
+		// Route::post('/contact', [ContactController::class, 'update'])->name('admin.contact.update');
 	});
 
 require __DIR__ . '/auth.php';

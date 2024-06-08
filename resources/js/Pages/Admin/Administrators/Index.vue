@@ -10,7 +10,8 @@ import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import AdminCard from "@/Components/AdminCard.vue";
+import UserCard from "@/Components/UserCard.vue";
+import Pagination from "@/Components/Pagination.vue";
 
 defineOptions({
     layout: AdminLayout,
@@ -85,19 +86,28 @@ const handleCloseDeleteModal = () => {
 
     <div class="w-full p-8">
         <section class="flex w-full flex-col gap-4">
-            <AdminCard
-                v-for="administrator in administrators"
+            <UserCard
+                v-for="administrator in props.administrators.data"
                 :key="administrator.index"
                 @open-delete-modal="handleOpenDeleteModal(administrator.id)"
                 :edit-route="
                     route('admin.administrators.edit', administrator.id)
                 "
+                :avartar-url="
+                    administrator.image
+                        ? route('profile-images.show', administrator.image.name)
+                        : null
+                "
             >
-                <template #title>{{ administrator.name }}</template>
-                <template #subtitle>{{ administrator.email }}</template>
-                <template #content>{{ administrator.mobile }}</template>
-            </AdminCard>
+                <template #name>{{ administrator.name }}</template>
+                <template #data>{{ administrator.email }}</template>
+                <template #contact>{{ administrator.mobile }}</template>
+            </UserCard>
         </section>
+        <Pagination
+            :links="props.administrators.links"
+            class="mt-8 flex justify-center"
+        />
     </div>
 
     <Modal

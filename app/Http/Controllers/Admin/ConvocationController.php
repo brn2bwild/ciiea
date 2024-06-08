@@ -21,10 +21,6 @@ class ConvocationController extends Controller
 		return Inertia::render('Admin/Convocations/Index', [
 			'convocations' => fn () => Convocation::with('image')
 				->paginate(6)
-			// ->each(function ($convocation, $index) {
-			// 	$convocation->date = $convocation->date_time->isoFormat('LL');
-			// 	$convocation->time = $convocation->date_time->isoFormat('h:mm');
-			// })
 		]);
 	}
 

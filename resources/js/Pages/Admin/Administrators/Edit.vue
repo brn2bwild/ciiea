@@ -37,7 +37,7 @@ const handleUpdateAdministrator = () => {
     <Head title="Administrador" />
     <h1 class="pl-8 text-3xl font-bold">Editar administrador</h1>
     <div class="flex w-full p-8">
-        <section class="w-full rounded bg-white p-8">
+        <section class="flex w-full justify-between rounded bg-white p-8">
             <form @submit.prevent="handleUpdateAdministrator" class="w-full">
                 <div>
                     <InputLabel for="name" value="Nombre del administrador" />
@@ -147,11 +147,16 @@ const handleUpdateAdministrator = () => {
                     </Transition>
                 </div>
             </form>
-            <div class="w-full md:w-1/2">
-                <AvatarInput
-                    :avatar-url="'/storage/images/default-contact.png'"
-                ></AvatarInput>
-            </div>
+            <AvatarInput
+                :avatar-url="
+                    props.administrator.image
+                        ? route('profile-images.show', props.administrator.image.name)
+                        : null
+                "
+                :user-id="props.administrator.id"
+                :upload-image-route="route('admin.administrators.upload-image')"
+                class="ml-8 w-full md:w-1/2"
+            />
         </section>
     </div>
 </template>

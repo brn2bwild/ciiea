@@ -38,7 +38,7 @@ const handleCloseCreateModal = () => {
     showCreateModal.value = false;
 };
 const handleCreateSoftware = () => {
-    resourceCreateForm.post(route("admin.resources.store"), {
+    resourceCreateForm.post(route("admin.vinculation-documents.store"), {
         onSuccess: () => (showCreateModal.value = false),
         onFinish: () => resourceCreateForm.reset("name", "description"),
     });
@@ -52,7 +52,7 @@ const handleCloseModal = () => {
     showDeleteModal.value = false;
 };
 const handleDeleteresource = () => {
-    resourceForm.delete(route("admin.resources.destroy"), {
+    resourceForm.delete(route("admin.vinculation-documents.destroy"), {
         onSuccess: () => handleCloseModal(),
         onFinish: () => resourceForm.reset("id"),
     });
@@ -76,7 +76,7 @@ const handleDeleteresource = () => {
                 v-for="resource in resources.data"
                 :key="resource.index"
                 @open-delete-modal="handleOpenDeleteModal(resource.id)"
-                :edit-route="route('admin.resources.edit', resource.id)"
+                :edit-route="route('admin.vinculation-documents.edit', resource.id)"
             >
                 <template #image>
                     <svg
@@ -94,7 +94,7 @@ const handleDeleteresource = () => {
                         />
                     </svg>
                 </template>
-                <template #title class="truncate">{{ resource.name }}</template>
+                <template #title>{{ resource.name }}</template>
                 <template #subtitle></template>
                 <template #content>{{ resource.description }}</template>
             </ResourceCard>

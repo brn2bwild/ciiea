@@ -303,8 +303,8 @@ const showingNavigationDropdown = ref(false);
                     </div>
                 </SidebarLink>
                 <SidebarLink
-                    :href="route('admin.resources.index')"
-                    :active="$page.url.includes('/admin/resources')"
+                    :href="route('admin.vinculation-documents.index')"
+                    :active="$page.url.includes('/admin/vinculation-documents')"
                 >
                     <div class="flex w-full items-center justify-between">
                         <span>Vinculación</span>
@@ -343,19 +343,6 @@ const showingNavigationDropdown = ref(false);
                             class="rounded-sm bg-sky-200 px-2 py-0 text-sm text-neutral-900"
                         >
                             {{ $page.props.data.admin_users }}
-                        </span>
-                    </div>
-                </SidebarLink>
-                <SidebarLink
-                    :href="route('admin.roles.index')"
-                    :active="$page.url.includes('/admin/roles')"
-                >
-                    <div class="flex w-full items-center justify-between">
-                        <span>Roles</span>
-                        <span
-                            class="rounded-sm bg-sky-200 px-2 py-0 text-sm text-neutral-900"
-                        >
-                            {{ $page.props.data.roles }}
                         </span>
                     </div>
                 </SidebarLink>

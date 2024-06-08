@@ -83,7 +83,7 @@ const handleDeleteInfographic = () => {
             >
                 <template #image>
                     <img
-                        class="h-full w-full object-cover"
+                        class="h-full w-full"
                         :src="
                             '/storage/' +
                             (infographic.image
@@ -93,9 +93,7 @@ const handleDeleteInfographic = () => {
                         alt="infographics-image"
                     />
                 </template>
-                <template #title class="truncate">{{
-                    infographic.title
-                }}</template>
+                <template #title>{{ infographic.title }}</template>
                 <template #subtitle></template>
                 <template #content></template>
             </ResourceCard>

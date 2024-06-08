@@ -26,7 +26,7 @@ const resourceForm = useForm({
 });
 
 const handleUpdateResource = () => {
-    resourceForm.patch(route("admin.resources.update"));
+    resourceForm.patch(route("admin.vinculation-documents.update"));
 };
 </script>
 <template>
@@ -88,13 +88,14 @@ const handleUpdateResource = () => {
             <FileInput
                 :resource-id="resource.id"
                 :file="resource.file"
-                :upload-file-route="route('admin.resources.upload-file')"
-                :delete-file-route="route('admin.resources.delete-file')"
+                :upload-file-route="
+                    route('admin.vinculation-documents.upload-file')
+                "
+                :delete-file-route="
+                    route('admin.vinculation-documents.delete-file')
+                "
                 class="w-1/4"
             />
-            <!-- <ImageInput :image=" resource.image " :resource-id=" resource.id "
-				:upload-image-route=" route( 'admin.resources.upload-image' ) "
-				:delete-image-route=" route( 'admin.resources.delete-image' ) " class="w-1/4" /> -->
         </section>
     </div>
 </template>

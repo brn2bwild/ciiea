@@ -7,48 +7,7 @@ defineOptions({
     layout: AdminLayout,
 });
 
-// const props = defineProps({
-// 	books: {
-// 		type: Number,
-// 		require: true,
-// 		default: 0,
-// 	},
-// 	magazines: {
-// 		type: Number,
-// 		require: true,
-// 		default: 0,
-// 	},
-// 	publications: {
-// 		type: Number,
-// 		require: true,
-// 		default: 0,
-// 	},
-// 	investigations: {
-// 		type: Number,
-// 		require: true,
-// 		default: 0,
-// 	},
-// 	convocations: {
-// 		type: Number,
-// 		require: true,
-// 		default: 0,
-// 	},
-// 	gallery: {
-// 		type: Number,
-// 		required: true,
-// 		default: 0,
-// 	},
-// 	admin_users: {
-// 		type: Number,
-// 		require: true,
-// 		default: 0,
-// 	},
-// 	users: {
-// 		type: Number,
-// 		require: true,
-// 		default: 0,
-// 	}
-// });
+
 </script>
 <template>
     <Head title="Dashboard" />
