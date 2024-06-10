@@ -1,7 +1,6 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import Modal from "@/Components/Modal.vue";
-import { Head, Link } from "@inertiajs/vue3";
 import { ref } from "vue";
 
 defineOptions({

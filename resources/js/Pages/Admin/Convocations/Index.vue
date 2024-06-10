@@ -1,7 +1,7 @@
 <script setup>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import { ref } from "vue";
-import { Head, useForm } from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/vue3";
 import Modal from "@/Components/Modal.vue";
 import DangerButton from "@/Components/DangerButton.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
@@ -96,7 +96,7 @@ const handleDeleteConvocation = () => {
             >
                 <template #image>
                     <img
-                        class="h-full w-full object-cover"
+                        class="w-full object-cover"
                         :src="
                             '/storage/' +
                             (convocation.image

@@ -1,6 +1,5 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
-import { Head, Link } from "@inertiajs/vue3";
 
 defineOptions({
     layout: HomeLayout,

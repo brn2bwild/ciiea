@@ -2,7 +2,6 @@
 import Pagination from "@/Components/Pagination.vue";
 import UserCard from "@/Components/UserCard.vue";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import { Head, useForm } from "@inertiajs/vue3";
 
 defineOptions({
     layout: AdminLayout,

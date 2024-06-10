@@ -1,6 +1,6 @@
 <script setup>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
-import { Head, useForm } from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
 import Modal from "@/Components/Modal.vue";
 import DangerButton from "@/Components/DangerButton.vue";
@@ -91,7 +91,7 @@ const handleDeleteInvestigation = () => {
                     route('admin.investigations.edit', investigation.id)
                 "
             >
-                <template #image class="overflow-hidden">
+                <template #image>
                     <PdfThumbnail
                         v-if="investigation.file"
                         :url="investigation.file.path"

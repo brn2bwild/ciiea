@@ -1,6 +1,5 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
-import { Head } from "@inertiajs/vue3";
 import { computed, toRef } from "vue";
 
 defineOptions({

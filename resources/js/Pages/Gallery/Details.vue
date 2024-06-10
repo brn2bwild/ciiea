@@ -1,7 +1,6 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import Modal from "@/Components/Modal.vue";
-import { Head, Link } from "@inertiajs/vue3";
 import { ref } from "vue";
 
 defineOptions({
@@ -22,6 +21,7 @@ const showModal = ref(false);
 <template>
     <Head title="Galería" />
 
+    <h1 class="ml-8 mt-8 font-medium">{{ props.event.name }}</h1>
     <section
         v-if="Object.keys(props.event.images).length !== 0"
         class="grid w-full grid-cols-1 gap-10 p-8 md:grid-cols-5"
@@ -61,7 +61,7 @@ const showModal = ref(false);
         <div class="relative">
             <button
                 @click="showModal = false"
-                class="absolute right-4 top-4 rounded-full bg-neutral-800 bg-opacity-60 px-4 py-3"
+                class="absolute right-2 top-2 rounded-full bg-neutral-800 bg-opacity-60 px-4 py-3"
             >
                 <font-awesome-icon
                     class="text-2xl text-neutral-50"

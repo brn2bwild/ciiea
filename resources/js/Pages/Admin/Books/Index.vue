@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link, useForm } from "@inertiajs/vue3";
+import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
 import Modal from "@/Components/Modal.vue";
@@ -97,7 +97,7 @@ const handleDeleteBook = () => {
                         class="w-full"
                         v-else
                         src="/storage/images/bookshelve-optimized.jpg"
-                        alt="default-image"
+                        alt="book-image"
                     />
                 </template>
                 <template #title>{{ book.title }}</template>

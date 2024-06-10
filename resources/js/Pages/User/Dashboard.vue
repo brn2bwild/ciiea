@@ -1,5 +1,4 @@
 <script setup>
-import { Head } from "@inertiajs/vue3";
 import CountCard from "@/Components/CountCard.vue";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 

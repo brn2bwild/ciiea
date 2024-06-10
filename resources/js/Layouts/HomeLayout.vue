@@ -8,7 +8,6 @@ import PrimaryButton from "@/Components/PrimaryButton.vue";
 import Checkbox from "@/Components/Checkbox.vue";
 import { defineAsyncComponent } from "vue";
 import HomeNavbar from "@/Components/Partials/HomeNavbar.vue";
-// import HomeSidebar from "@/Components/Partials/HomeSidebar.vue";
 import HomeFooter from "@/Components/Partials/HomeFooter.vue";
 
 const props = defineProps({
@@ -93,11 +92,8 @@ const Modal = defineAsyncComponent(() => import("@/Components/Modal.vue"));
             :canRegister="canRegister"
         />
 
-        <!-- Sidebar -->
-        <!-- <HomeSidebar @open-modal=" openModalFn " :canRegister=" canRegister " /> -->
-
         <!-- Page Content -->
-        <main class="min-h-screen sm:pt-14">
+        <main class="min-h-screen sm:pt-16">
             <slot />
         </main>
 
@@ -300,7 +296,7 @@ const Modal = defineAsyncComponent(() => import("@/Components/Modal.vue"));
                             <div class="mt-4 flex items-center justify-end">
                                 <!-- <Link
 											:href="route('login')"
-											class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-rose-900"
+											class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-900"
 									>
 											¿Ya tienes una cuenta?
 									</Link> -->

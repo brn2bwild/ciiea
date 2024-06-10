@@ -1,6 +1,5 @@
 <script setup>
-import { Head, useForm } from "@inertiajs/vue3";
-import ImageInput from "@/Components/ImageInput.vue";
+import { useForm } from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";

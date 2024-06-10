@@ -2,7 +2,6 @@
 import Modal from "@/Components/Modal.vue";
 import Pagination from "@/Components/Pagination.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
-import { Head } from "@inertiajs/vue3";
 import { ref } from "vue";
 
 defineOptions({

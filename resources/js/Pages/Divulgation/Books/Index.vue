@@ -1,6 +1,5 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
-import { Head } from "@inertiajs/vue3";
 import PdfThumbnail from "@/Components/PdfThumbnail.vue";
 import PdfViewer from "@/Components/PdfViewer.vue";
 import Modal from "@/Components/Modal.vue";
