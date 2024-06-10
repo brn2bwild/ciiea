@@ -19,10 +19,6 @@ const props = defineProps({
         required: true,
     },
 });
-
-// const socialMedia = toRef(() => {
-// 	return JSON.parse(administrators)
-// })
 </script>
 
 <template>
@@ -36,44 +32,44 @@ const props = defineProps({
             class="group relative mb-32 flex w-full rounded-sm bg-transparent"
         >
             <img
-                class="z-20 h-32 w-32"
-                src="/storage/images/default-contact.png"
+                class="z-20 h-32 w-32 rounded-full"
+                :src="administrator.image !== null ? administrator.image.path: '/storage/images/default-contact.png'"
                 alt="default-contact"
             />
             <div
-                class="absolute left-5 top-10 z-10 flex h-52 w-3/4 flex-col items-center justify-between rounded-xl bg-blue-950 p-4"
+                class="absolute left-5 top-10 z-10 flex h-52 w-3/4 flex-col items-center justify-between rounded-xl bg-neutral-300 p-4"
             >
                 <div class="flex flex-col items-end pl-24">
-                    <h1 class="text-lg font-bold text-white">
+                    <h1 class="text-lg font-bold text-neutral-950">
                         {{ administrator.name }}
                     </h1>
-                    <h2 class="text-neutral-200">
+                    <h2 class="text-neutral-800">
                         {{ administrator.short_description }}
                     </h2>
                 </div>
                 <div>
-                    <p class="mb-2 flex justify-start text-white">
+                    <p class="mb-2 flex justify-start text-neutral-950">
                         <font-awesome-icon
                             :icon="['fa', 'phone']"
-                            class="text-xl text-neutral-50"
+                            class="text-xl text-neutral-800"
                         />
                         <a href="https://whatsapp.com" class="ml-2">
                             {{ administrator.mobile }}
                         </a>
                     </p>
-                    <p class="mb-2 flex justify-start text-white">
+                    <p class="mb-2 flex justify-start text-neutral-950">
                         <font-awesome-icon
                             :icon="['fa', 'envelope']"
-                            class="text-xl text-neutral-50"
+                            class="text-xl text-neutral-800"
                         />
                         <a href="https://outlook.com" class="ml-2">
                             {{ administrator.email }}
                         </a>
                     </p>
-                    <p class="flex justify-start text-white">
+                    <p class="flex justify-start text-neutral-950">
                         <font-awesome-icon
                             :icon="['fab', 'twitter']"
-                            class="text-xl text-neutral-50"
+                            class="text-xl text-neutral-800"
                         />
                         <a href="https://outlook.com" class="ml-2">
                             {{ administrator.social_media.twitter }}
@@ -82,62 +78,6 @@ const props = defineProps({
                 </div>
             </div>
         </div>
-        <!-- <div class="bg-transparent w-full rounded-sm flex relative group mb-32">
-			<img class="h-32 w-32 z-20" src="/storage/images/default-contact.png" alt="default-contact">
-			<div
-				class="bg-blue-950 w-3/4 p-4 rounded-xl absolute top-10 left-5 z-10 h-52 flex flex-col justify-between items-center">
-				<div class="flex flex-col items-end pl-24">
-					<h1 class="text-white text-lg font-bold">
-						Ing. Selene
-					</h1>
-					<h2 class="text-neutral-200">
-						Encargada de sistemas
-					</h2>
-				</div>
-				<div>
-					<p class="flex justify-start text-white mb-2">
-						<font-awesome-icon :icon=" [ 'fa', 'phone' ] " class="text-neutral-50 text-xl" />
-						<a href="https://whatsapp.com" class="ml-2">9321234352</a>
-					</p>
-					<p class="flex justify-start text-white mb-2">
-						<font-awesome-icon :icon=" [ 'fa', 'envelope' ] " class="text-neutral-50 text-xl" />
-						<a href="https://outlook.com" class="ml-2">sistemas@example.com</a>
-					</p>
-					<p class="flex justify-start text-white">
-						<font-awesome-icon :icon=" [ 'fab', 'twitter' ] " class="text-neutral-50 text-xl" />
-						<a href="https://outlook.com" class="ml-2">@sistemas_ciiea</a>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="bg-transparent w-full rounded-sm flex relative group mb-32">
-			<img class="h-32 w-32 z-20" src="/storage/images/default-contact.png" alt="default-contact">
-			<div
-				class="bg-blue-950 w-3/4 p-4 rounded-xl absolute top-10 left-5 z-10 h-52 flex flex-col justify-between items-center">
-				<div class="flex flex-col items-end pl-24">
-					<h1 class="text-white text-lg font-bold">
-						Juan Carlos Rodríguez Méndez
-					</h1>
-					<h2 class="text-neutral-200">
-						Planeación
-					</h2>
-				</div>
-				<div>
-					<p class="flex justify-start text-white mb-2">
-						<font-awesome-icon :icon=" [ 'fa', 'phone' ] " class="text-neutral-50 text-xl" />
-						<a href="https://whatsapp.com" class="ml-2">932122164</a>
-					</p>
-					<p class="flex justify-start text-white mb-2">
-						<font-awesome-icon :icon=" [ 'fa', 'envelope' ] " class="text-neutral-50 text-xl" />
-						<a href="https://outlook.com" class="ml-2">planeacion@example.com</a>
-					</p>
-					<p class="flex justify-start text-white">
-						<font-awesome-icon :icon=" [ 'fab', 'twitter' ] " class="text-neutral-50 text-xl" />
-						<a href="https://outlook.com" class="ml-2">@planeacion_ciiea</a>
-					</p>
-				</div>
-			</div>
-		</div> -->
     </section>
     <section class="relative mb-10 px-4 pb-16 sm:px-0">
         <iframe
