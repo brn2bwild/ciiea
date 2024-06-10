@@ -13,7 +13,7 @@ class VinculationDocumentResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'created_at' => $this->created_at,
+            'created_at' => $this->created_at->diffForHumans(),
             'file' => $this->file
         ];
     }
