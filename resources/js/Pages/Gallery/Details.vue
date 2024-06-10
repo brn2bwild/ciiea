@@ -1,7 +1,7 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import Modal from "@/Components/Modal.vue";
-import { Head } from "@inertiajs/vue3";
+import { Head, Link } from "@inertiajs/vue3";
 import { ref } from "vue";
 
 defineOptions({
@@ -9,7 +9,7 @@ defineOptions({
 });
 
 const props = defineProps({
-    images: {
+    event: {
         type: Object,
         required: true,
     },
@@ -23,12 +23,12 @@ const showModal = ref(false);
     <Head title="Galería" />
 
     <section
-        v-if="Object.keys(images).length !== 0"
+        v-if="Object.keys(props.event.images).length !== 0"
         class="grid w-full grid-cols-1 gap-10 p-8 md:grid-cols-5"
     >
         <div
             class="flex w-full cursor-pointer flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
-            v-for="image in images"
+            v-for="image in props.event.images"
             :key="image.index"
         >
             <div
@@ -47,17 +47,36 @@ const showModal = ref(false);
     </section>
     <section
         v-else
-        class="flex min-h-screen w-full items-center justify-center px-8"
+        class="flex min-h-screen w-full flex-col items-center justify-center px-8"
     >
         <h2>No hay imágenes agregadas para este evento</h2>
+        <Link
+            :href="route('guest.gallery.index')"
+            class="mt-4 rounded-lg bg-sky-500 px-3 py-2 text-neutral-50"
+            >Regresar</Link
+        >
     </section>
 
     <Modal @close="showModal = false" :show="showModal" :maxWidth="'3xl'">
-        <img
-            class="object-cover"
-            loading="lazy"
-            :src="modalImageUrl"
-            alt="image"
-        />
+        <div class="relative">
+            <button
+                @click="showModal = false"
+                class="absolute right-4 top-4 rounded-full bg-neutral-800 bg-opacity-60 px-4 py-3"
+            >
+                <font-awesome-icon
+                    class="text-2xl text-neutral-50"
+                    :icon="{
+                        prefix: 'fa',
+                        iconName: 'xmark',
+                    }"
+                />
+            </button>
+            <img
+                class="object-cover"
+                loading="lazy"
+                :src="modalImageUrl"
+                alt="image"
+            />
+        </div>
     </Modal>
 </template>

@@ -45,11 +45,11 @@ trait HasImages
 	{
 		foreach ($request->images as $image) {
 			$size_bytes = $image->getSize();
-			$title = $image->getClientOriginalName();
+			$name = $image->getClientOriginalName();
 			$path = Storage::disk('public')->put('gallery/' . $this->slug, $image);
 
 			$newImage = new Image([
-				'title' => $title,
+				'name' => $name,
 				'path' => $path,
 				'size_bytes' => $size_bytes,
 			]);
