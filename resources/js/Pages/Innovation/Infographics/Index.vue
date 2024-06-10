@@ -48,17 +48,17 @@ const handleCloseImageModal = () => {
                 class="flex w-full flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
             >
                 <div
-                    class="mb-2 flex h-60 w-full justify-center overflow-hidden"
+                    class="mb-2 h-60 w-full overflow-hidden"
                 >
                     <img
-                        class="w-full object-cover"
+                        class="object-cover object-center"
                         :src="
                             '/storage/' +
                             (infographic.image
                                 ? infographic.image.path
                                 : 'images/bookshelve-optimized.jpg')
                         "
-                        alt="book-cover"
+                        alt="infographic"
                     />
                 </div>
                 <div

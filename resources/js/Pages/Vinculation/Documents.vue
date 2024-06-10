@@ -52,7 +52,7 @@ const handleClosePdfModal = () => {
                     </h1>
                     <p>{{ resource.description.substr(0, 100) }}...</p>
                     <h3 class="text-sm text-neutral-600">
-                        Compartido el {{ resource.created_at }}
+                        Compartido {{ resource.created_at }}
                     </h3>
                     <button
                         v-if="resource.file"
