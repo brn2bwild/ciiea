@@ -34,7 +34,7 @@ trait HasFile
 		$name = $request->file('file')->getClientOriginalName();
 
 		$newFile = new File([
-			'path' => substr($path, 7, strlen($path)),
+			'path' => $path,
 			'size_bytes' => $size,
 			'name' => $name,
 		]);
