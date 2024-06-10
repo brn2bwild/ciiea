@@ -21,7 +21,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
 
 <template>
     <nav
-        class="fixed z-50 w-full bg-neutral-50 p-4 shadow-md shadow-neutral-300"
+        class="fixed z-50 w-full bg-neutral-50 p-4"
     >
         <!-- Primary Navigation Menu -->
         <div class="flex justify-between">
@@ -295,14 +295,14 @@ const emit = defineEmits(["openModal", "closeModal"]);
                     class="hidden sm:flex sm:items-center"
                 >
                     <Link
-                        v-if="$page.props.auth.user.role == 'admin'"
+                        v-if="$page.props.auth.user.role === 'admin'"
                         :href="route('admin.dashboard')"
                         class="rounded-md bg-sky-500 px-4 py-2 font-medium text-white transition-all ease-in-out hover:bg-sky-600 focus:no-underline"
                     >
                         Dashboard
                     </Link>
                     <Link
-                        v-else="
+                        v-else-if="
                             $page.props.auth.user.role === 'editor' ||
                             $page.props.auth.user.role === 'user'
                         "
