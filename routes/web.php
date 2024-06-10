@@ -69,7 +69,7 @@ Route::get('/reime', function () {
 
 Route::get('/contact', [GuestContactController::class, 'index'])->name('guest.contact.index');
 
-Route::get('/public/{file}', [FileController::class, 'showPublicFile'])->name('public.file.show');
+Route::get('/public/files/{file}', [FileController::class, 'showPublicFile'])->name('public.file.show');
 
 Route::get('/profile_images/{image}', [FileController::class, 'showProfileImage'])->name('profile-images.show');
 
