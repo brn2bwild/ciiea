@@ -27,7 +27,7 @@ const showModal = ref(false);
         class="grid w-full grid-cols-1 gap-10 p-8 md:grid-cols-5"
     >
         <div
-            class="flex w-full cursor-pointer flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
+            class="flex h-[160px] w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-xl bg-neutral-700 shadow-lg shadow-slate-100"
             v-for="image in props.event.images"
             :key="image.index"
         >
@@ -58,7 +58,7 @@ const showModal = ref(false);
     </section>
 
     <Modal @close="showModal = false" :show="showModal" :maxWidth="'3xl'">
-        <div class="relative">
+        <div class="relative w-full bg-neutral-700 flex justify-center items-center">
             <button
                 @click="showModal = false"
                 class="absolute right-2 top-2 rounded-full bg-neutral-800 bg-opacity-60 px-4 py-3"
