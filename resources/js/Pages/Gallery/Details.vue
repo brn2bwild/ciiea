@@ -49,7 +49,7 @@ const showModal = ref(false);
         v-else
         class="flex min-h-screen w-full flex-col items-center justify-center px-8"
     >
-        <h2>No hay imágenes agregadas para este evento</h2>
+        <h1 class="font-medium">No hay imágenes agregadas para este evento</h1>
         <Link
             :href="route('guest.gallery.index')"
             class="mt-4 rounded-lg bg-sky-500 px-3 py-2 text-neutral-50"

@@ -11,7 +11,7 @@
             <div class="flex w-1/2 items-center justify-end">
                 <p class="text-neutral-50">
                     Dirección: Carretera a las Grutas S/N, Colonia Eureka y
-                    Belen, C.P. 66800 Teapa, Tab.<br />
+                    Belen, C.P. 86800 Teapa, Tab.<br />
                     Horarios de atencion: 8:00 a.m. - 3:00 p.m. lunes a viernes.
                 </p>
             </div>
