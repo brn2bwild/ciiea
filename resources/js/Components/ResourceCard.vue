@@ -1,5 +1,7 @@
 <script setup>
 import { defineProps, defineEmits } from "vue";
+import DeleteButton from "./DeleteButton.vue";
+import EditButton from "./EditButton.vue";
 
 const props = defineProps({
     editRoute: {
@@ -30,41 +32,26 @@ const openModal = (event) => {
                 <div
                     class="flex w-1/2 items-center justify-center overflow-hidden bg-gray-200"
                 >
-                    <slot name="image"></slot>
+                    <slot name="image" />
                 </div>
                 <div class="flex w-1/2 flex-col justify-between p-4">
                     <div class="truncate text-xl font-bold text-gray-800">
                         <!-- Título de la card -->
-                        <slot name="title"></slot>
+                        <slot name="title" />
                     </div>
                     <div class="text-md mb-4 truncate text-gray-600">
                         <!-- Subtítulo de la card -->
-                        <slot name="subtitle"></slot>
+                        <slot name="subtitle" />
                     </div>
                     <div class="truncate text-sm text-gray-700">
                         <!-- Contenido de la card -->
-                        <slot name="content"></slot>
+                        <slot name="content" />
                     </div>
-                    <div class="flex w-full justify-end gap-6">
-                        <Link
-                            :href="editRoute"
-                            class="block rounded-full text-2xl text-orange-500 transition-all duration-200 hover:text-orange-700"
-                        >
-                            <font-awesome-icon
-                                :icon="{
-                                    prefix: 'fa',
-                                    iconName: 'pen-to-square',
-                                }"
-                            />
+                    <div class="flex w-full items-center justify-end gap-4">
+                        <Link :href="editRoute">
+                            <EditButton />
                         </Link>
-                        <button
-                            @click="openModal"
-                            class="block rounded-full text-2xl text-red-500 transition-all duration-200 hover:text-red-700"
-                        >
-                            <font-awesome-icon
-                                :icon="{ prefix: 'fa', iconName: 'trash' }"
-                            />
-                        </button>
+                        <DeleteButton @click="openModal" />
                     </div>
                 </div>
             </div>
