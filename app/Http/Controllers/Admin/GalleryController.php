@@ -22,11 +22,6 @@ class GalleryController extends Controller
 			'Admin/Gallery/Index',
 			[
 				'events' => fn () => Event::paginate(6)
-				// ->transform(fn ($event) => [
-				// 	'id' => $event->id,
-				// 	'date' => $event->date,
-				// 	'name' => $event->name,
-				// ]),
 			]
 		);
 	}
