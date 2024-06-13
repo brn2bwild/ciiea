@@ -175,7 +175,7 @@ const Modal = defineAsyncComponent(() => import("@/Components/Modal.vue"));
                                 </div>
                                 <Link
                                     :href="route('password.request')"
-                                    class="mt-4 rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-900 focus:ring-offset-2"
+                                    class="mt-4 rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2"
                                 >
                                     ¿Olvidaste tu contraseña?
                                 </Link>

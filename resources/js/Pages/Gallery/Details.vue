@@ -61,10 +61,10 @@ const showModal = ref(false);
         <div class="relative w-full bg-neutral-700 flex justify-center items-center">
             <button
                 @click="showModal = false"
-                class="absolute right-2 top-2 rounded-full bg-neutral-800 bg-opacity-60 px-4 py-3"
+                class="absolute right-2 top-2 rounded-full bg-neutral-800 bg-opacity-60 p-3 flex items-center"
             >
                 <font-awesome-icon
-                    class="text-2xl text-neutral-50"
+                    class="text-xl text-neutral-50"
                     :icon="{
                         prefix: 'fa',
                         iconName: 'xmark',

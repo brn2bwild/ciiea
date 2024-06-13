@@ -5,6 +5,8 @@ import InputError from "./InputError.vue";
 import { useForm } from "@inertiajs/vue3";
 import Modal from "./Modal.vue";
 import SecondaryButton from "./SecondaryButton.vue";
+import DeleteButton from "./DeleteButton.vue";
+import InfoButton from "./InfoButton.vue";
 
 const props = defineProps({
     uploadFileRoute: {
@@ -31,7 +33,7 @@ const resourceFileForm = useForm({
 
 const fileName = ref(null);
 const fileSize = ref(null);
-const showModal = ref(false);
+const showDeleteModal = ref(false);
 
 onMounted(() => {
     if (props.file) {
@@ -72,22 +74,22 @@ const handleSubmitFile = (file) => {
 
 const handleDeleteFile = () => {
     resourceFileForm.delete(props.deleteFileRoute, {
-        onSuccess: () => handleCloseModal(),
+        onSuccess: () => handleCloseDeleteModal(),
         onFinish: () => {
             resourceFileForm.reset("file");
             fileName.value = null;
             fileSize.value = null;
         },
     });
-    handleCloseModal();
+    handleCloseDeleteModal();
 };
 
-const handleCloseModal = () => {
-    showModal.value = false;
+const handleCloseDeleteModal = () => {
+    showDeleteModal.value = false;
 };
 
-const handleOpenModal = () => {
-    showModal.value = true;
+const handleOpenDeleteModal = () => {
+    showDeleteModal.value = true;
 };
 </script>
 
@@ -96,49 +98,49 @@ const handleOpenModal = () => {
         <div class="flex w-full flex-col items-center justify-center gap-y-2">
             <label
                 for="upload-file-input"
-                class="dark:hover:bg-bray-800 flex h-52 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                class="dark:hover:bg-bray-800 border-1 flex h-52 w-52 cursor-pointer flex-col items-center justify-center rounded-lg border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
             >
                 <div
                     v-if="fileName || file"
-                    class="flex flex-col items-center justify-center px-2 pb-6 pt-5"
+                    class="flex h-full flex-col items-center justify-between text-ellipsis p-2"
                 >
                     <font-awesome-icon
-                        class="mb-2"
+                        class="h-[50px] text-white"
                         :icon="{ prefix: 'fa', iconName: 'file' }"
-                        size="3x"
-                        style="color: white"
                     />
-                    <p
-                        class="mb-2 text-center text-sm text-gray-500 dark:text-gray-400"
-                    >
-                        <span class="font-semibold">{{ fileName }}</span>
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                        ({{ fileSize }})
-                    </p>
-                    <DangerButton @click="handleOpenModal" class="mt-4"
-                        >Eliminar archivo</DangerButton
-                    >
+                    <div class="flex flex-col items-center">
+                        <p
+                            class="mb-2 break-all text-center text-sm font-semibold text-gray-500 dark:text-gray-400"
+                        >
+                            <span class="font-semibold">{{ fileName }}</span>
+                        </p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                            {{ "(" + fileSize + ")" }}
+                        </p>
+                    </div>
+                    <div class="flex w-full items-center justify-center gap-6">
+                        <DeleteButton @click="handleOpenDeleteModal" />
+                    </div>
                 </div>
                 <div
                     v-else
-                    class="flex flex-col items-center justify-center px-2 pb-6 pt-5"
+                    class="flex h-full flex-col items-center justify-center gap-4 text-ellipsis p-4"
                 >
                     <font-awesome-icon
-                        class="mb-2"
+                        class="h-[50px] text-white"
                         :icon="{ prefix: 'fa', iconName: 'file-arrow-up' }"
-                        size="3x"
-                        style="color: white"
                     />
-                    <p
-                        class="mb-2 text-center text-sm text-gray-500 dark:text-gray-400"
-                    >
-                        <span class="font-semibold">Click para buscar</span> el
-                        archivo a subir
-                    </p>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                        PDF (MAX. 2MB)
-                    </p>
+                    <div class="flex flex-col items-center">
+                        <p
+                            class="text-center text-sm text-gray-500 dark:text-gray-400"
+                        >
+                            <span class="font-semibold">Click para buscar</span>
+                            el archivo a subir
+                        </p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                            {{ fileType }} (MAX. 2MB)
+                        </p>
+                    </div>
                 </div>
                 <form @submit.prevent="handleSubmitFile">
                     <input
@@ -162,15 +164,24 @@ const handleOpenModal = () => {
                 />
             </Transition>
         </div>
-        <Modal @close="handleCloseModal" :show="showModal" :max-width="'lg'">
+
+        <Modal
+            @close="handleCloseDeleteModal"
+            :show="showDeleteModal"
+            :max-width="'lg'"
+        >
             <div class="p-8">
                 <div class="flex w-full flex-col items-center justify-center">
+                    <font-awesome-icon
+                        :icon="['fa', 'triangle-exclamation']"
+                        class="mb-4 text-8xl text-neutral-900"
+                    />
                     <h2 class="text-xl">¿Deseas eliminar el archivo?</h2>
                     <div class="mt-8 flex w-full justify-end gap-4">
                         <DangerButton @click="handleDeleteFile"
                             >Eliminar</DangerButton
                         >
-                        <SecondaryButton @click="handleCloseModal"
+                        <SecondaryButton @click="handleCloseDeleteModal"
                             >Cancelar</SecondaryButton
                         >
                     </div>

@@ -5,6 +5,8 @@ import InputError from "./InputError.vue";
 import { useForm } from "@inertiajs/vue3";
 import Modal from "./Modal.vue";
 import SecondaryButton from "./SecondaryButton.vue";
+import DeleteButton from "./DeleteButton.vue";
+import InfoButton from "./InfoButton.vue";
 
 const props = defineProps({
     uploadImageRoute: {
@@ -31,7 +33,7 @@ const resourceImageForm = useForm({
 
 const imageName = ref(null);
 const imageSize = ref(null);
-const showModal = ref(false);
+const showDeleteModal = ref(false);
 
 onMounted(() => {
     if (props.image) {
@@ -72,22 +74,22 @@ const handleSubmitImage = (image) => {
 
 const handleDeleteimage = () => {
     resourceImageForm.delete(props.deleteImageRoute, {
-        onSuccess: () => handleCloseModal(),
+        onSuccess: () => handleCloseDeleteModal(),
         onFinish: () => {
             resourceImageForm.reset("image");
             imageName.value = null;
             imageSize.value = null;
         },
     });
-    handleCloseModal();
+    handleCloseDeleteModal();
 };
 
-const handleCloseModal = () => {
-    showModal.value = false;
+const handleOpenDeleteModal = () => {
+    showDeleteModal.value = true;
 };
 
-const handleOpenModal = () => {
-    showModal.value = true;
+const handleCloseDeleteModal = () => {
+    showDeleteModal.value = false;
 };
 </script>
 
@@ -96,48 +98,48 @@ const handleOpenModal = () => {
         <div class="flex w-full flex-col items-center justify-center gap-y-2">
             <label
                 for="upload-image-input"
-                class="dark:hover:bg-bray-800 flex h-52 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                class="dark:hover:bg-bray-800 border-1 flex h-52 w-52 cursor-pointer flex-col items-center justify-center rounded-lg border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
             >
                 <div
                     v-if="imageName || image"
-                    class="flex flex-col items-center justify-center text-ellipsis px-2 pb-6 pt-5"
+                    class="flex h-full flex-col items-center justify-between text-ellipsis p-2"
                 >
                     <font-awesome-icon
-                        class="mb-2"
+                        class="h-[50px] text-white"
                         :icon="{ prefix: 'fa', iconName: 'image' }"
-                        size="3x"
-                        style="color: white"
                     />
-                    <span
-                        class="mb-2 break-all text-center text-sm font-semibold text-gray-500 dark:text-gray-400"
-                    >
-                        {{ imageName }}
-                    </span>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                        ({{ imageSize }})
-                    </p>
-                    <DangerButton @click="handleOpenModal" class="mt-4"
-                        >Eliminar archivo</DangerButton
-                    >
+                    <div class="flex flex-col items-center">
+                        <span
+                            class="mb-2 break-all text-center text-sm font-semibold text-gray-500 dark:text-gray-400"
+                        >
+                            {{ imageName }}
+                        </span>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                            ({{ imageSize }})
+                        </p>
+                    </div>
+                    <div class="flex w-full items-center justify-center gap-6">
+                        <DeleteButton @click="handleOpenDeleteModal" />
+                    </div>
                 </div>
                 <div
                     v-else
-                    class="flex flex-col items-center justify-center px-2 pb-6 pt-5"
+                    class="flex h-full flex-col items-center justify-center gap-4 text-ellipsis p-4"
                 >
                     <font-awesome-icon
-                        class="mb-2"
+                        class="h-[50px] text-white"
                         :icon="{ prefix: 'fa', iconName: 'image' }"
-                        size="3x"
-                        style="color: white"
                     />
-                    <span
-                        class="mb-2 text-center text-sm font-semibold text-gray-500 dark:text-gray-400"
-                    >
-                        Click para buscar el archivo a subir
-                    </span>
-                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                        Imágen (MAX. 2MB)
-                    </p>
+                    <div class="flex flex-col items-center">
+                        <span
+                            class="mb-2 text-center text-sm font-semibold text-gray-500 dark:text-gray-400"
+                        >
+                            Click para buscar la imágen a subir
+                        </span>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                            Imágen (MAX. 2MB)
+                        </p>
+                    </div>
                 </div>
                 <form @submit.prevent="handleSubmitImage">
                     <input
@@ -161,15 +163,24 @@ const handleOpenModal = () => {
                 />
             </Transition>
         </div>
-        <Modal @close="handleCloseModal" :show="showModal" :max-width="'lg'">
+
+        <Modal
+            @close="handleCloseDeleteModal"
+            :show="showDeleteModal"
+            :max-width="'lg'"
+        >
             <div class="p-8">
                 <div class="flex w-full flex-col items-center justify-center">
+                    <font-awesome-icon
+                        :icon="['fa', 'triangle-exclamation']"
+                        class="mb-4 text-8xl text-neutral-900"
+                    />
                     <h2 class="text-xl">¿Deseas eliminar el archivo?</h2>
                     <div class="mt-8 flex w-full justify-end gap-4">
                         <DangerButton @click="handleDeleteimage"
                             >Eliminar</DangerButton
                         >
-                        <SecondaryButton @click="handleCloseModal"
+                        <SecondaryButton @click="handleCloseDeleteModal"
                             >Cancelar</SecondaryButton
                         >
                     </div>

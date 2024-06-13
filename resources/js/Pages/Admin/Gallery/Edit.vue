@@ -1,8 +1,10 @@
 <script setup>
 import DangerButton from "@/Components/DangerButton.vue";
+import InputError from "@/Components/InputError.vue";
 import Modal from "@/Components/Modal.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
+import DeleteButton from "@/Components/DeleteButton.vue";
 import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
 
@@ -76,7 +78,7 @@ const handleSubmitImages = (images) => {
         <div class="grid grid-cols-1 gap-4 md:grid-cols-4">
             <label
                 for="upload-images-input"
-                class="group flex h-40 cursor-pointer flex-col items-center justify-center rounded-xl bg-white p-6"
+                class="group flex h-40 cursor-pointer flex-col items-center justify-center rounded-lg bg-white p-6"
             >
                 <form @submit.prevent="handleSubmitImages">
                     <input
@@ -93,11 +95,16 @@ const handleSubmitImages = (images) => {
                     :icon="{ prefix: 'fa', iconName: 'plus-circle' }"
                 />
                 <h1 class="font-bold">Agregar imágenes</h1>
+                <InputError
+                    v-if="'images.0' in imagesForm.errors"
+                    class="mt-2"
+                    message="Las imágenes deben pesar menos de 5MB"
+                />
             </label>
             <div
                 v-for="image in event.images"
                 :key="image.index"
-                class="group relative h-40 cursor-pointer overflow-hidden rounded-xl bg-white"
+                class="group relative h-40 cursor-pointer overflow-hidden rounded-lg bg-neutral-950"
             >
                 <!-- {{ image.path }} -->
                 <img
@@ -107,27 +114,40 @@ const handleSubmitImages = (images) => {
                             image.title,
                         )
                     "
-                    class="h-full w-full object-cover transition-all duration-200 group-hover:opacity-40"
+                    class="h-full w-full object-cover transition-all duration-200 group-hover:opacity-80"
                     :src="route('home') + '/storage/' + image.path"
                 />
-                <button
-                    @click="handleShowDeleteModal(image.id)"
-                    class="absolute right-4 top-4 block rounded-full text-5xl text-red-400 transition-all duration-200 hover:text-red-400 group-hover:block sm:hidden sm:text-red-300"
-                >
-                    <font-awesome-icon
-                        :icon="{ prefix: 'fa', iconName: 'circle-xmark' }"
-                    />
-                </button>
+                <!-- <DeleteButton /> -->
             </div>
         </div>
     </section>
+
     <Modal
         @close="showImageModal = false"
         :show="showImageModal"
-        :maxWidth="'5xl'"
+        :maxWidth="'3xl'"
     >
-        <div class="flex items-center justify-center">
-            <img loading="lazy" :src="modalImageUrl" :alt="modalImageAlt" />
+        <div
+            class="relative flex w-full items-center justify-center bg-neutral-700"
+        >
+            <button
+                @click="showImageModal = false"
+                class="absolute right-2 top-2 flex items-center rounded-full bg-neutral-800 bg-opacity-60 p-3"
+            >
+                <font-awesome-icon
+                    class="text-xl text-neutral-50"
+                    :icon="{
+                        prefix: 'fa',
+                        iconName: 'xmark',
+                    }"
+                />
+            </button>
+            <img
+                class="object-cover"
+                loading="lazy"
+                :src="modalImageUrl"
+                :alt="modalImageAlt"
+            />
         </div>
     </Modal>
 
@@ -138,8 +158,12 @@ const handleSubmitImages = (images) => {
     >
         <div class="p-8">
             <div class="flex w-full flex-col items-center justify-center">
+                <font-awesome-icon
+                    :icon="['fa', 'triangle-exclamation']"
+                    class="mb-4 text-8xl text-neutral-900"
+                />
                 <h2 class="text-xl">¿Deseas eliminar la imágen?</h2>
-                <div class="mt-8 flex w-full justify-end gap-4">
+                <div class="mt-4 flex w-full justify-end gap-4">
                     <DangerButton @click="handleDeleteImage()"
                         >Eliminar</DangerButton
                     >

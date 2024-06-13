@@ -99,9 +99,7 @@ const handleDeleteSoftware = () => {
                         />
                     </svg>
                 </template>
-                <template #title>{{
-                    software_resource.name
-                }}</template>
+                <template #title>{{ software_resource.name }}</template>
                 <template #subtitle></template>
                 <template #content>{{
                     software_resource.description

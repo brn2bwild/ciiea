@@ -122,6 +122,7 @@ const handleUpdateBook = () => {
                 :file="book.file"
                 :upload-file-route="route('admin.books.upload-file')"
                 :delete-file-route="route('admin.books.delete-file')"
+                file-type="PDF"
                 class="w-1/4"
             />
             <!-- <PdfViewer :url="book.file.path" /> -->
