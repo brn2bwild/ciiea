@@ -25,9 +25,7 @@ class EducationalSoftwareController extends Controller
         return Inertia::render('Innovation/Software/Show', [
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
-            'software' => Software::where('slug', $request->slug)
-                ->first()
-                ->toArray()
+            'software' => EducationalSoftwareResource::make(Software::where('slug', $request->slug)->first()),
         ]);
     }
 }

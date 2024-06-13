@@ -13,7 +13,10 @@ class EducationalSoftwareResource extends JsonResource
             'id' => $this->id,
             'slug' => $this->slug,
             'name' => $this->name,
-            'image' => $this->image
+            'description' => $this->description,
+            'url' => $this->url,
+            'image' => $this->image,
+            'file' => $this->file,
         ];
     }
 }

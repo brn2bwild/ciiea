@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SoftwareUpdateRequest;
+use App\Http\Requests\UpdateFileRequest;
 use App\Http\Requests\UploadSingleImageRequest;
+use App\Http\Resources\EducationalSoftwareResource;
 use App\Models\Software;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -18,6 +20,7 @@ class EducationalSoftwareController extends Controller
 	{
 		return Inertia::render('Admin/Software/Index', [
 			'software_resources' => fn () => Software::with('image')
+				->with('file')
 				->paginate(6)
 		]);
 	}
@@ -35,9 +38,7 @@ class EducationalSoftwareController extends Controller
 	public function edit(Request $request): Response
 	{
 		return Inertia::render('Admin/Software/Edit', [
-			'software' => fn () => Software::where('id', $request->id)
-				->with('image')
-				->first()
+			'software' => fn () => EducationalSoftwareResource::make(Software::where('id', $request->id)->first())
 		]);
 	}
 
@@ -76,5 +77,23 @@ class EducationalSoftwareController extends Controller
 		$software->detachImage();
 
 		return back();
+	}
+
+	public function uploadFile(UpdateFileRequest $request): RedirectResponse
+	{
+		$software = Software::findOrFail($request->input('id'));
+
+		$software->attachFile($request);
+
+		return Redirect::route('admin.software.edit', $request->input('id'));
+	}
+
+	public function deleteFile(Request $request): RedirectResponse
+	{
+		$software = Software::findOrFail($request->input('id'));
+
+		$software->detachFile();
+
+		return Redirect::back();
 	}
 }

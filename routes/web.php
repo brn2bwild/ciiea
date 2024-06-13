@@ -2,14 +2,12 @@
 
 use App\Http\Controllers\Admin\AdministratorController;
 use App\Http\Controllers\Admin\BookController;
-use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ConvocationController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\InvestigationController;
 use App\Http\Controllers\Admin\MagazineController;
 use App\Http\Controllers\Admin\PublicationController;
-use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\EducationalSoftwareController;
 use App\Http\Controllers\Admin\InfographicController;
@@ -70,6 +68,8 @@ Route::get('/reime', function () {
 Route::get('/contact', [GuestContactController::class, 'index'])->name('guest.contact.index');
 
 Route::get('/public/files/{file}', [FileController::class, 'showPublicFile'])->name('public.file.show');
+
+Route::get('/download/files/{file}', [FileController::class, 'downloadPublicFile'])->name('public.file.download');
 
 Route::get('/profile_images/{image}', [FileController::class, 'showProfileImage'])->name('profile-images.show');
 
@@ -142,6 +142,8 @@ Route::middleware(['auth', 'verified', 'role:admin'])
 		Route::delete('/software', [EducationalSoftwareController::class, 'destroy'])->name('admin.software.destroy');
 		Route::post('/software/image', [EducationalSoftwareController::class, 'uploadImage'])->name('admin.software.upload-image');
 		Route::delete('/software/image', [EducationalSoftwareController::class, 'deleteImage'])->name('admin.software.delete-image');
+		Route::post('/software/file', [EducationalSoftwareController::class, 'uploadFile'])->name('admin.software.upload-file');
+		Route::delete('/software/file', [EducationalSoftwareController::class, 'deleteFile'])->name('admin.software.delete-file');
 
 		Route::get('/infographics', [InfographicController::class, 'index'])->name('admin.infographics.index');
 		Route::post('/infographics', [InfographicController::class, 'store'])->name('admin.infographics.store');
