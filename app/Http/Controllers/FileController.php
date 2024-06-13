@@ -21,12 +21,17 @@ class FileController extends Controller
 
 	public function showProfileImage(Request $request)
 	{
-		$content = Storage::get('profile_images/'. $request->image);
+		$content = Storage::get('profile_images/' . $request->image);
 
-		$type = Storage::mimeType('profile_images/'. $request->image);
+		$type = Storage::mimeType('profile_images/' . $request->image);
 
 		return Response::make($content, 200, [
 			'Content-Type' => $type,
 		]);
+	}
+
+	public function downloadPublicFile(Request $request)
+	{
+		return Storage::download('public/files/' . $request->file, 'file'.substr($request->file, -4));
 	}
 }
