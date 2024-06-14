@@ -46,13 +46,11 @@ const handleClosePdfModal = () => {
                 class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
                 <div class="w-1/2 p-4">
-                    <h5 class="font-sans text-neutral-500">
+                    <h3 class="text-neutral-500">
                         Fecha publicación:
                         {{ props.magazines.data[0].publicated_at }}
-                    </h5>
-                    <h1
-                        class="mt-2 font-sans text-4xl font-extrabold text-neutral-700"
-                    >
+                    </h3>
+                    <h1 class="mt-2 text-4xl font-extrabold text-neutral-700">
                         {{ props.magazines.data[0].name }}
                     </h1>
                     <button
@@ -111,64 +109,28 @@ const handleClosePdfModal = () => {
                         class="w-full"
                     />
                 </template>
-                <template #content>
-                    <h5 class="font-sans text-sm text-neutral-100">
-                        Fecha de publicación: {{ magazine.publicated_at }}
-                    </h5>
+                <template #title>
                     <h1
-                        class="font-sans text-xl font-extrabold text-neutral-50 line-clamp-2"
+                        class="line-clamp-2 text-xl font-extrabold text-neutral-50"
                     >
                         {{ magazine.name }}
                     </h1>
-                    <button
-                        v-if="magazine.file"
-                        @click="handleOpenPdfModal(magazine.file.path)"
-                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
-                    >
-                        Leer más
-                    </button>
+                </template>
+                <template #content>
+                    <h3 class="text-sm text-neutral-100">
+                        Fecha de publicación: {{ magazine.publicated_at }}
+                    </h3>
+                    <div class="mt-2 flex items-center justify-center">
+                        <button
+                            v-if="magazine.file"
+                            @click="handleOpenPdfModal(magazine.file.path)"
+                            class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                        >
+                            Leer más
+                        </button>
+                    </div>
                 </template>
             </Card>
-
-            <!-- <div
-                v-for="magazine in props.magazines.data"
-                :key="magazine.index"
-                class="flex w-full flex-col items-start justify-start overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
-            >
-                <div
-                    class="mb-2 flex h-60 w-full items-start justify-center overflow-hidden object-contain"
-                >
-                    <div
-                        v-if="magazine.file !== null"
-                        class="-m-[160px] scale-[60%]"
-                    >
-                        <PdfThumbnail :url="magazine.file.path" />
-                    </div>
-                    <img
-                        v-else
-                        src="/storage/images/bookshelve-optimized.jpg"
-                        alt="book-cover"
-                        class="w-full"
-                    />
-                </div>
-                <div
-                    class="flex h-48 w-full flex-col items-start justify-between gap-0 p-4"
-                >
-                    <h5 class="font-sans text-sm text-neutral-500">
-                        Fecha de publicación: {{ magazine.publicated_at }}
-                    </h5>
-                    <h1 class="font-sans text-xl font-extrabold">
-                        {{ magazine.name }}
-                    </h1>
-                    <button
-                        v-if="magazine.file"
-                        @click="handleOpenPdfModal(magazine.file.path)"
-                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
-                    >
-                        Leer más
-                    </button>
-                </div>
-            </div> -->
         </section>
         <Pagination
             :links="props.magazines.meta.links"

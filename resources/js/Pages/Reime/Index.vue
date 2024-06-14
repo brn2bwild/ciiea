@@ -33,7 +33,7 @@ const props = defineProps({
                         class="mr-4 h-12 w-12"
                     />
                     <div class="flex items-center">
-                        <h5 class="font-bold">Ciro Gómez Leyva</h5>
+                        <h3 class="font-bold">Ciro Gómez Leyva</h3>
                     </div>
                 </div>
                 <div
@@ -45,7 +45,7 @@ const props = defineProps({
                         class="mr-4 h-12 w-12"
                     />
                     <div class="flex items-center">
-                        <h5 class="font-bold">Ernesto Guzmán Sánchez</h5>
+                        <h3 class="font-bold">Ernesto Guzmán Sánchez</h3>
                     </div>
                 </div>
                 <div
@@ -57,7 +57,7 @@ const props = defineProps({
                         class="mr-4 h-12 w-12"
                     />
                     <div class="flex items-center">
-                        <h5 class="font-bold">Jaime López Méndez</h5>
+                        <h3 class="font-bold">Jaime López Méndez</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ const props = defineProps({
                     <div class="flex items-center justify-start">
                         <h1 class="mr-4 text-xl font-bold">Cine debate</h1>
                         <h3
-                            @click.prevent-default="saludar"
+                            @click.prevent="saludar"
                             class="mr-2 text-neutral-600 hover:underline"
                         >
                             Publicado por Daniel Pérez Flores
@@ -109,7 +109,7 @@ const props = defineProps({
                     <div class="flex items-center justify-start">
                         <h1 class="mr-4 text-xl font-bold">Cine debate</h1>
                         <h3
-                            @click.prevent-default="saludar"
+                            @click.prevent="saludar"
                             class="mr-2 text-neutral-600 hover:underline"
                         >
                             Publicado por Daniel Pérez Flores
@@ -148,7 +148,7 @@ const props = defineProps({
                     <div class="flex items-center justify-start">
                         <h1 class="mr-4 text-xl font-bold">Cine debate</h1>
                         <h3
-                            @click.prevent-default="saludar"
+                            @click="saludar"
                             class="mr-2 text-neutral-600 hover:underline"
                         >
                             Publicado por Daniel Pérez Flores
@@ -187,7 +187,7 @@ const props = defineProps({
                     <div class="flex items-center justify-start">
                         <h1 class="mr-4 text-xl font-bold">Cine debate</h1>
                         <h3
-                            @click.prevent-default="saludar"
+                            @click.prevent="saludar"
                             class="mr-2 text-neutral-600 hover:underline"
                         >
                             Publicado por Daniel Pérez Flores
@@ -229,19 +229,19 @@ const props = defineProps({
                     class="mt-4 w-full cursor-pointer rounded-lg bg-neutral-200 px-4 py-2"
                 >
                     <div class="mb-2 flex justify-between">
-                        <h5 class="font-bold">Publicación 1</h5>
-                        <h5>
+                        <h3 class="font-bold">Publicación 1</h3>
+                        <h3>
                             <font-awesome-icon
                                 :icon="{ prefix: 'fa', iconName: 'comment' }"
                             />
                             15
-                        </h5>
-                        <h5>
+                        </h3>
+                        <h3>
                             <font-awesome-icon
                                 :icon="{ prefix: 'fa', iconName: 'heart' }"
                             />
                             30
-                        </h5>
+                        </h3>
                     </div>
                     <p>
                         Lorem ipsum dolor, sit amet consectetur adipisicing
@@ -253,19 +253,19 @@ const props = defineProps({
                     class="mt-4 w-full cursor-pointer rounded-lg bg-neutral-200 px-4 py-2"
                 >
                     <div class="mb-2 flex justify-between">
-                        <h5 class="font-bold">Publicación 2</h5>
-                        <h5>
+                        <h3 class="font-bold">Publicación 2</h3>
+                        <h3>
                             <font-awesome-icon
                                 :icon="{ prefix: 'fa', iconName: 'comment' }"
                             />
                             15
-                        </h5>
-                        <h5>
+                        </h3>
+                        <h3>
                             <font-awesome-icon
                                 :icon="{ prefix: 'fa', iconName: 'heart' }"
                             />
                             30
-                        </h5>
+                        </h3>
                     </div>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -276,19 +276,19 @@ const props = defineProps({
                     class="mt-4 w-full cursor-pointer rounded-lg bg-neutral-200 px-4 py-2"
                 >
                     <div class="mb-2 flex justify-between">
-                        <h5 class="font-bold">Publicación 3</h5>
-                        <h5>
+                        <h3 class="font-bold">Publicación 3</h3>
+                        <h3>
                             <font-awesome-icon
                                 :icon="{ prefix: 'fa', iconName: 'comment' }"
                             />
                             15
-                        </h5>
-                        <h5>
+                        </h3>
+                        <h3>
                             <font-awesome-icon
                                 :icon="{ prefix: 'fa', iconName: 'heart' }"
                             />
                             30
-                        </h5>
+                        </h3>
                     </div>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing

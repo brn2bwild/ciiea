@@ -29,10 +29,10 @@ const props = defineProps({
                 class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
                 <div class="flex w-1/2 flex-col gap-4 p-4">
-                    <h5 class="font-sans text-neutral-500">
+                    <h3 class="font-sans text-neutral-500">
                         {{ props.convocations.data[0].date }} -
                         {{ props.convocations.data[0].time }}
-                    </h5>
+                    </h3>
                     <h1
                         class="mt-2 line-clamp-2 font-sans text-3xl font-extrabold text-neutral-700"
                     >

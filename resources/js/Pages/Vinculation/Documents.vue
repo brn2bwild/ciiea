@@ -48,51 +48,31 @@ const handleClosePdfModal = () => {
                         alt="documents-cover"
                     />
                 </template>
-                <template #content>
+                <template #title>
                     <h1
                         class="mr-4 line-clamp-1 w-full text-xl font-bold text-neutral-50"
                     >
                         {{ resource.name }}
                     </h1>
+                </template>
+                <template #content>
                     <p class="line-clamp-2 text-neutral-100">
                         {{ resource.description }}
                     </p>
                     <h3 class="text-sm text-neutral-100">
                         Compartido {{ resource.created_at }}
                     </h3>
-                    <button
-                        v-if="resource.file"
-                        @click="handleShowPdfModal(resource.file.path)"
-                        class="rounded-lg bg-sky-500 px-4 py-2 text-md font-medium text-neutral-50"
-                    >
-                        Ver
-                    </button>
+                    <div class="mt-2 flex items-center justify-center">
+                        <button
+                            v-if="resource.file"
+                            @click="handleShowPdfModal(resource.file.path)"
+                            class="text-md rounded-lg bg-sky-500 px-4 py-2 font-medium text-neutral-50"
+                        >
+                            Ver más
+                        </button>
+                    </div>
                 </template>
             </Card>
-            <!-- <div
-                v-for="resource in resources.data"
-                :key="resource.index"
-                class="flex w-full flex-col items-start justify-center rounded-2xl bg-white shadow-lg shadow-slate-100"
-            >
-                <div
-                    class="flex h-full w-full flex-col items-start justify-between gap-2 p-4"
-                >
-                    <h1 class="mr-4 w-full text-xl font-bold text-neutral-900">
-                        {{ resource.name }}
-                    </h1>
-                    <p>{{ resource.description.substr(0, 100) }}...</p>
-                    <h3 class="text-sm text-neutral-600">
-                        Compartido {{ resource.created_at }}
-                    </h3>
-                    <button
-                        v-if="resource.file"
-                        @click="handleShowPdfModal(resource.file.path)"
-                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
-                    >
-                        Ver
-                    </button>
-                </div>
-            </div> -->
         </section>
         <Pagination
             :links="props.resources.meta.links"

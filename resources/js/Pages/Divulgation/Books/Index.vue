@@ -47,10 +47,10 @@ const handleClosePdfModal = () => {
                 class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
                 <div class="w-1/2 p-4">
-                    <h5 class="font-sans text-neutral-500">
+                    <h3 class="font-sans text-neutral-500">
                         Fecha de publicación:
                         {{ props.books.data[0].publicated_at }}
-                    </h5>
+                    </h3>
                     <h1
                         class="mt-2 font-sans text-3xl font-extrabold text-neutral-700"
                     >
@@ -108,25 +108,30 @@ const handleClosePdfModal = () => {
                         class="w-full"
                     />
                 </template>
-                <template #content>
-                    <h5 class="font-sans text-sm text-neutral-100">
-                        Fecha de publicación: {{ book.publicated_at }}
-                    </h5>
+
+                <template #title>
                     <h1
-                        class="font-sans text-xl font-medium text-neutral-50 line-clamp-2"
+                        class="line-clamp-2 font-sans text-xl font-bold text-neutral-50"
                     >
                         {{ book.title }}
                     </h1>
+                </template>
+                <template #content>
                     <h2 class="text-md font-medium text-neutral-100">
                         {{ book.authors }}
                     </h2>
-                    <button
-                        v-if="book.file"
-                        @click="handleOpenPdfModal(book.file.path)"
-                        class="rounded-lg bg-sky-500 px-4 py-1 text-lg font-bold text-neutral-50"
-                    >
-                        Leer más
-                    </button>
+                    <h3 class="text-sm text-neutral-100">
+                        Fecha de publicación: {{ book.publicated_at }}
+                    </h3>
+                    <div class="mt-2 flex items-center justify-center">
+                        <button
+                            v-if="book.file"
+                            @click="handleOpenPdfModal(book.file.path)"
+                            class="rounded-lg bg-sky-500 px-4 py-1 text-lg font-bold text-neutral-50"
+                        >
+                            Leer más
+                        </button>
+                    </div>
                 </template>
             </Card>
         </section>

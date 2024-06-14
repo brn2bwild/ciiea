@@ -59,55 +59,27 @@ const handleCloseImageModal = () => {
                         alt="infographic"
                     />
                 </template>
-                <template #content>
+                <template #title>
                     <h1
-                        class="font-sans text-lg font-extrabold text-neutral-50 line-clamp-3"
+                        class="line-clamp-3 font-sans text-lg font-extrabold text-neutral-50"
                     >
                         {{ infographic.title }}
                     </h1>
-                    <button
-                        v-if="infographic.image"
-                        @click="handleOpenImageModal(infographic.image.path)"
-                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
-                    >
-                        Ver
-                    </button>
+                </template>
+                <template #content>
+                    <div class="mt-2 flex items-center justify-center">
+                        <button
+                            v-if="infographic.image"
+                            @click="
+                                handleOpenImageModal(infographic.image.path)
+                            "
+                            class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                        >
+                            Ver más
+                        </button>
+                    </div>
                 </template>
             </Card>
-            <!-- <div
-                v-for="infographic in props.infographics.data"
-                :key="infographic.index"
-                class="flex w-full flex-col items-start justify-start overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
-            >
-                <div class="mb-2 h-60 w-full overflow-hidden">
-                    <img
-                        class="object-cover object-center"
-                        :src="
-                            '/storage/' +
-                            (infographic.image
-                                ? infographic.image.path
-                                : 'images/bookshelve-optimized.jpg')
-                        "
-                        alt="infographic"
-                    />
-                </div>
-                <div
-                    class="flex h-36 w-full flex-col items-start justify-between gap-0 p-4"
-                >
-                    <h1
-                        class="font-sans text-lg font-extrabold text-neutral-700"
-                    >
-                        {{ infographic.title }}
-                    </h1>
-                    <button
-                        v-if="infographic.image"
-                        @click="handleOpenImageModal(infographic.image.path)"
-                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
-                    >
-                        Ver
-                    </button>
-                </div>
-            </div> -->
         </section>
         <Pagination
             :links="props.infographics.meta.links"

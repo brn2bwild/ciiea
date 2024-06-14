@@ -46,9 +46,9 @@ const handleClosePdfModal = () => {
                 class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
                 <div class="w-1/2 p-4">
-                    <h5 class="font-sans text-neutral-500">
+                    <h3 class="font-sans text-neutral-500">
                         {{ props.investigations.data[0].publicated_at }}
-                    </h5>
+                    </h3>
                     <h1
                         class="mt-2 font-sans text-4xl font-extrabold text-neutral-700"
                     >
@@ -113,27 +113,31 @@ const handleClosePdfModal = () => {
                         class="w-full"
                     />
                 </template>
-                <template #content>
-                    <h5 class="font-sans text-sm text-neutral-100">
-                        Fecha de publicación: {{ investigation.publicated_at }}
-                    </h5>
+                <template #title>
                     <h1
                         class="line-clamp-1 font-sans text-xl font-extrabold text-neutral-50"
                     >
                         {{ investigation.title }}
                     </h1>
+                </template>
+                <template #content>
                     <h2
                         class="text-md line-clamp-2 font-medium text-neutral-100"
                     >
                         {{ investigation.short_description.substr(0, 50) }}
                     </h2>
-                    <button
-                        v-if="investigation.file"
-                        @click="handleOpenPdfModal(investigation.file.path)"
-                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
-                    >
-                        Leer más
-                    </button>
+                    <h3 class="font-sans text-sm text-neutral-100">
+                        Fecha de publicación: {{ investigation.publicated_at }}
+                    </h3>
+                    <div class="mt-2 flex items-center justify-center">
+                        <button
+                            v-if="investigation.file"
+                            @click="handleOpenPdfModal(investigation.file.path)"
+                            class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                        >
+                            Leer más
+                        </button>
+                    </div>
                 </template>
             </Card>
         </section>
