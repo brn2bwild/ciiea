@@ -65,7 +65,7 @@ class VinculationDocumentController extends Controller
 
 		$resource->attachFile($request);
 
-		return Redirect::route('admin.resources.edit', $request->input('id'));
+		return Redirect::route('admin.vinculation-documents.edit', $request->input('id'));
 	}
 
 	public function deleteFile(Request $request): RedirectResponse
