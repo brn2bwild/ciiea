@@ -87,29 +87,38 @@ const props = defineProps({
             <div
                 v-for="convocation in props.convocations.data"
                 :key="convocation.index"
-                class="flex w-full flex-col items-start justify-center rounded-xl bg-white shadow-lg shadow-slate-100"
+                class="flex w-full flex-col items-start justify-center rounded-xl bg-indigo-900 bg-opacity-95 shadow-lg shadow-slate-100"
             >
                 <div
                     class="flex h-full w-full flex-col items-start justify-between gap-2 p-4"
                 >
-                    <h3 class="text-sm text-neutral-600">
+                    <h3 class="text-md text-neutral-100">
                         {{ convocation.date }} - {{ convocation.time }}
                     </h3>
-                    <h1 class="mr-4 w-full text-xl font-bold text-neutral-900">
+                    <h1
+                        class="mr-4 line-clamp-2 w-full text-xl font-bold text-neutral-50"
+                    >
                         {{ convocation.name }}
                     </h1>
-                    <p>{{ convocation.description.substr(0, 100) }}...</p>
-                    <h3 class="text-sm text-neutral-600">
+                    <p class="line-clamp-3 text-neutral-100">
+                        {{ convocation.description }}
+                    </p>
+                    <h3 class="text-sm text-neutral-100">
                         Compartido {{ convocation.created_at_for_humans }}
                     </h3>
-                    <Link
-                        :href="
-                            route('guest.convocations.show', convocation.slug)
-                        "
-                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
-                    >
-                        Leer más
-                    </Link>
+                    <div class="flex w-full justify-end">
+                        <Link
+                            :href="
+                                route(
+                                    'guest.convocations.show',
+                                    convocation.slug,
+                                )
+                            "
+                            class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                        >
+                            Leer más
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>

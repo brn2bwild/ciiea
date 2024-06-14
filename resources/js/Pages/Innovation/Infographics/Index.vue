@@ -1,4 +1,5 @@
 <script setup>
+import Card from "@/Components/Card.vue";
 import Modal from "@/Components/Modal.vue";
 import Pagination from "@/Components/Pagination.vue";
 import HomeLayout from "@/Layouts/HomeLayout.vue";
@@ -42,14 +43,43 @@ const handleCloseImageModal = () => {
             <h1 class="text-xl font-bold text-neutral-600">Infografías</h1>
         </section>
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
-            <div
+            <Card
+                v-for="infographic in props.infographics.data"
+                :key="infographic.index"
+            >
+                <template #thumbnail>
+                    <img
+                        class="object-cover object-center"
+                        :src="
+                            '/storage/' +
+                            (infographic.image
+                                ? infographic.image.path
+                                : 'images/bookshelve-optimized.jpg')
+                        "
+                        alt="infographic"
+                    />
+                </template>
+                <template #content>
+                    <h1
+                        class="font-sans text-lg font-extrabold text-neutral-50 line-clamp-3"
+                    >
+                        {{ infographic.title }}
+                    </h1>
+                    <button
+                        v-if="infographic.image"
+                        @click="handleOpenImageModal(infographic.image.path)"
+                        class="rounded-xl bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                    >
+                        Ver
+                    </button>
+                </template>
+            </Card>
+            <!-- <div
                 v-for="infographic in props.infographics.data"
                 :key="infographic.index"
                 class="flex w-full flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
             >
-                <div
-                    class="mb-2 h-60 w-full overflow-hidden"
-                >
+                <div class="mb-2 h-60 w-full overflow-hidden">
                     <img
                         class="object-cover object-center"
                         :src="
@@ -77,7 +107,7 @@ const handleCloseImageModal = () => {
                         Ver
                     </button>
                 </div>
-            </div>
+            </div> -->
         </section>
         <Pagination
             :links="props.infographics.meta.links"

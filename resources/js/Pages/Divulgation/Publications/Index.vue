@@ -1,4 +1,5 @@
 <script setup>
+import Card from "@/Components/Card.vue";
 import Modal from "@/Components/Modal.vue";
 import Pagination from "@/Components/Pagination.vue";
 import PdfThumbnail from "@/Components/PdfThumbnail.vue";
@@ -46,7 +47,8 @@ const handleClosePdfModal = () => {
             >
                 <div class="w-1/2 p-4">
                     <h5 class="font-sans text-neutral-500">
-                        Fecha de publicación: {{ props.publications.data[0].publicated_at }}
+                        Fecha de publicación:
+                        {{ props.publications.data[0].publicated_at }}
                     </h5>
                     <h1
                         class="mt-2 font-sans text-4xl font-extrabold text-neutral-700"
@@ -90,14 +92,11 @@ const handleClosePdfModal = () => {
             </h1>
         </section>
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
-            <div
+            <Card
                 v-for="publication in props.publications.data"
                 :key="publication.index"
-                class="flex w-full flex-col items-start justify-center overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
             >
-                <div
-                    class="mb-2 flex h-60 w-full items-start justify-center overflow-hidden object-contain"
-                >
+                <template #thumbnail>
                     <div
                         v-if="publication.file !== null"
                         class="-m-[160px] scale-[60%]"
@@ -107,17 +106,17 @@ const handleClosePdfModal = () => {
                     <img
                         v-else
                         src="/storage/images/bookshelve-optimized.jpg"
-                        alt="book-cover"
+                        alt="publication-cover"
                         class="w-full"
                     />
-                </div>
-                <div
-                    class="flex h-44 w-full flex-col items-start justify-between gap-0 p-4"
-                >
-                    <h5 class="font-sans text-sm text-neutral-500">
+                </template>
+                <template #content>
+                    <h5 class="font-sans text-sm text-neutral-100">
                         Fecha de publicacion: {{ publication.publicated_at }}
                     </h5>
-                    <h1 class="font-sans text-xl font-extrabold">
+                    <h1
+                        class="line-clamp-2 font-sans text-xl font-extrabold text-neutral-50"
+                    >
                         {{ publication.title }}
                     </h1>
                     <button
@@ -127,8 +126,8 @@ const handleClosePdfModal = () => {
                     >
                         Leer más
                     </button>
-                </div>
-            </div>
+                </template>
+            </Card>
         </section>
         <Pagination
             :links="props.publications.meta.links"

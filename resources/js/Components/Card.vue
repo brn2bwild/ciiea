@@ -1,6 +1,6 @@
 <template>
     <div class="relative h-[380px] overflow-hidden rounded-2xl flex justify-center">
-        <div class="absolute left-0 top-0">
+        <div class="absolute left-0 top-0 h-full w-full">
             <slot name="thumbnail" />
         </div>
         <div class="absolute bottom-2 p-2">

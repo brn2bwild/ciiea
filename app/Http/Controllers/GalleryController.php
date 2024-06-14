@@ -14,7 +14,7 @@ class GalleryController extends Controller
     public function index(): Response
     {
         return Inertia::render('Gallery/Index', [
-            'events' => EventResource::collection(Event::paginate(10)),
+            'events' => EventResource::collection(Event::paginate(9)),
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
         ]);

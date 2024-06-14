@@ -1,4 +1,5 @@
 <script setup>
+import Card from "@/Components/Card.vue";
 import Modal from "@/Components/Modal.vue";
 import Pagination from "@/Components/Pagination.vue";
 import PdfThumbnail from "@/Components/PdfThumbnail.vue";
@@ -93,14 +94,11 @@ const handleClosePdfModal = () => {
             </h1>
         </section>
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
-            <div
+            <Card
                 v-for="investigation in props.investigations.data"
                 :key="investigation.index"
-                class="flex w-full flex-col items-start justify-center overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
             >
-                <div
-                    class="mb-2 flex h-60 w-full items-start justify-center overflow-hidden object-contain"
-                >
+                <template #thumbnail>
                     <div
                         v-if="investigation.file !== null"
                         class="-m-[160px] scale-[60%]"
@@ -110,20 +108,22 @@ const handleClosePdfModal = () => {
                     <img
                         v-else
                         src="/storage/images/bookshelve-optimized.jpg"
-                        alt="book-cover"
+                        alt="investigations-cover"
                         class="w-full"
                     />
-                </div>
-                <div
-                    class="flex h-52 w-full flex-col items-start justify-between gap-0 p-4"
-                >
-                    <h5 class="font-sans text-sm text-neutral-500">
-                        {{ investigation.publicated_at }}
+                </template>
+                <template #content>
+                    <h5 class="font-sans text-sm text-neutral-100">
+                        Fecha de publicación: {{ investigation.publicated_at }}
                     </h5>
-                    <h1 class="font-sans text-xl font-extrabold">
+                    <h1
+                        class="line-clamp-1 font-sans text-xl font-extrabold text-neutral-50"
+                    >
                         {{ investigation.title }}
                     </h1>
-                    <h2 class="text-md font-medium text-neutral-600">
+                    <h2
+                        class="text-md line-clamp-2 font-medium text-neutral-100"
+                    >
                         {{ investigation.short_description.substr(0, 50) }}
                     </h2>
                     <button
@@ -133,8 +133,8 @@ const handleClosePdfModal = () => {
                     >
                         Leer más
                     </button>
-                </div>
-            </div>
+                </template>
+            </Card>
         </section>
         <Pagination
             :links="props.investigations.meta.links"

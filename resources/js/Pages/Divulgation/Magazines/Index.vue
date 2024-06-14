@@ -1,4 +1,5 @@
 <script setup>
+import Card from "@/Components/Card.vue";
 import Modal from "@/Components/Modal.vue";
 import Pagination from "@/Components/Pagination.vue";
 import PdfThumbnail from "@/Components/PdfThumbnail.vue";
@@ -46,7 +47,8 @@ const handleClosePdfModal = () => {
             >
                 <div class="w-1/2 p-4">
                     <h5 class="font-sans text-neutral-500">
-                        Fecha publicación: {{ props.magazines.data[0].publicated_at }}
+                        Fecha publicación:
+                        {{ props.magazines.data[0].publicated_at }}
                     </h5>
                     <h1
                         class="mt-2 font-sans text-4xl font-extrabold text-neutral-700"
@@ -56,7 +58,9 @@ const handleClosePdfModal = () => {
                     <button
                         v-if="props.magazines.data[0].file"
                         @click="
-                            handleOpenPdfModal(props.magazines.data[0].file.path)
+                            handleOpenPdfModal(
+                                props.magazines.data[0].file.path,
+                            )
                         "
                         class="mt-4 rounded-xl bg-sky-500 px-4 py-2 font-bold text-neutral-50"
                     >
@@ -70,7 +74,9 @@ const handleClosePdfModal = () => {
                         v-if="props.magazines.data[0].file !== null"
                         class="-m-[20px] scale-90"
                     >
-                        <PdfThumbnail :url="props.magazines.data[0].file.path" />
+                        <PdfThumbnail
+                            :url="props.magazines.data[0].file.path"
+                        />
                     </div>
                     <img
                         v-else
@@ -86,7 +92,44 @@ const handleClosePdfModal = () => {
             </h1>
         </section>
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
-            <div
+            <Card
+                v-for="magazine in props.magazines.data"
+                :key="magazine.index"
+            >
+                <template #thumbnail>
+                    <div
+                        v-if="magazine.file !== null"
+                        class="-m-[160px] scale-[60%]"
+                    >
+                        <PdfThumbnail :url="magazine.file.path" />
+                    </div>
+                    <img
+                        v-else
+                        src="/storage/images/bookshelve-optimized.jpg"
+                        alt="magazine-cover"
+                        class="w-full"
+                    />
+                </template>
+                <template #content>
+                    <h5 class="font-sans text-sm text-neutral-100">
+                        Fecha de publicación: {{ magazine.publicated_at }}
+                    </h5>
+                    <h1
+                        class="font-sans text-xl font-extrabold text-neutral-50 line-clamp-2"
+                    >
+                        {{ magazine.name }}
+                    </h1>
+                    <button
+                        v-if="magazine.file"
+                        @click="handleOpenPdfModal(magazine.file.path)"
+                        class="rounded-xl bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                    >
+                        Leer más
+                    </button>
+                </template>
+            </Card>
+
+            <!-- <div
                 v-for="magazine in props.magazines.data"
                 :key="magazine.index"
                 class="flex w-full flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
@@ -124,7 +167,7 @@ const handleClosePdfModal = () => {
                         Leer más
                     </button>
                 </div>
-            </div>
+            </div> -->
         </section>
         <Pagination
             :links="props.magazines.meta.links"

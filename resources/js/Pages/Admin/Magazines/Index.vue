@@ -100,14 +100,14 @@ const handleDeleteMagazine = () => {
                 <template #title>{{ magazine.name }}...</template>
                 <template #subtitle>{{ magazine.publicated_at }}</template>
                 <template #content>
-                    <div class="flex justify-center gap-2">
+                    <!-- <div class="flex justify-center gap-2">
                         <span class="rounded-full bg-sky-200 px-1"
                             >Ciencia</span
                         >
                         <span class="rounded-full bg-sky-200 px-1"
                             >Educación</span
                         >
-                    </div>
+                    </div> -->
                 </template>
             </ResourceCard>
         </section>

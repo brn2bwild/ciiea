@@ -5,6 +5,7 @@ import PdfViewer from "@/Components/PdfViewer.vue";
 import Modal from "@/Components/Modal.vue";
 import { ref } from "vue";
 import Pagination from "@/Components/Pagination.vue";
+import Card from "@/Components/Card.vue";
 
 defineOptions({
     layout: HomeLayout,
@@ -47,7 +48,8 @@ const handleClosePdfModal = () => {
             >
                 <div class="w-1/2 p-4">
                     <h5 class="font-sans text-neutral-500">
-                        Fecha de publicación: {{ props.books.data[0].publicated_at }}
+                        Fecha de publicación:
+                        {{ props.books.data[0].publicated_at }}
                     </h5>
                     <h1
                         class="mt-2 font-sans text-3xl font-extrabold text-neutral-700"
@@ -84,18 +86,14 @@ const handleClosePdfModal = () => {
                 </div>
             </div>
         </section>
+
         <section class="w-full pb-6">
             <h1 class="text-xl font-bold text-neutral-600">Libros recientes</h1>
         </section>
+
         <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
-            <div
-                v-for="book in props.books.data"
-                :key="book.index"
-                class="flex w-full flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
-            >
-                <div
-                    class="mb-2 flex h-60 w-full items-start justify-center overflow-hidden object-contain"
-                >
+            <Card v-for="book in props.books.data" :key="book.index">
+                <template #thumbnail>
                     <div
                         v-if="book.file !== null"
                         class="-m-[160px] scale-[60%]"
@@ -108,31 +106,30 @@ const handleClosePdfModal = () => {
                         alt="book-cover"
                         class="w-full"
                     />
-                </div>
-                <div
-                    class="flex h-52 w-full flex-col items-start justify-between gap-0 p-4"
-                >
-                    <h5 class="font-sans text-sm text-neutral-500">
+                </template>
+                <template #content>
+                    <h5 class="font-sans text-sm text-neutral-100">
                         Fecha de publicación: {{ book.publicated_at }}
                     </h5>
                     <h1
-                        class="font-sans text-lg font-extrabold text-neutral-700"
+                        class="font-sans text-xl font-medium text-neutral-50 line-clamp-2"
                     >
                         {{ book.title }}
                     </h1>
-                    <h2 class="text-md font-medium text-neutral-600">
+                    <h2 class="text-md font-medium text-neutral-100">
                         {{ book.authors }}
                     </h2>
                     <button
                         v-if="book.file"
                         @click="handleOpenPdfModal(book.file.path)"
-                        class="rounded-xl bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                        class="rounded-xl bg-sky-500 px-4 py-1 text-lg font-bold text-neutral-50"
                     >
                         Leer más
                     </button>
-                </div>
-            </div>
+                </template>
+            </Card>
         </section>
+
         <Pagination
             :links="props.books.meta.links"
             class="mt-8 flex justify-center"
