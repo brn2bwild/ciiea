@@ -24,7 +24,7 @@ const openModal = () => {
 <template>
     <div class="group relative">
         <div
-            class="flex justify-between gap-6 rounded-xl bg-white p-2 shadow-md transition-all duration-200 group-hover:bg-neutral-200 group-hover:ring-2"
+            class="flex justify-between gap-6 rounded-2xl bg-white p-2 shadow-md transition-all duration-200 group-hover:bg-neutral-200 group-hover:ring-2"
         >
             <div
                 class="flex h-16 w-20 items-center justify-center overflow-hidden rounded-full"

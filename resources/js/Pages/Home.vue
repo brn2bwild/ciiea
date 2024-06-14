@@ -24,7 +24,7 @@ const props = defineProps({
         />
     </section>
     <section
-        class="flex w-full justify-center bg-rose-800 py-14 text-center text-neutral-50"
+        class="flex w-full h-[320px] justify-center items-center bg-rose-900 py-14 text-center text-neutral-50"
     >
         <div class="w-2/3">
             <h1 class="w-full text-2xl font-bold">¿Qué es el CIIEA?</h1>
@@ -37,10 +37,10 @@ const props = defineProps({
             </p>
         </div>
     </section>
-    <section class="min-h-1/2 w-full py-10 pb-16 sm:px-40">
-        <div class="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
+    <section class="w-full flex h-[440px] justify-center items-center py-10 pb-16 sm:px-32">
+        <div class="grid w-full grid-cols-1 gap-x-16 md:grid-cols-3">
             <div
-                class="flex min-h-full flex-col items-center justify-center rounded-xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
             >
                 <span class="text-2xl font-bold text-neutral-800"
                     >Objetivo</span
@@ -53,7 +53,7 @@ const props = defineProps({
                 </p>
             </div>
             <div
-                class="flex min-h-full flex-col items-center justify-center rounded-xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
             >
                 <span class="text-2xl font-bold text-neutral-800">Misión</span>
                 <p
@@ -68,7 +68,7 @@ const props = defineProps({
                 </p>
             </div>
             <div
-                class="flex min-h-full flex-col items-center justify-center rounded-xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
             >
                 <span class="text-2xl font-bold text-neutral-800">Visión</span>
                 <p

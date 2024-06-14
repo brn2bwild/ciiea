@@ -26,37 +26,36 @@ const props = defineProps({
     >
         <section class="w-full pb-20 pt-10">
             <div
-                class="flex h-full w-full items-center justify-between overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
+                class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
-                <div class="w-1/2 p-4">
+                <div class="flex w-1/2 flex-col gap-4 p-4">
                     <h5 class="font-sans text-neutral-500">
                         {{ props.convocations.data[0].date }} -
                         {{ props.convocations.data[0].time }}
                     </h5>
                     <h1
-                        class="mt-2 font-sans text-3xl font-extrabold text-neutral-700"
+                        class="mt-2 line-clamp-2 font-sans text-3xl font-extrabold text-neutral-700"
                     >
                         {{ props.convocations.data[0].name }}
                     </h1>
-                    <h2 class="mb-4 mt-2 text-lg font-medium text-neutral-600">
-                        {{
-                            props.convocations.data[0].description.substr(
-                                0,
-                                100,
-                            )
-                        }}
-                    </h2>
-                    <Link
-                        :href="
-                            route(
-                                'guest.convocations.show',
-                                props.convocations.data[0].slug,
-                            )
-                        "
-                        class="rounded-xl bg-sky-500 px-4 py-2 font-bold text-neutral-50"
+                    <h2
+                        class="mb-4 mt-2 line-clamp-2 text-lg font-medium text-neutral-600"
                     >
-                        Leer más
-                    </Link>
+                        {{ props.convocations.data[0].description }}
+                    </h2>
+                    <div class="flex justify-start">
+                        <Link
+                            :href="
+                                route(
+                                    'guest.convocations.show',
+                                    props.convocations.data[0].slug,
+                                )
+                            "
+                            class="rounded-lg bg-sky-500 px-4 py-2 font-medium text-neutral-50"
+                        >
+                            Leer más
+                        </Link>
+                    </div>
                 </div>
                 <div
                     class="flex h-80 w-1/2 justify-center overflow-hidden bg-neutral-300 object-fill"
@@ -72,7 +71,7 @@ const props = defineProps({
                         :alt="
                             props.convocations.data[0].image
                                 ? props.convocations.data[0].image.name
-                                : 'default-convocation-image'
+                                : 'alt-convocation-image'
                         "
                     />
                 </div>
@@ -83,11 +82,11 @@ const props = defineProps({
                 Últimas Convocatorias
             </h1>
         </section>
-        <section class="grid w-full grid-cols-1 gap-10 sm:grid-cols-2">
+        <section class="grid w-full grid-cols-1 gap-6 sm:grid-cols-2">
             <div
                 v-for="convocation in props.convocations.data"
                 :key="convocation.index"
-                class="flex w-full flex-col items-start justify-center rounded-xl bg-indigo-900 bg-opacity-95 shadow-lg shadow-slate-100"
+                class="flex w-full flex-col items-start justify-center rounded-2xl bg-indigo-900 bg-opacity-95 shadow-lg shadow-slate-100"
             >
                 <div
                     class="flex h-full w-full flex-col items-start justify-between gap-2 p-4"
@@ -114,7 +113,7 @@ const props = defineProps({
                                     convocation.slug,
                                 )
                             "
-                            class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                            class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-neutral-50"
                         >
                             Leer más
                         </Link>

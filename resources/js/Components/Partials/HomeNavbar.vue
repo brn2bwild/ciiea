@@ -307,7 +307,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
                             $page.props.auth.user.role === 'user'
                         "
                         :href="route('profile.edit')"
-                        class="rounded-md bg-sky-500 px-4 py-2 font-medium text-white transition-all ease-in-out hover:bg-sky-600 focus:no-underline"
+                        class="rounded-lg bg-sky-500 px-4 py-2 font-medium text-white transition-all ease-in-out hover:bg-sky-600 focus:no-underline"
                     >
                         {{ $page.props.auth.user.name }}
                     </Link>
@@ -318,7 +318,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
 						Iniciar sesión</Link> -->
                     <button
                         @click="emit('openModal', 'login')"
-                        class="hidden rounded-xl bg-sky-400 px-4 py-2 font-bold text-neutral-50 transition-all duration-200 hover:bg-sky-600 hover:text-neutral-50 focus:no-underline sm:block"
+                        class="hidden rounded-lg bg-sky-400 px-4 py-2 font-bold text-neutral-50 transition-all duration-200 hover:bg-sky-600 hover:text-neutral-50 focus:no-underline sm:block"
                     >
                         Iniciar sesión
                     </button>
@@ -326,6 +326,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
 							class="ml-6 font-medium text-neutral-50 bg-neutral-900 px-4 py-2 rounded-full hover:bg-neutral-700 focus:no-underline">
 						Registrarse</Link> -->
                 </template>
+                
                 <!-- Settings Dropdown -->
                 <!-- <div class="hidden sm:flex sm:items-center sm:justify-center">
 						<div class="relative">

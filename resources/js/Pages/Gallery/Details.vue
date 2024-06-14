@@ -27,7 +27,7 @@ const showModal = ref(false);
         class="grid w-full grid-cols-1 gap-10 p-8 md:grid-cols-5"
     >
         <div
-            class="flex h-[160px] w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-xl bg-neutral-700 shadow-lg shadow-slate-100"
+            class="flex h-[160px] w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl bg-neutral-700 shadow-lg shadow-slate-100"
             v-for="image in props.event.images"
             :key="image.index"
         >
@@ -57,20 +57,22 @@ const showModal = ref(false);
         >
     </section>
 
-    <Modal @close="showModal = false" :show="showModal" :maxWidth="'3xl'">
-        <div class="relative w-full bg-neutral-700 flex justify-center items-center">
-            <button
+    <Modal @close="showModal = false" :show="showModal">
+        <div
+            class="relative flex w-full items-center justify-center bg-neutral-400"
+        >
+            <div
                 @click="showModal = false"
-                class="absolute right-2 top-2 rounded-full bg-neutral-800 bg-opacity-60 p-3 flex items-center"
+                class="absolute top-2 right-2 flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-neutral-600 transition-all duration-200 hover:bg-neutral-700 cursor-pointer opacity-70"
             >
                 <font-awesome-icon
-                    class="text-xl text-neutral-50"
+                    class="p-2 text-neutral-50"
                     :icon="{
                         prefix: 'fa',
                         iconName: 'xmark',
                     }"
                 />
-            </button>
+            </div>
             <img
                 class="object-cover"
                 loading="lazy"

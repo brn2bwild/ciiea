@@ -60,7 +60,7 @@ const props = defineProps({
                                 software.slug,
                             )
                         "
-                        class="rounded-xl bg-sky-500 px-4 py-1 text-lg font-bold text-neutral-50 text-center"
+                        class="rounded-lg bg-sky-500 px-4 py-1 text-md font-medium text-neutral-50 text-center"
                         >Leer más</Link
                     >
                 </template>
@@ -68,7 +68,7 @@ const props = defineProps({
             <!-- <div
                 v-for="software in props.software_resources.data"
                 :key="software.index"
-                class="flex w-full flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
+                class="flex w-full flex-col items-start justify-start overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
                 <div class="mb-2 h-60 w-full overflow-hidden">
                     <img
@@ -97,7 +97,7 @@ const props = defineProps({
                                 software.slug,
                             )
                         "
-                        class="rounded-xl bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
                         >Leer más</Link
                     >
                 </div>

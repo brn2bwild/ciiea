@@ -43,7 +43,7 @@ const handleClosePdfModal = () => {
     >
         <section class="w-full py-10 pb-28">
             <div
-                class="flex h-full w-full items-center justify-between overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
+                class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
                 <div class="w-1/2 p-4">
                     <h5 class="font-sans text-neutral-500">
@@ -64,7 +64,7 @@ const handleClosePdfModal = () => {
                                 props.investigations.data[0].file.path,
                             )
                         "
-                        class="mt-4 rounded-xl bg-sky-500 px-4 py-2 font-bold text-neutral-50"
+                        class="mt-4 rounded-lg bg-sky-500 px-4 py-2 font-bold text-neutral-50"
                     >
                         Leer más
                     </button>
@@ -83,7 +83,8 @@ const handleClosePdfModal = () => {
                     <img
                         v-else
                         src="/storage/images/bookshelve-optimized.jpg"
-                        alt="book-cover"
+                        alt="alt-investigation-cover"
+                        class="w-full object-cover"
                     />
                 </div>
             </div>
@@ -129,7 +130,7 @@ const handleClosePdfModal = () => {
                     <button
                         v-if="investigation.file"
                         @click="handleOpenPdfModal(investigation.file.path)"
-                        class="rounded-xl bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
                     >
                         Leer más
                     </button>

@@ -37,7 +37,7 @@ const props = defineProps({
                         ea adipisci esse ipsam dicta, earum ad distinctio.
                     </p>
                     <!-- <div class="py-10 flex justify-center">
-						<Link class="bg-sky-500 px-4 py-2 rounded-xl text-neutral-50 font-bold text-sm">Descargar</Link>
+						<Link class="bg-sky-500 px-4 py-2 rounded-lg text-neutral-50 font-bold text-sm">Descargar</Link>
 					</div> -->
                 </div>
                 <img

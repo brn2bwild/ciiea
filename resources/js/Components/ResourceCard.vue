@@ -26,7 +26,7 @@ const openModal = (event) => {
     <div class="group relative">
         <a :href="editRoute" class="block">
             <div
-                class="flex h-60 overflow-hidden rounded-xl border-0 bg-white shadow-md transition-all duration-300 group-hover:ring-2"
+                class="flex h-60 overflow-hidden rounded-2xl border-0 bg-white shadow-md transition-all duration-300 group-hover:ring-2"
             >
                 <!-- Imagen de la card -->
                 <div

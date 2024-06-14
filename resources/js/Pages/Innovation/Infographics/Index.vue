@@ -68,7 +68,7 @@ const handleCloseImageModal = () => {
                     <button
                         v-if="infographic.image"
                         @click="handleOpenImageModal(infographic.image.path)"
-                        class="rounded-xl bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
                     >
                         Ver
                     </button>
@@ -77,7 +77,7 @@ const handleCloseImageModal = () => {
             <!-- <div
                 v-for="infographic in props.infographics.data"
                 :key="infographic.index"
-                class="flex w-full flex-col items-start justify-start overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-100"
+                class="flex w-full flex-col items-start justify-start overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
                 <div class="mb-2 h-60 w-full overflow-hidden">
                     <img
@@ -102,7 +102,7 @@ const handleCloseImageModal = () => {
                     <button
                         v-if="infographic.image"
                         @click="handleOpenImageModal(infographic.image.path)"
-                        class="rounded-xl bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
+                        class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-bold text-neutral-50"
                     >
                         Ver
                     </button>
