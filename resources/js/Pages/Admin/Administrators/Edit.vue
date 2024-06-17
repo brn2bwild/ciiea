@@ -17,6 +17,9 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+    roles: {
+        type: Object,
+    },
 });
 
 const administratorForm = useForm({
@@ -27,6 +30,7 @@ const administratorForm = useForm({
     short_description: props.administrator.short_description,
     long_description: props.administrator.long_description,
     is_contact: Boolean(props.administrator.is_admin_contact),
+    role: props.administrator.roles[0].name,
 });
 
 const handleUpdateAdministrator = () => {
@@ -52,6 +56,30 @@ const handleUpdateAdministrator = () => {
                     <InputError
                         class="mt-2"
                         :message="administratorForm.errors.name"
+                    />
+                </div>
+                <div class="mt-4">
+                    <InputLabel for="role" value="Rol" />
+                    <select
+                        id="role"
+                        class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-sky-900 focus:ring-sky-900"
+                        v-model="administratorForm.role"
+                        autocomplete="role"
+                    >
+                        <option value="">Seleccione una opción</option>
+                        <option
+                            v-for="role in props.roles"
+                            :key="role.index"
+                            :value="role.name"
+                            class="capitalize"
+                        >
+                            {{ role.name }}
+                        </option>
+                    </select>
+
+                    <InputError
+                        class="mt-2"
+                        :message="administratorForm.errors.long_description"
                     />
                 </div>
                 <div class="mt-4">
@@ -150,7 +178,10 @@ const handleUpdateAdministrator = () => {
             <AvatarInput
                 :avatar-url="
                     props.administrator.image
-                        ? route('profile-images.show', props.administrator.image.name)
+                        ? route(
+                              'profile-images.show',
+                              props.administrator.image.name,
+                          )
                         : null
                 "
                 :user-id="props.administrator.id"

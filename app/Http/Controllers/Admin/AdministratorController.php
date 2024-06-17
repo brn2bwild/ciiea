@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 use Inertia\Response;
+use Spatie\Permission\Models\Role;
 
 class AdministratorController extends Controller
 {
@@ -49,7 +50,8 @@ class AdministratorController extends Controller
 	public function edit(Request $request): Response
 	{
 		return Inertia::render('Admin/Administrators/Edit', [
-			'administrator' => User::with('image')->where('id', $request->id)->role(['admin', 'editor'])->first(),
+			'administrator' => User::with('roles')->with('image')->where('id', $request->id)->role(['admin', 'editor'])->first(),
+			'roles' => Role::whereNot('name', 'super admin')->get(),
 		]);
 	}
 
@@ -59,7 +61,9 @@ class AdministratorController extends Controller
 
 		//falta agregar la validación
 
-		User::where('id', $request->id)->update([
+		$user = User::where('id', $request->id)->firstOrFail();
+		
+		$user->update([
 			'name' => $request->name,
 			'email' => $request->email,
 			'mobile' => $request->mobile,
@@ -67,6 +71,8 @@ class AdministratorController extends Controller
 			'long_description' => $request->long_description,
 			'is_admin_contact' => $request->is_contact
 		]);
+
+		$user->syncRoles($request->role);
 
 		return back()->with('success', '');
 	}
