@@ -50,13 +50,13 @@ const modalImageUrl = ref("");
                     class="absolute left-0 top-0 flex h-full w-full items-center justify-evenly bg-neutral-900 text-neutral-800 opacity-80 transition-all duration-150 group-hover:opacity-60"
                 ></div>
                 <div
-                    class="absolute left-0 top-0 z-10 flex h-full w-full flex-col items-center justify-center gap-6 px-3 text-neutral-50"
+                    class="absolute left-0 top-0 z-10 flex h-full w-full flex-col items-center justify-center gap-6 px-5 text-neutral-50"
                 >
                     <span class="line-clamp-2 text-center">
                         {{ event.name }}
                     </span>
                     <Link
-                        class="cursor-pointer rounded-lg bg-sky-500 px-3 py-2"
+                        class="cursor-pointer rounded-lg bg-sky-900 px-3 py-2"
                         :href="route('guest.gallery.show', event.slug)"
                         >Ver evento</Link
                     >

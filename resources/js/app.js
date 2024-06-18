@@ -33,6 +33,7 @@ import {
     faPenToSquare,
     faCamera,
     faCameraRotate,
+    faLocationPin,
 } from "@fortawesome/free-solid-svg-icons";
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -70,7 +71,8 @@ library.add(
     faTrash,
     faPenToSquare,
     faCamera,
-    faCameraRotate
+    faCameraRotate,
+    faLocationPin
 );
 
 const appName =

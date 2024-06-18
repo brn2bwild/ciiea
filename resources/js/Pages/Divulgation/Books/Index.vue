@@ -64,7 +64,7 @@ const handleClosePdfModal = () => {
                         @click="
                             handleOpenPdfModal(props.books.data[0].file.path)
                         "
-                        class="mt-4 rounded-lg bg-sky-500 px-4 py-2 font-bold text-neutral-50"
+                        class="mt-4 rounded-lg bg-sky-900 px-4 py-2 font-bold text-neutral-50"
                     >
                         Leer más
                     </button>
@@ -127,7 +127,7 @@ const handleClosePdfModal = () => {
                         <button
                             v-if="book.file"
                             @click="handleOpenPdfModal(book.file.path)"
-                            class="rounded-lg bg-sky-500 px-4 py-1 text-lg font-bold text-neutral-50"
+                            class="rounded-lg bg-sky-900 px-4 py-1 text-lg font-bold text-neutral-50"
                         >
                             Leer más
                         </button>

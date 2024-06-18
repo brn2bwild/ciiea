@@ -11,12 +11,12 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-neutral-200">
         <!-- Navbar -->
-        <nav class="fixed z-50 w-full border-b-2 border-neutral-300 bg-white">
+        <nav class="fixed z-50 w-full shadow-md border-neutral-300 bg-white">
             <!-- Primary Navigation Menu -->
             <div class="mx-auto w-full px-4">
-                <div class="flex h-14 justify-between">
+                <div class="flex h-16 justify-between">
                     <div class="flex">
                         <!-- Logo -->
                         <div class="flex shrink-0 items-center">

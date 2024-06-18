@@ -51,7 +51,7 @@ const props = defineProps({
                                     props.convocations.data[0].slug,
                                 )
                             "
-                            class="rounded-lg bg-sky-500 px-4 py-2 font-medium text-neutral-50"
+                            class="rounded-lg bg-sky-900 px-4 py-2 font-medium text-neutral-50"
                         >
                             Leer más
                         </Link>
@@ -86,7 +86,7 @@ const props = defineProps({
             <div
                 v-for="convocation in props.convocations.data"
                 :key="convocation.index"
-                class="flex w-full flex-col items-start justify-center rounded-2xl bg-indigo-900 bg-opacity-95 shadow-lg shadow-slate-100"
+                class="flex w-full flex-col items-start justify-center rounded-2xl bg-sky-900 bg-opacity-95 shadow-lg shadow-slate-100"
             >
                 <div
                     class="flex h-full w-full flex-col items-start justify-between gap-2 p-4"
@@ -113,7 +113,7 @@ const props = defineProps({
                                     convocation.slug,
                                 )
                             "
-                            class="rounded-lg bg-sky-500 px-4 py-2 text-sm font-medium text-neutral-50"
+                            class="rounded-lg bg-neutral-50 px-4 py-2 text-sm font-medium text-neutral-900"
                         >
                             Leer más
                         </Link>

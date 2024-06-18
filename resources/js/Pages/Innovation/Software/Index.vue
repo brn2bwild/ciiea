@@ -63,7 +63,7 @@ const props = defineProps({
                                     software.slug,
                                 )
                             "
-                            class="text-md rounded-lg bg-sky-500 px-4 py-1 text-center font-medium text-neutral-50"
+                            class="text-md rounded-lg bg-sky-900 px-4 py-1 text-center font-medium text-neutral-50"
                             >Leer más</Link
                         >
                     </div>

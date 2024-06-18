@@ -1,6 +1,6 @@
 <template>
     <img
-        class="hidden w-36 sm:block"
+        class="hidden w-32 sm:block"
         src="/storage/images/ciiea.png"
         alt="ciiea-logo"
         role="link"

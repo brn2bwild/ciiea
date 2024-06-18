@@ -84,7 +84,7 @@ const Modal = defineAsyncComponent(() => import("@/Components/Modal.vue"));
 </script>
 
 <template>
-    <div class="min-h-screen w-full bg-neutral-50">
+    <div class="min-h-screen w-full bg-neutral-200">
         <!-- Navbar -->
         <HomeNavbar
             @open-modal="openModalFn"

@@ -31,44 +31,44 @@ const props = defineProps({
             class="group relative mb-32 flex w-full rounded-sm bg-transparent"
         >
             <img
-                class="z-20 h-32 w-32 rounded-full"
+                class="z-20 h-32 w-32 rounded-full border-4"
                 :src="administrator.image !== null ? administrator.image.path: '/storage/images/default-contact.png'"
                 alt="default-contact"
             />
             <div
-                class="absolute left-5 top-10 z-10 flex h-52 w-3/4 flex-col items-center justify-between rounded-xl bg-neutral-300 p-4"
+                class="absolute left-5 top-10 z-10 flex h-52 w-3/4 flex-col items-center justify-between rounded-xl bg-indigo-200 p-4"
             >
                 <div class="flex flex-col items-end pl-24">
-                    <h1 class="text-lg font-bold text-neutral-950">
+                    <h1 class="text-lg font-bold text-sky-950">
                         {{ administrator.name }}
                     </h1>
-                    <h2 class="text-neutral-800">
+                    <h2 class="text-sky-900">
                         {{ administrator.short_description }}
                     </h2>
                 </div>
                 <div>
-                    <p class="mb-2 flex justify-start text-neutral-950">
+                    <p class="mb-2 flex justify-start text-sky-950">
                         <font-awesome-icon
                             :icon="['fa', 'phone']"
-                            class="text-xl text-neutral-800"
+                            class="text-xl text-sky-900"
                         />
                         <a href="https://whatsapp.com" class="ml-2">
                             {{ administrator.mobile }}
                         </a>
                     </p>
-                    <p class="mb-2 flex justify-start text-neutral-950">
+                    <p class="mb-2 flex justify-start text-sky-950">
                         <font-awesome-icon
                             :icon="['fa', 'envelope']"
-                            class="text-xl text-neutral-800"
+                            class="text-xl text-sky-900"
                         />
                         <a href="https://outlook.com" class="ml-2">
                             {{ administrator.email }}
                         </a>
                     </p>
-                    <p class="flex justify-start text-neutral-950">
+                    <p class="flex justify-start text-sky-950">
                         <font-awesome-icon
                             :icon="['fab', 'twitter']"
-                            class="text-xl text-neutral-800"
+                            class="text-xl text-sky-900"
                         />
                         <a href="https://outlook.com" class="ml-2">
                             {{ administrator.social_media.twitter }}
@@ -92,34 +92,34 @@ const props = defineProps({
             class="absolute bottom-10 flex w-full justify-center gap-8 bg-transparent"
         >
             <div
-                class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-neutral-50 p-4 text-center shadow-lg sm:w-1/5"
+                class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-indigo-200 p-4 text-center shadow-lg sm:w-1/5"
             >
-                <span class="mb-4 text-lg font-bold text-neutral-600">
+                <span class="mb-4 text-lg font-bold text-sky-950">
                     Dirección
                 </span>
-                <p class="text-neutral-600">
+                <p class="text-sky-900">
                     Carretera a Las Grutas S/N, Eureka y Belem, 86800 Teapa,
                     Tab.
                 </p>
             </div>
             <div
-                class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-neutral-50 p-4 text-center shadow-lg sm:w-1/5"
+                class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-indigo-200 p-4 text-center shadow-lg sm:w-1/5"
             >
-                <span class="mb-4 text-lg font-bold text-neutral-600">
+                <span class="mb-4 text-lg font-bold text-sky-950">
                     Horario de atención
                 </span>
-                <p class="text-neutral-600">
+                <p class="text-sky-900">
                     Lunes a Viernes <br />
                     8:00 a.m. - 3:00 p.m.
                 </p>
             </div>
             <div
-                class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-neutral-50 p-4 text-center shadow-lg sm:w-1/5"
+                class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-indigo-200 p-4 text-center shadow-lg sm:w-1/5"
             >
-                <span class="mb-4 text-lg font-bold text-neutral-600">
+                <span class="mb-4 text-lg font-bold text-sky-950">
                     Número telefónico
                 </span>
-                <p class="text-neutral-600">932 322 3381</p>
+                <p class="text-sky-900">932 322 3381</p>
             </div>
         </div>
     </section>

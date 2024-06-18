@@ -20,14 +20,12 @@ const emit = defineEmits(["openModal", "closeModal"]);
 </script>
 
 <template>
-    <nav
-        class="fixed z-50 w-full bg-neutral-50 p-4"
-    >
+    <nav class="fixed z-50 w-full bg-white">
         <!-- Primary Navigation Menu -->
         <div class="flex justify-between">
-            <div class="flex justify-between">
+            <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <Link :href="route('home')">
+                <Link :href="route('home')" class="ml-4">
                     <ApplicationLogo />
                 </Link>
 
@@ -81,7 +79,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
             </div>
 
             <!--Login, Register and more options dropdown menu-->
-            <div class="hidden items-center justify-between gap-6 sm:flex">
+            <div class="hidden items-center justify-between sm:flex">
                 <NavLink :href="route('home')" :active="$page.url === '/'">
                     Inicio
                 </NavLink>
@@ -90,19 +88,15 @@ const emit = defineEmits(["openModal", "closeModal"]);
                     <Dropdown align="right" width="56">
                         <template #trigger>
                             <span
-                                class="inline-flex cursor-pointer items-center rounded-xl px-4 py-2 font-bold transition duration-150 ease-in-out hover:text-sky-500"
-                                :class="{
-                                    'text-sky-500':
-                                        $page.url === '/books' ||
-                                        $page.url === '/magazines' ||
-                                        $page.url === '/hist-publications' ||
-                                        $page.url === '/investigations',
-                                    'text-gray-500':
-                                        $page.url !== '/books' ||
-                                        $page.url !== '/magazines' ||
-                                        $page.url !== '/hist-publications' ||
-                                        $page.url !== '/investigations',
-                                }"
+                                class="inline-flex cursor-pointer items-center px-6 py-5 font-bold transition duration-150 ease-in-out hover:bg-sky-900 hover:text-neutral-50"
+                                :class="[
+                                    $page.url.includes('/books') ||
+                                    $page.url.includes('/magazines') ||
+                                    $page.url.includes('/hist-publications') ||
+                                    $page.url.includes('/investigations')
+                                        ? 'bg-sky-900 text-neutral-50'
+                                        : 'text-neutral-500',
+                                ]"
                             >
                                 Divulgación
                             </span>
@@ -152,18 +146,14 @@ const emit = defineEmits(["openModal", "closeModal"]);
                     <Dropdown align="right" width="56">
                         <template #trigger>
                             <span
-                                class="inline-flex cursor-pointer items-center rounded-xl px-4 py-2 font-bold transition duration-150 ease-in-out hover:text-sky-500"
-                                :class="{
-                                    'text-sky-500':
-                                        $page.url.includes(
-                                            'educational-software',
-                                        ) || $page.url.includes('infographics'),
-                                    'text-gray-500':
-                                        !$page.url.includes(
-                                            'educational-software',
-                                        ) ||
-                                        !$page.url.includes('infographics'),
-                                }"
+                                class="inline-flex cursor-pointer items-center px-6 py-5 font-bold transition duration-150 ease-in-out hover:bg-sky-900 hover:text-neutral-50"
+                                :class="[
+                                    $page.url.includes(
+                                        'educational-software',
+                                    ) || $page.url.includes('infographics')
+                                        ? 'bg-sky-900 text-neutral-50'
+                                        : 'text-neutral-500',
+                                ]"
                             >
                                 Innovación
                             </span>
@@ -207,25 +197,16 @@ const emit = defineEmits(["openModal", "closeModal"]);
                     <Dropdown align="right" width="56">
                         <template #trigger>
                             <span
-                                class="inline-flex cursor-pointer items-center rounded-xl px-4 py-2 font-bold transition duration-150 ease-in-out hover:text-sky-500"
-                                :class="{
-                                    'text-sky-500':
-                                        $page.url.includes('social-service') ||
-                                        $page.url.includes(
-                                            'profesional-practice',
-                                        ) ||
-                                        $page.url.includes(
-                                            'vinculation-documents',
-                                        ),
-                                    'text-gray-500':
-                                        !$page.url.includes('social-service') ||
-                                        !$page.url.includes(
-                                            'profesional-practice',
-                                        ) ||
-                                        !$page.url.includes(
-                                            'vinculation-documents',
-                                        ),
-                                }"
+                                class="inline-flex cursor-pointer items-center px-6 py-5 font-bold transition duration-150 ease-in-out hover:bg-sky-900 hover:text-neutral-50"
+                                :class="[
+                                    $page.url.includes('social-service') ||
+                                    $page.url.includes(
+                                        'profesional-practice',
+                                    ) ||
+                                    $page.url.includes('vinculation-documents')
+                                        ? 'bg-sky-900 text-neutral-50'
+                                        : 'text-neutral-500',
+                                ]"
                             >
                                 Vinculación
                             </span>
@@ -297,7 +278,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
                     <Link
                         v-if="$page.props.auth.user.role === 'admin'"
                         :href="route('admin.dashboard')"
-                        class="rounded-md bg-sky-500 px-4 py-2 font-medium text-white transition-all ease-in-out hover:bg-sky-600 focus:no-underline"
+                        class="px-6 py-5 font-bold text-neutral-500 transition-all ease-in-out hover:bg-sky-900 hover:text-neutral-50 focus:no-underline"
                     >
                         Dashboard
                     </Link>
@@ -307,7 +288,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
                             $page.props.auth.user.role === 'user'
                         "
                         :href="route('profile.edit')"
-                        class="rounded-lg bg-sky-500 px-4 py-2 font-medium text-white transition-all ease-in-out hover:bg-sky-600 focus:no-underline"
+                        class="px-6 py-5 font-bold text-neutral-500 transition-all ease-in-out hover:bg-sky-900 hover:text-neutral-50 focus:no-underline"
                     >
                         {{ $page.props.auth.user.name }}
                     </Link>
@@ -318,7 +299,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
 						Iniciar sesión</Link> -->
                     <button
                         @click="emit('openModal', 'login')"
-                        class="hidden rounded-lg bg-sky-400 px-4 py-2 font-bold text-neutral-50 transition-all duration-200 hover:bg-sky-600 hover:text-neutral-50 focus:no-underline sm:block"
+                        class="hidden px-6 py-5 font-bold text-neutral-500 transition-all duration-200 hover:bg-sky-900 hover:text-neutral-50 focus:no-underline sm:block"
                     >
                         Iniciar sesión
                     </button>
@@ -326,7 +307,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
 							class="ml-6 font-medium text-neutral-50 bg-neutral-900 px-4 py-2 rounded-full hover:bg-neutral-700 focus:no-underline">
 						Registrarse</Link> -->
                 </template>
-                
+
                 <!-- Settings Dropdown -->
                 <!-- <div class="hidden sm:flex sm:items-center sm:justify-center">
 						<div class="relative">
