@@ -5,13 +5,24 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { useForm } from "@inertiajs/vue3";
+import { useReCaptcha } from "vue-recaptcha-v3";
 
 const form = useForm({
     name: "",
     email: "",
     password: "",
     password_confirmation: "",
+    recaptcha_token: null,
 });
+
+const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
+
+const recaptcha = async () => {
+    await recaptchaLoaded();
+    form.recaptcha_token = await executeRecaptcha("login");
+
+    submit();
+};
 
 const submit = () => {
     form.post(route("register"), {
@@ -24,7 +35,7 @@ const submit = () => {
     <GuestLayout>
         <Head title="Registrarse" />
 
-        <form @submit.prevent="submit">
+        <form @submit.prevent="recaptcha">
             <div>
                 <InputLabel for="name" value="Nombre" />
 
@@ -95,7 +106,7 @@ const submit = () => {
             <div class="mt-4 flex items-center justify-end">
                 <Link
                     :href="route('login')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-900 focus:ring-offset-2"
+                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2"
                 >
                     ¿Ya tienes una cuenta?
                 </Link>

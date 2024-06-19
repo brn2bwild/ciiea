@@ -38,6 +38,7 @@ import {
 import { faFacebook, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import VueLazyload from "vue-lazyload";
+import { VueReCaptcha, useReCaptcha } from "vue-recaptcha-v3";
 
 library.add(
     faPhone,
@@ -72,7 +73,7 @@ library.add(
     faPenToSquare,
     faCamera,
     faCameraRotate,
-    faLocationPin
+    faLocationPin,
 );
 
 const appName =
@@ -86,10 +87,13 @@ createInertiaApp({
             import.meta.glob("./Pages/**/*.vue"),
         ),
     setup({ el, App, props, plugin }) {
+        const captchaKey = props.initialPage.props.recaptcha_site_key;
+
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(VueLazyload)
             .use(ZiggyVue, Ziggy)
+            .use(VueReCaptcha, { siteKey: captchaKey })
             .component("font-awesome-icon", FontAwesomeIcon)
             .component("Link", Link)
             .component("Head", Head)

@@ -6,6 +6,7 @@ import InputLabel from "@/Components/InputLabel.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { useForm } from "@inertiajs/vue3";
+import { VueReCaptcha, useReCaptcha } from "vue-recaptcha-v3";
 
 const props = defineProps({
     canResetPassword: {
@@ -20,7 +21,16 @@ const form = useForm({
     email: "",
     password: "",
     remember: false,
+    recaptcha_token: null,
 });
+
+const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
+
+const recaptcha = async () => {
+    await recaptchaLoaded();
+    form.recaptcha_token = await executeRecaptcha("login");
+    submit();
+};
 
 const submit = () => {
     form.post(route("login"), {
@@ -37,7 +47,7 @@ const submit = () => {
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <form action="#" method="POST" @submit.prevent="recaptcha">
             <div>
                 <InputLabel for="email" value="Correo electrónico" />
 
@@ -69,6 +79,12 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
+            <div class="mt-4">
+                <InputError
+                    class="mt-2"
+                    :message="form.errors.recaptcha_token"
+                />
+            </div>
             <div class="flex items-center justify-between">
                 <div class="mt-4 block">
                     <label class="flex items-center">
@@ -84,7 +100,7 @@ const submit = () => {
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
-                    class="mt-4 rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-rose-900 focus:ring-offset-2"
+                    class="mt-4 rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2"
                 >
                     ¿Olvidaste tu contraseña?
                 </Link>
