@@ -26,18 +26,14 @@ const emit = defineEmits(["openModal", "closeModal"]);
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <Link :href="route('home')" class="ml-4">
-                    <ApplicationLogo />
+                    <img
+                        class="hidden w-32 sm:block"
+                        src="/storage/images/ciiea.png"
+                        alt="ciiea-logo"
+                        role="link"
+                        loading="lazy"
+                    />
                 </Link>
-
-                <!-- Search input-->
-                <!-- <div class="relative shrink-0 hidden sm:flex items-center w-1/2">
-						<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-							<font-awesome-icon :icon=" [ 'fas', 'magnifying-glass' ] " class="w-4 h-4 text-neutral-500" />
-						</div>
-						<input type="search" id="default-search" class="block w-full p-2 pl-10 text-sm text-neutral-900 rounded-full bg-neutral-200 border-0 focus:ring-2 focus:ring-neutral-400" placeholder="Buscar información" required />
-						<button type="submit"
-							class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
-					</div> -->
             </div>
 
             <!-- 	Main dropdown menu-->
@@ -294,18 +290,25 @@ const emit = defineEmits(["openModal", "closeModal"]);
                     </Link>
                 </div>
                 <template v-if="!$page.props.auth.user.name">
-                    <!-- <Link :href=" route( 'login' ) "
-							class="font-bold text-neutral-50 bg-neutral-900 px-5 py-2 rounded-full hover:bg-neutral-700 focus:no-underline transition-all duration-200">
-						Iniciar sesión</Link> -->
-                    <button
+                    <Link
+                        :href="route('login')"
+                        class="hidden px-6 py-5 font-bold text-neutral-500 transition-all duration-200 hover:bg-sky-900 hover:text-neutral-50 focus:no-underline sm:block"
+                    >
+                        Iniciar sesión</Link
+                    >
+                    <!-- <button
                         @click="emit('openModal', 'login')"
                         class="hidden px-6 py-5 font-bold text-neutral-500 transition-all duration-200 hover:bg-sky-900 hover:text-neutral-50 focus:no-underline sm:block"
                     >
                         Iniciar sesión
-                    </button>
-                    <!-- <Link v-if=" canRegister " :href=" route( 'register' ) "
-							class="ml-6 font-medium text-neutral-50 bg-neutral-900 px-4 py-2 rounded-full hover:bg-neutral-700 focus:no-underline">
-						Registrarse</Link> -->
+                    </button> -->
+                    <Link
+                        v-if="canRegister"
+                        :href="route('register')"
+                        class="hidden px-6 py-5 font-bold text-neutral-500 transition-all duration-200 hover:bg-sky-900 hover:text-neutral-50 focus:no-underline sm:block"
+                    >
+                        Registrarse</Link
+                    >
                 </template>
 
                 <!-- Settings Dropdown -->

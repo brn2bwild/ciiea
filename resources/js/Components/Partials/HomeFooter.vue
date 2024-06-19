@@ -61,7 +61,7 @@
                 </p>
             </div>
         </div>
-        <div class="flex justify-end gap-4 py-6">
+        <div class="flex justify-end gap-4 py-6 px-10">
             <Link href="google.com " class="text-sm text-neutral-600">
                 Privacidad
             </Link>
