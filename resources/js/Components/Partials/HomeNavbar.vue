@@ -27,7 +27,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
                 <!-- Logo -->
                 <Link :href="route('home')" class="ml-4">
                     <img
-                        class="hidden w-32 sm:block"
+                        class="hidden w-28 sm:block"
                         src="/storage/images/ciiea.png"
                         alt="ciiea-logo"
                         role="link"
