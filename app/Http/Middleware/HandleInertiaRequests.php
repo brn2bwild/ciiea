@@ -20,26 +20,13 @@ use Tightenco\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
 {
-	/**
-	 * The root template that is loaded on the first page visit.
-	 *
-	 * @var string
-	 */
 	protected $rootView = 'app';
 
-	/**
-	 * Determine the current asset version.
-	 */
 	public function version(Request $request): string|null
 	{
 		return parent::version($request);
 	}
 
-	/**
-	 * Define the props that are shared by default.
-	 *
-	 * @return array<string, mixed>
-	 */
 	public function share(Request $request): array
 	{
 		// dd($request->user());
@@ -75,7 +62,8 @@ class HandleInertiaRequests extends Middleware
 					]);
 				}
 				return null;
-			}
+			},
+			'recaptcha_site_key' => config('services.google_recaptcha.site_key')
 		]);
 	}
 }
