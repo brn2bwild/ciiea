@@ -52,7 +52,7 @@ const showModal = ref(false);
         <h1 class="font-medium">No hay imágenes agregadas para este evento</h1>
         <Link
             :href="route('guest.gallery.index')"
-            class="mt-4 rounded-lg bg-sky-500 px-3 py-2 text-neutral-50"
+            class="mt-4 rounded-lg bg-sky-900 px-3 py-2 text-neutral-50"
             >Regresar</Link
         >
     </section>

@@ -32,7 +32,11 @@ const props = defineProps({
         >
             <img
                 class="z-20 h-32 w-32 rounded-full border-4"
-                :src="administrator.image !== null ? administrator.image.path: '/storage/images/default-contact.png'"
+                :src="
+                    administrator.image !== null
+                        ? administrator.image.path
+                        : '/storage/images/default-contact.png'
+                "
                 alt="default-contact"
             />
             <div

@@ -14,12 +14,12 @@ const props = defineProps({
                 v-if="link.url"
                 :href="link.url"
                 class="mx-1 rounded-lg px-3 py-2 font-bold text-neutral-950 shadow-md"
-                :class="link.active ? 'bg-sky-900 text-white' : ''"
+                :class="link.active ? 'bg-sky-900 text-white' : 'bg-white'"
                 >{{ link.label }}</Link
             >
             <span
                 v-else
-                class="mx-1 rounded-lg px-3 py-2 font-bold text-neutral-500 shadow-md"
+                class="mx-1 rounded-lg px-3 py-2 font-bold text-neutral-500 bg-white shadow-md"
                 >{{ link.label }}</span
             >
         </template>
