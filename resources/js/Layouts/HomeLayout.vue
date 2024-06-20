@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
-import InputLabel from "@/Components/InputLabel.vue";
-import TextInput from "@/Components/TextInput.vue";
-import InputError from "@/Components/InputError.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
-import Checkbox from "@/Components/Checkbox.vue";
+// import InputLabel from "@/Components/InputLabel.vue";
+// import TextInput from "@/Components/TextInput.vue";
+// import InputError from "@/Components/InputError.vue";
+// import PrimaryButton from "@/Components/PrimaryButton.vue";
+// import Checkbox from "@/Components/Checkbox.vue";
 import { defineAsyncComponent } from "vue";
 import HomeNavbar from "@/Components/Partials/HomeNavbar.vue";
 import HomeFooter from "@/Components/Partials/HomeFooter.vue";
@@ -100,7 +100,7 @@ const Modal = defineAsyncComponent(() => import("@/Components/Modal.vue"));
         <!-- Footer -->
         <HomeFooter />
 
-        <Modal @close="closeModalFn()" :show="showModal" :max-width="'lg'">
+        <!-- <Modal @close="closeModalFn()" :show="showModal" :max-width="'lg'">
             <div class="w-full bg-white p-8">
                 <div class="mb-4 flex items-center justify-between">
                     <h1>{{ modalTitle }}</h1>
@@ -294,12 +294,6 @@ const Modal = defineAsyncComponent(() => import("@/Components/Modal.vue"));
                             </div>
 
                             <div class="mt-4 flex items-center justify-end">
-                                <!-- <Link
-											:href="route('login')"
-											class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-900"
-									>
-											¿Ya tienes una cuenta?
-									</Link> -->
                                 <span
                                     @click="
                                         userIsLogin = true;
@@ -321,6 +315,6 @@ const Modal = defineAsyncComponent(() => import("@/Components/Modal.vue"));
                     </Transition>
                 </div>
             </div>
-        </Modal>
+        </Modal> -->
     </div>
 </template>
