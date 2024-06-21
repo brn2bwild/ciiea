@@ -1,4 +1,6 @@
 <script setup>
+import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { VuePDF, usePDF } from "@tato30/vue-pdf";
 import { ref } from "vue";
 
@@ -22,8 +24,8 @@ const page = ref(1);
                 @click="page = page > 1 ? page - 1 : page"
                 class="h-full bg-neutral-900 bg-opacity-20 p-2 text-neutral-50 transition duration-200 hover:bg-opacity-50"
             >
-                <font-awesome-icon
-                    :icon="{ prefix: 'fa', iconName: 'angle-left' }"
+                <FontAwesomeIcon
+                    :icon="faAngleLeft"
                     style="color: white"
                 />
             </button>
@@ -31,8 +33,8 @@ const page = ref(1);
                 @click="page = page < pages ? page + 1 : page"
                 class="h-full bg-neutral-900 bg-opacity-20 p-2 text-neutral-50 transition duration-200 hover:bg-opacity-50"
             >
-                <font-awesome-icon
-                    :icon="{ prefix: 'fa', iconName: 'angle-right' }"
+                <FontAwesomeIcon
+                    :icon="faAngleRight"
                     style="color: white"
                 />
             </button>

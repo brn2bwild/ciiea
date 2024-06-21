@@ -7,6 +7,12 @@ import Modal from "./Modal.vue";
 import SecondaryButton from "./SecondaryButton.vue";
 import DeleteButton from "./DeleteButton.vue";
 import InfoButton from "./InfoButton.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import {
+    faFile,
+    faFileArrowUp,
+    faTriangleExclamation,
+} from "@fortawesome/free-solid-svg-icons";
 
 const props = defineProps({
     uploadFileRoute: {
@@ -104,9 +110,9 @@ const handleOpenDeleteModal = () => {
                     v-if="fileName || file"
                     class="flex h-full flex-col items-center justify-between text-ellipsis p-2"
                 >
-                    <font-awesome-icon
+                    <FontAwesomeIcon
                         class="h-[50px] text-white"
-                        :icon="{ prefix: 'fa', iconName: 'file' }"
+                        :icon="faFile"
                     />
                     <div class="flex flex-col items-center">
                         <p
@@ -126,9 +132,9 @@ const handleOpenDeleteModal = () => {
                     v-else
                     class="flex h-full flex-col items-center justify-center gap-4 text-ellipsis p-4"
                 >
-                    <font-awesome-icon
+                    <FontAwesomeIcon
                         class="h-[50px] text-white"
-                        :icon="{ prefix: 'fa', iconName: 'file-arrow-up' }"
+                        :icon="faFileArrowUp"
                     />
                     <div class="flex flex-col items-center">
                         <p
@@ -172,8 +178,8 @@ const handleOpenDeleteModal = () => {
         >
             <div class="p-8">
                 <div class="flex w-full flex-col items-center justify-center">
-                    <font-awesome-icon
-                        :icon="['fa', 'triangle-exclamation']"
+                    <FontAwesomeIcon
+                        :icon="faTriangleExclamation"
                         class="mb-4 text-8xl text-neutral-900"
                     />
                     <h2 class="text-xl">¿Deseas eliminar el archivo?</h2>

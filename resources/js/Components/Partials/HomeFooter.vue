@@ -1,3 +1,9 @@
+<script setup>
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faLocationPin } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+</script>
+
 <template>
     <footer class="relative w-full bg-white px-14">
         <div class="flex w-full justify-center py-10">
@@ -14,8 +20,8 @@
                     target="_blank"
                     class="group flex items-center gap-2 text-neutral-600"
                 >
-                    <font-awesome-icon
-                        :icon="['fab', 'facebook']"
+                    <FontAwesomeIcon
+                        :icon="faFacebook"
                         class="text-2xl group-hover:text-blue-800"
                     />
                     <span class="text-sm group-hover:text-blue-800"
@@ -27,8 +33,8 @@
                     target="_blank"
                     class="group flex items-center gap-2 text-neutral-600"
                 >
-                    <font-awesome-icon
-                        :icon="['fab', 'facebook']"
+                    <FontAwesomeIcon
+                        :icon="faFacebook"
                         class="text-2xl group-hover:text-blue-800"
                     />
                     <span class="text-sm group-hover:text-blue-800"
@@ -41,8 +47,8 @@
                     href="https://www.google.com/maps/place/Centro+de+Investigaci%C3%B3n+E+Innovaci%C3%B3n+Para+la+Ense%C3%B1anza+y+El+Aprendizaje+Ciiea/@17.5622834,-92.937948,16.92z/data=!4m14!1m7!3m6!1s0x47c3f700d23ec9b5:0xbfa42ae35885739d!2sSpatie!8m2!3d51.208773!4d4.4262415!16s%2Fg%2F1td2lnfj!3m5!1s0x85edb757e68858c3:0x9e0871be66d0e66c!8m2!3d17.5623421!4d-92.9369324!16s%2Fg%2F1vxcws9k?entry=ttu"
                     class="group flex w-52 items-center justify-between gap-2"
                 >
-                    <font-awesome-icon
-                        :icon="['fa', 'location-pin']"
+                    <FontAwesomeIcon
+                        :icon="faLocationPin"
                         class="text-lg text-neutral-600 group-hover:text-red-400"
                     />
                     <span
@@ -61,7 +67,7 @@
                 </p>
             </div>
         </div>
-        <div class="flex justify-end gap-4 py-6 px-10">
+        <div class="flex justify-end gap-4 px-10 py-6">
             <Link href="google.com " class="text-sm text-neutral-600">
                 Privacidad
             </Link>

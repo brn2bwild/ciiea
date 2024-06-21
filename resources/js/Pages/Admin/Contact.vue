@@ -7,6 +7,9 @@ import TextInput from "@/Components/TextInput.vue";
 import InputLabel from "@/Components/InputLabel.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faEnvelope, faPhone, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 defineOptions({
     layout: AdminLayout,
@@ -71,8 +74,8 @@ const submit = () => {
                     {{ user.position }}
                 </span>
                 <p class="my-2 flex justify-start text-white">
-                    <font-awesome-icon
-                        :icon="{ prefix: 'fa', iconName: 'phone' }"
+                    <FontAwesomeIcon
+                        :icon="faPhone"
                         size="lg"
                         style="color: white"
                     />
@@ -81,8 +84,8 @@ const submit = () => {
                     }}</a>
                 </p>
                 <p class="mb-2 flex justify-start text-white">
-                    <font-awesome-icon
-                        :icon="{ prefix: 'fa', iconName: 'envelope' }"
+                    <FontAwesomeIcon
+                        :icon="faEnvelope"
                         size="lg"
                         style="color: white"
                     />
@@ -91,8 +94,8 @@ const submit = () => {
                     }}</a>
                 </p>
                 <p class="mb-2 flex justify-start text-white">
-                    <font-awesome-icon
-                        :icon="{ prefix: 'fab', iconName: 'twitter' }"
+                    <FontAwesomeIcon
+                        :icon="faTwitter"
                         size="lg"
                         style="color: white"
                     />
@@ -112,15 +115,15 @@ const submit = () => {
 					Departamento de sistemas
 				</span>
 				<p class="flex justify-start text-white my-2">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'phone' } " size="lg" style="color: white;" />
+					<FontAwesomeIcon :icon=" { prefix: 'fa', iconName: 'phone' } " size="lg" style="color: white;" />
 					<a href="https://whatsapp.com" class="ml-2">9234132</a>
 				</p>
 				<p class="flex justify-start text-white mb-2">
-					<font-awesome-icon :icon=" { prefix: 'fa', iconName: 'envelope' } " size="lg" style="color: white;" />
+					<FontAwesomeIcon :icon=" { prefix: 'fa', iconName: 'envelope' } " size="lg" style="color: white;" />
 					<a href="https://outlook.com" class="ml-2">sistemas@example.com</a>
 				</p>
 				<p class="flex justify-start text-white mb-2">
-					<font-awesome-icon :icon=" { prefix: 'fab', iconName: 'twitter' } " size="lg" style="color: white;" />
+					<FontAwesomeIcon :icon=" { prefix: 'fab', iconName: 'twitter' } " size="lg" style="color: white;" />
 					<a href="https://outlook.com" class="ml-2">@sistemas_ciiea</a>
 				</p>
 			</div>
@@ -131,9 +134,9 @@ const submit = () => {
         <div class="w-full bg-white p-4">
             <div class="mb-4 flex items-center justify-between">
                 <h1>{{ modalTitle }}</h1>
-                <font-awesome-icon
+                <FontAwesomeIcon
                     @click="showModal = false"
-                    :icon="{ prefix: 'fa', iconName: 'xmark' }"
+                    :icon="faXmark"
                     class="cursor-pointer"
                 />
             </div>

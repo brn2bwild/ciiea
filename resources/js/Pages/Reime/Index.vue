@@ -1,5 +1,6 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
+import { faComment, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 defineOptions({
     layout: HomeLayout,
@@ -89,14 +90,14 @@ const props = defineProps({
                     class="flex w-full items-center justify-evenly py-2 text-neutral-800"
                 >
                     <Link :href="route('home')" class="hover:text-green-500">
-                        <font-awesome-icon
-                            :icon="{ prefix: 'fa', iconName: 'comment' }"
+                        <FontAwesomeIcon
+                            :icon="faComment"
                         />
                         9
                     </Link>
                     <Link :href="route('home')" class="hover:text-rose-500">
-                        <font-awesome-icon
-                            :icon="{ prefix: 'fa', iconName: 'heart' }"
+                        <FontAwesomeIcon
+                            :icon="faHeart"
                         />
                         10
                     </Link>
@@ -128,14 +129,14 @@ const props = defineProps({
                     class="flex w-full items-center justify-evenly py-2 text-neutral-800"
                 >
                     <Link :href="route('home')" class="hover:text-green-500">
-                        <font-awesome-icon
-                            :icon="{ prefix: 'fa', iconName: 'comment' }"
+                        <FontAwesomeIcon
+                            :icon="faComment"
                         />
                         34
                     </Link>
                     <Link :href="route('home')" class="hover:text-rose-500">
-                        <font-awesome-icon
-                            :icon="{ prefix: 'fa', iconName: 'heart' }"
+                        <FontAwesomeIcon
+                            :icon="faHeart"
                         />
                         21
                     </Link>
@@ -167,14 +168,14 @@ const props = defineProps({
                     class="flex w-full items-center justify-evenly py-2 text-neutral-800"
                 >
                     <Link :href="route('home')" class="hover:text-green-500">
-                        <font-awesome-icon
-                            :icon="{ prefix: 'fa', iconName: 'comment' }"
+                        <FontAwesomeIcon
+                            :icon="faComment"
                         />
                         23
                     </Link>
                     <Link :href="route('home')" class="hover:text-rose-500">
-                        <font-awesome-icon
-                            :icon="{ prefix: 'fa', iconName: 'heart' }"
+                        <FontAwesomeIcon
+                            :icon="faHeart"
                         />
                         16
                     </Link>
@@ -206,14 +207,14 @@ const props = defineProps({
                     class="flex w-full items-center justify-evenly py-2 text-neutral-800"
                 >
                     <Link :href="route('home')" class="hover:text-green-500">
-                        <font-awesome-icon
-                            :icon="{ prefix: 'fa', iconName: 'comment' }"
+                        <FontAwesomeIcon
+                            :icon="faComment"
                         />
                         3
                     </Link>
                     <Link :href="route('home')" class="hover:text-rose-500">
-                        <font-awesome-icon
-                            :icon="{ prefix: 'fa', iconName: 'heart' }"
+                        <FontAwesomeIcon
+                            :icon="faHeart"
                         />
                         2
                     </Link>
@@ -231,14 +232,14 @@ const props = defineProps({
                     <div class="mb-2 flex justify-between">
                         <h3 class="font-bold">Publicación 1</h3>
                         <h3>
-                            <font-awesome-icon
-                                :icon="{ prefix: 'fa', iconName: 'comment' }"
+                            <FontAwesomeIcon
+                                :icon="faComment"
                             />
                             15
                         </h3>
                         <h3>
-                            <font-awesome-icon
-                                :icon="{ prefix: 'fa', iconName: 'heart' }"
+                            <FontAwesomeIcon
+                                :icon="faHeart"
                             />
                             30
                         </h3>
@@ -255,14 +256,14 @@ const props = defineProps({
                     <div class="mb-2 flex justify-between">
                         <h3 class="font-bold">Publicación 2</h3>
                         <h3>
-                            <font-awesome-icon
-                                :icon="{ prefix: 'fa', iconName: 'comment' }"
+                            <FontAwesomeIcon
+                                :icon="faComment"
                             />
                             15
                         </h3>
                         <h3>
-                            <font-awesome-icon
-                                :icon="{ prefix: 'fa', iconName: 'heart' }"
+                            <FontAwesomeIcon
+                                :icon="faHeart"
                             />
                             30
                         </h3>
@@ -278,14 +279,14 @@ const props = defineProps({
                     <div class="mb-2 flex justify-between">
                         <h3 class="font-bold">Publicación 3</h3>
                         <h3>
-                            <font-awesome-icon
-                                :icon="{ prefix: 'fa', iconName: 'comment' }"
+                            <FontAwesomeIcon
+                                :icon="faComment"
                             />
                             15
                         </h3>
                         <h3>
-                            <font-awesome-icon
-                                :icon="{ prefix: 'fa', iconName: 'heart' }"
+                            <FontAwesomeIcon
+                                :icon="faHeart"
                             />
                             30
                         </h3>

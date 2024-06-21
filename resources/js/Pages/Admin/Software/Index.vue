@@ -11,6 +11,8 @@ import SecondaryButton from "@/Components/SecondaryButton.vue";
 import DangerButton from "@/Components/DangerButton.vue";
 import Modal from "@/Components/Modal.vue";
 import Pagination from "@/Components/Pagination.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 defineOptions({
     layout: AdminLayout,
@@ -167,8 +169,8 @@ const handleDeleteSoftware = () => {
     <Modal @close="handleCloseModal" :show="showDeleteModal" :max-width="'lg'">
         <div class="p-4">
             <div class="flex w-full flex-col items-center justify-center">
-                <font-awesome-icon
-                    :icon="['fa', 'triangle-exclamation']"
+                <FontAwesomeIcon
+                    :icon="faTriangleExclamation"
                     class="mb-4 text-8xl text-neutral-900"
                 />
                 <h2 class="text-xl">¿Deseas eliminar el software?</h2>

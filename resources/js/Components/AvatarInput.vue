@@ -1,6 +1,8 @@
 <script setup>
-import { useForm } from "@inertiajs/vue3";
 import { computed } from "vue";
+import { useForm } from "@inertiajs/vue3";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const props = defineProps({
     uploadImageRoute: {
@@ -51,13 +53,7 @@ const handleSubmitImage = () => {
             for="avatar-image"
             class="absolute top-[250px] cursor-pointer rounded-full bg-neutral-800 p-4 opacity-50"
         >
-            <font-awesome-icon
-                class="text-3xl text-white"
-                :icon="{
-                    prefix: 'fa',
-                    iconName: cameraIcon,
-                }"
-            />
+            <FontAwesomeIcon class="text-3xl text-white" :icon="faCamera" />
             <form @submit.prevent="handleSubmitImage">
                 <input
                     @change="handleSubmitImage"

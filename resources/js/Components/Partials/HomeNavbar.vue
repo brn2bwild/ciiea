@@ -1,9 +1,10 @@
 <script setup>
 import { ref } from "vue";
-import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import Dropdown from "@/Components/Dropdown.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import NavLink from "@/Components/NavLink.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const showingNavigationDropdown = ref(false);
 
@@ -16,7 +17,7 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits(["openModal", "closeModal"]);
+console.log("navbar aquí");
 </script>
 
 <template>
@@ -319,7 +320,7 @@ const emit = defineEmits(["openModal", "closeModal"]);
 									<div class="flex items-center p-1">
 										<img class="h-8 w-8 cursor-pointer" v-if=" $page.props.auth.user.name "
 											src="/storage/images/default-contact.png" alt="perfil">
-										<font-awesome-icon v-else :icon=" { prefix: 'fa', iconName: 'bars' } "
+										<FontAwesomeIcon v-else :icon=" { prefix: 'fa', iconName: 'bars' } "
 											class=" h-7 w-7 text-neutral-900 cursor-pointer hover:ring-1 hover:ring-neutral-300 focus:ring-1 focus:ring-neutral-300 p-1 rounded-lg" />
 									</div>
 								</template>
@@ -371,11 +372,8 @@ const emit = defineEmits(["openModal", "closeModal"]);
                     <div
                         class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-5"
                     >
-                        <font-awesome-icon
-                            :icon="{
-                                prefix: 'fas',
-                                iconName: 'magnifying-glass',
-                            }"
+                        <FontAwesomeIcon
+                            :icon="faMagnifyingGlass"
                             class="h-4 w-4 text-neutral-500"
                         />
                     </div>

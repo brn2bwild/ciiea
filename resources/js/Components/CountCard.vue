@@ -1,4 +1,6 @@
 <script setup>
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { Link } from "@inertiajs/vue3";
 
 const props = defineProps({
@@ -32,8 +34,8 @@ const props = defineProps({
         </div>
         <div class="flex items-end justify-between text-neutral-700">
             <span class="text-3xl">{{ count }}</span>
-            <font-awesome-icon
-                :icon="{ prefix: 'fa', iconName: icon }"
+            <FontAwesomeIcon
+                :icon="faCamera"
                 class="pr-4 text-6xl text-neutral-700"
             />
         </div>

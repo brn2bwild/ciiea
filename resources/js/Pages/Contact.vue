@@ -1,5 +1,8 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { computed, toRef } from "vue";
 
 defineOptions({
@@ -52,8 +55,8 @@ const props = defineProps({
                 </div>
                 <div>
                     <p class="mb-2 flex justify-start text-sky-950">
-                        <font-awesome-icon
-                            :icon="['fa', 'phone']"
+                        <FontAwesomeIcon
+                            :icon="faPhone"
                             class="text-xl text-sky-900"
                         />
                         <a href="https://whatsapp.com" class="ml-2">
@@ -61,8 +64,8 @@ const props = defineProps({
                         </a>
                     </p>
                     <p class="mb-2 flex justify-start text-sky-950">
-                        <font-awesome-icon
-                            :icon="['fa', 'envelope']"
+                        <FontAwesomeIcon
+                            :icon="faEnvelope"
                             class="text-xl text-sky-900"
                         />
                         <a href="https://outlook.com" class="ml-2">
@@ -70,8 +73,8 @@ const props = defineProps({
                         </a>
                     </p>
                     <p class="flex justify-start text-sky-950">
-                        <font-awesome-icon
-                            :icon="['fab', 'twitter']"
+                        <FontAwesomeIcon
+                            :icon="faTwitter"
                             class="text-xl text-sky-900"
                         />
                         <a href="https://outlook.com" class="ml-2">

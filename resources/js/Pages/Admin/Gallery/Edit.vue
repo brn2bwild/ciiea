@@ -7,6 +7,12 @@ import AdminLayout from "@/Layouts/AdminLayout.vue";
 import DeleteButton from "@/Components/DeleteButton.vue";
 import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import {
+    faPlusCircle,
+    faTriangleExclamation,
+    faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 defineOptions({
     layout: AdminLayout,
@@ -90,9 +96,9 @@ const handleSubmitImages = (images) => {
                         multiple
                     />
                 </form>
-                <font-awesome-icon
+                <FontAwesomeIcon
                     class="mb-2 text-4xl text-neutral-300 transition duration-200 group-hover:text-neutral-400"
-                    :icon="{ prefix: 'fa', iconName: 'plus-circle' }"
+                    :icon="faPlusCircle"
                 />
                 <h1 class="font-bold">Agregar imágenes</h1>
                 <InputError
@@ -134,12 +140,9 @@ const handleSubmitImages = (images) => {
                 @click="showImageModal = false"
                 class="absolute right-2 top-2 flex items-center rounded-full bg-neutral-800 bg-opacity-60 p-3"
             >
-                <font-awesome-icon
+                <FontAwesomeIcon
                     class="text-xl text-neutral-50"
-                    :icon="{
-                        prefix: 'fa',
-                        iconName: 'xmark',
-                    }"
+                    :icon="faXmark"
                 />
             </button>
             <img
@@ -158,8 +161,8 @@ const handleSubmitImages = (images) => {
     >
         <div class="p-8">
             <div class="flex w-full flex-col items-center justify-center">
-                <font-awesome-icon
-                    :icon="['fa', 'triangle-exclamation']"
+                <FontAwesomeIcon
+                    :icon="faTriangleExclamation"
                     class="mb-4 text-8xl text-neutral-900"
                 />
                 <h2 class="text-xl">¿Deseas eliminar la imágen?</h2>

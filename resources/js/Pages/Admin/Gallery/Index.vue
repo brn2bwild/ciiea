@@ -9,6 +9,8 @@ import ResourceCard from "@/Components/ResourceCard.vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import AdminLayout from "@/Layouts/AdminLayout.vue";
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
 
@@ -159,8 +161,8 @@ const handleDeleteEvent = () => {
     <Modal @close="handleCloseModal" :show="showDeleteModal" :max-width="'lg'">
         <div class="p-4">
             <div class="flex w-full flex-col items-center justify-center">
-                <font-awesome-icon
-                    :icon="['fa', 'triangle-exclamation']"
+                <FontAwesomeIcon
+                    :icon="faTriangleExclamation"
                     class="mb-4 text-8xl text-neutral-900"
                 />
                 <h2 class="text-xl">¿Deseas eliminar el evento?</h2>

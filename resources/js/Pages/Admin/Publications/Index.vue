@@ -12,6 +12,8 @@ import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import PdfThumbnail from "@/Components/PdfThumbnail.vue";
 import Pagination from "@/Components/Pagination.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 defineOptions({
     layout: AdminLayout,
@@ -184,8 +186,8 @@ const handleDeletePublication = () => {
     >
         <div class="p-4">
             <div class="flex w-full flex-col items-center justify-center">
-                <font-awesome-icon
-                    :icon="['fa', 'triangle-exclamation']"
+                <FontAwesomeIcon
+                    :icon="faTriangleExclamation"
                     class="mb-4 text-8xl text-neutral-900"
                 />
                 <h2 class="text-xl">¿Deseas eliminar la publicación?</h2>

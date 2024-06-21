@@ -2,6 +2,8 @@
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import Modal from "@/Components/Modal.vue";
 import { ref } from "vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 defineOptions({
     layout: HomeLayout,
@@ -63,15 +65,9 @@ const showModal = ref(false);
         >
             <div
                 @click="showModal = false"
-                class="absolute top-2 right-2 flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-neutral-600 transition-all duration-200 hover:bg-neutral-700 cursor-pointer opacity-70"
+                class="absolute right-2 top-2 flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-neutral-600 opacity-70 transition-all duration-200 hover:bg-neutral-700"
             >
-                <font-awesome-icon
-                    class="p-2 text-neutral-50"
-                    :icon="{
-                        prefix: 'fa',
-                        iconName: 'xmark',
-                    }"
-                />
+                <FontAwesomeIcon class="p-2 text-neutral-50" :icon="faXmark" />
             </div>
             <img
                 class="object-cover"

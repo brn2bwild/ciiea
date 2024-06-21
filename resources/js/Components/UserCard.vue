@@ -1,4 +1,6 @@
 <script setup>
+import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { computed } from "vue";
 
 const props = defineProps({
@@ -56,16 +58,16 @@ const openModal = () => {
                     :href="editRoute"
                     class="block rounded-full text-2xl text-orange-500 transition-all duration-200 hover:text-orange-700"
                 >
-                    <font-awesome-icon
-                        :icon="{ prefix: 'fa', iconName: 'pen-to-square' }"
+                    <FontAwesomeIcon
+                        :icon="faPenToSquare"
                     />
                 </Link>
                 <button
                     @click="openModal"
                     class="block rounded-full text-2xl text-red-500 transition-all duration-200 hover:text-red-700"
                 >
-                    <font-awesome-icon
-                        :icon="{ prefix: 'fa', iconName: 'trash' }"
+                    <FontAwesomeIcon
+                        :icon="faTrash"
                     />
                 </button>
             </div>
