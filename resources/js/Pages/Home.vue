@@ -1,21 +1,9 @@
-<script>
-import HomeLayout from '@/Layouts/HomeLayout.vue'
-
-export default {
-  // Using a render function...
-//   layout: (h, page) => h(HomeLayout, [page]),
-
-  // Using shorthand syntax...
-  layout: HomeLayout,
-}
-</script>
-
 <script setup>
-// import HomeLayout from "@/Layouts/HomeLayout.vue";
+import HomeLayout from "@/Layouts/HomeLayout.vue";
 
-// defineOptions({
-//     layout: HomeLayout,
-// });
+defineOptions({
+    layout: HomeLayout,
+});
 
 const props = defineProps({
     canLogin: {
@@ -25,7 +13,6 @@ const props = defineProps({
         type: Boolean,
     },
 });
-
 </script>
 
 <template>
