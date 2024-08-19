@@ -24,6 +24,9 @@ class User extends Authenticatable
 		'email',
 		'password',
 		'social_media',
+		'mobile',
+		'short_description',
+		'long_description',
 		'is_admin_contact',
 	];
 

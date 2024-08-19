@@ -11,7 +11,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <div class="min-h-screen bg-neutral-200">
+    <div class="flex min-h-screen bg-neutral-200">
         <!-- Navbar -->
         <nav class="fixed z-50 w-full shadow-md border-neutral-300 bg-white">
             <!-- Primary Navigation Menu -->
@@ -178,7 +178,7 @@ const showingNavigationDropdown = ref(false);
 
         <!-- Sidebar -->
         <aside
-            class="fixed left-0 top-0 z-30 hidden h-screen min-h-screen w-64 border-0 bg-white px-2 pt-20 sm:flex sm:flex-col"
+            class="fixed left-0 top-0 z-30 hidden h-screen w-64 border-0 bg-white px-2 pt-20 sm:flex sm:flex-col"
         >
             <SidebarLink :href="route('home')" :active="$page.url === '/'">
                 Inicio

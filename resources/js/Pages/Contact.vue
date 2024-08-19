@@ -1,7 +1,6 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faAt, faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { computed, toRef } from "vue";
 
@@ -34,7 +33,7 @@ const props = defineProps({
             class="group relative mb-32 flex w-full rounded-sm bg-transparent"
         >
             <img
-                class="z-20 h-32 w-32 rounded-full border-4"
+                class="z-20 h-32 w-32 rounded-full border-none"
                 :src="
                     administrator.image !== null
                         ? administrator.image.path
@@ -43,10 +42,10 @@ const props = defineProps({
                 alt="default-contact"
             />
             <div
-                class="absolute left-5 top-10 z-10 flex h-52 w-3/4 flex-col items-center justify-between rounded-xl bg-indigo-200 p-4"
+                class="absolute left-8 top-10 z-10 flex h-48 w-3/4 flex-col items-start justify-between rounded-xl bg-indigo-200 p-4"
             >
-                <div class="flex flex-col items-end pl-24">
-                    <h1 class="text-lg font-bold text-sky-950">
+                <div class="flex flex-col items-start pl-24">
+                    <h1 class="text-lg font-bold text-sky-950 line-clamp-2">
                         {{ administrator.name }}
                     </h1>
                     <h2 class="text-sky-900">
@@ -54,7 +53,9 @@ const props = defineProps({
                     </h2>
                 </div>
                 <div>
-                    <p class="mb-2 flex justify-start text-sky-950">
+                    <p
+                        class="mb-2 flex items-center justify-start text-sky-950"
+                    >
                         <FontAwesomeIcon
                             :icon="faPhone"
                             class="text-xl text-sky-900"
@@ -63,22 +64,13 @@ const props = defineProps({
                             {{ administrator.mobile }}
                         </a>
                     </p>
-                    <p class="mb-2 flex justify-start text-sky-950">
+                    <p class="flex items-center justify-start text-sky-950">
                         <FontAwesomeIcon
                             :icon="faEnvelope"
                             class="text-xl text-sky-900"
                         />
                         <a href="https://outlook.com" class="ml-2">
                             {{ administrator.email }}
-                        </a>
-                    </p>
-                    <p class="flex justify-start text-sky-950">
-                        <FontAwesomeIcon
-                            :icon="faTwitter"
-                            class="text-xl text-sky-900"
-                        />
-                        <a href="https://outlook.com" class="ml-2">
-                            {{ administrator.social_media.twitter }}
                         </a>
                     </p>
                 </div>
