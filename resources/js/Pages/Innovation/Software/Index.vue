@@ -22,14 +22,15 @@ const props = defineProps({
 <template>
     <Head title="Software Educativo" />
     <div
-        class="flex w-full flex-col items-center justify-center sm:px-60 sm:py-10"
+        class="flex w-full flex-col items-center justify-center px-14 lg:px-60 sm:py-10"
     >
         <section class="w-full pb-6">
             <h1 class="text-xl font-bold text-neutral-600">
                 Software Educativo
             </h1>
         </section>
-        <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
+
+        <section class="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
             <Card
                 v-for="software in props.software_resources.data"
                 :key="software.index"
@@ -70,6 +71,7 @@ const props = defineProps({
                 </template>
             </Card>
         </section>
+
         <Pagination
             :links="props.software_resources.meta.links"
             class="mt-8 flex justify-center"

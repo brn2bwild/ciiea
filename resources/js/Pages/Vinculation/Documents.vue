@@ -32,14 +32,14 @@ const handleClosePdfModal = () => {
 <template>
     <Head title="Recursos" />
     <div
-        class="flex w-full flex-col items-center justify-center sm:px-60 sm:py-10"
+        class="flex w-full flex-col items-center justify-center px-14 lg:px-60 sm:py-10"
     >
         <section class="w-full pb-6">
             <h1 class="text-xl font-bold text-neutral-600">
                 Documentos de vinculación
             </h1>
         </section>
-        <section class="grid w-full grid-cols-1 gap-10 sm:grid-cols-3">
+        <section class="grid w-full grid-cols-1 gap-8 sm:grid-cols-3">
             <Card v-for="resource in resources.data" :key="resource.index">
                 <template #thumbnail>
                     <img

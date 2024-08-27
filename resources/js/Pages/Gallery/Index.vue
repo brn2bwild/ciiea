@@ -31,12 +31,13 @@ const modalImageUrl = ref("");
     <section class="w-full px-12 pt-10">
         <h1 class="ml-10 text-xl font-bold text-neutral-600">Eventos</h1>
     </section>
+
     <section class="flex w-full justify-center">
         <div
-            class="grid h-screen w-[95%] grid-cols-1 gap-2 px-4 pt-8 sm:grid-cols-3 sm:gap-4 sm:px-12 sm:pb-12 sm:pt-8"
+            class="grid h-screen w-[95%] grid-cols-1 gap-2 px-4 pt-8 sm:gap-4 sm:px-12 sm:pb-12 sm:pt-8 md:grid-cols-2 lg:grid-cols-3"
         >
             <div
-                class="group relative flex h-full flex-col items-center justify-center overflow-hidden rounded-3xl bg-neutral-50 transition-all duration-300 ease-in-out"
+                class="group relative flex h-40 flex-col items-center justify-center overflow-hidden rounded-3xl bg-neutral-50 transition-all duration-300 ease-in-out lg:h-full"
                 v-for="event in props.events.data"
                 :key="event.index"
             >

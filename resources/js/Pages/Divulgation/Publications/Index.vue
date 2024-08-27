@@ -39,9 +39,9 @@ const handleClosePdfModal = () => {
 <template>
     <Head title="Publicaciones" />
     <div
-        class="flex w-full flex-col items-center justify-center sm:px-60 sm:py-10"
+        class="flex w-full flex-col items-center justify-center px-14 sm:py-10 lg:px-60"
     >
-        <section class="w-full py-10 pb-28">
+        <section class="w-full py-10">
             <div
                 class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
@@ -87,12 +87,14 @@ const handleClosePdfModal = () => {
                 </div>
             </div>
         </section>
+        
         <section class="w-full pb-6">
             <h1 class="text-xl font-bold text-neutral-600">
                 Publicaciones recientes
             </h1>
         </section>
-        <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
+
+        <section class="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
             <Card
                 v-for="publication in props.publications.data"
                 :key="publication.index"
@@ -134,6 +136,7 @@ const handleClosePdfModal = () => {
                 </template>
             </Card>
         </section>
+
         <Pagination
             :links="props.publications.meta.links"
             class="mt-8 flex justify-center"

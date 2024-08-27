@@ -9,8 +9,8 @@ defineOptions({
     <Head title="Servicio Social" />
 
     <div>
-        <section class="min-h-screen w-full px-80 pb-10">
-            <h1 class="w-full pt-12 text-left text-6xl font-bold">
+        <section class="min-h-screen w-full px-20 pb-10 lg:px-60">
+            <h1 class="w-full pt-12 text-center text-4xl font-bold">
                 Servicio Social
             </h1>
             <div class="mt-10 flex items-center justify-between gap-8">

@@ -17,14 +17,14 @@ const props = defineProps({
 
 <template>
     <Head title="Inicio" />
-    <section class="h-screen w-full overflow-hidden">
+    <section class="w-full overflow-hidden">
         <img
             v-lazy="'/storage/images/ciiea.jpeg'"
-            class="object-cover object-center"
+            class="object-contain object-center"
         />
     </section>
     <section
-        class="flex h-[490px] w-full items-center justify-center bg-rose-900 py-14 text-center text-neutral-50"
+        class="flex w-full items-center justify-center bg-rose-900 py-24 text-center text-neutral-50"
     >
         <div class="w-2/3">
             <h1 class="w-full text-2xl font-bold">¿Qué es el CIIEA?</h1>
@@ -38,11 +38,11 @@ const props = defineProps({
         </div>
     </section>
     <section
-        class="flex h-[510px] w-full items-center justify-center py-32 sm:px-28"
+        class="flex w-full items-center justify-center py-20 lg:px-28 px-8"
     >
-        <div class="grid w-full grid-cols-1 gap-x-16 md:grid-cols-3">
+        <div class="grid w-full grid-cols-1 gap-x-10 md:grid-cols-3">
             <div
-                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-8 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
             >
                 <span class="text-2xl font-bold text-neutral-800"
                     >Objetivo</span
@@ -55,7 +55,7 @@ const props = defineProps({
                 </p>
             </div>
             <div
-                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-8 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
             >
                 <span class="text-2xl font-bold text-neutral-800">Misión</span>
                 <p
@@ -70,7 +70,7 @@ const props = defineProps({
                 </p>
             </div>
             <div
-                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-10 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-8 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
             >
                 <span class="text-2xl font-bold text-neutral-800">Visión</span>
                 <p

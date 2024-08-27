@@ -22,7 +22,7 @@ const props = defineProps({
 <template>
     <Head title="Convocatorias" />
     <div
-        class="flex w-full flex-col items-center justify-center sm:px-60 sm:py-10"
+        class="flex w-full flex-col items-center justify-center px-14 lg:px-60 sm:py-10"
     >
         <section class="w-full pb-20 pt-10">
             <div
@@ -77,11 +77,13 @@ const props = defineProps({
                 </div>
             </div>
         </section>
+
         <section class="w-full pb-6">
             <h1 class="text-xl font-bold text-neutral-600">
                 Últimas Convocatorias
             </h1>
         </section>
+
         <section class="grid w-full grid-cols-1 gap-6 sm:grid-cols-2">
             <div
                 v-for="convocation in props.convocations.data"
@@ -121,6 +123,7 @@ const props = defineProps({
                 </div>
             </div>
         </section>
+
         <Pagination
             :links="props.convocations.meta.links"
             class="mt-8 flex justify-center"

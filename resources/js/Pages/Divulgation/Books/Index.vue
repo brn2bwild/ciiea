@@ -40,9 +40,9 @@ const handleClosePdfModal = () => {
 <template>
     <Head title="Libros" />
     <div
-        class="flex w-full flex-col items-center justify-center sm:px-60 sm:py-10"
+        class="flex w-full flex-col items-center justify-center px-14 sm:py-10 lg:px-60"
     >
-        <section class="w-full py-10 pb-28">
+        <section class="w-full py-10">
             <div
                 class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
@@ -88,11 +88,11 @@ const handleClosePdfModal = () => {
             </div>
         </section>
 
-        <section class="w-full pb-6">
+        <section class="w-full py-6">
             <h1 class="text-xl font-bold text-neutral-600">Libros recientes</h1>
         </section>
 
-        <section class="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
+        <section class="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
             <Card v-for="book in props.books.data" :key="book.index">
                 <template #thumbnail>
                     <div
@@ -141,7 +141,12 @@ const handleClosePdfModal = () => {
             class="mt-8 flex justify-center"
         />
     </div>
-    <Modal @close="handleClosePdfModal" :show="showPdfModal">
+    <Modal
+        @close="handleClosePdfModal"
+        :show="showPdfModal"
+        :max-width="'3xl'"
+        class="h-[860px] overflow-hidden"
+    >
         <PdfViewer :url="urlToShow" class="object-fill" />
     </Modal>
 </template>

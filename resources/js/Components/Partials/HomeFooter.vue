@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
         <div class="flex items-center justify-between py-8">
             <div class="flex w-1/3 items-center justify-start gap-8">
                 <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/ciiea2021?mibextid=ZbWKwL"
                     target="_blank"
                     class="group flex items-center gap-2 text-neutral-600"
                 >
@@ -29,7 +29,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
                     >
                 </a>
                 <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/profile.php?id=100075874967463&mibextid=ZbWKwL"
                     target="_blank"
                     class="group flex items-center gap-2 text-neutral-600"
                 >
