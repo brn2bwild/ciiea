@@ -35,7 +35,7 @@ const props = defineProps({
         >
             <div class="relative w-full h-full">
                 <img
-                    class="absolute -top-4 -left-4 z-20 h-28 w-28 rounded-full border-none"
+                    class="absolute -top-4 -left-4 z-20 h-32 w-32 rounded-full border-none"
                     :src="
                         administrator.image !== null
                             ? administrator.image.path
@@ -44,9 +44,9 @@ const props = defineProps({
                     alt="default-contact"
                 />
                 <div
-                    class="z-10 flex w-full flex-col items-start justify-between rounded-xl bg-indigo-200 p-4 lg:h-52"
+                    class="z-10 flex w-full flex-col items-start justify-between rounded-xl bg-indigo-200 p-4 lg:h-60"
                 >
-                    <div class="flex flex-col items-start pl-24 mb-6">
+                    <div class="flex flex-col items-start pl-28">
                         <h1 class="line-clamp-2 text-lg font-bold text-sky-950">
                             {{ administrator.name }}
                         </h1>
@@ -54,7 +54,7 @@ const props = defineProps({
                             {{ administrator.short_description }}
                         </h2>
                     </div>
-                    <div class="flex items-center justify-end gap-6 lg:flex-col lg:items-start lg:pl-20 w-full">
+                    <div class="flex items-center justify-end gap-2 lg:flex-col lg:items-start lg:pl-6 w-full">
                         <p
                             class="flex items-center justify-start text-sky-950"
                         >

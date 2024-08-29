@@ -21,12 +21,12 @@ const props = defineProps({
 <template>
     <nav class="fixed z-50 w-full bg-white">
         <!-- Primary Navigation Menu -->
-        <div class="flex justify-between">
+        <div class="flex justify-between items-center px-4">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
                 <Link :href="route('home')" class="ml-4">
                     <img
-                        class="hidden w-28 sm:block"
+                        class="w-24 py-4"
                         src="/storage/images/ciiea.png"
                         alt="ciiea-logo"
                         role="link"
@@ -36,7 +36,7 @@ const props = defineProps({
             </div>
 
             <!-- 	Main dropdown menu-->
-            <div class="-mr-2 flex items-center sm:hidden">
+            <div class="-mr-2 flex items-center lg:hidden">
                 <button
                     @click="
                         showingNavigationDropdown = !showingNavigationDropdown
@@ -74,7 +74,7 @@ const props = defineProps({
             </div>
 
             <!--Login, Register and more options dropdown menu-->
-            <div class="hidden items-center justify-between sm:flex">
+            <div class="hidden items-center justify-between lg:flex">
                 <NavLink :href="route('home')" :active="$page.url === '/'">
                     Inicio
                 </NavLink>
@@ -83,7 +83,7 @@ const props = defineProps({
                     <Dropdown align="right" width="56">
                         <template #trigger>
                             <span
-                                class="inline-flex cursor-pointer items-center px-6 py-5 font-bold transition duration-150 ease-in-out hover:bg-sky-900 hover:text-neutral-50"
+                                class="inline-flex cursor-pointer items-center px-4 py-5 font-bold transition duration-150 ease-in-out hover:bg-sky-900 hover:text-neutral-50"
                                 :class="[
                                     $page.url.includes('/books') ||
                                     $page.url.includes('/magazines') ||
@@ -141,7 +141,7 @@ const props = defineProps({
                     <Dropdown align="right" width="56">
                         <template #trigger>
                             <span
-                                class="inline-flex cursor-pointer items-center px-6 py-5 font-bold transition duration-150 ease-in-out hover:bg-sky-900 hover:text-neutral-50"
+                                class="inline-flex cursor-pointer items-center px-4 py-5 font-bold transition duration-150 ease-in-out hover:bg-sky-900 hover:text-neutral-50"
                                 :class="[
                                     $page.url.includes(
                                         'educational-software',
@@ -192,7 +192,7 @@ const props = defineProps({
                     <Dropdown align="right" width="56">
                         <template #trigger>
                             <span
-                                class="inline-flex cursor-pointer items-center px-6 py-5 font-bold transition duration-150 ease-in-out hover:bg-sky-900 hover:text-neutral-50"
+                                class="inline-flex cursor-pointer items-center px-4 py-5 font-bold transition duration-150 ease-in-out hover:bg-sky-900 hover:text-neutral-50"
                                 :class="[
                                     $page.url.includes('social-service') ||
                                     $page.url.includes(
@@ -273,7 +273,7 @@ const props = defineProps({
                     <Link
                         v-if="$page.props.auth.user.role === 'admin'"
                         :href="route('admin.dashboard')"
-                        class="px-6 py-5 font-bold text-neutral-500 transition-all ease-in-out hover:bg-sky-900 hover:text-neutral-50 focus:no-underline"
+                        class="px-4 py-5 font-bold text-neutral-500 transition-all ease-in-out hover:bg-sky-900 hover:text-neutral-50 focus:no-underline"
                     >
                         Dashboard
                     </Link>
@@ -283,7 +283,7 @@ const props = defineProps({
                             $page.props.auth.user.role === 'user'
                         "
                         :href="route('profile.edit')"
-                        class="px-6 py-5 font-bold text-neutral-500 transition-all ease-in-out hover:bg-sky-900 hover:text-neutral-50 focus:no-underline"
+                        class="px-4 py-5 font-bold text-neutral-500 transition-all ease-in-out hover:bg-sky-900 hover:text-neutral-50 focus:no-underline"
                     >
                         {{ $page.props.auth.user.name }}
                     </Link>
@@ -291,20 +291,20 @@ const props = defineProps({
                 <template v-if="!$page.props.auth.user.name">
                     <Link
                         :href="route('login')"
-                        class="hidden px-6 py-5 font-bold text-neutral-500 transition-all duration-200 hover:bg-sky-900 hover:text-neutral-50 focus:no-underline sm:block"
+                        class="hidden px-4 py-5 font-bold text-neutral-500 transition-all duration-200 hover:bg-sky-900 hover:text-neutral-50 focus:no-underline sm:block"
                     >
-                        Iniciar sesión</Link
+                        Acceder</Link
                     >
                     <!-- <button
                         @click="emit('openModal', 'login')"
-                        class="hidden px-6 py-5 font-bold text-neutral-500 transition-all duration-200 hover:bg-sky-900 hover:text-neutral-50 focus:no-underline sm:block"
+                        class="hidden px-4 py-5 font-bold text-neutral-500 transition-all duration-200 hover:bg-sky-900 hover:text-neutral-50 focus:no-underline sm:block"
                     >
                         Iniciar sesión
                     </button> -->
                     <Link
                         v-if="canRegister"
                         :href="route('register')"
-                        class="hidden px-6 py-5 font-bold text-neutral-500 transition-all duration-200 hover:bg-sky-900 hover:text-neutral-50 focus:no-underline sm:block"
+                        class="hidden px-4 py-5 font-bold text-neutral-500 transition-all duration-200 hover:bg-sky-900 hover:text-neutral-50 focus:no-underline sm:block"
                     >
                         Registrarse</Link
                     >
@@ -357,14 +357,8 @@ const props = defineProps({
                 block: showingNavigationDropdown,
                 hidden: !showingNavigationDropdown,
             }"
-            class="transition duration-300 sm:hidden"
+            class="transition duration-300"
         >
-            <!-- <div class="pt-2 pb-3 space-y-1">
-				<ResponsiveNavLink v-if=" $page.props.auth.user.name " :href=" route( 'dashboard' ) "
-					:active=" route().current( 'admin.dashboard' ) ">
-					Dashboard
-				</ResponsiveNavLink>
-			</div> -->
             <div class="pb-3 pt-2">
                 <div class="relative flex w-full shrink-0 items-center p-2">
                     <div

@@ -350,7 +350,7 @@ const showingNavigationDropdown = ref(false);
         </aside>
 
         <!-- Page Content -->
-        <main class="pt-20 sm:pl-64">
+        <main class="pt-20 sm:pl-64 w-full">
             <slot />
         </main>
     </div>

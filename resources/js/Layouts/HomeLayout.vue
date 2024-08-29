@@ -18,7 +18,7 @@ const props = defineProps({
         <HomeNavbar :canLogin="canLogin" :canRegister="canRegister" />
 
         <!-- Page Content -->
-        <main class="min-h-screen sm:pt-16">
+        <main class="min-h-screen sm:pt-14">
             <slot />
         </main>
 
