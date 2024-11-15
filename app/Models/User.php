@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Notifications\PasswordReset;
 use App\Traits\HasImages;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -80,5 +81,10 @@ class User extends Authenticatable
 		]);
 
 		$this->image()->save($newImage);
+	}
+
+	public function sendPasswordResetNotification($token)
+	{
+		$this->notify(new PasswordReset($token));
 	}
 }
