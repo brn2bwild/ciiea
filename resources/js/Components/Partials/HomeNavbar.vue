@@ -402,6 +402,23 @@ const props = defineProps({
 					:active=" route().current( 'gallery.index' ) ">
 					Galería
 				</ResponsiveNavLink> -->
+
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.convocations.index')"
+                    :active="route().current('guest.convocations.index')"
+                >
+                    Convocatorias
+                </ResponsiveNavLink>
+
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.gallery.index')"
+                    :active="route().current('guest.gallery.index')"
+                >
+                    Galería
+                </ResponsiveNavLink>
+
                 <ResponsiveNavLink
                     @click="showingNavigationDropdown = false"
                     :href="route('reime')"

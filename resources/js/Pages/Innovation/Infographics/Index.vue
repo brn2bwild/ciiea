@@ -43,7 +43,7 @@ const handleCloseImageModal = () => {
             <h1 class="text-xl font-bold text-neutral-600">Infografías</h1>
         </section>
 
-        <section class="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
+        <section class="mt-10 grid w-full grid-cols-1 gap-8 md:grid-cols-3">
             <Card
                 v-for="infographic in props.infographics.data"
                 :key="infographic.index"
@@ -85,7 +85,7 @@ const handleCloseImageModal = () => {
 
         <Pagination
             :links="props.infographics.meta.links"
-            class="mt-8 flex justify-center"
+            class="mt-8 flex justify-center mb-8"
         />
     </div>
     <Modal

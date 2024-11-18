@@ -43,7 +43,7 @@ const handleClosePdfModal = () => {
     >
         <section class="w-full py-10">
             <div
-                class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
+                class="mt-10 flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
                 <div class="w-1/2 p-4">
                     <h3 class="font-sans text-neutral-500">
@@ -145,7 +145,7 @@ const handleClosePdfModal = () => {
         </section>
         <Pagination
             :links="props.investigations.meta.links"
-            class="mt-8 flex justify-center"
+            class="mt-8 flex justify-center mb-8"
         />
     </div>
     <Modal
