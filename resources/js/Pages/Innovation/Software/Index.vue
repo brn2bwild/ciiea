@@ -30,7 +30,7 @@ const props = defineProps({
             </h1>
         </section>
 
-        <section class="grid w-full grid-cols-1 gap-8 md:grid-cols-3">
+        <section class="mt-10 grid w-full grid-cols-1 gap-8 md:grid-cols-3">
             <Card
                 v-for="software in props.software_resources.data"
                 :key="software.index"
@@ -74,7 +74,7 @@ const props = defineProps({
 
         <Pagination
             :links="props.software_resources.meta.links"
-            class="mt-8 flex justify-center"
+            class="mt-8 flex justify-center mb-8"
         />
     </div>
 </template>

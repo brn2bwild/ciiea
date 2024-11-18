@@ -24,7 +24,7 @@ const props = defineProps({
     <div
         class="flex w-full flex-col items-center justify-center px-14 lg:px-60 sm:py-10"
     >
-        <section class="w-full pb-20 pt-10">
+        <section class="mt-10 w-full pb-20 pt-10">
             <div
                 class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
             >
@@ -126,7 +126,7 @@ const props = defineProps({
 
         <Pagination
             :links="props.convocations.meta.links"
-            class="mt-8 flex justify-center"
+            class="mt-8 flex justify-center mb-8"
         />
     </div>
 </template>

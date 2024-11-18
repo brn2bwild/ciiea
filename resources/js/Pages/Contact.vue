@@ -54,7 +54,7 @@ const props = defineProps({
                             {{ administrator.short_description }}
                         </h2>
                     </div>
-                    <div class="flex items-center justify-end gap-2 lg:flex-col lg:items-start lg:pl-6 w-full">
+                    <div class="flex flex-col items-start justify-start gap-2 w-full pl-28 mt-4">
                         <p
                             class="flex items-center justify-start text-sky-950"
                         >
@@ -81,7 +81,7 @@ const props = defineProps({
         </div>
     </section>
 
-    <section class="relative mb-20 px-4 pb-16 sm:px-0">
+    <section class="mt-10 relative mb-20 px-4 pb-16 sm:px-0">
         <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2328.054491828354!2d-92.93779457026712!3d17.562612384054674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85edb757e68858c3%3A0x9e0871be66d0e66c!2sCentro%20de%20Investigaci%C3%B3n%20E%20Innovaci%C3%B3n%20Para%20la%20Ense%C3%B1anza%20y%20El%20Aprendizaje%20Ciiea!5e0!3m2!1ses-419!2smx!4v1689117052692!5m2!1ses-419!2smx"
             style="border: 0"
@@ -92,38 +92,38 @@ const props = defineProps({
         >
         </iframe>
         <div
-            class="absolute -bottom-5 flex w-full justify-center gap-4 bg-transparent"
+        class="mt-6 flex flex-col gap-4 sm:absolute sm:-bottom-5 sm:w-full sm:flex-row sm:justify-center"
+    >
+        <div
+            class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-indigo-200 p-4 text-center shadow-lg sm:w-1/4"
         >
-            <div
-                class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-indigo-200 p-4 text-center shadow-lg sm:w-1/4"
-            >
-                <span class="mb-4 text-lg font-bold text-sky-950">
-                    Dirección
-                </span>
-                <p class="text-sky-900">
-                    Carretera a Las Grutas S/N, Eureka y Belem, 86800 Teapa,
-                    Tab.
-                </p>
-            </div>
-            <div
-                class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-indigo-200 p-4 text-center shadow-lg sm:w-1/4"
-            >
-                <span class="mb-4 text-lg font-bold text-sky-950">
-                    Horario de atención
-                </span>
-                <p class="text-sky-900">
-                    Lunes a Viernes <br />
-                    8:00 a.m. - 3:00 p.m.
-                </p>
-            </div>
-            <div
-                class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-indigo-200 p-4 text-center shadow-lg sm:w-1/4"
-            >
-                <span class="mb-4 text-lg font-bold text-sky-950">
-                    Número telefónico
-                </span>
-                <p class="text-sky-900">932 322 3381</p>
-            </div>
+            <span class="mb-4 text-lg font-bold text-sky-950">
+                Dirección
+            </span>
+            <p class="text-sky-900">
+                Carretera a Las Grutas S/N, Eureka y Belem, 86800 Teapa,
+                Tab.
+            </p>
         </div>
-    </section>
+        <div
+            class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-indigo-200 p-4 text-center shadow-lg sm:w-1/4"
+        >
+            <span class="mb-4 text-lg font-bold text-sky-950">
+                Horario de atención
+            </span>
+            <p class="text-sky-900">
+                Lunes a Viernes <br />
+                8:00 a.m. - 3:00 p.m.
+            </p>
+        </div>
+        <div
+            class="flex w-full flex-col items-center justify-start overflow-hidden rounded-xl bg-indigo-200 p-4 text-center shadow-lg sm:w-1/4"
+        >
+            <span class="mb-4 text-lg font-bold text-sky-950">
+                Número telefónico
+            </span>
+            <p class="text-sky-900">932 322 3381</p>
+        </div>
+    </div>
+</section>
 </template>

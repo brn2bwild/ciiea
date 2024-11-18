@@ -5,15 +5,18 @@ defineOptions({
     layout: HomeLayout,
 });
 </script>
+
 <template>
     <Head title="Prácticas Profesionales" />
     <div>
         <section class="min-h-screen w-full px-20 pb-10 lg:px-80">
-            <h1 class="w-full pt-12 text-center text-4xl font-bold">
+          
+            <h1 class="pt-16 text-center text-4xl font-bold">
                 Prácticas Profesionales
             </h1>
-            <div class="mt-10 flex items-center justify-between gap-8">
-                <div>
+            
+            <div class="mt-10 flex flex-col lg:flex-row items-center gap-8">
+                <div class="w-full lg:w-1/2">
                     <p class="text-justify">
                         <strong class="mb-4 block"> Objetivo </strong>
                         Generar un espacio para que alumnos que están por
@@ -78,8 +81,9 @@ defineOptions({
                         </li>
                     </ul>
                 </div>
+                
                 <img
-                    class="h-[800px] w-1/2 object-cover"
+                    class="h-[500px] w-full object-cover lg:h-[800px] lg:w-1/2 lg:ml-8"
                     src="/storage/images/magazines-optimized.jpg"
                     alt="default-convocation-image"
                 />

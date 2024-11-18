@@ -24,7 +24,7 @@ const props = defineProps({
         />
     </section>
     <section
-        class="flex w-full items-center justify-center bg-rose-900 py-24 text-center text-neutral-50"
+        class="flex w-full items-center justify-center bg-rose-900 py-24  text-center text-neutral-50"
     >
         <div class="w-2/3">
             <h1 class="w-full text-2xl font-bold">¿Qué es el CIIEA?</h1>
@@ -40,7 +40,7 @@ const props = defineProps({
     <section
         class="flex w-full items-center justify-center py-20 lg:px-28 px-8"
     >
-        <div class="grid w-full grid-cols-1 gap-x-10 md:grid-cols-3">
+        <div class="grid w-full grid-cols-1 gap-x-10 gap-6 md:grid-cols-3">
             <div
                 class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-8 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
             >
@@ -55,7 +55,7 @@ const props = defineProps({
                 </p>
             </div>
             <div
-                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-8 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-8 py-6 gap-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
             >
                 <span class="text-2xl font-bold text-neutral-800">Misión</span>
                 <p
@@ -70,7 +70,7 @@ const props = defineProps({
                 </p>
             </div>
             <div
-                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-8 py-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
+                class="flex min-h-full flex-col items-center justify-center rounded-2xl bg-neutral-50 px-8 py-6 gap-6 text-center leading-7 text-neutral-900 shadow-sm shadow-gray-400"
             >
                 <span class="text-2xl font-bold text-neutral-800">Visión</span>
                 <p
