@@ -29,7 +29,7 @@ const infographicForm = useForm({
     id: null,
 });
 const infographicCreateForm = useForm({
-    name: "",
+    title: "",
     description: "",
 });
 
