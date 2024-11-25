@@ -23,10 +23,10 @@ const showModal = ref(false);
 <template>
     <Head title="Galería" />
 
-    <h1 class="ml-8 mt-8 font-medium">{{ props.event.name }}</h1>
+    <h1 class="ml-8 pt-24 font-medium">{{ props.event.name }}</h1>
     <section
         v-if="Object.keys(props.event.images).length !== 0"
-        class="grid w-full grid-cols-1 gap-10 p-8 md:grid-cols-5"
+        class="pt-8 grid w-full grid-cols-1 gap-10 p-8 md:grid-cols-5"
     >
         <div
             class="flex h-[160px] w-full cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl bg-neutral-700 shadow-lg shadow-slate-100"

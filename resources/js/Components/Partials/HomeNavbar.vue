@@ -26,6 +26,14 @@ const props = defineProps({
                 <!-- Logo -->
                 <Link :href="route('home')" class="ml-4">
                     <img
+                        class="w-32 py-2"
+                        src="/storage/images/logo.jpg"
+                        alt="ciiea-logo"
+                        role="link"
+                        loading="lazy"
+                    />
+                </Link><Link :href="route('home')" class="ml-4">
+                    <img
                         class="w-24 py-4"
                         src="/storage/images/ciiea.png"
                         alt="ciiea-logo"
@@ -33,6 +41,7 @@ const props = defineProps({
                         loading="lazy"
                     />
                 </Link>
+                
             </div>
 
             <!-- 	Main dropdown menu-->
@@ -386,22 +395,152 @@ const props = defineProps({
                 >
                     Inicio
                 </ResponsiveNavLink>
-                <!-- <ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'divulgation' ) "
-					:active=" route().current( 'divulgation' ) ">
-					Divulgación
-				</ResponsiveNavLink>
-				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'divulgation' ) "
-					:active=" route().current( 'divulgation' ) ">
-					Innovación
-				</ResponsiveNavLink> -->
-                <!-- <ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'convocations.index' ) "
-					:active=" route().current( 'convocations.index' ) ">
-					Convocatorias
-				</ResponsiveNavLink>
-				<ResponsiveNavLink @click="showingNavigationDropdown = false" :href=" route( 'gallery.index' ) "
-					:active=" route().current( 'gallery.index' ) ">
-					Galería
-				</ResponsiveNavLink> -->
+
+                <!-- DIVULGACION -->
+                <div>
+            <ResponsiveNavLink
+                @click="toggleSubmenu('divulgacion')"
+                class="flex justify-between items-center"
+            >
+                Divulgación
+                <FontAwesomeIcon
+                    :icon="submenuVisible === 'divulgacion' ? faChevronUp : faChevronDown"
+                    class="h-4 w-4 ml-2 text-neutral-500"
+                />
+            </ResponsiveNavLink>
+
+            <div
+                v-if="submenuVisible === 'divulgacion'"
+                class="ml-4 pl-4 border-l border-neutral-300"
+            >
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.books.index')"
+                >
+                    Libros
+                </ResponsiveNavLink>
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.magazines.index')"
+                >
+                    Revistas
+                </ResponsiveNavLink>
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.hist-publications.index')"
+                >
+                    Publicaciones
+                </ResponsiveNavLink>
+
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.investigations.index')"
+                >
+                    Investigaciones
+                </ResponsiveNavLink>
+
+            </div>
+        </div>
+      
+                <!-- INNOVACIÓN -->
+        <div>
+            <ResponsiveNavLink
+                @click="toggleSubmenu('innovation')"
+                class="flex justify-between items-center"
+            >
+                Innovación
+                <FontAwesomeIcon
+                    :icon="submenuVisible === 'innovation' ? faChevronUp : faChevronDown"
+                    class="h-4 w-4 ml-2 text-neutral-500"
+                />
+            </ResponsiveNavLink>
+            
+          
+
+            <div
+                v-if="submenuVisible === 'innovation'"
+                class="ml-4 pl-4 border-l border-neutral-300"
+            >
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.educational-software.index')"
+                >
+                    Software Educativo
+                </ResponsiveNavLink>
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.infographics.index')"
+                >
+                   Infografías
+                </ResponsiveNavLink>
+                
+            </div>
+        </div>
+            
+               <!-- VINCULACION -->
+        <div>
+            <ResponsiveNavLink
+                @click="toggleSubmenu('vinculation')"
+                class="flex justify-between items-center"
+                
+            >
+                Vinculación
+                <FontAwesomeIcon
+                    :icon="submenuVisible === 'vinculation' ? faChevronUp : faChevronDown"
+                    class="h-4 w-4 ml-2 text-neutral-500"
+                />
+            </ResponsiveNavLink>
+            
+            <div
+                v-if="submenuVisible === 'vinculation'"
+                class="ml-4 pl-4 border-l border-neutral-300"
+            ></div>
+
+            <div
+                v-if="submenuVisible === 'vinculation'"
+                class="ml-4 pl-4 border-l border-neutral-300"
+            >
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('social-service')"
+                >
+                    Servicio Social
+                </ResponsiveNavLink>
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('profesional-practice')"
+                >
+                   Practicas profesionales
+                </ResponsiveNavLink>
+                
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('vinculation-documents')"
+                >
+                   Documentos
+                </ResponsiveNavLink>
+
+            </div>
+        </div>
+
+
+
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.convocations.index')"
+                    :active="route().current('guest.convocations.index')"
+                >
+                    Convocatorias
+                </ResponsiveNavLink>
+
+                <ResponsiveNavLink
+                    @click="showingNavigationDropdown = false"
+                    :href="route('guest.gallery.index')"
+                    :active="route().current('guest.gallery.index')"
+                >
+                    Galería
+                </ResponsiveNavLink>
+
                 <ResponsiveNavLink
                     @click="showingNavigationDropdown = false"
                     :href="route('reime')"
@@ -420,3 +559,20 @@ const props = defineProps({
         </div>
     </nav>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            showingNavigationDropdown: false,
+            submenuVisible: null, // 
+        };
+    },
+    methods: {
+        toggleSubmenu(menu) {
+            
+            this.submenuVisible = this.submenuVisible === menu ? null : menu;
+        },
+    },
+};
+</script>

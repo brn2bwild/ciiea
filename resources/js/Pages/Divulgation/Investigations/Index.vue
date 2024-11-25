@@ -41,54 +41,49 @@ const handleClosePdfModal = () => {
     <div
         class="flex w-full flex-col items-center justify-center px-14 sm:py-10 lg:px-60"
     >
-        <section class="w-full py-10">
+    <section class="w-full py-10">
+    <div
+        class="mt-10 flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100 flex-col md:flex-row"
+    >
+     
+        <div
+            class="flex h-80 w-full md:w-1/2 justify-center overflow-hidden object-contain order-1 md:order-1"
+        >
             <div
-                class="flex h-full w-full items-center justify-between overflow-hidden rounded-2xl bg-white shadow-lg shadow-slate-100"
+                v-if="props.investigations.data[0].file !== null"
+                class="-m-[20px] scale-90"
             >
-                <div class="w-1/2 p-4">
-                    <h3 class="font-sans text-neutral-500">
-                        {{ props.investigations.data[0].publicated_at }}
-                    </h3>
-                    <h1
-                        class="mt-2 font-sans text-4xl font-extrabold text-neutral-700"
-                    >
-                        {{ props.investigations.data[0].title }}
-                    </h1>
-                    <h2 class="mt-2 text-lg font-medium text-neutral-600">
-                        {{ props.investigations.data[0].short_description }}
-                    </h2>
-                    <button
-                        v-if="props.investigations.data[0].file"
-                        @click="
-                            handleOpenPdfModal(
-                                props.investigations.data[0].file.path,
-                            )
-                        "
-                        class="mt-4 rounded-lg bg-sky-500 px-4 py-2 font-bold text-neutral-50"
-                    >
-                        Leer más
-                    </button>
-                </div>
-                <div
-                    class="flex h-80 w-1/2 justify-center overflow-hidden object-contain"
-                >
-                    <div
-                        v-if="props.investigations.data[0].file !== null"
-                        class="-m-[20px] scale-90"
-                    >
-                        <PdfThumbnail
-                            :url="props.investigations.data[0].file.path"
-                        />
-                    </div>
-                    <img
-                        v-else
-                        src="/storage/images/bookshelve-optimized.jpg"
-                        alt="alt-investigation-cover"
-                        class="w-full object-cover"
-                    />
-                </div>
+                <PdfThumbnail :url="props.investigations.data[0].file.path" />
             </div>
-        </section>
+            <img
+                v-else
+                src="/storage/images/bookshelve-optimized.jpg"
+                alt="alt-investigation-cover"
+                class="w-full object-cover"
+            />
+        </div>
+
+        <div class="w-full md:w-1/2 p-4 order-2 md:order-2">
+            <h3 class="font-sans text-neutral-500">
+                {{ props.investigations.data[0].publicated_at }}
+            </h3>
+            <h1 class="mt-2 font-sans text-4xl font-extrabold text-neutral-700">
+                {{ props.investigations.data[0].title }}
+            </h1>
+            <h2 class="mt-2 text-lg font-medium text-neutral-600">
+                {{ props.investigations.data[0].short_description }}
+            </h2>
+            <button
+                v-if="props.investigations.data[0].file"
+                @click="handleOpenPdfModal(props.investigations.data[0].file.path)"
+                class="mt-4 rounded-lg bg-sky-900  px-4 py-2 font-bold text-neutral-50"
+            >
+                Leer más
+            </button>
+        </div>
+    </div>
+</section>
+
 
         <section class="w-full pb-6">
             <h1 class="text-xl font-bold text-neutral-600">
@@ -145,7 +140,7 @@ const handleClosePdfModal = () => {
         </section>
         <Pagination
             :links="props.investigations.meta.links"
-            class="mt-8 flex justify-center"
+            class="mt-8 flex justify-center mb-8"
         />
     </div>
     <Modal

@@ -34,7 +34,7 @@ const handleClosePdfModal = () => {
     <div
         class="flex w-full flex-col items-center justify-center px-14 lg:px-60 sm:py-10"
     >
-        <section class="w-full pb-6">
+        <section class="mb-10 w-full pb-6">
             <h1 class="text-xl font-bold text-neutral-600">
                 Documentos de vinculación
             </h1>
@@ -66,7 +66,7 @@ const handleClosePdfModal = () => {
                         <button
                             v-if="resource.file"
                             @click="handleShowPdfModal(resource.file.path)"
-                            class="text-md rounded-lg bg-sky-500 px-4 py-2 font-medium text-neutral-50"
+                            class="text-md rounded-lg bg-sky-900  px-4 py-2 font-medium text-neutral-50"
                         >
                             Ver más
                         </button>
@@ -76,7 +76,7 @@ const handleClosePdfModal = () => {
         </section>
         <Pagination
             :links="props.resources.meta.links"
-            class="mt-8 flex justify-center"
+            class="mt-8 flex justify-center mb-8"
         />
     </div>
     <Modal @close="handleClosePdfModal" :show="showModal" max>
