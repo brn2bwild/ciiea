@@ -66,7 +66,7 @@ const handleClosePdfModal = () => {
                         <button
                             v-if="resource.file"
                             @click="handleShowPdfModal(resource.file.path)"
-                            class="text-md rounded-lg bg-sky-500 px-4 py-2 font-medium text-neutral-50"
+                            class="text-md rounded-lg bg-sky-900  px-4 py-2 font-medium text-neutral-50"
                         >
                             Ver más
                         </button>
