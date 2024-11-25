@@ -16,12 +16,12 @@ const props = defineProps({
 <template>
     <div>
         <Head title="Software Educativo" />
-        <section class="min-h-screen w-full px-80 pb-10">
-            <h1 class="w-full pt-12 text-left text-6xl font-bold">
-                {{ props.software.data.name }}
-            </h1>
-            <div class="mt-10 flex items-center justify-between gap-8">
-                <div>
+        <section class="min-h-screen w-full px-4 sm:px-8 md:px-16 lg:px-20 xl:px-80 pb-10 pt-24">
+    <h1 class="w-full text-left text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
+        {{ props.software.data.name }}
+    </h1>
+            <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="w-full md:w-1/2">
                     <p class="w-full text-justify">
                         {{ props.software.data.description }}
                     </p>
@@ -53,21 +53,24 @@ const props = defineProps({
                         </a>
                     </div>
                 </div>
-                <img
-                    class="h-[600px] w-1/2 object-cover"
-                    :src="
-                        '/storage/' +
-                        (props.software.data.image
-                            ? props.software.data.image.path
-                            : '/images/magazines-optimized.jpg')
-                    "
-                    :alt="
-                        props.software.data.image
-                            ? props.software.data.image.name
-                            : 'default-software-image'
-                    "
-                />
+                <div class="w-full md:w-1/2">
+                    <img
+                        class="h-[400px] sm:h-[500px] md:h-[600px] w-full object-cover rounded-lg"
+                        :src="
+                            '/storage/' +
+                            (props.software.data.image
+                                ? props.software.data.image.path
+                                : '/images/magazines-optimized.jpg')
+                        "
+                        :alt="
+                            props.software.data.image
+                                ? props.software.data.image.name
+                                : 'default-software-image'
+                        "
+                    />
+                </div>
             </div>
         </section>
     </div>
 </template>
+
