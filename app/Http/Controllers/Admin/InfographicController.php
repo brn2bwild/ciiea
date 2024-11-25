@@ -11,21 +11,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Str;
 
 class InfographicController extends Controller
 {
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Infographics/Index', [
-			'infographics' => fn () => Infographic::with('image')
+			'infographics' => fn() => Infographic::with('image')
 				->paginate(6)
 		]);
 	}
 
 	public function store(Request $request): RedirectResponse
 	{
+		$slug = Str::slug($request->name);
+
 		Infographic::create([
 			'title' => $request->title,
+			'slug' => $slug,
 		]);
 
 		return back();
@@ -34,7 +38,7 @@ class InfographicController extends Controller
 	public function edit(Request $request): Response
 	{
 		return Inertia::render('Admin/Infographics/Edit', [
-			'infographic' => fn () => Infographic::where('id', $request->id)
+			'infographic' => fn() => Infographic::where('id', $request->id)
 				->with('image')
 				->first()
 		]);

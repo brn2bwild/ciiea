@@ -13,13 +13,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Str;
 
 class EducationalSoftwareController extends Controller
 {
 	public function index(): Response
 	{
 		return Inertia::render('Admin/Software/Index', [
-			'software_resources' => fn () => Software::with('image')
+			'software_resources' => fn() => Software::with('image')
 				->with('file')
 				->paginate(6)
 		]);
@@ -27,9 +28,12 @@ class EducationalSoftwareController extends Controller
 
 	public function store(Request $request): RedirectResponse
 	{
+		$slug = Str::slug($request->name);
+
 		Software::create([
 			'name' => $request->name,
 			'description' => $request->description,
+			'slug' => $slug,
 		]);
 
 		return back()->with('success', '');
@@ -38,7 +42,7 @@ class EducationalSoftwareController extends Controller
 	public function edit(Request $request): Response
 	{
 		return Inertia::render('Admin/Software/Edit', [
-			'software' => fn () => EducationalSoftwareResource::make(Software::where('id', $request->id)->first())
+			'software' => fn() => EducationalSoftwareResource::make(Software::where('id', $request->id)->first())
 		]);
 	}
 
