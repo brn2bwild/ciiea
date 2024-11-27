@@ -24,7 +24,8 @@ class SoftwareUpdateRequest extends FormRequest
 		return [
 			'id' => ['required', 'exists:software,id'],
 			'name' => ['required', 'string', 'max:255'],
-			'description' => ['nullable', 'string', 'max:500']
+			'description' => ['nullable', 'string', 'max:500'],
+			'url' => ['url', 'string', 'max:255']
 		];
 	}
 }
