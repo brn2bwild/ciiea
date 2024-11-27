@@ -14,7 +14,7 @@ return new class extends Migration
 		Schema::create('vinculation_documents', function (Blueprint $table) {
 			$table->id();
 			$table->string('name');
-			$table->longText('description');
+			$table->longText('description')->nullable();
 			$table->timestamps();
 		});
 	}

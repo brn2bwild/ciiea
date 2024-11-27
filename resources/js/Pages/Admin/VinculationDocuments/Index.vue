@@ -117,18 +117,18 @@ const handleDeleteresource = () => {
         <div class="p-4">
             <form @submit.prevent="handleCreateSoftware()">
                 <div class="mt-4">
-                    <InputLabel for="title" value="Nombre del recurso" />
+                    <InputLabel for="name" value="Nombre del recurso" />
                     <TextInput
-                        id="title"
+                        id="name"
                         type="text"
                         class="mt-1 block w-full"
-                        v-model="resourceCreateForm.title"
+                        v-model="resourceCreateForm.name"
                         required
-                        autocomplete="title"
+                        autocomplete="name"
                     />
                     <InputError
                         class="mt-2"
-                        :message="resourceCreateForm.errors.title"
+                        :message="resourceCreateForm.errors.name"
                     />
                 </div>
                 <div class="mt-8 flex w-full justify-end gap-4">
