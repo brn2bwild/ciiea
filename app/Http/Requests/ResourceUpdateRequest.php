@@ -22,7 +22,7 @@ class ResourceUpdateRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'id' => ['required', 'exists:resources,id'],
+			'id' => ['required', 'exists:vinculation_documents,id'],
 			'name' => ['required', 'string', 'max:255'],
 			'description' => ['required', 'string', 'max:2048'],
 		];
