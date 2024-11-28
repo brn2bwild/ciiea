@@ -30,7 +30,7 @@ const props = defineProps({
             </h1>
         </section>
 
-        <section class="mt-5 flex w-full justify-center">
+        <!-- <section class="mt-5 flex w-full justify-center">
     <div
         class="flex h-full w-full flex-col md:flex-row items-center justify-between overflow-hidden rounded-2xl bg-gray-800 shadow-lg shadow-slate-100"
     >
@@ -64,11 +64,41 @@ const props = defineProps({
             </div>
         </div>
     </div>
-</section>
-
-
+</section> -->
 
         <section class="mt-10 grid w-full grid-cols-1 gap-8 md:grid-cols-3">
+
+            <Card>
+        <template #thumbnail>
+            <img
+                class="h-full w-full object-fill object-center"
+                src="/storage/images/test.png"
+                alt="software-cover"
+            />
+        </template>
+        <template #title>
+            <h1 class="line-clamp-2 text-xl font-bold text-neutral-50">
+                TEST
+            </h1>
+        </template>
+        <template #content>
+            <h2 class="line-clamp-2 font-medium text-neutral-100">
+                Test para estilo de aprendizaje
+            </h2>
+            <div class="mt-2 flex items-center justify-center">
+                <a
+                    href="https://www.google.com.mx/?hl=es-419"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-md rounded-lg bg-sky-900 px-4 py-1 text-center font-medium text-neutral-50 hover:bg-sky-800"
+                >
+                    Ir al TEST
+                </a>
+            </div>
+        </template>
+    </Card>
+
+
             <Card
                 v-for="software in props.software_resources.data"
                 :key="software.index"

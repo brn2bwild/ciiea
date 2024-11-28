@@ -1,6 +1,7 @@
 <script setup>
 import HomeLayout from "@/Layouts/HomeLayout.vue";
 import Modal from "@/Components/Modal.vue";
+import Pagination from "@/Components/Pagination.vue";
 import { ref } from "vue";
 
 defineOptions({
@@ -67,7 +68,12 @@ const modalImageUrl = ref("");
           </div>
         </div>
       </section>
-  
+
+      <Pagination
+          :links="props.events.meta.links"
+          class="mt-8 mb-8 flex justify-center"
+      />
+     
       <!-- Modal -->
       <Modal @close="showModal = false" :show="showModal" :maxWidth="'7xl'">
         <img class="object-cover" loading="lazy" :src="modalImageUrl" alt="image" />

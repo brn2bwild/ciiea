@@ -32,7 +32,7 @@ const props = defineProps({
         </h2>
     </div>
     <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
-        <p class="w-full sm:w-3/4 md:w-1/2 text-justify text-base sm:text-lg md:text-xl">
+        <!-- <p class="w-full sm:w-3/4 md:w-1/2 text-justify text-base sm:text-lg md:text-xl">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             Culpa, hic harum, dolorum facere dolor officia ipsum in
             tempore ullam recusandae maxime. Quod doloremque nobis sunt
@@ -44,7 +44,8 @@ const props = defineProps({
             adipisicing elit. Dolor illo culpa, nisi a possimus optio
             minima ipsum natus autem quaerat. Veritatis quis ea adipisci
             esse ipsam dicta, earum ad distinctio.
-        </p>
+        </p> -->
+        <div class="flex justify-center items-center">
         <img
             class="w-full sm:w-3/4 md:w-1/2 h-[300px] sm:h-[400px] md:h-[600px] object-cover"
             :src=" 
@@ -60,6 +61,7 @@ const props = defineProps({
             "
         />
     </div>
+</div>
 </section>
 
     </div>

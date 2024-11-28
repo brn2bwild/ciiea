@@ -50,7 +50,7 @@ const handleCloseImageModal = () => {
             >
                 <template #thumbnail>
                     <img
-                        class="object-cover object-center"
+                        class="h-full w-full object-cover object-center"
                         :src="
                             '/storage/' +
                             (infographic.image
