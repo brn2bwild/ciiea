@@ -25,33 +25,36 @@ const props = defineProps({
                     <p class="w-full text-justify">
                         {{ props.software.data.description }}
                     </p>
-                    <div class="flex justify-center py-10">
-                        <Link
-                            v-if="
-                                props.software.data.file === null &&
-                                props.software.data.url
-                            "
-                            :href="props.software.data.url"
-                            class="rounded-lg bg-sky-900 px-4 py-2 text-sm font-bold text-neutral-50"
+                 <div class="flex justify-center py-10">
+                       <a
+                         v-if="props.software.data.file === null && props.software.data.url"
+                          :href="props.software.data.url"
+                           target="_blank"
+                         rel="noopener noreferrer"
+                         class="rounded-lg bg-sky-900 px-4 py-2 text-sm font-bold text-neutral-50"
+                           >
+                          Descargar
+                     </a>
+
+                      <a
+                        v-else-if="props.software.data.file"
+                        :href="route(
+                         'public.file.download',
+                          props.software.data.file.path.substring(13)
+                           )"
+                       class="rounded-lg bg-sky-900 px-4 py-2 text-sm font-bold text-neutral-50"
                         >
-                            Descargar
-                        </Link>
-                        <a
-                            v-else
-                            :href="
-                                route(
-                                    'public.file.download',
-                                    props.software.data.file.path.substring(
-                                        13,
-                                        props.software.data.file.path.length,
-                                    ),
-                                )
-                            "
-                            class="rounded-lg bg-sky-900 px-4 py-2 text-sm font-bold text-neutral-50"
-                        >
-                            Descargar
-                        </a>
-                    </div>
+                         Descargar
+                       </a>
+
+             
+                 <span
+                    v-else
+                   class="rounded-lg bg-gray-500 px-4 py-2 text-sm font-bold text-neutral-50 cursor-not-allowed"
+                    >
+                      Archivo no disponible
+                      </span>
+                   </div>
                 </div>
                 <div class="w-full md:w-1/2">
                     <img

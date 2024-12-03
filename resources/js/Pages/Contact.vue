@@ -26,7 +26,7 @@ const props = defineProps({
     <Head title="Contacto" />
 
     <section
-        class="grid w-full grid-cols-1 gap-10 px-4 pt-20 sm:p-12 lg:grid-cols-3 mt-10"
+        class="grid w-full grid-cols-1 gap-10 px-4 pt-20 sm:p-12 lg:grid-cols-3 "
     >
         <div
             v-for="administrator in administrators"
