@@ -67,13 +67,17 @@ const props = defineProps({
                             </a>
                         </p>
                         <p class="flex items-center justify-start text-sky-950">
-                            <FontAwesomeIcon
+                             <FontAwesomeIcon
                                 :icon="faEnvelope"
-                                class="text-xl text-sky-900"
+                                 class="text-xl text-sky-900"
                             />
-                            <a href="https://outlook.com" class="ml-2">
-                                {{ administrator.email }}
-                            </a>
+                               <a 
+                              href="https://outlook.com" 
+                              class="ml-2 truncate max-w-[220px]" 
+                              title="{{ administrator.email }}"
+                             >
+                                  {{ administrator.email }}
+                             </a>
                         </p>
                     </div>
                 </div>
