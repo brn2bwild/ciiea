@@ -66,15 +66,21 @@ const props = defineProps({
                                 {{ administrator.mobile }}
                             </a>
                         </p>
-                        <p class="flex items-center justify-start text-sky-950">
-                            <FontAwesomeIcon
+                        <p class="flex items-start space-x-2 text-sky-950">
+                           <FontAwesomeIcon
                                 :icon="faEnvelope"
-                                class="text-xl text-sky-900"
-                            />
-                            <a href="https://outlook.com" class="ml-2">
+                                class="text-xl text-sky-900 mt-1"
+                         />
+                            <a 
+                               href="https://outlook.com" 
+                               class="break-words max-w-[190px] text-left"
+                               title="{{ administrator.email }}"
+                        >
                                 {{ administrator.email }}
                             </a>
                         </p>
+
+
                     </div>
                 </div>
             </div>

@@ -178,7 +178,7 @@ const showingNavigationDropdown = ref(false);
 
         <!-- Sidebar -->
         <aside
-            class="fixed left-0 top-0 z-30 hidden h-screen w-64 border-0 bg-white px-2 pt-20 sm:flex sm:flex-col"
+        class="fixed left-0 top-0 z-30 hidden h-screen w-64 border-0 bg-white px-2 pt-20 sm:flex sm:flex-col overflow-y-auto"
         >
             <SidebarLink :href="route('home')" :active="$page.url === '/'">
                 Inicio
