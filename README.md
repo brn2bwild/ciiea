@@ -78,3 +78,11 @@ Una vez que sus credenciales estén en el archivo .env, ahora puede migrar su ba
 --php artisan migrate
 
 No es una mala idea revisar su base de datos para asegurarse de que todo migró de la manera que esperaba.
+
+## Error al migrar las dependencias de node del proyecto.
+
+Revisar la dependencia topLevelAwait
+
+## La configuración del archivo package.json
+
+Se modificó para que no tenga el typo módulo
